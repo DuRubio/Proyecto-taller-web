@@ -4,7 +4,7 @@ package ar.edu.unlam.tallerweb1.domain;
 import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface UsuarioService {
     boolean validarMail(String correo);
 

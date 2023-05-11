@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import ar.edu.unlam.tallerweb1.domain.UsuarioServiceImpl;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,25 +15,34 @@ import org.springframework.web.servlet.ModelAndView;
 public class UsuarioController {
 
    // private UsuarioService servicioRegistracion = new UsuarioServiceImpl();
-   private UsuarioService servicioRegistracion = new UsuarioServiceImpl();
+   //private UsuarioService servicioRegistracion = new UsuarioServiceImpl();
+   private UsuarioService servicioRegistracion;
 
 
-   /*@Autowired //esto solo inyecta instancias, por eso el atributo debe ser una instancia de ese servicio
+   @Autowired //esto solo inyecta instancias, por eso el atributo debe ser una instancia de ese servicio
     public UsuarioController(UsuarioService servicioRegistracion){
         this.servicioRegistracion = servicioRegistracion; //va a recibir un servicio o su implementacion, depende lo que yo mockie en el inicializador en la clase de test
-    }*/
+    }
 
-
+    @RequestMapping(path = "/login", method = RequestMethod.GET)
+    public ModelAndView getVistaLogin() {
+       ModelMap model = new ModelMap();
+       model.put("datosLogin", new DatosLogin());
+       return new ModelAndView("loguearse", model);
+    }
 
     @RequestMapping(path = "/registrarme", method = RequestMethod.GET)
     public ModelAndView getVistaRegistro() {
-        return new ModelAndView("registro-usuario");
+        ModelMap model = new ModelMap();
+        model.put("datosRegistracion", new DatosRegistracion());
+        return new ModelAndView("registro-usuario", model);
     }
 
     @RequestMapping(path = "/registro-usuario", method = RequestMethod.POST)
     public ModelAndView registrarUsuario(@ModelAttribute DatosRegistracion datosRegistracion) {
         ModelMap model = new ModelMap();
         String viewName = "";
+
 
         if(this.servicioRegistracion.validarMail(datosRegistracion.getCorreo()) && this.servicioRegistracion.validarClave(datosRegistracion.getClave()) && !this.servicioRegistracion.buscarUsuarioPorCorreo(datosRegistracion.getCorreo())){
             model.put("mensaje", "Registro exitoso");
@@ -46,10 +56,11 @@ public class UsuarioController {
         return new ModelAndView(viewName, model);
     }
 
-    @RequestMapping(path = "/login", method = RequestMethod.GET)
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
     public ModelAndView logearUsuario(DatosLogin usuarioValido) {
         ModelMap model = new ModelMap();
         String viewName = "";
+        model.put("datosLogin", new DatosLogin());
 
         if(this.servicioRegistracion.compararMail(usuarioValido.getCorreo()) && this.servicioRegistracion.compararClave(usuarioValido.getClave())){
             model.put("mensaje","Login exitoso");
@@ -60,4 +71,5 @@ public class UsuarioController {
         }
         return new ModelAndView(viewName, model);
     }
+
 }

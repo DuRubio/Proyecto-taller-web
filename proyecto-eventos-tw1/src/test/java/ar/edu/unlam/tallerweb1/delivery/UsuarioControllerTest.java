@@ -1,8 +1,5 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
-import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
-import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
-import ar.edu.unlam.tallerweb1.delivery.UsuarioController;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import ar.edu.unlam.tallerweb1.domain.UsuarioServiceImpl;
 import org.junit.Before;
@@ -18,7 +15,7 @@ public class UsuarioControllerTest {
     public static final String CORREO_INVALIDO="example.example.com";
     public static final String CLAVE_VALIDO="Dada123";
     public static final String CLAVE_INVALIDO="dadada";
-    private UsuarioController registroUsuario;
+    private UsuarioController usuarioController;
     private DatosRegistracion datosRegistracion;
     private DatosRegistracion datosRegistracion2;
     private DatosRegistracion datosRegistracion3;
@@ -30,10 +27,10 @@ public class UsuarioControllerTest {
         this.datosRegistracion = new DatosRegistracion(CORREO_VALIDO, CLAVE_VALIDO);
         this.datosRegistracion2 = new DatosRegistracion(CORREO_INVALIDO, CLAVE_VALIDO);
         this.datosRegistracion3 = new DatosRegistracion(CORREO_VALIDO, CLAVE_INVALIDO);
-        //this.servicioRegistracion = mock(UsuarioServiceImpl.class);
-       // this.registroUsuario = new UsuarioController(servicioRegistracion);
-        this.registroUsuario = new UsuarioController();
-        this.servicioRegistracion = new UsuarioServiceImpl();
+        this.servicioRegistracion = mock(UsuarioServiceImpl.class);
+        this.usuarioController = new UsuarioController(servicioRegistracion);
+        //this.registroUsuario = new UsuarioController();
+        //this.servicioRegistracion = new UsuarioServiceImpl();
         //this.usuarioValido = new DatosLogin(CORREO_VALIDO, CLAVE_VALIDO);
     }
 
@@ -78,6 +75,24 @@ public class UsuarioControllerTest {
 
     }
 
+    @Test
+    public void queAccedaAlLogin(){
+        ModelAndView mav = cuandoQuieroAcceder();
+        entoncesAccedoAlLogin(mav);
+    }
+
+    private ModelAndView cuandoQuieroAcceder() {
+        return usuarioController.getVistaLogin();
+    }
+
+    private void entoncesAccedoAlLogin(ModelAndView mav) {
+        assertThat(mav.getViewName()).isEqualTo("login");
+        assertThat(mav.getModel().get("datosLogin")).isNotNull();
+        DatosLogin dl = (DatosLogin) mav.getModel().get("datosLogin");
+        assertThat(dl.getCorreo()).isNull();
+        assertThat(dl.getClave()).isNull();
+    }
+
 
     @Test
     public void queNoSePuedaLogearConDatosIncorrectosYLoLleveARegistrarse(){
@@ -111,11 +126,11 @@ public class UsuarioControllerTest {
     }
 
     private ModelAndView cuandoSeRegistra(DatosRegistracion datosRegistracion) {
-        return registroUsuario.registrarUsuario(datosRegistracion);
+        return usuarioController.registrarUsuario(datosRegistracion);
     }
 
     private ModelAndView cuandoSeLogea(DatosLogin usuarioValido) {
-        return registroUsuario.logearUsuario(usuarioValido);
+        return usuarioController.logearUsuario(usuarioValido);
     }
 
     private DatosLogin dadoQueExisteUnUsuario() {
@@ -127,7 +142,7 @@ public class UsuarioControllerTest {
     }
 
     private ModelAndView cuandoQuiereRegistrarse() {
-        return registroUsuario.getVistaRegistro();
+        return usuarioController.getVistaRegistro();
     }
 
     private void dadoQueNoExisteUnUsuario() {
