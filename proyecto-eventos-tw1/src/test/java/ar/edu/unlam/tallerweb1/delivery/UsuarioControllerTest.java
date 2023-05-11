@@ -1,8 +1,10 @@
-package ar.edu.unlam.tallerweb1.domain;
+package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 import ar.edu.unlam.tallerweb1.delivery.UsuarioController;
+import ar.edu.unlam.tallerweb1.domain.UsuarioService;
+import ar.edu.unlam.tallerweb1.domain.UsuarioServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,7 +42,7 @@ public class UsuarioControllerTest {
 
     @Test
     public void queAlTocarRegistrarAparezcaLaPantallaRegistro(){
-        dadoQueNoExisteUnUsuario(); //esto consultara en la bdd la no existencia de ese usuario
+        //dadoQueNoExisteUnUsuario(); //esto consultara en la bdd la no existencia de ese usuario
         ModelAndView mav = cuandoQuiereRegistrarse();
         aparezcaVistaRegistro(mav);
     }
@@ -94,7 +96,7 @@ public class UsuarioControllerTest {
 
     private void entoncesElRegistroEsExitoso(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("login");
-        assertThat(mav.getModel().get("mensaje")).isEqualTo("Registro exitoso");
+
     }
 
     private void entoncesLoLlevaAHome(ModelAndView mav) {

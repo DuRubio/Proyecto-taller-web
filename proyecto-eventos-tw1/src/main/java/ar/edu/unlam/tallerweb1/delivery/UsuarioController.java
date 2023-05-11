@@ -34,11 +34,10 @@ public class UsuarioController {
         ModelMap model = new ModelMap();
         String viewName = "";
 
-
         if(this.servicioRegistracion.validarMail(datosRegistracion.getCorreo()) && this.servicioRegistracion.validarClave(datosRegistracion.getClave()) && !this.servicioRegistracion.buscarUsuarioPorCorreo(datosRegistracion.getCorreo())){
             model.put("mensaje", "Registro exitoso");
             model.put("datosLogin", new DatosLogin(datosRegistracion.getCorreo(), datosRegistracion.getClave()));
-            servicioRegistracion.registrarUsuario(datosRegistracion.getCorreo(), datosRegistracion.getClave());
+           // servicioRegistracion.registrarUsuario(datosRegistracion.getCorreo(), datosRegistracion.getClave());
             viewName = "login";
         } else {
             model.put("mensaje", "Registro fallido");

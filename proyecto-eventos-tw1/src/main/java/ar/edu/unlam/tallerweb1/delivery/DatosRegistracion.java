@@ -4,6 +4,8 @@ public class DatosRegistracion {
 
     private String correo;
     private String clave;
+
+    //agregar mas atributos.. nombre, apellido, localidad, blabla
     public DatosRegistracion(){}
     public DatosRegistracion(String correo, String clave) {
         this.correo = correo;

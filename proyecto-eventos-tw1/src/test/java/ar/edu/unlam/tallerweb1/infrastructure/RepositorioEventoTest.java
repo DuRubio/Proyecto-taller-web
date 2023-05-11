@@ -43,6 +43,18 @@ public class RepositorioEventoTest extends SpringTest {
       entoncesLosPuedoEncontrar(eventos);
     }
 
+    @Test
+    @Transactional @Rollback
+    public void buscarEventosPorTipoCultural(){
+        dadoQuExistenEventos();
+        List<Evento> eventos = cuandoLosBuscoPorTipo(TipoDeEvento.MUSICAL);
+        entoncesLosPuedoEncontrarMusicales(eventos);
+    }
+
+    private void entoncesLosPuedoEncontrarMusicales(List<Evento> eventos) {
+        assertThat(eventos).hasSize(5);
+    }
+
     private void entoncesLosPuedoEncontrar(List<Evento> eventos) {
         assertThat(eventos).hasSize(4);
     }
