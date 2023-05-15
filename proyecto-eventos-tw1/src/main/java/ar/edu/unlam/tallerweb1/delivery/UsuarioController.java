@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class UsuarioController {
 
    private UsuarioService servicioRegistracion;
-    private RepositorioUsuario repositorioUsuario; //para que no sea Null tengo que meterlo en el constructor en el Autowired
 
    @Autowired //esto solo inyecta instancias, por eso el atributo debe ser una instancia de ese servicio
     public UsuarioController(UsuarioService servicioRegistracion ){
@@ -39,8 +38,8 @@ public class UsuarioController {
         if(this.servicioRegistracion.validarMail(datosRegistracion.getCorreo()) && this.servicioRegistracion.validarClave(datosRegistracion.getClave())){
             model.put("mensaje", "Registro exitoso");
             model.put("datosLogin", new DatosLogin(datosRegistracion.getCorreo(), datosRegistracion.getClave()));
-          //  repositorioUsuario.save(new Usuario(datosRegistracion.getCorreo(),datosRegistracion.getClave())); //guardo el usuario en el repositorio
             viewName = "login";
+            //servicioRegistracion.guardarUsuario(datosRegistracion.getCorreo(), datosRegistracion.getClave()); //tira null pointer exception aca
         } else {
             model.put("mensaje", "Registro fallido, mail o clave inválido");
             viewName = "registrarse";

@@ -2,9 +2,6 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import ar.edu.unlam.tallerweb1.domain.UsuarioServiceImpl;
-import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
-import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioImpl;
-import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,8 +33,7 @@ public class UsuarioControllerTest {
         this.datosRegistracion2 = new DatosRegistracion(CORREO_INVALIDO, CLAVE_VALIDO);
         this.datosRegistracion3 = new DatosRegistracion(CORREO_VALIDO, CLAVE_INVALIDO);
         this.usuarioValido = new DatosLogin(CORREO_VALIDO, CLAVE_VALIDO);
-
-        //this.servicioRegistracion = mock(UsuarioServiceImpl.class);
+       // this.servicioRegistracion = mock(UsuarioServiceImpl.class);
         this.servicioRegistracion = new UsuarioServiceImpl();
         this.usuarioController = new UsuarioController(servicioRegistracion);
 

@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
+import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,14 @@ public class UsuarioServiceImpl implements  UsuarioService{
         }
         return esValido;
 
+    }
+
+    @Override
+    public void guardarUsuario(String correo, String clave) {
+       // Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
+        Usuario usuario = new Usuario(correo, clave);
+
+        repoUsuario.save(usuario);
     }
 
 

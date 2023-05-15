@@ -30,8 +30,7 @@ public class Usuario {
         this.localidad = localidad;
     }
 
-    public Usuario(Long id, String nombre, String apellido, String localidad, String correo, String clave) {
-        this.id = id;
+    public Usuario(String nombre, String apellido, String localidad, String correo, String clave) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.localidad = localidad;
