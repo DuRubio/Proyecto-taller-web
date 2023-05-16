@@ -1,9 +1,10 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
+
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioImpl;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,21 @@ public class UsuarioServiceImpl implements  UsuarioService{
 
     @Autowired
     RepositorioUsuario repoUsuario;
+
+    public UsuarioServiceImpl(RepositorioUsuario repoUsuario){
+        this.repoUsuario=repoUsuario;
+    }
+
+    @Override
+    public Boolean guardarUsuario(DatosRegistracion datosRegistracion) {
+        Boolean pudoGuardar=false;
+        Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
+        if(repoUsuario.save(usuario)){
+            pudoGuardar=true;
+        }
+        return pudoGuardar;
+        }
+
 
 
     @Override
@@ -22,6 +38,7 @@ public class UsuarioServiceImpl implements  UsuarioService{
     public Boolean validarClave(String clave) {
         return clave.length() >= 6 && clave.matches(".*[A-Z].*") && clave.matches(".*\\d.*");
     }
+
     /*@Override
     public boolean buscarUsuarioPorCorreo(String correo) {
         return repoUsuario.buscarPorCorreo(correo);
@@ -62,14 +79,6 @@ public class UsuarioServiceImpl implements  UsuarioService{
         }
         return esValido;
 
-    }
-
-    @Override
-    public void guardarUsuario(String correo, String clave) {
-       // Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
-        Usuario usuario = new Usuario(correo, clave);
-
-        repoUsuario.save(usuario);
     }
 
 

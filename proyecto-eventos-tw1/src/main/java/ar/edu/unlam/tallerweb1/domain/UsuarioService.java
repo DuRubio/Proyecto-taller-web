@@ -23,5 +23,5 @@ public interface UsuarioService {
 
     Usuario obtenerUsuarioPorCorreo(String correo);
 
-    void guardarUsuario(String correo, String clave);
+    Boolean guardarUsuario(DatosRegistracion datosRegistracion);
 }

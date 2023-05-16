@@ -1,10 +1,12 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 
 public class Usuario {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +20,8 @@ public class Usuario {
     private String correo;
     @Column(nullable = false)
     private String clave;
+
+
 
 
     public Usuario() {
