@@ -27,10 +27,11 @@ public class UsuarioControllerTest {
         this.datosRegistracion = new DatosRegistracion(CORREO_VALIDO, CLAVE_VALIDO);
         this.datosRegistracion2 = new DatosRegistracion(CORREO_INVALIDO, CLAVE_VALIDO);
         this.datosRegistracion3 = new DatosRegistracion(CORREO_VALIDO, CLAVE_INVALIDO);
-        this.servicioRegistracion = mock(UsuarioServiceImpl.class);
+        //this.servicioRegistracion = mock(UsuarioServiceImpl.class);
+        this.servicioRegistracion = new UsuarioServiceImpl();
         this.usuarioController = new UsuarioController(servicioRegistracion);
         //this.registroUsuario = new UsuarioController();
-        //this.servicioRegistracion = new UsuarioServiceImpl();
+       
         //this.usuarioValido = new DatosLogin(CORREO_VALIDO, CLAVE_VALIDO);
     }
 
