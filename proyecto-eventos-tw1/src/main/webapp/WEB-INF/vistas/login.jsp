@@ -1,42 +1,46 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: ailuv
+  Date: 11/5/2023
+  Time: 19:14
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
-	<head>
-	<!-- Bootstrap core CSS -->
-	    <link href="css/bootstrap.min.css" rel="stylesheet" >
-	    <!-- Bootstrap theme -->
-	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-	</head>
-	<body>
-		<div class = "container">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				<%--Definicion de un form asociado a la accion /validar-login por POST. Se indica ademas que el model attribute se--%>
-				<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
-					<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
-				<form:form action="login" method="POST" modelAttribute="datosLogin">
-			    	<h3 class="form-signin-heading">Taller Web I</h3>
-					<hr class="colorgraph"><br>
+<html lang="en">
 
-					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-					<form:input path="correo" id="email" type="email" class="form-control" />
-					<form:input path="clave" type="password" id="password" class="form-control"/>
-					
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Login</button>
-				</form:form>
-				<a href="registrarme"	>Registrarme</a>
-				<%--Bloque que es visible si el elemento error no esta vacio	--%>
-				<c:if test="${not empty error}">
-			        <h4><span>${error}</span></h4>
-			        <br>
-		        </c:if>
-				${mensaje}
-			</div>
-		</div>
-		
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
-		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-		<script src="js/bootstrap.min.js" type="text/javascript"></script>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Login</title>
+</head>
+
+<body class="flex items-center justify-center h-screen bg-gray-100">
+<div class="w-96 p-6 bg-white rounded shadow-md">
+    <h1 class="text-2xl font-semibold text-center">¡Bienvenido!</h1>
+    <form class="mt-4">
+        <div>
+            <label for="usuario" class="block mb-1">Usuario</label>
+            <input id="usuario" type="text"
+                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
+                   placeholder="Ingresa tu usuario">
+        </div>
+        <div class="mt-4">
+            <label for="clave" class="block mb-1">Cotraseña</label>
+            <input id="clave" type="password"
+                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
+                   placeholder="Ingresa tu contraseña">
+        </div>
+        <div class="mt-6">
+            <button type="submit"
+                    class="w-full px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Ingresar</button>
+        </div>
+
+    </form>
+    <br>
+    <p>   No estás registrado?  <a href="http://localhost:8080/proyecto_limpio_spring_war_exploded/registrarme">hacé click acá</a></p>
+</div>
+</body>
+
 </html>

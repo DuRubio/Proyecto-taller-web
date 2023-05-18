@@ -1,30 +1,54 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
+
+import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioImpl;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioServiceImpl implements  UsuarioService{
+
+    @Autowired
+    RepositorioUsuario repoUsuario;
+
+    public UsuarioServiceImpl(RepositorioUsuario repoUsuario){
+        this.repoUsuario=repoUsuario;
+    }
+
     @Override
-    public boolean validarMail(String correo) {
+    public Boolean guardarUsuario(DatosRegistracion datosRegistracion) {
+        Boolean pudoGuardar=false;
+        Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
+        if(repoUsuario.save(usuario)){
+            pudoGuardar=true;
+        }
+        return pudoGuardar;
+        }
+
+
+
+    @Override
+    public Boolean validarMail(String correo) {
         return correo.contains("@") && correo.endsWith(".com");
     }
     @Override
-    public boolean validarClave(String clave) {
+    public Boolean validarClave(String clave) {
         return clave.length() >= 6 && clave.matches(".*[A-Z].*") && clave.matches(".*\\d.*");
     }
-    @Override
+
+    /*@Override
     public boolean buscarUsuarioPorCorreo(String correo) {
-        //va a buscar el usuario en la bdd y como no existe, debería dar false
-        Boolean usuarioExistente = false;
-        return usuarioExistente;
-    }
+        return repoUsuario.buscarPorCorreo(correo);
+
+    }*/
+
     @Override
-    public DatosLogin obtenerUsuarioPorCorreo(String correo) {
-        if(this.buscarUsuarioPorCorreo(correo)){
-            /*logica para traer el usuario de ese correo*/
-        }
-        return null;
+    public Usuario obtenerUsuarioPorCorreo(String correo) {
+
+        return repoUsuario.buscarPorCorreo(correo);
     }
 
     @Override
@@ -34,27 +58,27 @@ public class UsuarioServiceImpl implements  UsuarioService{
 
 
     @Override
-    public boolean compararMail(String correo) {
-        /*DatosLogin usuario;
+    public Boolean compararMail(String correo) {
+        Usuario usuario;
         usuario = obtenerUsuarioPorCorreo(correo);
         Boolean esValido=false;
         if(usuario.getCorreo().equals(correo)){
             esValido=true;
         }
-        return esValido;*/
-        return true;
+        return esValido;
+
     }
 
     @Override
-    public boolean compararClave(String clave) {
-        /*DatosLogin usuario;
-        usuario = obtenerUsuarioPorCorreo(clave);
+    public Boolean compararClave(String correo, String clave) {
+        Usuario usuario;
+        usuario = obtenerUsuarioPorCorreo(correo);
         Boolean esValido=false;
         if(usuario.getClave().equals(clave)){
             esValido=true;
         }
-        return esValido;*/
-        return true;
+        return esValido;
+
     }
 
 

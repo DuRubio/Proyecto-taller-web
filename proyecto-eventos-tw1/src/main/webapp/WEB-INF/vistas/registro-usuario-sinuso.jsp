@@ -11,18 +11,32 @@
 <body>
 <div class = "container">
     <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <form:form action="registrar-usuario" method="POST" modelAttribute="datosRegistracion">
+        <form:form action="registrar-usuario" method="POST" >
             <h3 class="form-signin-heading">Nuevo Usuario</h3>
             <hr class="colorgraph"><br>
 
+            <label for="correo">Correo:</label>
             <form:input path="correo" id="correo" class="form-control" />
+
+            <label for="clave">Clave:</label>
             <form:input path="clave" type="password" id="clave" class="form-control"/>
+
+            <label for="nombre">Nombre:</label>
+            <form:input path="nombre" id="nombre" class="form-control" />
+
+            <label for="apellido">Apellido:</label>
+            <form:input path="apellido" id="apellido" class="form-control"/>
+
+            <label for="localidad">Localidad:</label>
+            <form:input path="localidad" id="localidad" class="form-control"/>
+
+            <br><br><br>
 
             <button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" Type="Submit"/>Registrarme</button>
         </form:form>
 
-        <c:if test="${not empty msg}">
-            <h4><span>${msg}</span></h4>
+        <c:if test="${not empty mensaje}">
+            <h4><span>${mensaje}</span></h4>
             <br>
         </c:if>
     </div>
