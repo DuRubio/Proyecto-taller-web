@@ -2,23 +2,26 @@ package ar.edu.unlam.tallerweb1.domain;
 
 
 import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
+import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 import org.springframework.stereotype.Service;
 
 
 public interface UsuarioService {
-    boolean validarMail(String correo);
+    Boolean validarMail(String correo);
 
 
-    boolean validarClave(String clave);
+    Boolean validarClave(String clave);
 
 
-    boolean buscarUsuarioPorCorreo(String correo);
+    //boolean buscarUsuarioPorCorreo(String correo);
 
     void registrarUsuario(String correo, String clave);
 
-    boolean compararMail(String correo);
+    Boolean compararMail(String correo);
 
-    boolean compararClave(String clave);
+    Boolean compararClave(String correo, String clave);
 
-    DatosLogin obtenerUsuarioPorCorreo(String correo);
+    Usuario obtenerUsuarioPorCorreo(String correo);
+
+    Boolean guardarUsuario(DatosRegistracion datosRegistracion);
 }
