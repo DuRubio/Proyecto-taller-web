@@ -2,9 +2,13 @@ package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.domain.Usuario;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
+
+@Transactional
 @Repository
 public class RepositorioUsuarioImpl implements RepositorioUsuario  {
 
@@ -14,9 +18,8 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
         this.sessionFactory=sessionFactory;
     }
     @Override
-    public boolean save(Usuario usuario) {
+    public void save(Usuario usuario) {
         sessionFactory.getCurrentSession().save(usuario);
-        return true;
     }
 
     @Override
@@ -26,6 +29,13 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
 
     @Override
     public Usuario buscarPorCorreo(String correo) {
-        return sessionFactory.getCurrentSession().get(Usuario.class, correo);
+
+        return (Usuario) sessionFactory.getCurrentSession()
+                .createCriteria(Usuario.class)
+                .add(Restrictions.eq("correo", correo))
+                .uniqueResult();
     }
 }
+
+
+

@@ -28,7 +28,7 @@ public class UsuarioController {
         return new ModelAndView("registrarse", model);
     }
 
-    @RequestMapping(path = "/registrar-usuario", method = RequestMethod.POST) //analiza  mail y contrasenia válidos
+    @RequestMapping(path = "/registrarme", method = RequestMethod.POST) //analiza  mail y contrasenia válidos
     public ModelAndView registrarUsuario(@ModelAttribute DatosRegistracion datosRegistracion) {
         ModelMap model = new ModelMap();
         String viewName = "";
@@ -38,7 +38,7 @@ public class UsuarioController {
                 model.put("mensaje", "Registro exitoso");
                 model.put("datosLogin", new DatosLogin(datosRegistracion.getCorreo(), datosRegistracion.getClave()));
                 viewName = "login";
-                servicioRegistracion.guardarUsuario(datosRegistracion); //tira null pointer exception aca
+                servicioRegistracion.guardarUsuario(datosRegistracion);
             } else {
                 model.put("mensaje", "Registro fallido, mail o clave inválido");
                 viewName = "registrarse";
@@ -58,7 +58,7 @@ public class UsuarioController {
         }
 
         @RequestMapping(path = "/login", method = RequestMethod.POST) //compara mail y clave con el ya registrado para validar inicio sesion
-        public ModelAndView logearUsuario (DatosLogin usuarioValido){
+        public ModelAndView logearUsuario (@ModelAttribute DatosLogin usuarioValido){
             ModelMap model = new ModelMap();
             String viewName = "";
             model.put("datosLogin", new DatosLogin());

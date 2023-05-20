@@ -1,9 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 
-import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
-import org.springframework.stereotype.Service;
 
 
 public interface UsuarioService {
@@ -23,5 +21,5 @@ public interface UsuarioService {
 
     Usuario obtenerUsuarioPorCorreo(String correo);
 
-    Boolean guardarUsuario(DatosRegistracion datosRegistracion);
+    void guardarUsuario(DatosRegistracion datosRegistracion);
 }

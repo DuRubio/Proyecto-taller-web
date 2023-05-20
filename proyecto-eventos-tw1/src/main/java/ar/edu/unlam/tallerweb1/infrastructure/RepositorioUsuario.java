@@ -5,7 +5,7 @@ import ar.edu.unlam.tallerweb1.domain.Usuario;
 
 public interface RepositorioUsuario {
 
-    boolean save(Usuario usuario);
+    void save(Usuario usuario);
 
     Usuario buscarPorId(Long id);
 

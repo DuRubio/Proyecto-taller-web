@@ -27,12 +27,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String nombre, String apellido, String localidad) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.localidad = localidad;
-    }
+
 
     public Usuario(String nombre, String apellido, String localidad, String correo, String clave) {
         this.nombre = nombre;

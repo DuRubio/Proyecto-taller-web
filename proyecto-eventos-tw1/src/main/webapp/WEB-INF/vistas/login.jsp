@@ -19,27 +19,34 @@
 <body class="flex items-center justify-center h-screen bg-gray-100">
 <div class="w-96 p-6 bg-white rounded shadow-md">
     <h1 class="text-2xl font-semibold text-center">¡Bienvenido!</h1>
-    <form class="mt-4">
+    <form action="login" method="POST" class="mt-4"  modelAttribute="datosLogin" >
         <div>
             <label for="usuario" class="block mb-1">Usuario</label>
-            <input id="usuario" type="text"
+            <input id="usuario" type="text" name="usuario"
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
                    placeholder="Ingresa tu usuario">
         </div>
         <div class="mt-4">
             <label for="clave" class="block mb-1">Cotraseña</label>
-            <input id="clave" type="password"
+            <input id="clave" type="password" name="clave"
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
                    placeholder="Ingresa tu contraseña">
         </div>
         <div class="mt-6">
             <button type="submit"
                     class="w-full px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Ingresar</button>
+            <c:if test="${not empty error}">
+                <h4><span>${error}</span></h4>
+                <br>
+            </c:if>
+            ${mensaje}
         </div>
+
 
     </form>
     <br>
-    <p>   No estás registrado?  <a href="http://localhost:8080/proyecto_limpio_spring_war_exploded/registrarme">hacé click acá</a></p>
+    <p>   No estás registrado?  <a href="http://localhost:8080/eventos/registrarme">hacé click acá</a></p>
+
 </div>
 </body>
 

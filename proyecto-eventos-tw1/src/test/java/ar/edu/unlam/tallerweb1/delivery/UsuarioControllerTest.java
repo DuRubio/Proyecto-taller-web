@@ -1,12 +1,9 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
-import ar.edu.unlam.tallerweb1.SpringTest;
+
 import ar.edu.unlam.tallerweb1.domain.Usuario;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import ar.edu.unlam.tallerweb1.domain.UsuarioServiceImpl;
-import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
-import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioImpl;
-import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
@@ -112,7 +109,7 @@ public class UsuarioControllerTest {
     private void dadoQueNoExisteUnUsuario(DatosRegistracion datosRegistracion, boolean retorno) {
         when(servicioRegistracion.validarMail(datosRegistracion.getCorreo())).thenReturn(retorno);
         when(servicioRegistracion.validarClave(datosRegistracion.getClave())).thenReturn(retorno);
-        when(servicioRegistracion.guardarUsuario(datosRegistracion)).thenReturn(retorno);
+        doNothing().when(servicioRegistracion).guardarUsuario(any());
     }
 
     private void entoncesElRegistroEsExitoso(ModelAndView mav) {

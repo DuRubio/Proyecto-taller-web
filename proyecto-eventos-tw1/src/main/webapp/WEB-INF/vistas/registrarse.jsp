@@ -22,7 +22,7 @@
 
     <h1 class="text-2xl font-semibold text-center">Nuevo Usuario</h1>
     <hr class="my-4">
-    <form action="registrar-usuario" method="POST" class="mt-4"  modelAttribute="datosRegistracion" >
+    <form action="registrarme" method="POST" class="mt-4"  modelAttribute="datosRegistracion" >
 
         <div>
             <label for="correo" class="block mb-1">Correo:</label>
@@ -57,6 +57,10 @@
         <div class="mt-6">
             <button type="submit"
                     class="w-full px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Registrarme</button>
+            <c:if test="${not empty mensaje}">
+                <h4><span>${mensaje}</span></h4>
+                <br>
+            </c:if>
         </div>
     </form>
 </div>

@@ -34,24 +34,38 @@
 
 <!-- Filtros -->
 <div class="flex justify-center items-center my-4">
-	<button id="filtro-fecha" class="mx-2 px-4 py-2 text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
-		Filtrar por fecha
-	</button>
-	<select id="filtro-ciudad" class="mx-2 px-4 py-2 text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
-		<option value="">Filtrar por ciudad</option>
-		<option value="1">Buenos Aires</option>
-		<option value="2">Córdoba</option>
-		<option value="3">Rosario</option>
-	</select>
-	<select id="filtro-categoria" class="mx-2 px-4 py-2 text-gray-800 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
-		<option value="">Filtrar por categoría</option>
-		<option value="1">Deportivo</option>
-		<option value="2">Cultural</option>
-		<option value="3">Musical</option>
-		<option value="4">Gastronómico</option>
-	</select>
+	<div class="border rounded-md p-4 bg-white">
+		<h2 class="text-lg font-semibold mb-2">Filtrar Eventos</h2>
+		<form action="/home/filtrar" method="GET">
+			<div class="flex flex-wrap items-center">
+				<div class="mr-4">
+					<label for="filtro-ciudad" class="block mb-1">Ciudad:</label>
+					<input type="text" id="filtro-ciudad" name="filtro-ciudad" class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" placeholder="Ingrese la ciudad">
+				</div>
+				<div class="mr-4">
+					<label for="filtro-fecha" class="block mb-1">Fecha:</label>
+					<input type="date" id="filtro-fecha" name="filtro-fecha" class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
+				</div>
+				<div class="mr-4">
+					<label for="filtro-categoria" class="block mb-1">Categoría:</label>
+					<select id="filtro-categoria" name="filtro-categoria" class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
+						<option value="">Seleccione una categoría</option>
+						<option value="1">Deportivo</option>
+						<option value="2">Cultural</option>
+						<option value="3">Musical</option>
+						<option value="4">Teatro</option>
+						<option value="4">Recital</option>
+
+					</select>
+				</div>
+				<div>
+					<button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Filtrar</button>
+				</div>
+			</div>
+		</form>
+	</div>
 </div>
-</div>
+
 
 <!-- Cards -->
 <div class="flex flex-wrap justify-center">

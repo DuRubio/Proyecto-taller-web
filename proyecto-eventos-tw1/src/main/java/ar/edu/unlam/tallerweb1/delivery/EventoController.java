@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class EventoController {
 
     private EventoService servicioEvento = new EventoServiceImpl();
+
+
     @RequestMapping(path = "/registrar-evento", method = RequestMethod.GET)
     public ModelAndView getVistaRegistro() {
         return new ModelAndView("registro-evento");
@@ -35,5 +38,25 @@ public class EventoController {
           }
             return new ModelAndView(viewName, model);
         }
+
+
+    @RequestMapping(path = "/home", method = RequestMethod.GET)
+    public ModelAndView getVistaHome() {
+        return new ModelAndView("home");
+    }
+
+    @RequestMapping(path = "/home/filtrar", method = RequestMethod.GET)
+    public ModelAndView filtrarEventos(
+            @RequestParam(value = "filtro-fecha", required = false) String fecha,
+            @RequestParam(value = "localidad", required = false) String localidad,
+            @RequestParam(value = "categoria", required = false) String categoria) {
+        // Lógica para filtrar los eventos según los parámetros proporcionados
+
+        // Agrega los eventos filtrados al modelo para mostrarlos en la vista
+        //model.addAttribute("events", filteredEvents);
+
+        // Retorna el nombre de la vista que mostrará los eventos filtrados
+        return new ModelAndView();
+    }
 
 }
