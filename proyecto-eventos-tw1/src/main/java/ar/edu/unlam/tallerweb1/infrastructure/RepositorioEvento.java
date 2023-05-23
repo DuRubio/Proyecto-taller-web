@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import org.hibernate.SessionFactory;
 
+import java.util.Date;
 import java.util.List;
 
 public interface RepositorioEvento {
@@ -15,4 +16,8 @@ public interface RepositorioEvento {
     Evento buscarPorNombre(String nombre);
 
     List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
+
+    List<Evento> buscarPorFechaDeEvento(Date fecha);
+
+    List<Evento> buscarPorLocalidadDeEvento(String localidad);
 }

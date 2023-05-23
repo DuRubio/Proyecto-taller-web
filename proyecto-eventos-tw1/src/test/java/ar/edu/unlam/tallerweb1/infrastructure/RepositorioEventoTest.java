@@ -10,9 +10,14 @@ import static org.assertj.core.api.Assertions.*;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class RepositorioEventoTest extends SpringTest {
+    Date fecha1 = new Date(2023, 5, 23);
+    Date fecha2 = new Date(2023, 7, 23);
+    String localidad1 = "moron";
+    String localidad2 = "nuñez";
 
     @Autowired
     private RepositorioEvento repositorio;
@@ -50,6 +55,39 @@ public class RepositorioEventoTest extends SpringTest {
         List<Evento> eventos = cuandoLosBuscoPorTipo(TipoDeEvento.MUSICAL);
         entoncesLosPuedoEncontrarMusicales(eventos);
     }
+
+    @Test
+    @Transactional @Rollback
+    public void buscarEventosPorFecha() {
+        dadoQuExistenEventos();
+        List<Evento> eventos = cuandoLosBuscoPorFecha(fecha1);
+        entoncesLosEncuentroPorFecha(eventos);
+    }
+
+    @Test
+    @Transactional @Rollback
+    public void buscarEventosPorLocalidad() {
+        dadoQuExistenEventos();
+        List<Evento> eventos = cuandoLosBuscoPorLocalidad(localidad1);
+        entoncesLosEncuentroPorLocalidad(eventos);
+    }
+
+    private void entoncesLosEncuentroPorLocalidad(List<Evento> eventos) {
+        assertThat(eventos.size()).isEqualTo(4);
+    }
+
+    private List<Evento> cuandoLosBuscoPorLocalidad(String localidad) {
+        return repositorio.buscarPorLocalidadDeEvento(localidad);
+    }
+
+    private void entoncesLosEncuentroPorFecha(List<Evento> eventos) {
+        assertThat(eventos.size()).isEqualTo(4);
+    }
+
+    private List<Evento> cuandoLosBuscoPorFecha(Date fecha1) {
+        return repositorio.buscarPorFechaDeEvento(fecha1);
+    }
+
 
     private void entoncesLosPuedoEncontrarMusicales(List<Evento> eventos) {
         assertThat(eventos).hasSize(5);
@@ -118,7 +156,9 @@ public class RepositorioEventoTest extends SpringTest {
     private Evento crearEventoDeportivo() {
         Evento evento = new Evento();
         evento.setNombre("Partido Copa Libertadores");
+        evento.setFecha(fecha1);
         evento.setTipo(TipoDeEvento.DEPORTIVO);
+        evento.setLocalidad(localidad1);
         repositorio.save(evento);
         return evento;
     }
@@ -126,7 +166,9 @@ public class RepositorioEventoTest extends SpringTest {
     private Evento crearEventoCultural() {
         Evento evento = new Evento();
         evento.setNombre("Recital");
+        evento.setFecha(fecha2);
         evento.setTipo(TipoDeEvento.MUSICAL);
+        evento.setLocalidad(localidad2);
         repositorio.save(evento);
         return evento;
     }

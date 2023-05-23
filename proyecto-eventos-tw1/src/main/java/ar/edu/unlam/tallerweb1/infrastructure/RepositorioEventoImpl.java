@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -39,6 +40,22 @@ public class RepositorioEventoImpl implements RepositorioEvento{
     public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
         List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
                 .add(Restrictions.eq("tipo", tipoDeEvento))
+                .list();
+        return eventos;
+    }
+
+    @Override
+    public List<Evento> buscarPorFechaDeEvento(Date fecha) {
+        List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
+                .add(Restrictions.eq("fecha", fecha))
+                .list();
+        return eventos;
+    }
+
+    @Override
+    public List<Evento> buscarPorLocalidadDeEvento(String localidad) {
+        List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
+                .add(Restrictions.eq("localidad", localidad))
                 .list();
         return eventos;
     }

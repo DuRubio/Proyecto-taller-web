@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 import ar.edu.unlam.tallerweb1.delivery.UsuarioController;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,25 +42,48 @@ public class UsuarioServiceTest {
         entoncesSeGuardaCorrectamente(datosRegistracion, usuarioValido);
 
     }
-    @Test void validarMail(){
-
+    @Test
+    public void validarMail(){
+        Assert.assertTrue(servicioRegistracion.validarMail(CORREO_VALIDO));
     }
-    @Test void validarClave(){
-
+    @Test
+    public void validarClave(){
+        Assert.assertTrue(servicioRegistracion.validarClave(CLAVE_VALIDO));
     }
     @Test
     public void queEncuentroUsuarioDadoUnMail(){
+        dadoQueNoExisteUsuario(datosRegistracion , usuarioValido);
+        cuandoGuardoUsuario(datosRegistracion);
+        entoncesCuandoLoBuscoMeLoDevuelve(datosRegistracion);
 
     }
 
+
     @Test
     public void queAlCompararMailDeValido(){
-
+        dadoQueNoExisteUsuario(datosRegistracion , usuarioValido);
+        cuandoGuardoUsuario(datosRegistracion);
+        entoncesCuandoLoComparoDaTrue(usuarioValido);
     }
 
     @Test
     public void queAlCompararClaveDeValido(){
+        dadoQueNoExisteUsuario(datosRegistracion , usuarioValido);
+        cuandoGuardoUsuario(datosRegistracion);
+        entoncesCuandoComparoClaveDaTrue(usuarioValido);
+    }
 
+    private void entoncesCuandoComparoClaveDaTrue(Usuario usuarioValido) {
+        assertThat(servicioRegistracion.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())).isTrue();
+    }
+
+
+    private void entoncesCuandoLoBuscoMeLoDevuelve(DatosRegistracion datosRegistracion) {
+        assertThat(servicioRegistracion.obtenerUsuarioPorCorreo(datosRegistracion.getCorreo())).isNotNull();
+    }
+
+    private void entoncesCuandoLoComparoDaTrue(Usuario usuarioValido) {
+        assertThat(servicioRegistracion.compararMail(usuarioValido.getCorreo())).isTrue();
     }
 
 
@@ -76,6 +100,7 @@ public class UsuarioServiceTest {
     private void dadoQueNoExisteUsuario(DatosRegistracion datosRegistracion , Usuario usuarioValido) {
         doNothing().when(repositorioUsuario).save(any());
         when(repositorioUsuario.buscarPorCorreo(datosRegistracion.getCorreo())).thenReturn(usuarioValido);
+
 
     }
 }

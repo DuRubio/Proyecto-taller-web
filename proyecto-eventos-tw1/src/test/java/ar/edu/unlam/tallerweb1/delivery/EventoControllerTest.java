@@ -71,10 +71,36 @@ public class EventoControllerTest {
     @Test
     public void queSePuedaFiltrarPorCategoria() {
         TipoDeEvento tipoEvento = TipoDeEvento.MUSICAL;
-
+        String localidad=null;
+        Date fecha = null;
         dadoQueNoExistenEventos(tipoEvento);
-        ModelAndView mav = cuandoLosFiltroPorCategoria(tipoEvento);
+        ModelAndView mav = cuandoLosFiltro(fecha, localidad, tipoEvento);
         entoncesObtengoFiltrados(mav);
+    }
+
+    @Test
+    public void queAlFiltrarNoEncuentreNadaRecibaMensaje(){
+        TipoDeEvento tipoEvento = null;
+        String localidad=null;
+        Date fecha = null;
+        dadoQueFiltroPorValoresNulos();
+        ModelAndView mav = cuandoLosFiltro(fecha, localidad, tipoEvento);
+        entoncesObtengoMavYMensaje(mav);
+    }
+
+    private void entoncesObtengoMavYMensaje(ModelAndView mav) {
+        assertThat(mav.getViewName()).isEqualTo("eventos-filtrados");
+        assertThat(mav.getModel().get("mensaje")).isEqualTo("No existen eventos con las condiciones solicitadas");
+    }
+
+    private ModelAndView cuandoLosFiltro(Date fecha, String localidad, TipoDeEvento tipoEvento) {
+        return controladorEvento.filtrarEventos(fecha,localidad, tipoEvento);
+    }
+
+    private void dadoQueFiltroPorValoresNulos() {
+        when(servicioRegEvento.buscarPorTipoDeEvento(null)).thenReturn(null);
+        when(servicioRegEvento.buscarPorCiudad(null)).thenReturn(null);
+        when(servicioRegEvento.buscarPorFecha(null)).thenReturn(null);
     }
 
 
@@ -84,9 +110,6 @@ public class EventoControllerTest {
        assertThat(eventosFiltrados).isNotNull();
        assertThat(eventosFiltrados).hasSize(2);
        assertThat(mav.getViewName().equals("eventos-filtrados"));
-    }
-    private ModelAndView cuandoLosFiltroPorCategoria(TipoDeEvento tipoEvento) {
-        return controladorEvento.filtrarEventos(null,null, tipoEvento);
     }
 
     private void dadoQueNoExistenEventos(TipoDeEvento tipoEvento) {
