@@ -20,6 +20,10 @@ public class Evento {
     private String localidad;
     private TipoDeEvento tipo;
 
+    public Evento (){
+
+    }
+
     public Long getId() {
         return Id;
     }
