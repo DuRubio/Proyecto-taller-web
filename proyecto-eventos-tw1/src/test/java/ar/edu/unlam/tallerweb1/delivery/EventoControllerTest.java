@@ -71,17 +71,22 @@ public class EventoControllerTest {
     @Test
     public void queSePuedaFiltrarPorCategoria() {
         TipoDeEvento tipoEvento = TipoDeEvento.MUSICAL;
+
         dadoQueNoExistenEventos(tipoEvento);
-        List<Evento> eventosFiltrados =new ArrayList<>();
-        eventosFiltrados= cuandoLosFiltroPorCategoria(tipoEvento);
-        entoncesObtengoFiltrados(eventosFiltrados);
+        ModelAndView mav = cuandoLosFiltroPorCategoria(tipoEvento);
+        entoncesObtengoFiltrados(mav);
     }
-    private void entoncesObtengoFiltrados(List<Evento> eventosFiltrados) {
+
+
+    private void entoncesObtengoFiltrados(ModelAndView mav) {
+        List<Evento> eventosFiltrados =new ArrayList<>();
+        eventosFiltrados = (List<Evento>) mav.getModel().get("eventos");
        assertThat(eventosFiltrados).isNotNull();
        assertThat(eventosFiltrados).hasSize(2);
+       assertThat(mav.getViewName().equals("eventos-filtrados"));
     }
-    private List<Evento> cuandoLosFiltroPorCategoria(TipoDeEvento tipoEvento) {
-       return servicioRegEvento.buscarPorTipoDeEvento(tipoEvento);
+    private ModelAndView cuandoLosFiltroPorCategoria(TipoDeEvento tipoEvento) {
+        return controladorEvento.filtrarEventos(null,null, tipoEvento);
     }
 
     private void dadoQueNoExistenEventos(TipoDeEvento tipoEvento) {

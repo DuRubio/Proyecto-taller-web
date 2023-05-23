@@ -13,7 +13,6 @@ public interface UsuarioService {
 
     //boolean buscarUsuarioPorCorreo(String correo);
 
-    void registrarUsuario(String correo, String clave);
 
     Boolean compararMail(String correo);
 

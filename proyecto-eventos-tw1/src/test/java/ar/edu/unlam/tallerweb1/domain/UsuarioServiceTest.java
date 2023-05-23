@@ -35,12 +35,37 @@ public class UsuarioServiceTest {
         this.servicioRegistracion = new UsuarioServiceImpl(repositorioUsuario);
     }
     @Test
-    public void queGuardeUsuarioEnRepo(){
+    public void queGuardeUsuario(){
         dadoQueNoExisteUsuario(datosRegistracion , usuarioValido);
         cuandoGuardoUsuario(datosRegistracion);
         entoncesSeGuardaCorrectamente(datosRegistracion, usuarioValido);
 
     }
+    @Test void validarMail(){
+
+    }
+    @Test void validarClave(){
+
+    }
+    @Test
+    public void queEncuentroUsuarioDadoUnMail(){
+
+    }
+
+    @Test
+    public void queAlCompararMailDeValido(){
+
+    }
+
+    @Test
+    public void queAlCompararClaveDeValido(){
+
+    }
+
+
+
+
+
     private void entoncesSeGuardaCorrectamente(DatosRegistracion datosRegistracion, Usuario usuarioValido) {
         Usuario vo = servicioRegistracion.obtenerUsuarioPorCorreo(datosRegistracion.getCorreo());
         assertThat(vo.getCorreo()).isEqualTo(usuarioValido.getCorreo());

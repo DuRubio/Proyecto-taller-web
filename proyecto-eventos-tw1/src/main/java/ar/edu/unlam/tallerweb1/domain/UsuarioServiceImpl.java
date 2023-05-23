@@ -44,12 +44,6 @@ public class UsuarioServiceImpl implements  UsuarioService{
     }
 
     @Override
-    public void registrarUsuario(String correo, String clave) {
-        //este cargara los datos del usuario en una BDD
-    }
-
-
-    @Override
     public Boolean compararMail(String correo) {
         Usuario usuario;
         usuario = obtenerUsuarioPorCorreo(correo);
