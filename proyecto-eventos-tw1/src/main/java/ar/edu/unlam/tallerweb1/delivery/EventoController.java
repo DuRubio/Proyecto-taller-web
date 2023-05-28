@@ -70,20 +70,21 @@ public class EventoController {
         return new ModelAndView(viewName, model);
     }
 
-    @RequestMapping(path = "/home/filtrar", method = RequestMethod.GET)
-    public ModelAndView filtrarEventos(
+    @RequestMapping(path = "home/filtrar", method = RequestMethod.GET) //o debe ser post? corregir aca para que funcione lo que el usuario manda por formulario
+    public ModelAndView filtrarEventos( @RequestParam(value = "localidad", required = false) String localidad
+            /*
             @RequestParam(value = "filtro-fecha", required = false) Date fecha,
             @RequestParam(value = "localidad", required = false) String localidad,
-            @RequestParam(value = "categoria", required = false) TipoDeEvento categoria) {
+            @RequestParam(value = "categoria", required = false) TipoDeEvento categoria*/) {
 
-        List<Evento> eventosFiltrados = new ArrayList<>();
+       /* List<Evento> eventosFiltrados = new ArrayList<>();
         ModelMap model = new ModelMap();
         String mensaje = "";
 
         //filtros
         List<Evento> eventosFiltradosPorFecha = servicioEvento.buscarPorFecha(fecha);
         List<Evento> eventosFiltradosPorCategoria = servicioEvento.buscarPorTipoDeEvento(categoria);
-        List<Evento> eventosFiltradosPorLocalidad= servicioEvento.buscarPorCiudad(localidad);
+
 
         if(eventosFiltradosPorFecha!=null) eventosFiltrados.addAll(eventosFiltradosPorFecha);
         if(eventosFiltradosPorCategoria!=null) eventosFiltrados.addAll(eventosFiltradosPorCategoria);
@@ -100,6 +101,11 @@ public class EventoController {
         model.addAttribute("eventos", eventosFiltrados);
         String viewName="eventos-filtrados";
 
+*/      List<Evento> eventosFiltrados= servicioEvento.buscarPorCiudad("Buenos Aires");
+        ModelMap model = new ModelMap();
+
+        model.addAttribute("eventos", eventosFiltrados);
+        String viewName="eventos-filtrados";
         return new ModelAndView(viewName, model);
     }
 

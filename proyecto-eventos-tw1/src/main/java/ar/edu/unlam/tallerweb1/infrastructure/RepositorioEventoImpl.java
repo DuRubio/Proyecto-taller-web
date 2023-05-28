@@ -80,10 +80,11 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 
     @Override
     public List<Evento> buscarPorLocalidadDeEvento(String localidad) {
-        List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
-                .add(Restrictions.eq("localidad", localidad))
+        String hql = "FROM Evento e WHERE e.localidad = :localidad";
+        return sessionFactory.getCurrentSession()
+                .createQuery(hql, Evento.class)
+                .setParameter("localidad", localidad)
                 .list();
-        return eventos;
     }
 
 

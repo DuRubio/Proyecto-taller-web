@@ -51,7 +51,7 @@ public class EventoServiceImpl implements EventoService  {
 
     @Override
     public List<Evento> buscarPorCiudad(String ciudad) {
-        return null;
+       return repoEvento.buscarPorLocalidadDeEvento(ciudad);
     }
 
     @Override

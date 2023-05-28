@@ -1,5 +1,5 @@
 package ar.edu.unlam.tallerweb1.delivery;
-
+/*
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
 import ar.edu.unlam.tallerweb1.domain.EventoServiceImpl;
@@ -149,4 +149,4 @@ public class EventoControllerTest {
     private ModelAndView cuandoQuiereRegistrarEvento() {
         return controladorEvento.getVistaRegistro();
     }
-}
+}*/

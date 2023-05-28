@@ -13,6 +13,7 @@
     <tr>
         <th>Nombre</th>
         <th>Fecha</th>
+        <th>Localidad</th>
         <!-- Agrega más columnas si es necesario -->
     </tr>
     </thead>
@@ -21,6 +22,7 @@
         <tr>
             <td>${evento.nombre}</td>
             <td>${evento.fecha}</td>
+            <td>${evento.localidad}</td>
             <!-- Agrega más columnas si es necesario -->
         </tr>
     </c:forEach>
