@@ -1,31 +1,30 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Duilio
-  Date: 27/5/2023
-  Time: 21:17
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Eventos</title>
+    <meta charset="UTF-8">
+    <title>Listado de Eventos</title>
 </head>
 <body>
-<h1>Lista de Eventos</h1>
+<h1>Listado de Eventos</h1>
 <table>
+    <thead>
     <tr>
         <th>Nombre</th>
         <th>Fecha</th>
-        <th>Lugar</th>
+        <!-- Agrega más columnas si es necesario -->
     </tr>
-    <c:forEach var="evento" items="${eventos}">
+    </thead>
+    <tbody>
+    <c:forEach items="${eventos}" var="evento">
         <tr>
             <td>${evento.nombre}</td>
             <td>${evento.fecha}</td>
-            <td>${evento.lugar}</td>
+            <!-- Agrega más columnas si es necesario -->
         </tr>
     </c:forEach>
+    </tbody>
 </table>
 </body>
 </html>

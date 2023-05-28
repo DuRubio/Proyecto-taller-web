@@ -62,10 +62,12 @@ public class EventoController {
     }*/
 
     @RequestMapping("/mostrar-eventos")
-    public String mostrarEventos(Model model) {
+    public ModelAndView mostrarEventos(ModelMap model) {
         List<Evento> eventos = servicioEvento.getEventos();
         model.addAttribute("eventos", eventos);
-        return "mostrar-eventos.jsp";
+        String viewName="mostrar-eventos";
+
+        return new ModelAndView(viewName, model);
     }
 
     @RequestMapping(path = "/home/filtrar", method = RequestMethod.GET)

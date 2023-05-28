@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.infrastructure;
 
 
 import ar.edu.unlam.tallerweb1.domain.Usuario;
+import org.springframework.stereotype.Repository;
+
 
 public interface RepositorioUsuario {
 

@@ -2,12 +2,14 @@ package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.domain.Evento;
-//import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
-public interface RepositorioEvento /*extends JpaRepository<Evento, Long> */{
+
+public interface RepositorioEvento {
 
     public void save(Evento evento);
 
@@ -21,5 +23,6 @@ public interface RepositorioEvento /*extends JpaRepository<Evento, Long> */{
 
     List<Evento> buscarPorLocalidadDeEvento(String localidad);
 
-    List<Evento> listarEventos();
+    public List<Evento> findAll() ;
 }
+

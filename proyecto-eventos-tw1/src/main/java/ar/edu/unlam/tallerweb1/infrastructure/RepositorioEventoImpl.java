@@ -8,17 +8,26 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
+@Transactional
 @Repository
-public class RepositorioEventoImpl implements RepositorioEvento {
+public class RepositorioEventoImpl  implements RepositorioEvento{
 
     private SessionFactory sessionFactory;
 
@@ -30,6 +39,15 @@ public class RepositorioEventoImpl implements RepositorioEvento {
     @Override
     public void save(Evento evento) {
         this.sessionFactory.getCurrentSession().save(evento);
+    }
+
+    @Override
+    public List<Evento> findAll() {
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Evento> criteriaQuery = criteriaBuilder.createQuery(Evento.class);
+        criteriaQuery.from(Evento.class);
+        return session.createQuery(criteriaQuery).getResultList();
     }
 
     @Override
@@ -68,20 +86,7 @@ public class RepositorioEventoImpl implements RepositorioEvento {
         return eventos;
     }
 
-    @Override
-    public List<Evento> listarEventos() {
-        try (Session session = sessionFactory.openSession()) {
-            CriteriaBuilder builder = session.getCriteriaBuilder();
-            CriteriaQuery<Evento> criteriaQuery = builder.createQuery(Evento.class);
-            Root<Evento> root = criteriaQuery.from(Evento.class);
-            criteriaQuery.select(root);
-            Query<Evento> query = session.createQuery(criteriaQuery);
-            return query.getResultList();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
-    }
+
         /*Session session = this.sessionFactory.getCurrentSession();
         Query<Evento> query = session.createQuery("FROM Evento", Evento.class);
         return query.getResultList();*/

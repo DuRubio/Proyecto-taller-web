@@ -54,7 +54,8 @@
 						<option value="2">Cultural</option>
 						<option value="3">Musical</option>
 						<option value="4">Teatro</option>
-						<option value="4">Recital</option>
+						<option value="5">Recital</option>
+						<option value="6">Marcha</option>
 
 					</select>
 				</div>
