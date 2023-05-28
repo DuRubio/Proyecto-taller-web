@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +53,19 @@ public class EventoController {
     @RequestMapping(path = "/home", method = RequestMethod.GET)
     public ModelAndView getVistaHome() {
         return new ModelAndView("home");
+    }
+
+
+    /*@RequestMapping(path = "/mostrar-eventos", method = RequestMethod.GET)
+    public ModelAndView getVistaEventos() {
+        return new ModelAndView("mostrar-eventos");
+    }*/
+
+    @RequestMapping("/mostrar-eventos")
+    public String mostrarEventos(Model model) {
+        List<Evento> eventos = servicioEvento.getEventos();
+        model.addAttribute("eventos", eventos);
+        return "mostrar-eventos.jsp";
     }
 
     @RequestMapping(path = "/home/filtrar", method = RequestMethod.GET)

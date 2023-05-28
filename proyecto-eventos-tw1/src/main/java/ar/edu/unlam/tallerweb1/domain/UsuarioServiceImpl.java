@@ -48,8 +48,10 @@ public class UsuarioServiceImpl implements  UsuarioService{
         Usuario usuario;
         usuario = obtenerUsuarioPorCorreo(correo);
         Boolean esValido=false;
-        if(usuario.getCorreo().equals(correo)){
-            esValido=true;
+        if(usuario!= null) {
+            if (usuario.getCorreo().equals(correo)) {
+                esValido = true;
+            }
         }
         return esValido;
 
@@ -60,8 +62,10 @@ public class UsuarioServiceImpl implements  UsuarioService{
         Usuario usuario;
         usuario = obtenerUsuarioPorCorreo(correo);
         Boolean esValido=false;
-        if(usuario.getClave().equals(clave)){
-            esValido=true;
+        if(usuario!= null) {
+            if (usuario.getClave().equals(clave)) {
+                esValido = true;
+            }
         }
         return esValido;
 

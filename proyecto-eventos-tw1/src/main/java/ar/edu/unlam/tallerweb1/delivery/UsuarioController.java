@@ -4,11 +4,15 @@ package ar.edu.unlam.tallerweb1.delivery;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.Date;
 
 @Controller
 public class UsuarioController {
@@ -58,7 +62,22 @@ public class UsuarioController {
         }
 
         @RequestMapping(path = "/login", method = RequestMethod.POST) //compara mail y clave con el ya registrado para validar inicio sesion
-        public ModelAndView logearUsuario (@ModelAttribute DatosLogin usuarioValido){
+        public ModelAndView logearUsuario(@RequestParam(value = "usuario", required = true) String correo,
+                                          @RequestParam(value = "clave", required = true) String clave){
+            ModelMap model = new ModelMap();
+            DatosLogin usuarioValido = new DatosLogin(correo, clave);
+            model.put("datosLogin", new DatosLogin());
+            String viewName = "";
+            if (this.servicioRegistracion.compararMail(usuarioValido.getCorreo()) && this.servicioRegistracion.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())) {
+                viewName="home";
+            } else {
+                model.put("mensaje", "mail o clave incorrecta");
+                viewName="login";
+            }
+            return new ModelAndView(viewName, model);
+        }
+
+    /*public ModelAndView logearUsuario (@ModelAttribute DatosLogin usuarioValido){
             ModelMap model = new ModelMap();
             String viewName = "";
             model.put("datosLogin", new DatosLogin());
@@ -70,7 +89,7 @@ public class UsuarioController {
                 viewName = "login";
             }
             return new ModelAndView(viewName, model);
-        }
+        }*/
 
 
     }

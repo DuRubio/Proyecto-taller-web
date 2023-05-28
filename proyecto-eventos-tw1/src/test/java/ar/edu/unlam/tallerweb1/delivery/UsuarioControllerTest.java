@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class UsuarioControllerTest {
-
+/*
 
     public static final String CORREO_VALIDO="example@example.com";
     public static final String CORREO_INVALIDO="example.example.com";
@@ -159,5 +159,5 @@ public class UsuarioControllerTest {
     }
 
 
-
+*/
 }

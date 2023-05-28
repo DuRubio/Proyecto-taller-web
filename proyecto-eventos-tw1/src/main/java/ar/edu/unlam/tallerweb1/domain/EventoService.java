@@ -20,4 +20,6 @@ public interface EventoService {
     List<Evento> buscarPorFecha(Date fechaEvento);
 
     List<Evento> buscarPorCiudad(String ciudad);
+
+    List<Evento> getEventos();
 }
