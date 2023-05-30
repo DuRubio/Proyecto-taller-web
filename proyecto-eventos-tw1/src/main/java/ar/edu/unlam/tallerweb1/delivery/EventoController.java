@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.delivery;
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -70,42 +73,30 @@ public class EventoController {
         return new ModelAndView(viewName, model);
     }
 
-    @RequestMapping(path = "home/filtrar", method = RequestMethod.GET) //o debe ser post? corregir aca para que funcione lo que el usuario manda por formulario
-    public ModelAndView filtrarEventos( @RequestParam(value = "localidad", required = false) String localidad
-            /*
-            @RequestParam(value = "filtro-fecha", required = false) Date fecha,
-            @RequestParam(value = "localidad", required = false) String localidad,
-            @RequestParam(value = "categoria", required = false) TipoDeEvento categoria*/) {
+    @RequestMapping(path = "/home/filtrar", method = RequestMethod.GET)
+    public ModelAndView filtrarEventos(
+            @RequestParam(value = "filtro-fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
+            @RequestParam(value = "filtro-categoria", required = false) TipoDeEvento categoria,
+            @RequestParam(value = "localidad", required = false) String localidad, ModelMap model){
+        String viewName="";
+        List<Evento> eventosFiltrados=new ArrayList<>();
+        List<Evento> eventosFiltradosFecha = servicioEvento.buscarPorFecha(fecha);
+        List<Evento> eventosFiltradosLocalidad = servicioEvento.buscarPorCiudad(localidad);
+        List<Evento> eventosFiltradosCategoria = servicioEvento.buscarPorTipoDeEvento(categoria);
 
-       /* List<Evento> eventosFiltrados = new ArrayList<>();
-        ModelMap model = new ModelMap();
-        String mensaje = "";
+        //eventosFiltrados= servicioEvento.buscarPorTipoDeEvento(categoria);
 
-        //filtros
-        List<Evento> eventosFiltradosPorFecha = servicioEvento.buscarPorFecha(fecha);
-        List<Evento> eventosFiltradosPorCategoria = servicioEvento.buscarPorTipoDeEvento(categoria);
+        if(eventosFiltradosFecha!=null) eventosFiltrados.addAll(eventosFiltradosFecha);
+        if(eventosFiltradosLocalidad!=null) eventosFiltrados.addAll(eventosFiltradosLocalidad);
+        if(eventosFiltradosCategoria!=null) eventosFiltrados.addAll(eventosFiltradosCategoria);
 
-
-        if(eventosFiltradosPorFecha!=null) eventosFiltrados.addAll(eventosFiltradosPorFecha);
-        if(eventosFiltradosPorCategoria!=null) eventosFiltrados.addAll(eventosFiltradosPorCategoria);
-        if(eventosFiltradosPorLocalidad!=null) eventosFiltrados.addAll(eventosFiltradosPorLocalidad);
-        //filtro general
-        if(eventosFiltradosPorFecha==null && eventosFiltradosPorCategoria==null && eventosFiltradosPorLocalidad==null){
-            mensaje="No existen eventos con las condiciones solicitadas";
-            model.put("mensaje", mensaje);
+        if(eventosFiltradosFecha.isEmpty() && eventosFiltradosLocalidad.isEmpty() && eventosFiltradosCategoria.isEmpty()){
+            viewName= "home";
+            model.put("mensaje","No se encontraron eventos");
+        } else {
+            model.addAttribute("eventos", eventosFiltrados);
+            viewName="eventos-filtrados";
         }
-
-        model.addAttribute("fecha", fecha);
-        model.addAttribute("localidad", localidad);
-        model.addAttribute("categoria", categoria);
-        model.addAttribute("eventos", eventosFiltrados);
-        String viewName="eventos-filtrados";
-
-*/      List<Evento> eventosFiltrados= servicioEvento.buscarPorCiudad("Buenos Aires");
-        ModelMap model = new ModelMap();
-
-        model.addAttribute("eventos", eventosFiltrados);
-        String viewName="eventos-filtrados";
         return new ModelAndView(viewName, model);
     }
 

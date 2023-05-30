@@ -2,7 +2,7 @@ package ar.edu.unlam.tallerweb1.domain;
 
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface EventoService {
@@ -17,7 +17,7 @@ public interface EventoService {
 
     List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
 
-    List<Evento> buscarPorFecha(Date fechaEvento);
+    List<Evento> buscarPorFecha(LocalDate fechaEvento);
 
     List<Evento> buscarPorCiudad(String ciudad);
 

@@ -5,6 +5,7 @@ import ar.edu.unlam.tallerweb1.domain.Evento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public interface RepositorioEvento {
 
     List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
 
-    List<Evento> buscarPorFechaDeEvento(Date fecha);
+    List<Evento> buscarPorFechaDeEvento(LocalDate fecha);
 
     List<Evento> buscarPorLocalidadDeEvento(String localidad);
 

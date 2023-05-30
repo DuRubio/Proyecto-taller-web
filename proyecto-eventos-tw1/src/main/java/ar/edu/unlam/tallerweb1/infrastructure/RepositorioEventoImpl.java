@@ -19,6 +19,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -65,20 +67,19 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
     @Override
     public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
         List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
-                .add(Restrictions.eq("tipo", tipoDeEvento))
+                .add(Restrictions.eq("tipo", tipoDeEvento.getValor()))
                 .list();
         return eventos;
     }
 
     @Override
-    public List<Evento> buscarPorFechaDeEvento(Date fecha) {
+    public List<Evento> buscarPorFechaDeEvento(LocalDate fecha) {
         List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
                 .add(Restrictions.eq("fecha", fecha))
                 .list();
         return eventos;
     }
-
-    @Override
+       @Override
     public List<Evento> buscarPorLocalidadDeEvento(String localidad) {
         String hql = "FROM Evento e WHERE e.localidad = :localidad";
         return sessionFactory.getCurrentSession()

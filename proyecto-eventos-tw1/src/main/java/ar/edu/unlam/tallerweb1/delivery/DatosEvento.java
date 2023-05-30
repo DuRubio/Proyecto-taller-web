@@ -1,10 +1,11 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class DatosEvento {
     private String nombre;
-    private Date fecha;
+    private LocalDate fecha;
     private String lugar;
     private String localidad;
     private TipoDeEvento tipo;
@@ -13,7 +14,7 @@ public class DatosEvento {
     public DatosEvento() {
     }
 
-    public DatosEvento(String nombre, Date fecha, String lugar, String localidad, TipoDeEvento tipo) {
+    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidad, TipoDeEvento tipo) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.lugar = lugar;
@@ -29,11 +30,11 @@ public class DatosEvento {
         this.nombre = nombre;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

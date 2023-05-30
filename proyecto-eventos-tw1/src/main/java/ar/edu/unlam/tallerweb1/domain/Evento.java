@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,7 +16,7 @@ public class Evento {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long Id;
     private String nombre;
-    private Date fecha;
+    private LocalDate fecha;
     private String lugar;
     private String localidad;
     private TipoDeEvento tipo;
@@ -40,11 +41,11 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

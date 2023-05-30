@@ -2,11 +2,10 @@ package ar.edu.unlam.tallerweb1.domain;
 
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
-import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.Date;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -36,17 +35,17 @@ public class EventoServiceImpl implements EventoService  {
 
     @Override
     public Evento buscarPorNombre(String nombre) {
-        return null;
+        return repoEvento.buscarPorNombre(nombre);
     }
 
     @Override
     public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
-        return null;
+        return repoEvento.buscarPorTipoDeEvento(tipoDeEvento);
     }
 
     @Override
-    public List<Evento> buscarPorFecha(Date fechaEvento) {
-        return null;
+    public List<Evento> buscarPorFecha(LocalDate fechaEvento) {
+        return repoEvento.buscarPorFechaDeEvento(fechaEvento);
     }
 
     @Override

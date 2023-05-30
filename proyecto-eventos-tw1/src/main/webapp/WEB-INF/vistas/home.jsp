@@ -36,11 +36,11 @@
 <div class="flex justify-center items-center my-4">
 	<div class="border rounded-md p-4 bg-white">
 		<h2 class="text-lg font-semibold mb-2">Filtrar Eventos</h2>
-		<form action="/home/filtrar" method="GET">
+		<form action="home/filtrar" method="GET">
 			<div class="flex flex-wrap items-center">
 				<div class="mr-4">
 					<label for="filtro-ciudad" class="block mb-1">Ciudad:</label>
-					<input type="text" id="filtro-ciudad" name="filtro-ciudad" class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" placeholder="Ingrese la ciudad">
+					<input type="text" id="filtro-ciudad" name="localidad" class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" placeholder="Ingrese la ciudad">
 				</div>
 				<div class="mr-4">
 					<label for="filtro-fecha" class="block mb-1">Fecha:</label>
@@ -61,6 +61,12 @@
 				</div>
 				<div>
 					<button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Filtrar</button>
+					<c:if test="${not empty error}">
+						<h4><span>${error}</span></h4>
+						<br>
+					</c:if>
+					${mensaje}
+
 				</div>
 			</div>
 		</form>
