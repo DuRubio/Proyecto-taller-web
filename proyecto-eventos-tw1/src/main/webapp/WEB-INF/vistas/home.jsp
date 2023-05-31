@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
 	<meta charset="UTF-8">
@@ -14,7 +14,7 @@
 <!-- Barra de navegación -->
 <nav class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
 	<div class="flex items-center flex-shrink-0 text-white mr-6">
-		<img src="./img/logo.png" alt="" class="w-8 m-1 rounded">
+		<img src="../img/logo.png" alt="" class="w-8 m-1 rounded">
 		<span class="font-semibold text-xl tracking-tight">Mi App de Eventos</span>
 	</div>
 	<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
@@ -36,7 +36,7 @@
 <div class="flex justify-center items-center my-4">
 	<div class="border rounded-md p-4 bg-white">
 		<h2 class="text-lg font-semibold mb-2">Filtrar Eventos</h2>
-		<form action="home/filtrar" method="GET">
+		<form action="./filtrar" method="GET">
 			<div class="flex flex-wrap items-center">
 				<div class="mr-4">
 					<label for="filtro-ciudad" class="block mb-1">Ciudad:</label>
@@ -47,15 +47,15 @@
 					<input type="date" id="filtro-fecha" name="filtro-fecha" class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
 				</div>
 				<div class="mr-4">
-					<label for="filtro-categoria" class="block mb-1">Categoría:</label>
+					<label for="filtro-categoria" class="block mb-1">Categor&iacute;a:</label>
 					<select id="filtro-categoria" name="filtro-categoria" class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
-						<option value="">Seleccione una categoría</option>
-						<option value="1">Deportivo</option>
-						<option value="2">Cultural</option>
-						<option value="3">Musical</option>
-						<option value="4">Teatro</option>
-						<option value="5">Recital</option>
-						<option value="6">Marcha</option>
+						<option value="">Seleccione una categor&iacute;a</option>
+						<option value="Deportivo">Deportivo</option>
+						<option value="Musical">Musical</option>
+						<option value="Bailable">Bailable</option>
+						<option value="Teatro">Teatro</option>
+						<option value="Recital">Recital</option>
+						<option value="Cine">Cine</option>
 
 					</select>
 				</div>
@@ -78,14 +78,14 @@
 <div class="flex flex-wrap justify-center">
 
 	<div class="max-w-sm rounded overflow-hidden shadow-lg m-4">
-		<img class="w-full" src="./img/clasico.jpeg" alt="Evento">
+		<img class="w-full" src="proyecto-eventos-tw1\src\main\webapp\WEB-INF\eventos\img\clasico.jpeg" alt="Evento">
 		<div class="px-6 py-4">
-			<div class="font-bold text-xl mb-2">Superclásico</div>
+			<div class="font-bold text-xl mb-2">Supercl&aacute;sico</div>
 			<p class="text-gray-700 text-base">Fecha: 01/01/2022</p>
 			<p class="text-gray-700 text-base">Ciudad: Buenos Aires</p>
 			<div class="my-4">
 				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Deportivo</span>
-				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Cultural</span>
+				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">F&uacute;tbol</span>
 			</div>
 		</div>
 		<div class="flex justify-center px-6 pt-4 pb-2 mb-4">
@@ -94,14 +94,14 @@
 	</div>
 
 	<div class="max-w-sm rounded overflow-hidden shadow-lg m-4">
-		<img class="w-full" src="./img/luismi.jpg" alt="Evento">
+		<img class="w-full" src="luismi.jpg" alt="Evento">
 		<div class="px-6 py-4">
 			<div class="font-bold text-xl mb-2">Luis Miguel en Buenos Aires</div>
 			<p class="text-gray-700 text-base">Fecha: 01/01/2022</p>
 			<p class="text-gray-700 text-base">Ciudad: Buenos Aires</p>
 			<div class="my-4">
 				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Musical</span>
-				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Gastronómico</span>
+				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Gastron&oacute;mico</span>
 			</div>
 		</div>
 		<div class="flex justify-center px-6 pt-4 pb-2">
@@ -110,14 +110,14 @@
 	</div>
 
 	<div class="max-w-sm rounded overflow-hidden shadow-lg m-4">
-		<img class="w-full" src="./img/feria.jpg" alt="Evento">
+		<img class="w-full" src="../img/feria.jpg" alt="Evento">
 		<div class="px-6 py-4">
 			<div class="font-bold text-xl mb-2">Feria del Libro</div>
 			<p class="text-gray-700 text-base">Fecha: 01/01/2022</p>
 			<p class="text-gray-700 text-base">Ciudad: Buenos Aires</p>
 			<div class="my-4">
-				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Musical</span>
-				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Gastronómico</span>
+				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Feria</span>
+				<span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">Cultural</span>
 			</div>
 		</div>
 		<div class="flex justify-center px-6 pt-4 pb-2">

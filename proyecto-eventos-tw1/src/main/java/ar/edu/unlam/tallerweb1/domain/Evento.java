@@ -20,6 +20,7 @@ public class Evento {
     private String lugar;
     private String localidad;
     private TipoDeEvento tipo;
+    private String URLImagen;
 
     public Evento (){
 
@@ -67,6 +68,14 @@ public class Evento {
 
     public TipoDeEvento getTipo() {
         return tipo;
+    }
+
+    public String getURLImagen() {
+        return URLImagen;
+    }
+
+    public void setURLImagen(String URLImagen) {
+        this.URLImagen = URLImagen;
     }
 
     public void setTipo(TipoDeEvento tipo) {

@@ -57,4 +57,10 @@ public class EventoServiceImpl implements EventoService  {
     public List<Evento> getEventos() {
         return repoEvento.findAll();
     }
+
+    public List<Evento> getEventosConFiltros(LocalDate fecha, String ciudad, TipoDeEvento tipo){
+        List<Evento> eventos = repoEvento.buscarEventosConFiltros(fecha, ciudad, tipo);
+        return eventos;
+    }
+
 }

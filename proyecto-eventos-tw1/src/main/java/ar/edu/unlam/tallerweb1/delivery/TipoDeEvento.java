@@ -11,7 +11,7 @@ public enum TipoDeEvento {
     Marcha(7);
 
     private int valor;
-    private TipoDeEvento(int valor) {
+    TipoDeEvento(int valor) {
         this.valor = valor;
     }
 
@@ -21,7 +21,7 @@ public enum TipoDeEvento {
 
     public static TipoDeEvento fromValor(int valor) {
         for (TipoDeEvento tipo : TipoDeEvento.values()) {
-            if (tipo.valor == valor) {
+            if (tipo.ordinal() == valor) {
                 return tipo;
             }
         }

@@ -19,7 +19,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <c:forEach items="${eventos}" var="evento">
             <div class="bg-white shadow-md rounded p-6">
-                <img class="w-full" src="imagen_evento.jpg" alt="Evento">
+                <img class="w-full" src="${evento.URLImagen}" alt="${evento.nombre}">
                 <div class="mt-4">
                     <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
                     <p class="text-gray-700">Fecha: ${evento.fecha}</p>

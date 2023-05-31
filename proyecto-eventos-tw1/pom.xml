@@ -213,6 +213,10 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.github.joutvhu</groupId>
+			<artifactId>spring-dynamic-jpa</artifactId>
+			<version>3.0.7</version>
+		</dependency>
 	</dependencies>
 </project>

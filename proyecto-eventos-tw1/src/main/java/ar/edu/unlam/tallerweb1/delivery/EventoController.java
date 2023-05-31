@@ -79,6 +79,7 @@ public class EventoController {
             @RequestParam(value = "filtro-categoria", required = false) TipoDeEvento categoria,
             @RequestParam(value = "localidad", required = false) String localidad, ModelMap model){
         String viewName="";
+
         List<Evento> eventosFiltrados=new ArrayList<>();
         List<Evento> eventosFiltradosFecha = servicioEvento.buscarPorFecha(fecha);
         List<Evento> eventosFiltradosLocalidad = servicioEvento.buscarPorCiudad(localidad);
@@ -93,11 +94,19 @@ public class EventoController {
         if(eventosFiltradosFecha.isEmpty() && eventosFiltradosLocalidad.isEmpty() && eventosFiltradosCategoria.isEmpty()){
             viewName= "home";
             model.put("mensaje","No se encontraron eventos");
+
         } else {
             model.addAttribute("eventos", eventosFiltrados);
             viewName="eventos-filtrados";
         }
         return new ModelAndView(viewName, model);
+    }
+
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public ModelAndView inicio() {
+
+        return new ModelAndView("redirect:/login");
+
     }
 
 }
