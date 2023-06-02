@@ -59,11 +59,6 @@ public class EventoController {
     }
 
 
-    /*@RequestMapping(path = "/mostrar-eventos", method = RequestMethod.GET)
-    public ModelAndView getVistaEventos() {
-        return new ModelAndView("mostrar-eventos");
-    }*/
-
     @RequestMapping("/mostrar-eventos")
     public ModelAndView mostrarEventos(ModelMap model) {
         List<Evento> eventos = servicioEvento.getEventos();
@@ -77,9 +72,9 @@ public class EventoController {
     public ModelAndView filtrarEventos(
             @RequestParam(value = "filtro-fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
             @RequestParam(value = "filtro-categoria", required = false) TipoDeEvento categoria,
-            @RequestParam(value = "localidad", required = false) String localidad, ModelMap model){
+            @RequestParam(value = "localidad", required = false) String localidad){
         String viewName="";
-
+        ModelMap model = new ModelMap();
         List<Evento> eventosFiltrados=new ArrayList<>();
         List<Evento> eventosFiltradosFecha = servicioEvento.buscarPorFecha(fecha);
         List<Evento> eventosFiltradosLocalidad = servicioEvento.buscarPorCiudad(localidad);

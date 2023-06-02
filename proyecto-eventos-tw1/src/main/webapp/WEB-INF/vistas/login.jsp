@@ -46,7 +46,7 @@
 
     </form>
     <br>
-    <p>   No estás registrado?  <a href="http://localhost:8080/eventos/registrarme">hacé click acá</a></p>
+    <p>   No estás registrado?  <a href="registrarme">hacé click acá</a></p>
 
 </div>
 </body>

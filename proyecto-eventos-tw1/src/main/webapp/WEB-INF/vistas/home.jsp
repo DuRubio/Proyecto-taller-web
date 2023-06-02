@@ -36,7 +36,7 @@
 <div class="flex justify-center items-center my-4">
 	<div class="border rounded-md p-4 bg-white">
 		<h2 class="text-lg font-semibold mb-2">Filtrar Eventos</h2>
-		<form action="./filtrar" method="GET">
+		<form action="/home/filtrar" method="GET">
 			<div class="flex flex-wrap items-center">
 				<div class="mr-4">
 					<label for="filtro-ciudad" class="block mb-1">Ciudad:</label>
@@ -78,7 +78,7 @@
 <div class="flex flex-wrap justify-center">
 
 	<div class="max-w-sm rounded overflow-hidden shadow-lg m-4">
-		<img class="w-full" src="proyecto-eventos-tw1\src\main\webapp\WEB-INF\eventos\img\clasico.jpeg" alt="Evento">
+		<img class="w-full" src="../img/clasico.jpg" alt="Evento">
 		<div class="px-6 py-4">
 			<div class="font-bold text-xl mb-2">Supercl&aacute;sico</div>
 			<p class="text-gray-700 text-base">Fecha: 01/01/2022</p>
@@ -94,7 +94,7 @@
 	</div>
 
 	<div class="max-w-sm rounded overflow-hidden shadow-lg m-4">
-		<img class="w-full" src="luismi.jpg" alt="Evento">
+		<img class="w-full" src="../img/luismi.jpg" alt="Evento">
 		<div class="px-6 py-4">
 			<div class="font-bold text-xl mb-2">Luis Miguel en Buenos Aires</div>
 			<p class="text-gray-700 text-base">Fecha: 01/01/2022</p>
@@ -125,6 +125,7 @@
 		</div>
 	</div>
 </div>
+<div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="/mostrar-eventos">Ver todos los eventos</a></div>
 <!-- Google Maps -->
 <div class="flex justify-center">
 	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26283.162649244754!2d-58.458951284375!3d-34.5688622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5a28c37ff9b%3A0x289b0f07f03e748b!2sHip%C3%B3dromo%20de%20Palermo!5e0!3m2!1ses!2sar!4v1683763795538!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      </div>

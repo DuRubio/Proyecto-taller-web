@@ -19,7 +19,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <c:forEach items="${eventos}" var="evento">
             <div class="bg-white shadow-md rounded p-6">
-                <img class="w-full" src="${evento.URLImagen}" alt="${evento.nombre}">
+                <img class="w-full" src="../img/${evento.URLImagen}" alt="${evento.nombre}">
                 <div class="mt-4">
                     <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
                     <p class="text-gray-700">Fecha: ${evento.fecha}</p>
@@ -34,7 +34,9 @@
         </c:forEach>
     </div>
 </div>
-
+<div class="fixed bottom-0 left-0 w-full flex justify-center p-4">
+    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="javascript:history.back()">Volver a home</a>
+</div>
 </body>
 
 </html>

@@ -4,10 +4,11 @@ public class DatosRegistracion {
 
     private String correo;
     private String clave;
-
     private String nombre;
     private String apellido;
     private String localidad;
+
+
 
 
 
