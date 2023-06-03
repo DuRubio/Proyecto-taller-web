@@ -60,7 +60,7 @@
 					</select>
 				</div>
 				<div>
-					<button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600">Filtrar</button>
+					<button type="submit" class="px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Filtrar</button>
 					<c:if test="${not empty error}">
 						<h4><span>${error}</span></h4>
 						<br>
@@ -125,7 +125,8 @@
 		</div>
 	</div>
 </div>
-<div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="/mostrar-eventos">Ver todos los eventos</a></div>
+<div class="flex justify-evenly px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="/mostrar-eventos">Ver todos los eventos</a>
+												<a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="/registrar-evento">Registra un evento</a></div>
 <!-- Google Maps -->
 <div class="flex justify-center">
 	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26283.162649244754!2d-58.458951284375!3d-34.5688622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5a28c37ff9b%3A0x289b0f07f03e748b!2sHip%C3%B3dromo%20de%20Palermo!5e0!3m2!1ses!2sar!4v1683763795538!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>      </div>

@@ -36,7 +36,7 @@ public class EventoController {
 
     }
 
-    @RequestMapping(path = "/registro-evento", method = RequestMethod.POST)
+    @RequestMapping(path = "/registrar-evento", method = RequestMethod.POST)
     public ModelAndView registrarEvento(@ModelAttribute DatosEvento eventoEjemplo) {
         ModelMap model = new ModelMap();
         String viewName = "";

@@ -41,6 +41,15 @@
             <input type="date" id="fecha" name="fecha"
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
         </div>
+        <br>
+        <label for="imagen" class="block mb-1">Subir una Imagen:</label>
+        <div class="relative flex items-start">
+            <input type="file" id="imagen" name="imagen" class="hidden">
+            <label for="imagen" class="px-4 py-2 bg-violet-500 text-white rounded-md cursor-pointer hover:bg-violet-600">
+                Seleccionar Archivo
+            </label>
+        </div>
+        <br><br>
         <button type="submit"
                 class="w-full px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Crear evento</button>
         <c:if test="${not empty error}">
@@ -49,7 +58,8 @@
         </c:if>
         ${mensaje}
     </form>
-    <a href="http://localhost:8080/eventos/home">Volver a inicio</a>
+    <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a></div>
+
 </div>
 </body>
 </html>
