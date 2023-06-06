@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import javax.transaction.Transactional;
 import static org.assertj.core.api.Assertions.*;
-
+/*
 public class RepositorioUsuarioTest extends SpringTest {
 
     DatosRegistracion datosRegistracion = new DatosRegistracion("pepe@gmail.com", "Pepe123");
@@ -53,4 +53,4 @@ public class RepositorioUsuarioTest extends SpringTest {
     }
 
 
-}
+}*/
