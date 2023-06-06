@@ -8,13 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import javax.transaction.Transactional;
 import static org.assertj.core.api.Assertions.*;
-/*
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
+
 public class RepositorioUsuarioTest extends SpringTest {
 
     DatosRegistracion datosRegistracion = new DatosRegistracion("pepe@gmail.com", "Pepe123");
 
     @Autowired
-    private RepositorioUsuario repoUsuario;
+    private RepositorioUsuario repoUsuario; //error de InteliJ, lo toma y funciona igual
 
     @Test
     @Transactional @Rollback
@@ -53,4 +54,4 @@ public class RepositorioUsuarioTest extends SpringTest {
     }
 
 
-}*/
+}

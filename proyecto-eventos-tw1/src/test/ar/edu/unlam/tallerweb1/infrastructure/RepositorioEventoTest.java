@@ -1,18 +1,33 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
-/*
+
+import ar.edu.unlam.tallerweb1.SpringTest;
+import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
+import ar.edu.unlam.tallerweb1.domain.Evento;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import static org.assertj.core.api.Assertions.*;
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class RepositorioEventoTest extends SpringTest {
 
-    Date fecha1 = new Date(2023, 5, 23);
-    Date fecha2 = new Date(2023, 7, 23);
+    LocalDate fecha1 = LocalDate.of(2023, 5, 23);
+    LocalDate fecha2 = LocalDate.of(2023, 7, 23);
     String localidad1 = "moron";
     String localidad2 = "nuñez";
+
 
     @Autowired
     private RepositorioEvento repositorio;
 
+
     @Test
-    @Transactional @Rollback
+    @Transactional
+    @Rollback
     public void guardarUnEventoYPersistirlo(){
         Evento evento = dadoQueExisteUnEvento("Superclásico");
         Long id = cuandoGuardoEvento(evento);
@@ -163,4 +178,3 @@ public class RepositorioEventoTest extends SpringTest {
     }
 
 }
-*/
