@@ -1,16 +1,18 @@
 package ar.edu.unlam.tallerweb1.delivery;
-/*
+
+
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
 import ar.edu.unlam.tallerweb1.domain.EventoServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.cglib.core.Local;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -24,7 +26,7 @@ public class EventoControllerTest {
     DatosEvento eventoEjemploErroneo2;
     EventoService servicioRegEvento;
 
-    Date fechaEvento = new Date(2023, 5, 7);
+    LocalDate fechaEvento = LocalDate.of(2023, 5, 7);
 
     @Before
     public void inicializacion(){
@@ -51,19 +53,19 @@ public class EventoControllerTest {
     @Test
     public void queSePuedaRegistrarUnEvento(){
        // eventoEjemplo = dadoQueExisteUnEvento();
-        ModelAndView mav = cuandoSeRegistra(eventoEjemplo);
+        ModelAndView mav = cuandoSeRegistra(eventoEjemplo, true);
         entoncesElRegistroEsExitoso(mav);
     }
 
     @Test
     public void queNoSePuedaRegistrarUnEventoConNombreNulo(){
-        ModelAndView mav = cuandoSeRegistra(eventoEjemploErroneo1);
+        ModelAndView mav = cuandoSeRegistra(eventoEjemploErroneo1, false);
         entoncesElRegistroFalla(mav);
     }
 
     @Test
     public void queNoSePuedaRegistrarUnEventoConLocalidadNula(){
-        ModelAndView mav = cuandoSeRegistra(eventoEjemploErroneo2);
+        ModelAndView mav = cuandoSeRegistra(eventoEjemploErroneo2, false);
         entoncesElRegistroFalla(mav);
     }
 
@@ -72,7 +74,7 @@ public class EventoControllerTest {
     public void queSePuedaFiltrarPorCategoria() {
         TipoDeEvento tipoEvento = TipoDeEvento.MUSICAL;
         String localidad=null;
-        Date fecha = null;
+        LocalDate fecha = null;
         dadoQueNoExistenEventos(tipoEvento);
         ModelAndView mav = cuandoLosFiltro(fecha, localidad, tipoEvento);
         entoncesObtengoFiltrados(mav);
@@ -82,25 +84,26 @@ public class EventoControllerTest {
     public void queAlFiltrarNoEncuentreNadaRecibaMensaje(){
         TipoDeEvento tipoEvento = null;
         String localidad=null;
-        Date fecha = null;
+        LocalDate fecha = null;
         dadoQueFiltroPorValoresNulos();
         ModelAndView mav = cuandoLosFiltro(fecha, localidad, tipoEvento);
         entoncesObtengoMavYMensaje(mav);
     }
 
     private void entoncesObtengoMavYMensaje(ModelAndView mav) {
-        assertThat(mav.getViewName()).isEqualTo("eventos-filtrados");
-        assertThat(mav.getModel().get("mensaje")).isEqualTo("No existen eventos con las condiciones solicitadas");
+        assertThat(mav.getViewName()).isEqualTo("home");
+        assertThat(mav.getModel().get("mensaje")).isEqualTo("No se encontraron eventos");
     }
 
-    private ModelAndView cuandoLosFiltro(Date fecha, String localidad, TipoDeEvento tipoEvento) {
-        return controladorEvento.filtrarEventos(fecha,localidad, tipoEvento);
+    private ModelAndView cuandoLosFiltro(LocalDate fecha, String localidad, TipoDeEvento tipoEvento) {
+        return controladorEvento.filtrarEventos(fecha,tipoEvento,localidad);
     }
 
     private void dadoQueFiltroPorValoresNulos() {
-        when(servicioRegEvento.buscarPorTipoDeEvento(null)).thenReturn(null);
-        when(servicioRegEvento.buscarPorCiudad(null)).thenReturn(null);
-        when(servicioRegEvento.buscarPorFecha(null)).thenReturn(null);
+        List<Evento> listaVacia =new ArrayList<>();
+        when(servicioRegEvento.buscarPorTipoDeEvento(null)).thenReturn(listaVacia);
+        when(servicioRegEvento.buscarPorCiudad(null)).thenReturn(listaVacia);
+        when(servicioRegEvento.buscarPorFecha(null)).thenReturn(listaVacia);
     }
 
 
@@ -132,7 +135,9 @@ public class EventoControllerTest {
 
     }
 
-    private ModelAndView cuandoSeRegistra(DatosEvento eventoEjemplo) {
+    private ModelAndView cuandoSeRegistra(DatosEvento eventoEjemplo, boolean esperado) {
+        when(servicioRegEvento.validarNombre(eventoEjemplo.getNombre())).thenReturn(esperado);
+        when(servicioRegEvento.validarLocalidad(eventoEjemplo.getLocalidad())).thenReturn(esperado);
         return controladorEvento.registrarEvento(eventoEjemplo);
     }
 
@@ -149,4 +154,4 @@ public class EventoControllerTest {
     private ModelAndView cuandoQuiereRegistrarEvento() {
         return controladorEvento.getVistaRegistro();
     }
-}*/
+}

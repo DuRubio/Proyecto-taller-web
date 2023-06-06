@@ -1,18 +1,5 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
-import ar.edu.unlam.tallerweb1.SpringTest;
-import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
-import ar.edu.unlam.tallerweb1.domain.Evento;
-import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
-import static org.assertj.core.api.Assertions.*;
-
-import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 /*
 public class RepositorioEventoTest extends SpringTest {
 

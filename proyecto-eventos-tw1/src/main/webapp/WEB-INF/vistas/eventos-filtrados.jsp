@@ -58,7 +58,7 @@
     <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="javascript:history.back()">Volver a home</a>
 </div>
 
-<footer class="bg-violet-500 mt-4 py-8">
+<footer class="bg-violet-500 mt-4 py-8 bottom-0 left-0">
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap justify-between">
             <div class="w-full lg:w-6/12 px-4">

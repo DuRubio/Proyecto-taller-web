@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/proyecto-eventos-tw1/proyecto-limpio-spring.iml" filepath="$PROJECT_DIR$/proyecto-eventos-tw1/proyecto-limpio-spring.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/proyecto-taller-web.iml" filepath="$PROJECT_DIR$/.idea/proyecto-taller-web.iml" />
     </modules>
   </component>
