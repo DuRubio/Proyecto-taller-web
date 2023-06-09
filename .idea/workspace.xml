@@ -10,13 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d581376c-73dc-4c9d-8a45-c90ccc51197f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/medios-pago.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/Application.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/login-otro.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-evento.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-evento.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-usuario-sinuso.jsp" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,13 +28,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,6 +71,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Duilio/Desktop/Taller Web Proyecto/proyecto-taller-web/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -266,9 +269,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RepositorioEventoTest.guardarUnEventoYPersistirlo" />
         <item itemvalue="JUnit.RepositorioEventoTest.buscarEventosPorTipo" />
         <item itemvalue="JUnit.RepositorioEventoTest.buscarEventoPorNombre" />
-        <item itemvalue="JUnit.RepositorioEventoTest.guardarUnEventoYPersistirlo" />
         <item itemvalue="JUnit.PersistenciaEventoTest.queSePuedaBuscarUnEventoPorId" />
         <item itemvalue="JUnit.ConexionBaseDeDatosTest.pruebaConexion" />
       </list>
@@ -288,11 +291,27 @@
       <workItem from="1685816572390" duration="66000" />
       <workItem from="1685816694605" duration="495000" />
       <workItem from="1685817230292" duration="2511000" />
+      <workItem from="1685819915249" duration="714000" />
+      <workItem from="1685828687517" duration="368000" />
+      <workItem from="1686072668840" duration="7718000" />
+      <workItem from="1686084225879" duration="1693000" />
+      <workItem from="1686086316541" duration="49000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

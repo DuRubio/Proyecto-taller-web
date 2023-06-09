@@ -104,4 +104,11 @@ public class EventoController {
 
     }
 
+
+    @RequestMapping(path = "/comprar-entrada", method = RequestMethod.GET)
+    public ModelAndView getMediosPago() {
+        return new ModelAndView("medios-pago");
+
+    }
+
 }
