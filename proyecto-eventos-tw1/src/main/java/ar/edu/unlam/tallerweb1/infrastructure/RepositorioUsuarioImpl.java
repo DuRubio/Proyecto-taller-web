@@ -3,12 +3,13 @@ package ar.edu.unlam.tallerweb1.infrastructure;
 import ar.edu.unlam.tallerweb1.domain.Usuario;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
 
-@Transactional
+
+@org.springframework.transaction.annotation.Transactional
 @Repository
 public class RepositorioUsuarioImpl implements RepositorioUsuario  {
 
@@ -30,10 +31,9 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
     @Override
     public Usuario buscarPorCorreo(String correo) {
 
-        return (Usuario) sessionFactory.getCurrentSession()
-                .createCriteria(Usuario.class)
-                .add(Restrictions.eq("correo", correo))
-                .uniqueResult();
+        return  (Usuario) sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+				.add(Restrictions.eq("correo", correo))
+				.uniqueResult();
     }
 }
 

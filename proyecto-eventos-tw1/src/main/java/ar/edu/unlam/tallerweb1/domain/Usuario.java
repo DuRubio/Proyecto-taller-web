@@ -22,6 +22,31 @@ public class Usuario {
     private String clave;
 
 
+    /*
+     * Funcionalidad: Permitir que los usuarios puedan filtrar eventos por sus preferencias
+     * 
+     * Agregar los siguientes campos a las tablas Usuario y Evento
+     * 
+     * Tipo de evento
+     * Musica, Deporte, Cultural, Gastronomico, Feria, Todos
+     * Edad
+     * Infantil, Juvenil, Adultos, Todos
+     * Lugar
+     * Aire libre, Teatro, Estadio, Todas
+     * Horario
+     * Mañana, Tarde, Noche, Todas
+     * 
+     * Crear un botón en el inicio/home, que redirija a una pantalla y permita editar mis preferencias
+     * La seleccion será mediante checkbox que setearan el valor en true
+     * 
+     * Las preferencias se setearan en false al registrarse
+     * 
+     * Crear boton de Filtrar por mis preferencias
+     * 
+     * Mostrará un listado de eventos que cumplen con alguna de las preferencias del usuario
+     * 
+     * 
+     */
 
 
     public Usuario() {
