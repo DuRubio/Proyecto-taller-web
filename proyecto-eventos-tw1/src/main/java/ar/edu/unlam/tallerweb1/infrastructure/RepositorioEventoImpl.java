@@ -80,6 +80,13 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
                 .list();
     }
 
+	@Override
+	public List<Evento> findFirst3Events() {
+		String hql = "FROM Evento WHERE eventoActivo = true ORDER BY id";
+		return (List<Evento>)sessionFactory.getCurrentSession()
+				.createQuery(hql, Evento.class).setMaxResults(3).list();
+	}
+
 
         /*Session session = this.sessionFactory.getCurrentSession();
         Query<Evento> query = session.createQuery("FROM Evento", Evento.class);

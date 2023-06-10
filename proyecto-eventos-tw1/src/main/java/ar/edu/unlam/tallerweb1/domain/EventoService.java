@@ -22,4 +22,6 @@ public interface EventoService {
     List<Evento> buscarPorCiudad(String ciudad);
 
     List<Evento> getEventos();
+
+	List<Evento> getPrimeros3Eventos();
 }

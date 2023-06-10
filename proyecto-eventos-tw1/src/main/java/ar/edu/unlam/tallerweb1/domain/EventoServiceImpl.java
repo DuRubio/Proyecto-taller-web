@@ -11,9 +11,15 @@ import java.util.List;
 @Service
 public class EventoServiceImpl implements EventoService  {
 
+    
+    private RepositorioEvento repoEvento;
+    
     @Autowired
-    RepositorioEvento repoEvento;
-    @Override
+    public EventoServiceImpl(RepositorioEvento repositorioEvento) {
+		this.repoEvento = repositorioEvento;
+	}
+
+	@Override
     public boolean validarNombre(String nombre) {
        return !nombre.isEmpty();
     }
@@ -62,5 +68,10 @@ public class EventoServiceImpl implements EventoService  {
         List<Evento> eventos = repoEvento.buscarEventosConFiltros(fecha, ciudad, tipo);
         return eventos;
     }
+
+	@Override
+	public List<Evento> getPrimeros3Eventos() {
+		return repoEvento.findFirst3Events();
+	}
 
 }

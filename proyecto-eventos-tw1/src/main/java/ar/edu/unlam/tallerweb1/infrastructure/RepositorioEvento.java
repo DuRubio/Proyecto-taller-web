@@ -24,5 +24,7 @@ public interface RepositorioEvento {
     public List<Evento> findAll() ;
 
     List<Evento> buscarEventosConFiltros(LocalDate fecha, String ciudad, TipoDeEvento tipo);
+
+	public List<Evento> findFirst3Events();
 }
 

@@ -21,6 +21,23 @@ public class Usuario {
     @Column(nullable = false)
     private String clave;
 
+    private Boolean musica;
+    private Boolean deporte;
+    private Boolean cultural;
+    private Boolean gastronomico;
+    private Boolean feria;
+    private Boolean infantil;
+    private Boolean juvenil;
+    private Boolean adultos;
+    private Boolean jubilados;
+    private Boolean todasLasEdades;
+    private Boolean aireLibre;
+    private Boolean teatro;
+    private Boolean estadio;
+    private Boolean centroCultural;
+    private Boolean matutino;
+    private Boolean vespertino;
+    private Boolean nocturno;
 
     /*
      * Funcionalidad: Permitir que los usuarios puedan filtrar eventos por sus preferencias
@@ -55,11 +72,11 @@ public class Usuario {
 
 
     public Usuario(String nombre, String apellido, String localidad, String correo, String clave) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.localidad = localidad;
-        this.correo = correo;
-        this.clave = clave;
+        setNombre(nombre);
+        setApellido(apellido);
+        setLocalidad(localidad);
+        setCorreo(correo);
+        setClave(clave);
     }
 
     public Usuario(String correo, String clave) {
@@ -114,4 +131,143 @@ public class Usuario {
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
+
+	public Boolean getMusica() {
+		return musica;
+	}
+
+	public void setMusica(Boolean musica) {
+		this.musica = musica;
+	}
+
+	public Boolean getDeporte() {
+		return deporte;
+	}
+
+	public void setDeporte(Boolean deporte) {
+		this.deporte = deporte;
+	}
+
+	public Boolean getCultural() {
+		return cultural;
+	}
+
+	public void setCultural(Boolean cultural) {
+		this.cultural = cultural;
+	}
+
+	public Boolean getGastronomico() {
+		return gastronomico;
+	}
+
+	public void setGastronomico(Boolean gastronomico) {
+		this.gastronomico = gastronomico;
+	}
+
+	public Boolean getFeria() {
+		return feria;
+	}
+
+	public void setFeria(Boolean feria) {
+		this.feria = feria;
+	}
+
+	public Boolean getInfantil() {
+		return infantil;
+	}
+
+	public void setInfantil(Boolean infantil) {
+		this.infantil = infantil;
+	}
+
+	public Boolean getJuvenil() {
+		return juvenil;
+	}
+
+	public void setJuvenil(Boolean juvenil) {
+		this.juvenil = juvenil;
+	}
+
+	public Boolean getAdultos() {
+		return adultos;
+	}
+
+	public void setAdultos(Boolean adultos) {
+		this.adultos = adultos;
+	}
+
+	public Boolean getJubilados() {
+		return jubilados;
+	}
+
+	public void setJubilados(Boolean jubilados) {
+		this.jubilados = jubilados;
+	}
+
+	public Boolean getTodasLasEdades() {
+		return todasLasEdades;
+	}
+
+	public void setTodasLasEdades(Boolean todasLasEdades) {
+		this.todasLasEdades = todasLasEdades;
+	}
+
+	public Boolean getAireLibre() {
+		return aireLibre;
+	}
+
+	public void setAireLibre(Boolean aireLibre) {
+		this.aireLibre = aireLibre;
+	}
+
+	public Boolean getTeatro() {
+		return teatro;
+	}
+
+	public void setTeatro(Boolean teatro) {
+		this.teatro = teatro;
+	}
+
+	public Boolean getEstadio() {
+		return estadio;
+	}
+
+	public void setEstadio(Boolean estadio) {
+		this.estadio = estadio;
+	}
+
+	public Boolean getCentroCultural() {
+		return centroCultural;
+	}
+
+	public void setCentroCultural(Boolean centroCultural) {
+		this.centroCultural = centroCultural;
+	}
+
+	public Boolean getMatutino() {
+		return matutino;
+	}
+
+	public void setMatutino(Boolean matutino) {
+		this.matutino = matutino;
+	}
+
+	public Boolean getVespertino() {
+		return vespertino;
+	}
+
+	public void setVespertino(Boolean vespertino) {
+		this.vespertino = vespertino;
+	}
+
+	public Boolean getNocturno() {
+		return nocturno;
+	}
+
+	public void setNocturno(Boolean nocturno) {
+		this.nocturno = nocturno;
+	}
+    
+	
+    
 }
