@@ -10,8 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d581376c-73dc-4c9d-8a45-c90ccc51197f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/medios-pago.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/Application.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioUsuarioImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioUsuarioImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/ar/edu/unlam/tallerweb1/infrastructure/RepositorioUsuarioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/ar/edu/unlam/tallerweb1/infrastructure/RepositorioUsuarioTest.java" afterDir="false" />
     </list>
@@ -24,13 +29,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="rama2" />
+        <entry key="$PROJECT_DIR$" value="test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
