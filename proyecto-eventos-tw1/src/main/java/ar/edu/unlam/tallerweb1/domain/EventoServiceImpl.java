@@ -1,6 +1,6 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
+import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,8 +45,8 @@ public class EventoServiceImpl implements EventoService  {
     }
 
     @Override
-    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
-        return repoEvento.buscarPorTipoDeEvento(tipoDeEvento);
+    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipo) {
+        return repoEvento.buscarPorTipoDeEvento(tipo);
     }
 
     @Override
@@ -64,14 +64,19 @@ public class EventoServiceImpl implements EventoService  {
         return repoEvento.findAll();
     }
 
-    public List<Evento> getEventosConFiltros(LocalDate fecha, String ciudad, TipoDeEvento tipo){
+    public List<Evento> getEventosConFiltros(LocalDate fecha, String ciudad, String tipo){
         List<Evento> eventos = repoEvento.buscarEventosConFiltros(fecha, ciudad, tipo);
         return eventos;
     }
 
 	@Override
-	public List<Evento> getPrimeros3Eventos() {
-		return repoEvento.findFirst3Events();
+	public List<Evento> getPrimeros4Eventos() {
+		return repoEvento.findFirst4Events();
+	}
+
+	@Override
+	public Object listarEventosPorMisPreferencias() {
+		return repoEvento.findEventosPorMisPreferencias();
 	}
 
 }

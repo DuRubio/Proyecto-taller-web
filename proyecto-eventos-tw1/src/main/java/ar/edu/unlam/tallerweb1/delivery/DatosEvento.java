@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.delivery;
 import java.time.LocalDate;
 import java.util.Date;
 
+import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
+
 public class DatosEvento {
     private String nombre;
     private LocalDate fecha;

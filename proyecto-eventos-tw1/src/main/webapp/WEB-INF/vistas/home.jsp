@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,7 +13,7 @@
 </head>
 
 <body>
-	<!-- Barra de navegación -->
+	<!-- Barra de navegaciÃ³n -->
 	<nav
 		class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
 		<div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -60,9 +62,13 @@
 							<option value="Deportivo">Deportivo</option>
 							<option value="Musical">Musical</option>
 							<option value="Bailable">Bailable</option>
-							<option value="Teatro">Teatro</option>
+							<option value="Teatral">Teatral</option>
 							<option value="Recital">Recital</option>
 							<option value="Cine">Cine</option>
+							<option value="Cultural">Cultural</option>
+							<option value="Gastronomico">Gastronomico</option>
+							<option value="Feria">Feria</option>
+							<option value="Marcha">Marcha</option>
 
 						</select>
 					</div>
@@ -95,7 +101,7 @@
 							<h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
 							<p class="text-gray-700">Fecha: ${evento.fecha}</p>
 							<p class="text-gray-700">Localidad: ${evento.localidad}</p>
-							<!-- Agrega m�s detalles del evento si es necesario -->
+							<!-- Agrega más detalles del evento si es necesario -->
 						</div>
 						<div class="flex justify-center mt-6">
 							<button

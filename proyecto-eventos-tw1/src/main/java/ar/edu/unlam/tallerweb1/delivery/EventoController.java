@@ -2,6 +2,9 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
+import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -23,14 +26,21 @@ import java.util.List;
 public class EventoController {
 
     private EventoService servicioEvento;
+    private RepositorioEvento repositorioEvento;
+    
     @Autowired
-
     public EventoController(EventoService servicioRegEvento) {
         this.servicioEvento=servicioRegEvento;
     }
 
+    @Autowired
+    public EventoController(EventoService servicioEvento, RepositorioEvento repositorioEvento) {
+    	this.servicioEvento=servicioEvento;
+    	this.repositorioEvento = repositorioEvento;
+	}
 
-    @RequestMapping(path = "/registrar-evento", method = RequestMethod.GET)
+
+	@RequestMapping(path = "/registrar-evento", method = RequestMethod.GET)
     public ModelAndView getVistaRegistro() {
         return new ModelAndView("registro-evento");
 
@@ -56,10 +66,9 @@ public class EventoController {
     @RequestMapping(path = "/home", method = RequestMethod.GET)
     public ModelAndView getVistaHome() {
     	ModelMap model = new ModelMap();
-    	List<Evento> eventos = this.servicioEvento.getPrimeros3Eventos();
-    	//List<Evento> eventos = servicioEvento.getEventos();
+    	List<Evento> eventos = this.servicioEvento.getPrimeros4Eventos();
     	model.put("eventos", eventos);
-    	ModelAndView mav = new ModelAndView("home");
+    	ModelAndView mav = new ModelAndView("home", model);
         return mav;
     }
 
@@ -109,5 +118,15 @@ public class EventoController {
         return new ModelAndView("redirect:/login");
 
     }
+
+    @RequestMapping(path="listar-eventos-segun-mis-preferencias", method = RequestMethod.GET)
+	public ModelAndView listarEventosPorMisPreferencias() {
+		ModelMap model = new ModelMap();
+        List<Evento> eventos = (List<Evento>) servicioEvento.listarEventosPorMisPreferencias();
+        model.put("eventos", eventos);
+        ModelAndView mav = new ModelAndView("listar-eventos-segun-mis-preferencias", model);
+
+        return mav;
+	}
 
 }

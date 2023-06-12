@@ -1,9 +1,9 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
-
 import java.time.LocalDate;
 import java.util.List;
+
+import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
 
 public interface EventoService {
     boolean validarNombre(String nombre);
@@ -15,7 +15,7 @@ public interface EventoService {
 
     Evento buscarPorNombre(String nombre);
 
-    List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
+    List<Evento> buscarPorTipoDeEvento(TipoDeEvento categoria);
 
     List<Evento> buscarPorFecha(LocalDate fechaEvento);
 
@@ -23,5 +23,7 @@ public interface EventoService {
 
     List<Evento> getEventos();
 
-	List<Evento> getPrimeros3Eventos();
+	List<Evento> getPrimeros4Eventos();
+
+	Object listarEventosPorMisPreferencias();
 }

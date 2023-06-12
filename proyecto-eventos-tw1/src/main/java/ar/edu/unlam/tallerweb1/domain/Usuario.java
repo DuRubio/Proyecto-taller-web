@@ -21,11 +21,16 @@ public class Usuario {
     @Column(nullable = false)
     private String clave;
 
-    private Boolean musica;
-    private Boolean deporte;
+    private Boolean musical;
+    private Boolean deportivo;
+    private Boolean bailable;
+    private Boolean teatral;
+    private Boolean recital;
+    private Boolean cine;
     private Boolean cultural;
     private Boolean gastronomico;
     private Boolean feria;
+    private Boolean marcha;
     private Boolean infantil;
     private Boolean juvenil;
     private Boolean adultos;
@@ -61,6 +66,10 @@ public class Usuario {
      * Crear boton de Filtrar por mis preferencias
      * 
      * Mostrará un listado de eventos que cumplen con alguna de las preferencias del usuario
+     * 
+     * Que los campos sean enum en los eventos 
+     * y boolean en los usuarios
+     * para que elijan más de uno
      * 
      * 
      */
@@ -132,20 +141,60 @@ public class Usuario {
         this.localidad = localidad;
     }
 
-	public Boolean getMusica() {
-		return musica;
+	public Boolean getMusical() {
+		return musical;
 	}
 
-	public void setMusica(Boolean musica) {
-		this.musica = musica;
+	public void setMusical(Boolean musical) {
+		this.musical = musical;
 	}
 
-	public Boolean getDeporte() {
-		return deporte;
+	public Boolean getDeportivo() {
+		return deportivo;
 	}
 
-	public void setDeporte(Boolean deporte) {
-		this.deporte = deporte;
+	public void setDeportivo(Boolean deportivo) {
+		this.deportivo = deportivo;
+	}
+
+	public Boolean getBailable() {
+		return bailable;
+	}
+
+	public void setBailable(Boolean bailable) {
+		this.bailable = bailable;
+	}
+
+	public Boolean getTeatral() {
+		return teatral;
+	}
+
+	public void setTeatral(Boolean teatral) {
+		this.teatral = teatral;
+	}
+
+	public Boolean getRecital() {
+		return recital;
+	}
+
+	public void setRecital(Boolean recital) {
+		this.recital = recital;
+	}
+
+	public Boolean getCine() {
+		return cine;
+	}
+
+	public void setCine(Boolean cine) {
+		this.cine = cine;
+	}
+
+	public Boolean getMarcha() {
+		return marcha;
+	}
+
+	public void setMarcha(Boolean marcha) {
+		this.marcha = marcha;
 	}
 
 	public Boolean getCultural() {

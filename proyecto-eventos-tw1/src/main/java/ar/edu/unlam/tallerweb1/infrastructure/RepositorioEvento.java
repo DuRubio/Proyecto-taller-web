@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
-import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.domain.Evento;
+import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +15,7 @@ public interface RepositorioEvento {
 
     Evento buscarPorNombre(String nombre);
 
-    List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
+    List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipo);
 
     List<Evento> buscarPorFechaDeEvento(LocalDate fecha);
 
@@ -23,8 +23,10 @@ public interface RepositorioEvento {
 
     public List<Evento> findAll() ;
 
-    List<Evento> buscarEventosConFiltros(LocalDate fecha, String ciudad, TipoDeEvento tipo);
+    List<Evento> buscarEventosConFiltros(LocalDate fecha, String ciudad, String tipo);
 
-	public List<Evento> findFirst3Events();
+	public List<Evento> findFirst4Events();
+
+	public Object findEventosPorMisPreferencias();
 }
 

@@ -1,14 +1,17 @@
-package ar.edu.unlam.tallerweb1.delivery;
+package ar.edu.unlam.tallerweb1.domain.enums;
 
 public enum TipoDeEvento {
 
     Deportivo(1),
     Musical(2),
     Bailable(3),
-    Teatro(4),
+    Teatral(4),
     Recital(5),
     Cine(6),
-    Marcha(7);
+    Cultural(7),
+    Gastronomico(8),
+    Feria(9),
+    Marcha(10);
 
     private int valor;
     TipoDeEvento(int valor) {
