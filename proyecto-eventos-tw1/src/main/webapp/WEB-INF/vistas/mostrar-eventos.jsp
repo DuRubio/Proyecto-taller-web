@@ -42,7 +42,6 @@
                     <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
                     <p class="text-gray-700">Fecha: ${evento.fecha}</p>
                     <p class="text-gray-700">Localidad: ${evento.localidad}</p>
-                    <!-- Agrega más detalles del evento si es necesario -->
                 </div>
                 <div class="flex justify-center mt-6">
                     <button class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</button>

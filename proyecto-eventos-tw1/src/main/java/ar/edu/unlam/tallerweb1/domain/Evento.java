@@ -21,6 +21,7 @@ public class Evento {
     private String lugar;
     private String localidad;
     private String URLImagen;
+	private TipoDeEvento tipo;
     private Boolean musica;
     private Boolean deporte;
     private Boolean cultural;
@@ -241,6 +242,13 @@ public class Evento {
 
 	public void setEventoActivo(Boolean eventoActivo) {
 		this.eventoActivo = eventoActivo;
+	}
+	public TipoDeEvento getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoDeEvento tipo) {
+		this.tipo = tipo;
 	}
 
 	@Override
