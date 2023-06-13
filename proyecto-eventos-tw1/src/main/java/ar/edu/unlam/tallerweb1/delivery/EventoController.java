@@ -28,10 +28,7 @@ public class EventoController {
     private EventoService servicioEvento;
     private RepositorioEvento repositorioEvento;
     
-    @Autowired
-    public EventoController(EventoService servicioRegEvento) {
-        this.servicioEvento=servicioRegEvento;
-    }
+    
 
     @Autowired
     public EventoController(EventoService servicioEvento, RepositorioEvento repositorioEvento) {

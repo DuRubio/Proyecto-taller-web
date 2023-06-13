@@ -77,6 +77,32 @@ public class UsuarioController {
             return new ModelAndView(viewName, model);
         }
 
+        @RequestMapping(path="editar-mis-preferencias", method = RequestMethod.GET)
+		public ModelAndView editarMisPreferencias() {
+			ModelMap model = new ModelMap();
+            model.put("datosPreferencias", new DatosPreferencias());
+            return new ModelAndView("editar-mis-preferencias", model);
+		}
+        
+        @RequestMapping(path = "/guardar-preferencias-usuario", method = RequestMethod.POST) //compara mail y clave con el ya registrado para validar inicio sesion
+        public ModelAndView logearUsuario(@RequestParam(value = "musical", required = true) Boolean musical, 
+        		@RequestParam(value = "deportivo", required = true) Boolean deportivo, @RequestParam(value = "bailable", required = true) Boolean bailable, 
+        		@RequestParam(value = "teatral", required = true) Boolean teatral,@RequestParam(value = "recital", required = true) Boolean recital,
+        		@RequestParam(value = "cine", required = true) Boolean cine,@RequestParam(value = "cultural", required = true) Boolean cultural,@RequestParam(value = "gastronomico", required = true) Boolean gastronomico,
+        		@RequestParam(value = "feria", required = true) Boolean feria,@RequestParam(value = "marcha", required = true) Boolean marcha,@RequestParam(value = "infantil", required = true) Boolean infantil,
+        		@RequestParam(value = "juvenil", required = true) Boolean juvenil,@RequestParam(value = "adultos", required = true) Boolean adultos,@RequestParam(value = "jubilados", required = true) Boolean jubilados,
+        		@RequestParam(value = "todasLasEdades", required = true) Boolean todasLasEdades,@RequestParam(value = "aireLibre", required = true) Boolean aireLibre,@RequestParam(value = "teatro", required = true) Boolean teatro,
+        		@RequestParam(value = "estadio", required = true) Boolean estadio,@RequestParam(value = "centroCultural", required = true) Boolean centroCultural,
+        		@RequestParam(value = "matutino", required = true) Boolean matutino,@RequestParam(value = "vespertino", required = true) Boolean vespertino,@RequestParam(value = "nocturno", required = true) Boolean nocturno	){
+            ModelMap model = new ModelMap();
+            DatosPreferencias usuario = new DatosPreferencias(musical, deportivo, bailable, teatral, recital, cine, cultural, gastronomico, feria, marcha, infantil, juvenil, adultos, jubilados, todasLasEdades, aireLibre, teatro, estadio, centroCultural, matutino, vespertino, nocturno);
+            model.put("datosPreferencias", new DatosPreferencias());
+            String viewName = "home";
+            this.servicioRegistracion.guardarPreferencias(usuario); {
+                viewName="home";
+            return new ModelAndView(viewName, model);
+        }
+
     /*public ModelAndView logearUsuario (@ModelAttribute DatosLogin usuarioValido){
             ModelMap model = new ModelMap();
             String viewName = "";
@@ -93,3 +119,4 @@ public class UsuarioController {
 
 
     }
+}

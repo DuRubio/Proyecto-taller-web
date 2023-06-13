@@ -13,8 +13,8 @@ public class DatosRegistracion {
 
 
     public DatosRegistracion(String correo, String clave) {
-        this.correo = correo;
-        this.clave = clave;
+        setCorreo(correo);
+        setClave(clave);
     }
 
     public DatosRegistracion() {
@@ -22,18 +22,18 @@ public class DatosRegistracion {
 
     public DatosRegistracion(String nombre, String apellido, String localidad) {
 
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.localidad = localidad;
+        setNombre(nombre);
+        setApellido(apellido);
+        setLocalidad(localidad);
     }
 
     public DatosRegistracion(String nombre, String apellido, String localidad, String correo, String clave) {
 
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.localidad = localidad;
-        this.correo = correo;
-        this.clave = clave;
+    	setNombre(nombre);
+        setApellido(apellido);
+        setLocalidad(localidad);
+        setCorreo(correo);
+        setClave(clave);
     }
 
     public String getCorreo() {

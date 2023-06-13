@@ -1,15 +1,9 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-import ar.edu.unlam.tallerweb1.domain.enums.GrupoEtarioEvento;
-import ar.edu.unlam.tallerweb1.domain.enums.HorarioEvento;
-import ar.edu.unlam.tallerweb1.domain.enums.LugarEvento;
-import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -23,19 +17,29 @@ public class Evento {
     private Date fecha;
     private String localidad;
     private String URLImagen;
-    private TipoDeEvento tipo;
-    private HorarioEvento horario;
-    private GrupoEtarioEvento edades;
-    private LugarEvento lugar;
+    private String lugar;
+    private String tipoEvento;
+    private String tipoLugar;
+    private String horario;
+    private String edades;
     private Boolean eventoActivo;
 
     public Evento (){
     }
     
-    public Evento(String nombre, Date fecha, LugarEvento lugar, String localidad) {
+    public Evento(String nombre, Date fecha, String lugar, String localidad) {
     	setNombre(nombre);
     	setFecha(fecha);
     	setLugar(lugar);
+    	setLocalidad(localidad);
+    	setEventoActivo(true);
+    }
+    
+    public Evento(String nombre, Date fecha, String lugar, String tipoLugar ,String localidad) {
+    	setNombre(nombre);
+    	setFecha(fecha);
+    	setLugar(lugar);
+    	setTipoLugar(tipoLugar);
     	setLocalidad(localidad);
     	setEventoActivo(true);
     }
@@ -79,37 +83,45 @@ public class Evento {
     public void setURLImagen(String URLImagen) {
         this.URLImagen = URLImagen;
     }
-
-	public TipoDeEvento getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoDeEvento tipo) {
-		this.tipo = tipo;
-	}
-
-	public HorarioEvento getHorario() {
-		return horario;
-	}
-
-	public void setHorario(HorarioEvento horario) {
-		this.horario = horario;
-	}
-
-	public GrupoEtarioEvento getEdades() {
-		return edades;
-	}
-
-	public void setEdades(GrupoEtarioEvento edades) {
-		this.edades = edades;
-	}
-
-	public LugarEvento getLugar() {
+	
+    public String getLugar() {
 		return lugar;
 	}
 
-	public void setLugar(LugarEvento lugar) {
+	public void setLugar(String lugar) {
 		this.lugar = lugar;
+	}
+
+	public String getTipoEvento() {
+		return tipoEvento;
+	}
+
+	public void setTipoEvento(String tipoEvento) {
+		this.tipoEvento = tipoEvento;
+	}
+
+	public String getTipoLugar() {
+		return tipoLugar;
+	}
+
+	public void setTipoLugar(String tipoLugar) {
+		this.tipoLugar = tipoLugar;
+	}
+
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+
+	public String getEdades() {
+		return edades;
+	}
+
+	public void setEdades(String edades) {
+		this.edades = edades;
 	}
 
 	public Boolean getEventoActivo() {
@@ -122,7 +134,7 @@ public class Evento {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(edades, eventoActivo, fecha, horario, localidad, lugar, nombre, tipo);
+		return Objects.hash(edades, eventoActivo, fecha, horario, localidad, lugar, nombre, tipoEvento, tipoLugar);
 	}
 
 	@Override
@@ -134,11 +146,14 @@ public class Evento {
 		if (getClass() != obj.getClass())
 			return false;
 		Evento other = (Evento) obj;
-		return edades == other.edades && Objects.equals(eventoActivo, other.eventoActivo)
-				&& Objects.equals(fecha, other.fecha) && horario == other.horario
-				&& Objects.equals(localidad, other.localidad) && lugar == other.lugar
-				&& Objects.equals(nombre, other.nombre) && tipo == other.tipo;
+		return Objects.equals(edades, other.edades) && Objects.equals(eventoActivo, other.eventoActivo)
+				&& Objects.equals(fecha, other.fecha) && Objects.equals(horario, other.horario)
+				&& Objects.equals(localidad, other.localidad) && Objects.equals(lugar, other.lugar)
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(tipoEvento, other.tipoEvento)
+				&& Objects.equals(tipoLugar, other.tipoLugar);
 	}
+
+	
 
 	
 

@@ -1,6 +1,9 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 import javax.persistence.*;
+
+import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
+
 import java.io.Serializable;
 
 @Entity
@@ -86,11 +89,82 @@ public class Usuario {
         setLocalidad(localidad);
         setCorreo(correo);
         setClave(clave);
+        setMusical(false);
+        setDeportivo(false);
+        setBailable(false);
+        setTeatral(false);
+        setRecital(false);
+        setCine(false);
+        setCultural(false);
+        setGastronomico(false);
+        setFeria(false);
+        setMarcha(false);
+        setInfantil(false);
+        setJuvenil(false);
+        setAdultos(false);
+        setJubilados(false);
+        setTodasLasEdades(false);
+        setAireLibre(false);
+        setTeatro(false);
+        setEstadio(false);
+        setCentroCultural(false);
+        setMatutino(false);
+        setVespertino(false);
+        setNocturno(false);
+    }
+    
+    public Usuario(DatosRegistracion datosRegistro) {
+        setCorreo(datosRegistro.getCorreo());
+        setClave(datosRegistro.getClave());
+        setMusical(false);
+        setDeportivo(false);
+        setBailable(false);
+        setTeatral(false);
+        setRecital(false);
+        setCine(false);
+        setCultural(false);
+        setGastronomico(false);
+        setFeria(false);
+        setMarcha(false);
+        setInfantil(false);
+        setJuvenil(false);
+        setAdultos(false);
+        setJubilados(false);
+        setTodasLasEdades(false);
+        setAireLibre(false);
+        setTeatro(false);
+        setEstadio(false);
+        setCentroCultural(false);
+        setMatutino(false);
+        setVespertino(false);
+        setNocturno(false);
     }
 
     public Usuario(String correo, String clave) {
-        this.correo = correo;
-        this.clave = clave;
+        setCorreo(correo);
+        setClave(clave);
+        setMusical(false);
+        setDeportivo(false);
+        setBailable(false);
+        setTeatral(false);
+        setRecital(false);
+        setCine(false);
+        setCultural(false);
+        setGastronomico(false);
+        setFeria(false);
+        setMarcha(false);
+        setInfantil(false);
+        setJuvenil(false);
+        setAdultos(false);
+        setJubilados(false);
+        setTodasLasEdades(false);
+        setAireLibre(false);
+        setTeatro(false);
+        setEstadio(false);
+        setCentroCultural(false);
+        setMatutino(false);
+        setVespertino(false);
+        setNocturno(false);
     }
 
     public String getCorreo() {

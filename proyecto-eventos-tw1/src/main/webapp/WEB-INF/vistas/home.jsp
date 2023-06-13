@@ -87,6 +87,11 @@
 				</div>
 			</form>
 		</div>
+		<div class="flex justify-evenly px-6 pt-4 pb-2">
+		<a
+			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+			href="editar-mis-preferencias">Editar Mis Preferencias</a>
+		</div>
 	</div>
 
 	<!-- Cards -->

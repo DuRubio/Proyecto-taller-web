@@ -93,6 +93,9 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
 
 
         /*Session session = this.sessionFactory.getCurrentSession();

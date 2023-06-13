@@ -1,7 +1,6 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.SpringTest;
-import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;

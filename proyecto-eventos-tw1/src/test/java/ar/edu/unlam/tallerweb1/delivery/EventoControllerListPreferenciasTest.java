@@ -68,10 +68,10 @@ public class EventoControllerListPreferenciasTest {
 		List<Evento> eventos = new ArrayList<>();
 		List<Evento> eventosSegunPreferencias = new ArrayList<>();
 		Evento e = new Evento();
-		Evento e1 = new Evento("Superclasico", new Date(2023, 5, 7), LugarEvento.Estadio, "Nuñez");
-		Evento e2 = new Evento("Clasico Avellaneda", new Date(2023, 9, 8), LugarEvento.Estadio, "Avellaneda");
-		Evento e3 = new Evento("Drácula", new Date(2023, 11, 22), LugarEvento.Teatro, "Recoleta");
-		Evento e4 = new Evento("Drácula", new Date(2023, 10, 24), LugarEvento.Teatro, "Morón");
+		Evento e1 = new Evento("Superclasico", new Date(2023, 5, 7), "Monumental", "Estadio", "Nuñez");
+		Evento e2 = new Evento("Clasico Avellaneda", new Date(2023, 9, 8), "Cilindro de Avellaneda" , "Estadio" , "Avellaneda");
+		Evento e3 = new Evento("Drácula", new Date(2023, 11, 22), "Teatro Universidad" , "Teatro", "La Matanza");
+		Evento e4 = new Evento("Drácula", new Date(2023, 10, 24), "Teatro de Morón" , "Teatro", "Morón");
 		
 		for(int i=0; i<cantidadEventos; i++) {
 			if(i==0) 
@@ -91,8 +91,7 @@ public class EventoControllerListPreferenciasTest {
 		for(int j=0; j<cantidadEventos;j++) {
 			e = eventos.get(j);
 			
-			
-			if(e.getNombre() == "Drácula") {
+			if(e.getTipoLugar() == "Estadio") {
 				eventosSegunPreferencias.add(e);
 			}
 			
