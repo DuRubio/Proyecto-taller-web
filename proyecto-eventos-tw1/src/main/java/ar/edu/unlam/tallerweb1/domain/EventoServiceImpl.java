@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,7 +44,7 @@ public class EventoServiceImpl implements EventoService  {
     }
 
     @Override
-    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipo) {
+    public List<Evento> buscarPorTipoDeEvento(String tipo) {
         return repoEvento.buscarPorTipoDeEvento(tipo);
     }
 

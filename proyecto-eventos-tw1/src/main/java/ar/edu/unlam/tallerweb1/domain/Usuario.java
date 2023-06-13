@@ -7,7 +7,6 @@ import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 import java.io.Serializable;
 
 @Entity
-
 public class Usuario {
 
     @Id
@@ -79,6 +78,28 @@ public class Usuario {
 
 
     public Usuario() {
+    	setMusical(false);
+        setDeportivo(false);
+        setBailable(false);
+        setTeatral(false);
+        setRecital(false);
+        setCine(false);
+        setCultural(false);
+        setGastronomico(false);
+        setFeria(false);
+        setMarcha(false);
+        setInfantil(false);
+        setJuvenil(false);
+        setAdultos(false);
+        setJubilados(false);
+        setTodasLasEdades(false);
+        setAireLibre(false);
+        setTeatro(false);
+        setEstadio(false);
+        setCentroCultural(false);
+        setMatutino(false);
+        setVespertino(false);
+        setNocturno(false);
     }
 
 

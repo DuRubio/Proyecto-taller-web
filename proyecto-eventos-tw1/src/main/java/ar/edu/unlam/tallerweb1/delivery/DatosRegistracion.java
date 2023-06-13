@@ -9,9 +9,6 @@ public class DatosRegistracion {
     private String localidad;
 
 
-
-
-
     public DatosRegistracion(String correo, String clave) {
         setCorreo(correo);
         setClave(clave);

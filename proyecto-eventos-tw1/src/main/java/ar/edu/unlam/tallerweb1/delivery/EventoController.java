@@ -2,7 +2,6 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
-import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +82,7 @@ public class EventoController {
     @RequestMapping(path = "/home/filtrar", method = RequestMethod.GET)
     public ModelAndView filtrarEventos(
             @RequestParam(value = "filtro-fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
-            @RequestParam(value = "filtro-categoria", required = false) TipoDeEvento categoria,
+            @RequestParam(value = "filtro-categoria", required = false) String categoria,
             @RequestParam(value = "localidad", required = false) String localidad){
         String viewName="";
         ModelMap model = new ModelMap();

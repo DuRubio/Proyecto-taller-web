@@ -1,7 +1,6 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.domain.Evento;
-import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -58,7 +57,7 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
     }
 
     @Override
-    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipo) {
+    public List<Evento> buscarPorTipoDeEvento(String tipo) {
         List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
                 .add(Restrictions.eq("tipo", tipo))
                 .list();

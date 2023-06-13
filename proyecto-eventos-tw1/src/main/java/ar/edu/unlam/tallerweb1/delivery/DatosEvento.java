@@ -3,20 +3,18 @@ package ar.edu.unlam.tallerweb1.delivery;
 import java.time.LocalDate;
 import java.util.Date;
 
-import ar.edu.unlam.tallerweb1.domain.enums.TipoDeEvento;
-
 public class DatosEvento {
     private String nombre;
     private LocalDate fecha;
     private String lugar;
     private String localidad;
-    private TipoDeEvento tipo;
+    private String tipo;
 
 
     public DatosEvento() {
     }
 
-    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidad, TipoDeEvento tipo) {
+    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidad, String tipo) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.lugar = lugar;
@@ -56,11 +54,11 @@ public class DatosEvento {
         this.localidad = localidad;
     }
 
-    public TipoDeEvento getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(TipoDeEvento tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 }
