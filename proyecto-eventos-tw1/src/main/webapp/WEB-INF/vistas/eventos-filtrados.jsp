@@ -48,14 +48,14 @@
                     <!-- Agrega más detalles del evento si es necesario -->
                 </div>
                 <div class="flex justify-center mt-6">
-                    <button class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</button>
+                    <a href="/comprar-entrada" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</a>
                 </div>
             </div>
         </c:forEach>
     </div>
 </div>
 <div class="fixed bottom-0 left-0 w-full flex justify-center p-4">
-    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="javascript:history.back()">Volver a home</a>
+    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="/home">Volver a home</a>
 </div>
 
 <footer class="bg-violet-500 mt-4 py-8">

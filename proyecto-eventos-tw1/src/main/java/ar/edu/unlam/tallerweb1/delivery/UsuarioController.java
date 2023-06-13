@@ -69,7 +69,8 @@ public class UsuarioController {
             model.put("datosLogin", new DatosLogin());
             String viewName = "";
             if (this.servicioRegistracion.compararMail(usuarioValido.getCorreo()) && this.servicioRegistracion.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())) {
-                viewName="home";
+                viewName="redirect:/home";
+                //usuarioValido.isLogeado(true);
             } else {
                 model.put("mensaje", "mail o clave incorrecta");
                 viewName="login";
@@ -77,19 +78,11 @@ public class UsuarioController {
             return new ModelAndView(viewName, model);
         }
 
-    /*public ModelAndView logearUsuario (@ModelAttribute DatosLogin usuarioValido){
-            ModelMap model = new ModelMap();
-            String viewName = "";
-            model.put("datosLogin", new DatosLogin());
-            if (this.servicioRegistracion.compararMail(usuarioValido.getCorreo()) && this.servicioRegistracion.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())) {
-                model.put("mensaje", "Login exitoso");
-                viewName = "home";
-            } else {
-                model.put("mensaje", "mail o clave incorrecta");
-                viewName = "login";
-            }
-            return new ModelAndView(viewName, model);
-        }*/
+        @RequestMapping(path="/out" , method=RequestMethod.GET)
+        public ModelAndView cerrarSesion(){
+            //usuarioValido.isLogeado(false);
+            return new ModelAndView("home");
+        }
 
 
     }

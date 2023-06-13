@@ -80,7 +80,7 @@ public class EventoControllerTest {
     }
 
     @Test
-    public void queAlFiltrarNoEncuentreNadaRecibaMensaje(){
+    public void queAlFiltrarNoEncuentreNadaDevuelvaPopup(){
         TipoDeEvento tipoEvento = null;
         String localidad=null;
         LocalDate fecha = null;
@@ -91,7 +91,8 @@ public class EventoControllerTest {
 
     private void entoncesObtengoMavYMensaje(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("home");
-        assertThat(mav.getModel().get("mensaje")).isEqualTo("No se encontraron eventos");
+        assertThat(mav.getModel().get("mostrarPopup"));
+
     }
 
     private ModelAndView cuandoLosFiltro(LocalDate fecha, String localidad, TipoDeEvento tipoEvento) {

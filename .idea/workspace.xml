@@ -10,13 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d581376c-73dc-4c9d-8a45-c90ccc51197f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/comprar-entrada.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/Application.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/resources/hibernateContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/resources/hibernateContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/login-otro.jsp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-evento.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-evento.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-usuario-sinuso.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/EventoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/EventoControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,13 +32,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="popup" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,33 +95,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.proyecto-eventos">
-    <configuration name="ConexionBaseDeDatosTest.pruebaConexion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EventoControllerTest.queAlFiltrarNoEncuentreNadaDevuelvaPopup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-limpio-spring" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ar.edu.unlam.tallerweb1.infrastructure.*" />
+          <option name="PATTERN" value="ar.edu.unlam.tallerweb1.delivery.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.infrastructure.ConexionBaseDeDatosTest" />
-      <option name="METHOD_NAME" value="pruebaConexion" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PersistenciaEventoTest.queSePuedaBuscarUnEventoPorId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto-limpio-spring" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unlam.tallerweb1.infrastructure.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.infrastructure.PersistenciaEventoTest" />
-      <option name="METHOD_NAME" value="queSePuedaBuscarUnEventoPorId" />
+      <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.delivery" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.delivery.EventoControllerTest" />
+      <option name="METHOD_NAME" value="queAlFiltrarNoEncuentreNadaDevuelvaPopup" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -153,18 +143,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RepositorioEventoTest.guardarUnEventoYPersistirlo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="java in proyecto-limpio-spring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-limpio-spring" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ar.edu.unlam.tallerweb1.infrastructure.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.infrastructure.RepositorioEventoTest" />
-      <option name="METHOD_NAME" value="guardarUnEventoYPersistirlo" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test in proyecto-limpio-spring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto-limpio-spring" />
+      <option name="TEST_OBJECT" value="directory" />
+      <dir value="$PROJECT_DIR$/proyecto-eventos-tw1/src/test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -257,20 +247,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ConexionBaseDeDatosTest.pruebaConexion" />
-      <item itemvalue="JUnit.PersistenciaEventoTest.queSePuedaBuscarUnEventoPorId" />
+      <item itemvalue="JUnit.java in proyecto-limpio-spring" />
+      <item itemvalue="JUnit.EventoControllerTest.queAlFiltrarNoEncuentreNadaDevuelvaPopup" />
+      <item itemvalue="JUnit.test in proyecto-limpio-spring" />
       <item itemvalue="JUnit.RepositorioEventoTest.buscarEventoPorNombre" />
       <item itemvalue="JUnit.RepositorioEventoTest.buscarEventosPorTipo" />
-      <item itemvalue="JUnit.RepositorioEventoTest.guardarUnEventoYPersistirlo" />
       <item itemvalue="Tomcat Server.proyecto-eventos" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.java in proyecto-limpio-spring" />
+        <item itemvalue="JUnit.EventoControllerTest.queAlFiltrarNoEncuentreNadaDevuelvaPopup" />
+        <item itemvalue="JUnit.test in proyecto-limpio-spring" />
         <item itemvalue="JUnit.RepositorioEventoTest.buscarEventosPorTipo" />
         <item itemvalue="JUnit.RepositorioEventoTest.buscarEventoPorNombre" />
-        <item itemvalue="JUnit.RepositorioEventoTest.guardarUnEventoYPersistirlo" />
-        <item itemvalue="JUnit.PersistenciaEventoTest.queSePuedaBuscarUnEventoPorId" />
-        <item itemvalue="JUnit.ConexionBaseDeDatosTest.pruebaConexion" />
       </list>
     </recent_temporary>
   </component>
@@ -288,6 +278,11 @@
       <workItem from="1685816572390" duration="66000" />
       <workItem from="1685816694605" duration="495000" />
       <workItem from="1685817230292" duration="2511000" />
+      <workItem from="1686608711477" duration="6791000" />
+      <workItem from="1686690009620" duration="424000" />
+      <workItem from="1686690451761" duration="1242000" />
+      <workItem from="1686695100903" duration="1308000" />
+      <workItem from="1686696431391" duration="28000" />
     </task>
     <servers />
   </component>
@@ -301,11 +296,6 @@
           <url>file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoServiceImpl.java</url>
           <line>42</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoImpl.java</url>
-          <line>60</line>
-          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

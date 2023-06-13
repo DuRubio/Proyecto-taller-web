@@ -44,7 +44,7 @@
                     <p class="text-gray-700">Localidad: ${evento.localidad}</p>
                 </div>
                 <div class="flex justify-center mt-6">
-                    <button class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</button>
+                    <a href="/comprar-entrada" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</a>
                 </div>
             </div>
         </c:forEach>

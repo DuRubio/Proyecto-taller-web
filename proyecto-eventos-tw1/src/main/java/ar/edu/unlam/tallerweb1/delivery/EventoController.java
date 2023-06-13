@@ -65,6 +65,12 @@ public class EventoController {
     }
 
 
+    @RequestMapping(path = "/comprar-entrada", method = RequestMethod.GET)
+    public ModelAndView getVistaComprar() {
+        return new ModelAndView("comprar-entrada");
+    }
+
+
     @RequestMapping(path="mostrar-eventos", method = RequestMethod.GET)
     public ModelAndView mostrarEventos() {
     	ModelMap model = new ModelMap();
@@ -75,7 +81,7 @@ public class EventoController {
         return mav;
     }
 
-    @RequestMapping(path = "/home/filtrar", method = RequestMethod.GET)
+    @RequestMapping(path = "/filtrar", method = RequestMethod.POST)
     public ModelAndView filtrarEventos(
             @RequestParam(value = "filtro-fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
             @RequestParam(value = "filtro-categoria", required = false) TipoDeEvento categoria,
@@ -94,8 +100,9 @@ public class EventoController {
         if(eventosFiltradosCategoria!=null) eventosFiltrados.addAll(eventosFiltradosCategoria);
 
         if(eventosFiltradosFecha.isEmpty() && eventosFiltradosLocalidad.isEmpty() && eventosFiltradosCategoria.isEmpty()){
+           // model.put("mensaje","No se encontraron eventos");
+            model.addAttribute("mostrarPopup", true);
             viewName= "home";
-            model.put("mensaje","No se encontraron eventos");
 
         } else {
             model.addAttribute("eventos", eventosFiltrados);

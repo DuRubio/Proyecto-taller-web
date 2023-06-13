@@ -43,7 +43,7 @@
 	<div class="flex justify-center items-center my-4">
 		<div class="border rounded-md p-4 bg-white">
 			<h2 class="text-lg font-semibold mb-2">Filtrar Eventos</h2>
-			<form action="/home/filtrar" method="GET">
+			<form action="/filtrar" method="POST">
 				<div class="flex flex-wrap items-center">
 					<div class="mr-4">
 						<label for="filtro-ciudad" class="block mb-1">Ciudad:</label> <input
@@ -71,16 +71,7 @@
 						</select>
 					</div>
 					<div>
-						<button type="submit"
-							class="px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Filtrar</button>
-						<c:if test="${not empty error}">
-							<h4>
-								<span>${error}</span>
-							</h4>
-							<br>
-						</c:if>
-						${mensaje}
-
+						<button type="submit" class="px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Filtrar</button>
 					</div>
 				</div>
 			</form>
@@ -99,7 +90,7 @@
 						<p class="text-gray-700">Localidad: ${evento.localidad}</p>
 					</div>
 					<div class="flex justify-center mt-6">
-						<button class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</button>
+						<a href="/comprar-entrada" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</a>
 					</div>
 				</div>
 			</c:forEach>
@@ -150,6 +141,15 @@
 			</div>
 		</div>
 	</footer>
+
+	<c:if test="${mostrarPopup}">
+		<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+			<div class="bg-white rounded-md shadow-lg p-4">
+				<p class="text-lg text-gray-800">Para tu exquisitez no hay resultados, amplia la busqueda</p> <br>
+				<a href="/home" class=" flex justify-center mt-4 px-4 py-2 bg-violet-500 text-white rounded-md hover:bg-violet-600">Aceptar</a>
+			</div>
+		</div>
+	</c:if>
 
 </body>
 
