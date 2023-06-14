@@ -23,7 +23,7 @@ public class UsuarioServiceImpl implements  UsuarioService{
 
     @Override
     public void guardarUsuario(DatosRegistracion datosRegistracion) {
-        Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
+        Usuario usuario = new Usuario(datosRegistracion);
         repoUsuario.save(usuario);
         }
 

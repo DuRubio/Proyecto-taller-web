@@ -74,6 +74,13 @@ public class Usuario {
      * para que elijan más de uno
      * 
      * 
+     * Modificar lógica de preferencias
+     * Agregar check en pantalla de registro
+     * 
+     * Pensar más adelante cómo hacer andar el editar preferencias
+     * 
+     * 
+     * 
      */
 
 
@@ -137,28 +144,28 @@ public class Usuario {
     public Usuario(DatosRegistracion datosRegistro) {
         setCorreo(datosRegistro.getCorreo());
         setClave(datosRegistro.getClave());
-        setMusical(false);
-        setDeportivo(false);
-        setBailable(false);
-        setTeatral(false);
-        setRecital(false);
-        setCine(false);
-        setCultural(false);
-        setGastronomico(false);
-        setFeria(false);
-        setMarcha(false);
-        setInfantil(false);
-        setJuvenil(false);
-        setAdultos(false);
-        setJubilados(false);
-        setTodasLasEdades(false);
-        setAireLibre(false);
-        setTeatro(false);
-        setEstadio(false);
-        setCentroCultural(false);
-        setMatutino(false);
-        setVespertino(false);
-        setNocturno(false);
+        setMusical(datosRegistro.getMusical());
+        setDeportivo(datosRegistro.getDeportivo());
+        setBailable(datosRegistro.getBailable());
+        setTeatral(datosRegistro.getTeatral());
+        setRecital(datosRegistro.getRecital());
+        setCine(datosRegistro.getCine());
+        setCultural(datosRegistro.getCultural());
+        setGastronomico(datosRegistro.getGastronomico());
+        setFeria(datosRegistro.getFeria());
+        setMarcha(datosRegistro.getMarcha());
+        setInfantil(datosRegistro.getInfantil());
+        setJuvenil(datosRegistro.getJuvenil());
+        setAdultos(datosRegistro.getAdultos());
+        setJubilados(datosRegistro.getJubilados());
+        setTodasLasEdades(datosRegistro.getTodasLasEdades());
+        setAireLibre(datosRegistro.getAireLibre());
+        setTeatro(datosRegistro.getTeatro());
+        setEstadio(datosRegistro.getEstadio());
+        setCentroCultural(datosRegistro.getCentroCultural());
+        setMatutino(datosRegistro.getMatutino());
+        setVespertino(datosRegistro.getVespertino());
+        setNocturno(datosRegistro.getNocturno());
     }
 
     public Usuario(String correo, String clave) {
