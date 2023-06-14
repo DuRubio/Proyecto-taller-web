@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -88,12 +89,44 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 	}
 
 	@Override
-	public Object findEventosPorMisPreferencias() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Evento> findEventosPorMisPreferencias() {
+		CriteriaBuilder builder = sessionFactory.getCurrentSession().getCriteriaBuilder();
+	    CriteriaQuery<Evento> criteriaQuery = builder.createQuery(Evento.class);
+	    Root<Evento> root = criteriaQuery.from(Evento.class);
+
+	    criteriaQuery.select(root);
+	    criteriaQuery.where(
+	        builder.or(
+	        	root.get("tipoEvento").in("musical", "deportivo", "bailable", "teatral", "recital", "cine", "cultural", "gastronomico", "feria", "marcha"),
+	        	root.get("tipoLugar").in("aireLibre", "estadio", "centroCultural", "teatro")
+	        	
+	            //builder.equal(root.get("tipoEvento"), ciudad),
+	            //builder.isTrue(root.get("deportivo"))
+	        )
+	    );
+
+	    return sessionFactory.getCurrentSession().createQuery(criteriaQuery).getResultList();
 	}
 	
-	
+	/*ej
+	 * @Override
+public List<Evento> buscarEventosPorNombreCiudadYDeporte(String nombre, String ciudad) {
+    CriteriaBuilder builder = sessionFactory.getCurrentSession().getCriteriaBuilder();
+    CriteriaQuery<Evento> criteriaQuery = builder.createQuery(Evento.class);
+    Root<Evento> root = criteriaQuery.from(Evento.class);
+
+    criteriaQuery.select(root);
+    criteriaQuery.where(
+        builder.and(
+            builder.like(root.get("nombre"), "a%"),
+            builder.equal(root.get("localidad"), ciudad),
+            builder.isTrue(root.get("deportivo"))
+        )
+    );
+
+    return sessionFactory.getCurrentSession().createQuery(criteriaQuery).getResultList();
+}
+	 */
 	
 
 

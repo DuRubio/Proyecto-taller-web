@@ -23,6 +23,12 @@ public class Usuario {
     @Column(nullable = false)
     private String clave;
 
+    private String tipoEvento;
+    private String tipoLugar;
+    private String horario;
+    private String edades;
+    
+    /*
     private Boolean musical;
     private Boolean deportivo;
     private Boolean bailable;
@@ -45,6 +51,16 @@ public class Usuario {
     private Boolean matutino;
     private Boolean vespertino;
     private Boolean nocturno;
+    */
+    
+    
+    /*
+     * Modificar esto a string como evento
+     * 
+     * cambiar checkbox por botones
+     * 
+     * 1 opcion por variable (lugar, hora, etc)
+     */
 
     /*
      * Funcionalidad: Permitir que los usuarios puedan filtrar eventos por sus preferencias
@@ -83,7 +99,17 @@ public class Usuario {
      * 
      */
 
+    public Usuario() {}
+    
+    public Usuario(DatosRegistracion datosRegistro) {
+    	setCorreo(datosRegistro.getCorreo());
+        setClave(datosRegistro.getClave());
+        setNombre(datosRegistro.getNombre());
+        setApellido(datosRegistro.getApellido());
+        setLocalidad(datosRegistro.getLocalidad());
+    }
 
+    /*
     public Usuario() {
     	setMusical(false);
         setDeportivo(false);
@@ -108,8 +134,6 @@ public class Usuario {
         setVespertino(false);
         setNocturno(false);
     }
-
-
 
     public Usuario(String nombre, String apellido, String localidad, String correo, String clave) {
         setNombre(nombre);
@@ -194,6 +218,7 @@ public class Usuario {
         setVespertino(false);
         setNocturno(false);
     }
+    */
 
     public String getCorreo() {
         return correo;
@@ -242,7 +267,40 @@ public class Usuario {
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
     }
+    
+    public String getTipoEvento() {
+		return tipoEvento;
+	}
 
+	public void setTipoEvento(String tipoEvento) {
+		this.tipoEvento = tipoEvento;
+	}
+
+	public String getTipoLugar() {
+		return tipoLugar;
+	}
+
+	public void setTipoLugar(String tipoLugar) {
+		this.tipoLugar = tipoLugar;
+	}
+
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+
+	public String getEdades() {
+		return edades;
+	}
+
+	public void setEdades(String edades) {
+		this.edades = edades;
+	}
+
+    /*
 	public Boolean getMusical() {
 		return musical;
 	}
@@ -418,7 +476,7 @@ public class Usuario {
 	public void setNocturno(Boolean nocturno) {
 		this.nocturno = nocturno;
 	}
-    
+    */
 	
     
 }

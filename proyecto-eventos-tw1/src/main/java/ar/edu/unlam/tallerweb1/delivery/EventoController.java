@@ -115,7 +115,7 @@ public class EventoController {
 
     }
 
-    @RequestMapping(path="listar-eventos-segun-mis-preferencias", method = RequestMethod.GET)
+    @RequestMapping(path="mostrar-eventos-preferencias", method = RequestMethod.GET)
 	public ModelAndView listarEventosPorMisPreferencias() {
 		ModelMap model = new ModelMap();
         List<Evento> eventos = (List<Evento>) servicioEvento.listarEventosPorMisPreferencias();

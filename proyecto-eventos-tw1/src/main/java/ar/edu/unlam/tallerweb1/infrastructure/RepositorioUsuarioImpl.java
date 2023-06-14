@@ -43,6 +43,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
     
     @Override
 	public void update(Usuario usuario) {
+    	/*
     	Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaUpdate<Usuario> criteriaUpdate = criteriaBuilder.createCriteriaUpdate(Usuario.class);
@@ -71,6 +72,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
         criteriaUpdate.set(root.get("nocturno"), usuario.getNocturno());
         criteriaUpdate.where(criteriaBuilder.equal(root.get("id"), usuario.getId()));
         session.createQuery(criteriaUpdate).executeUpdate();
+		*/
 	}
 	
 	/*

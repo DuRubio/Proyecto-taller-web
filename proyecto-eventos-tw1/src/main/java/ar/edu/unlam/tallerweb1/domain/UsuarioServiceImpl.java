@@ -76,7 +76,7 @@ public class UsuarioServiceImpl implements  UsuarioService{
 	public void guardarPreferencias(DatosPreferencias datosPreferencias) {
 		Usuario usuario = new Usuario();
 		usuario = this.repoUsuario.buscarPorId(1L);
-		usuario.setMusical(datosPreferencias.getMusical());
+		//Replantear método
 		//, datosPreferencias.getDeportivo(),datosPreferencias.getBailable(),datosPreferencias.getTeatral(),datosPreferencias.getRecital(),datosPreferencias.getCine(),datosPreferencias.getCultural(),datosPreferencias.getGastronomico(),datosPreferencias.getFeria(),datosPreferencias.getMarcha(),datosPreferencias.getInfantil(),datosPreferencias.getJuvenil(),datosPreferencias.getAdultos(),datosPreferencias.getJubilados(),datosPreferencias.getTodasLasEdades(),datosPreferencias.getAireLibre(),datosPreferencias.getTeatro(),datosPreferencias.getEstadio(),datosPreferencias.getCentroCultural(),datosPreferencias.getMatutino(),datosPreferencias.getVespertino(),datosPreferencias.getNocturno());
         repoUsuario.update(usuario);
 		

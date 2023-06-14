@@ -26,7 +26,7 @@ public interface RepositorioEvento {
 
 	public List<Evento> findFirst4Events();
 
-	public Object findEventosPorMisPreferencias();
+	public List<Evento> findEventosPorMisPreferencias();
 
 	
 }

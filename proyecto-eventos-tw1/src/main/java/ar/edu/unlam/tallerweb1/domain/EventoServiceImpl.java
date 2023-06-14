@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.domain;
 
+import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,9 @@ public class EventoServiceImpl implements EventoService  {
     }
 
     @Override
-    public void save(Evento evento) {
-
+    public void save(DatosEvento datosEvento) {
+    	Evento evento = new Evento(datosEvento);
+    	repoEvento.save(evento);
     }
 
     @Override
@@ -74,8 +76,14 @@ public class EventoServiceImpl implements EventoService  {
 	}
 
 	@Override
-	public Object listarEventosPorMisPreferencias() {
+	public List<Evento> listarEventosPorMisPreferencias() {
 		return repoEvento.findEventosPorMisPreferencias();
+	}
+
+	@Override
+	public void save(Evento evento) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

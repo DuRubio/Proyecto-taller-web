@@ -7,7 +7,13 @@ public class DatosRegistracion {
     private String nombre;
     private String apellido;
     private String localidad;
+    
+    private String tipoEvento;
+    private String tipoLugar;
+    private String horario;
+    private String edades;
 
+    /*
     private Boolean musical;
     private Boolean deportivo;
     private Boolean bailable;
@@ -30,7 +36,24 @@ public class DatosRegistracion {
     private Boolean matutino;
     private Boolean vespertino;
     private Boolean nocturno;
+	*/
+    
+    public DatosRegistracion() {}
+    
+    public DatosRegistracion(String nombre, String apellido, String localidad, String correo, String clave, String tipoEvento, String tipoLugar, String edades, String horario) {
 
+    	setNombre(nombre);
+        setApellido(apellido);
+        setLocalidad(localidad);
+        setCorreo(correo);
+        setClave(clave);
+        setTipoEvento(tipoEvento);
+        setTipoLugar(tipoLugar);
+        setHorario(horario);
+        setEdades(edades);
+    }
+
+    /*
     public DatosRegistracion(String correo, String clave) {
         setCorreo(correo);
         setClave(clave);
@@ -58,8 +81,7 @@ public class DatosRegistracion {
         setNocturno(false);
     }
 
-    public DatosRegistracion() {
-    }
+    
 
     public DatosRegistracion(String nombre, String apellido, String localidad) {
 
@@ -153,6 +175,7 @@ public class DatosRegistracion {
         setVespertino(vespertino);
         setNocturno(nocturno);
     }
+    */
 
     public String getCorreo() {
         return correo;
@@ -194,6 +217,39 @@ public class DatosRegistracion {
         this.localidad = localidad;
     }
     
+    public String getTipoEvento() {
+		return tipoEvento;
+	}
+
+	public void setTipoEvento(String tipoEvento) {
+		this.tipoEvento = tipoEvento;
+	}
+
+	public String getTipoLugar() {
+		return tipoLugar;
+	}
+
+	public void setTipoLugar(String tipoLugar) {
+		this.tipoLugar = tipoLugar;
+	}
+
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
+
+	public String getEdades() {
+		return edades;
+	}
+
+	public void setEdades(String edades) {
+		this.edades = edades;
+	}
+    
+    /*
     public Boolean getMusical() {
 		return musical;
 	}
@@ -369,4 +425,5 @@ public class DatosRegistracion {
 	public void setNocturno(Boolean nocturno) {
 		this.nocturno = nocturno;
 	}
+	*/
 }

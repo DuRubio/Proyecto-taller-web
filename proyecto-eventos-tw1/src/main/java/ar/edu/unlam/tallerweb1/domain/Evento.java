@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -35,12 +38,27 @@ public class Evento {
     	setEventoActivo(true);
     }
     
-    public Evento(String nombre, Date fecha, String lugar, String tipoLugar ,String localidad) {
+    public Evento(String nombre, Date fecha, String lugar,String localidad, String tipoEvento, String tipoLugar, String edades, String horario) {
     	setNombre(nombre);
     	setFecha(fecha);
     	setLugar(lugar);
     	setTipoLugar(tipoLugar);
+    	setHorario(horario);
+    	setEdades(edades);
+    	setTipoEvento(tipoEvento);
     	setLocalidad(localidad);
+    	setEventoActivo(true);
+    }
+    
+    public Evento(DatosEvento datosEvento) {
+    	setNombre(datosEvento.getNombre());
+    	setFecha(datosEvento.getFecha());
+    	setLugar(datosEvento.getLugar());
+    	setTipoLugar(datosEvento.getTipoLugar());
+    	setHorario(datosEvento.getHorario());
+    	setEdades(datosEvento.getEdades());
+    	setTipoEvento(datosEvento.getTipoEvento());
+    	setLocalidad(datosEvento.getLocalidad());
     	setEventoActivo(true);
     }
 

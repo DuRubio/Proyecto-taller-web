@@ -3,6 +3,8 @@ package ar.edu.unlam.tallerweb1.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
+
 public interface EventoService {
     boolean validarNombre(String nombre);
 
@@ -23,5 +25,7 @@ public interface EventoService {
 
 	List<Evento> getPrimeros4Eventos();
 
-	Object listarEventosPorMisPreferencias();
+	List<Evento> listarEventosPorMisPreferencias();
+
+	void save(DatosEvento evento);
 }
