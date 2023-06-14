@@ -5,7 +5,6 @@ import ar.edu.unlam.tallerweb1.domain.EventoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -56,9 +54,8 @@ public class EventoController {
     @RequestMapping(path = "/home", method = RequestMethod.GET)
     public ModelAndView getVistaHome() {
     	ModelMap model = new ModelMap();
-        //falla la consulta
-    	//List<Evento> eventos = this.servicioEvento.getPrimeros3Eventos();
-    	List<Evento> eventos = servicioEvento.getEventos();
+    	List<Evento> eventos = this.servicioEvento.getPrimeros4Eventos();
+    	//List<Evento> eventos = servicioEvento.getEventos();
     	model.put("eventos", eventos);
     	ModelAndView mav = new ModelAndView("home", model);
         return mav;

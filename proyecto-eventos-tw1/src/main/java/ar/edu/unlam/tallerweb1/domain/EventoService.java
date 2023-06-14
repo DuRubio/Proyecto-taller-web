@@ -23,5 +23,5 @@ public interface EventoService {
 
     List<Evento> getEventos();
 
-	List<Evento> getPrimeros3Eventos();
+	List<Evento> getPrimeros4Eventos();
 }

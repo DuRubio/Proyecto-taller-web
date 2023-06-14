@@ -12,4 +12,5 @@ public interface RepositorioUsuario {
     Usuario buscarPorId(Long id);
 
     Usuario buscarPorCorreo(String correo);
+
 }

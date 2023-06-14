@@ -1,10 +1,10 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
 
+import ar.edu.unlam.tallerweb1.domain.Usuario;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Date;
+import java.security.Principal;
 
 @Controller
 public class UsuarioController {
 
-    private UsuarioService servicioRegistracion;
+    private UsuarioService usuarioService;
+    private Long id;
 
     @Autowired //esto solo inyecta instancias, por eso el atributo debe ser una instancia de ese servicio
     public UsuarioController(UsuarioService servicioRegistracion) {
-        this.servicioRegistracion = servicioRegistracion; //va a recibir un servicio o su implementacion, depende lo que yo mockie en el inicializador en la clase de test
+        this.usuarioService = servicioRegistracion; //va a recibir un servicio o su implementacion, depende lo que yo mockie en el inicializador en la clase de test
     }
 
 
@@ -37,12 +38,12 @@ public class UsuarioController {
         ModelMap model = new ModelMap();
         String viewName = "";
 
-        if (this.servicioRegistracion.obtenerUsuarioPorCorreo(datosRegistracion.getCorreo()) == null) {
-            if (this.servicioRegistracion.validarMail(datosRegistracion.getCorreo()) && this.servicioRegistracion.validarClave(datosRegistracion.getClave())) {
+        if (this.usuarioService.obtenerUsuarioPorCorreo(datosRegistracion.getCorreo()) == null) {
+            if (this.usuarioService.validarMail(datosRegistracion.getCorreo()) && this.usuarioService.validarClave(datosRegistracion.getClave())) {
                 model.put("mensaje", "Registro exitoso");
                 model.put("datosLogin", new DatosLogin(datosRegistracion.getCorreo(), datosRegistracion.getClave()));
                 viewName = "login";
-                servicioRegistracion.guardarUsuario(datosRegistracion);
+                usuarioService.guardarUsuario(datosRegistracion);
             } else {
                 model.put("mensaje", "Registro fallido, mail o clave inválido");
                 viewName = "registrarse";
@@ -68,20 +69,31 @@ public class UsuarioController {
             DatosLogin usuarioValido = new DatosLogin(correo, clave);
             model.put("datosLogin", new DatosLogin());
             String viewName = "";
-            if (this.servicioRegistracion.compararMail(usuarioValido.getCorreo()) && this.servicioRegistracion.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())) {
+            if (this.usuarioService.compararMail(usuarioValido.getCorreo()) && this.usuarioService.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())) {
+                this.id = usuarioService.getId(correo);
                 viewName="redirect:/home";
                 //usuarioValido.isLogeado(true);
             } else {
+                this.id = null;
                 model.put("mensaje", "mail o clave incorrecta");
                 viewName="login";
             }
             return new ModelAndView(viewName, model);
         }
 
-        @RequestMapping(path="/out" , method=RequestMethod.GET)
-        public ModelAndView cerrarSesion(){
-            //usuarioValido.isLogeado(false);
-            return new ModelAndView("home");
+        @RequestMapping(path = "/my-profile", method = RequestMethod.GET)
+        public ModelAndView getVistaMiPerfil() {
+            ModelMap model = new ModelMap();
+
+            Usuario usuario = usuarioService.obtenerUsuarioPorID(this.id);
+
+            if (usuario != null) {
+                model.put("usuario", usuario);
+                return new ModelAndView("my-profile", model);
+            } else {
+                model.put("mensaje", "El usuario no existe");
+                return new ModelAndView("login", model);
+            }
         }
 
 

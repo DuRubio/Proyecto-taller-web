@@ -32,7 +32,7 @@
 			<div>
 				<a href="#" class="mx-2 text-white hover:text-violet-300"> <i
 					class="fa-solid fa-bell"></i>
-				</a> <a href="#" class="mx-2 text-white hover:text-violet-300"> <i
+				</a> <a href="/my-profile" class="mx-2 text-white hover:text-violet-300"> <i
 					class="fa-solid fa-user"></i>
 				</a>
 			</div>

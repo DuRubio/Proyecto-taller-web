@@ -20,5 +20,9 @@ public interface UsuarioService {
 
     Usuario obtenerUsuarioPorCorreo(String correo);
 
+    Usuario obtenerUsuarioPorID(Long id);
+
     void guardarUsuario(DatosRegistracion datosRegistracion);
+
+    Long getId(String correo);
 }

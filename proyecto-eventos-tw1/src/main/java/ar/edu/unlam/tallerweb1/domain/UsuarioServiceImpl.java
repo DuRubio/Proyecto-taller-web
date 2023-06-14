@@ -26,6 +26,11 @@ public class UsuarioServiceImpl implements  UsuarioService{
         repoUsuario.save(usuario);
         }
 
+    @Override
+    public Long getId(String correo) {
+        Usuario usuario = repoUsuario.buscarPorCorreo(correo);
+        return usuario.getId();
+    }
 
 
     @Override
@@ -41,6 +46,11 @@ public class UsuarioServiceImpl implements  UsuarioService{
     public Usuario obtenerUsuarioPorCorreo(String correo) {
 
         return repoUsuario.buscarPorCorreo(correo);
+    }
+
+    @Override
+    public Usuario obtenerUsuarioPorID(Long id) {
+        return repoUsuario.buscarPorId(id);
     }
 
     @Override

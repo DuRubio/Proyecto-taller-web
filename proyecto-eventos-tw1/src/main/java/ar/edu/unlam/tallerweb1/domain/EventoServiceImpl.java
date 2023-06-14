@@ -70,8 +70,8 @@ public class EventoServiceImpl implements EventoService  {
     }
 
 	@Override
-	public List<Evento> getPrimeros3Eventos() {
-		return repoEvento.findFirst3Events();
+	public List<Evento> getPrimeros4Eventos() {
+		return repoEvento.findFirst4Events();
 	}
 
 }

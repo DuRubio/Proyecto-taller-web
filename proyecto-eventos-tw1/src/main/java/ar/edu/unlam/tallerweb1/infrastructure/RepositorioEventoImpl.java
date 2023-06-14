@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
@@ -80,16 +81,17 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
                 .list();
     }
 
-	@Override
-	public List<Evento> findFirst3Events() {
-		String hql = "FROM Evento WHERE eventoActivo = true ORDER BY id";
-		return (List<Evento>)sessionFactory.getCurrentSession()
-				.createQuery(hql, Evento.class).setMaxResults(3).list();
-	}
+    @Override
+    public List<Evento> findFirst4Events() {
+        Session session = sessionFactory.getCurrentSession();
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<Evento> criteriaQuery = criteriaBuilder.createQuery(Evento.class);
+        Root<Evento> root = criteriaQuery.from(Evento.class);
+        criteriaQuery.select(root);
+        return session.createQuery(criteriaQuery)
+                .setMaxResults(4)
+                .getResultList();
+    }
 
-
-        /*Session session = this.sessionFactory.getCurrentSession();
-        Query<Evento> query = session.createQuery("FROM Evento", Evento.class);
-        return query.getResultList();*/
 
 }
