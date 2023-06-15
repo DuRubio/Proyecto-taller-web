@@ -1,14 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
-import java.util.Date;
-
-public class DatosEvento {
-    private String nombre;
-    private Date fecha;
-    private String lugar;
-    private String localidad;
-    
-    private Boolean musical;
+public class DatosPreferencias {
+	
+	private Boolean musical;
     private Boolean deportivo;
     private Boolean bailable;
     private Boolean teatral;
@@ -30,75 +24,35 @@ public class DatosEvento {
     private Boolean matutino;
     private Boolean vespertino;
     private Boolean nocturno;
-
-
-    public DatosEvento() {
+    
+    public DatosPreferencias() {}
+    
+    public DatosPreferencias(Boolean musical, Boolean deportivo, Boolean bailable, Boolean teatral, Boolean recital, Boolean cine, Boolean cultural, Boolean gastronomico, Boolean feria, Boolean marcha, Boolean infantil, Boolean juvenil, Boolean adultos, Boolean jubilados, Boolean todasLasEdades, Boolean aireLibre, Boolean teatro, Boolean estadio, Boolean centroCultural, Boolean matutino, Boolean vespertino, Boolean nocturno){
+    	setMusical(musical);
+    	setDeportivo(deportivo);
+    	setBailable(bailable);
+    	setTeatral(teatral);
+    	setRecital(recital);
+    	setCine(cine);
+    	setCultural(cultural);
+    	setGastronomico(gastronomico);
+    	setFeria(feria);
+    	setMarcha(marcha);
+    	setInfantil(infantil);
+    	setJuvenil(juvenil);
+    	setAdultos(adultos);
+    	setJubilados(jubilados);
+    	setTodasLasEdades(todasLasEdades);
+    	setAireLibre(aireLibre);
+    	setTeatro(teatro);
+    	setEstadio(estadio);
+    	setCentroCultural(centroCultural);
+    	setMatutino(matutino);
+    	setVespertino(vespertino);
+    	setNocturno(nocturno);
     }
 
-    public DatosEvento(String nombre, String lugar, String localidad, Boolean musical, Boolean deportivo, Boolean bailable,
-    		Boolean teatral, Boolean recital, Boolean cine, Boolean cultural, Boolean gastronomico, Boolean feria, Boolean marcha, Boolean infantil, Boolean juvenil, Boolean adultos, Boolean jubilados,
-    		Boolean todasLasEdades, Boolean aireLibre, Boolean teatro, Boolean estadio, Boolean centroCultural, Boolean matutino, Boolean vespertino, Boolean nocturno) {
-    	setNombre(nombre); 
-    	//setFecha(new Date("2023/06/07"));
-    	setLugar(lugar);
-        setLocalidad(localidad);
-        setMusical(musical);
-        setDeportivo(deportivo);
-        setBailable(bailable);
-        setTeatral(teatral);
-        setRecital(recital);
-        setCine(cine);
-        setCultural(cultural);
-        setGastronomico(gastronomico);
-        setFeria(feria);
-        setMarcha(marcha);
-        setInfantil(infantil);
-        setJuvenil(juvenil);
-        setAdultos(adultos);
-        setJubilados(jubilados);
-        setTodasLasEdades(todasLasEdades);
-        setAireLibre(aireLibre);
-        setTeatro(teatro);
-        setEstadio(estadio);
-        setCentroCultural(centroCultural);
-        setMatutino(matutino);
-        setVespertino(vespertino);
-        setNocturno(nocturno);
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public Boolean getMusical() {
+	public Boolean getMusical() {
 		return musical;
 	}
 
@@ -146,14 +100,6 @@ public class DatosEvento {
 		this.cine = cine;
 	}
 
-	public Boolean getMarcha() {
-		return marcha;
-	}
-
-	public void setMarcha(Boolean marcha) {
-		this.marcha = marcha;
-	}
-
 	public Boolean getCultural() {
 		return cultural;
 	}
@@ -176,6 +122,14 @@ public class DatosEvento {
 
 	public void setFeria(Boolean feria) {
 		this.feria = feria;
+	}
+
+	public Boolean getMarcha() {
+		return marcha;
+	}
+
+	public void setMarcha(Boolean marcha) {
+		this.marcha = marcha;
 	}
 
 	public Boolean getInfantil() {
@@ -273,4 +227,7 @@ public class DatosEvento {
 	public void setNocturno(Boolean nocturno) {
 		this.nocturno = nocturno;
 	}
+    
+    
+
 }

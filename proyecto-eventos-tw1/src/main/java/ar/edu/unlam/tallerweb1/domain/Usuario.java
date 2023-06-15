@@ -1,13 +1,16 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 import javax.persistence.*;
+
+import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
+
 import java.io.Serializable;
 
 @Entity
 
 public class Usuario {
 
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     //@Column(nullable = false)
@@ -21,11 +24,16 @@ public class Usuario {
     @Column(nullable = false)
     private String clave;
 
-    private Boolean musica;
-    private Boolean deporte;
+    private Boolean musical;
+    private Boolean deportivo;
+    private Boolean bailable;
+    private Boolean teatral;
+    private Boolean recital;
+    private Boolean cine;
     private Boolean cultural;
     private Boolean gastronomico;
     private Boolean feria;
+    private Boolean marcha;
     private Boolean infantil;
     private Boolean juvenil;
     private Boolean adultos;
@@ -62,11 +70,44 @@ public class Usuario {
      * 
      * Mostrará un listado de eventos que cumplen con alguna de las preferencias del usuario
      * 
+     * Que los campos sean enum en los eventos 
+     * y boolean en los usuarios
+     * para que elijan más de uno
+     * 
+     * 
+     * Modificar lógica de preferencias
+     * Agregar check en pantalla de registro
+     * 
+     * Pensar más adelante cómo hacer andar el editar preferencias
+     * 
+     * 
      * 
      */
 
 
     public Usuario() {
+    	setMusical(false);
+        setDeportivo(false);
+        setBailable(false);
+        setTeatral(false);
+        setRecital(false);
+        setCine(false);
+        setCultural(false);
+        setGastronomico(false);
+        setFeria(false);
+        setMarcha(false);
+        setInfantil(false);
+        setJuvenil(false);
+        setAdultos(false);
+        setJubilados(false);
+        setTodasLasEdades(false);
+        setAireLibre(false);
+        setTeatro(false);
+        setEstadio(false);
+        setCentroCultural(false);
+        setMatutino(false);
+        setVespertino(false);
+        setNocturno(false);
     }
 
 
@@ -77,11 +118,82 @@ public class Usuario {
         setLocalidad(localidad);
         setCorreo(correo);
         setClave(clave);
+        setMusical(false);
+        setDeportivo(false);
+        setBailable(false);
+        setTeatral(false);
+        setRecital(false);
+        setCine(false);
+        setCultural(false);
+        setGastronomico(false);
+        setFeria(false);
+        setMarcha(false);
+        setInfantil(false);
+        setJuvenil(false);
+        setAdultos(false);
+        setJubilados(false);
+        setTodasLasEdades(false);
+        setAireLibre(false);
+        setTeatro(false);
+        setEstadio(false);
+        setCentroCultural(false);
+        setMatutino(false);
+        setVespertino(false);
+        setNocturno(false);
+    }
+    
+    public Usuario(DatosRegistracion datosRegistro) {
+        setCorreo(datosRegistro.getCorreo());
+        setClave(datosRegistro.getClave());
+        setMusical(datosRegistro.getMusical());
+        setDeportivo(datosRegistro.getDeportivo());
+        setBailable(datosRegistro.getBailable());
+        setTeatral(datosRegistro.getTeatral());
+        setRecital(datosRegistro.getRecital());
+        setCine(datosRegistro.getCine());
+        setCultural(datosRegistro.getCultural());
+        setGastronomico(datosRegistro.getGastronomico());
+        setFeria(datosRegistro.getFeria());
+        setMarcha(datosRegistro.getMarcha());
+        setInfantil(datosRegistro.getInfantil());
+        setJuvenil(datosRegistro.getJuvenil());
+        setAdultos(datosRegistro.getAdultos());
+        setJubilados(datosRegistro.getJubilados());
+        setTodasLasEdades(datosRegistro.getTodasLasEdades());
+        setAireLibre(datosRegistro.getAireLibre());
+        setTeatro(datosRegistro.getTeatro());
+        setEstadio(datosRegistro.getEstadio());
+        setCentroCultural(datosRegistro.getCentroCultural());
+        setMatutino(datosRegistro.getMatutino());
+        setVespertino(datosRegistro.getVespertino());
+        setNocturno(datosRegistro.getNocturno());
     }
 
     public Usuario(String correo, String clave) {
-        this.correo = correo;
-        this.clave = clave;
+        setCorreo(correo);
+        setClave(clave);
+        setMusical(false);
+        setDeportivo(false);
+        setBailable(false);
+        setTeatral(false);
+        setRecital(false);
+        setCine(false);
+        setCultural(false);
+        setGastronomico(false);
+        setFeria(false);
+        setMarcha(false);
+        setInfantil(false);
+        setJuvenil(false);
+        setAdultos(false);
+        setJubilados(false);
+        setTodasLasEdades(false);
+        setAireLibre(false);
+        setTeatro(false);
+        setEstadio(false);
+        setCentroCultural(false);
+        setMatutino(false);
+        setVespertino(false);
+        setNocturno(false);
     }
 
     public String getCorreo() {
@@ -132,20 +244,60 @@ public class Usuario {
         this.localidad = localidad;
     }
 
-	public Boolean getMusica() {
-		return musica;
+	public Boolean getMusical() {
+		return musical;
 	}
 
-	public void setMusica(Boolean musica) {
-		this.musica = musica;
+	public void setMusical(Boolean musical) {
+		this.musical = musical;
 	}
 
-	public Boolean getDeporte() {
-		return deporte;
+	public Boolean getDeportivo() {
+		return deportivo;
 	}
 
-	public void setDeporte(Boolean deporte) {
-		this.deporte = deporte;
+	public void setDeportivo(Boolean deportivo) {
+		this.deportivo = deportivo;
+	}
+
+	public Boolean getBailable() {
+		return bailable;
+	}
+
+	public void setBailable(Boolean bailable) {
+		this.bailable = bailable;
+	}
+
+	public Boolean getTeatral() {
+		return teatral;
+	}
+
+	public void setTeatral(Boolean teatral) {
+		this.teatral = teatral;
+	}
+
+	public Boolean getRecital() {
+		return recital;
+	}
+
+	public void setRecital(Boolean recital) {
+		this.recital = recital;
+	}
+
+	public Boolean getCine() {
+		return cine;
+	}
+
+	public void setCine(Boolean cine) {
+		this.cine = cine;
+	}
+
+	public Boolean getMarcha() {
+		return marcha;
+	}
+
+	public void setMarcha(Boolean marcha) {
+		this.marcha = marcha;
 	}
 
 	public Boolean getCultural() {

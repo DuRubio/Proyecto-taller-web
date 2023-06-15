@@ -13,4 +13,5 @@ public interface RepositorioUsuario {
 
     Usuario buscarPorCorreo(String correo);
 
+    void update(Usuario usuario);
 }

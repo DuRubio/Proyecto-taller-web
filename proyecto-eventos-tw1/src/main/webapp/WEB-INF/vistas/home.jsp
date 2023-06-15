@@ -43,7 +43,7 @@
 	<div class="flex justify-center items-center my-4">
 		<div class="border rounded-md p-4 bg-white">
 			<h2 class="text-lg font-semibold mb-2">Filtrar Eventos</h2>
-			<form action="/filtrar" method="POST">
+			<form action="/home/filtrar" method="GET">
 				<div class="flex flex-wrap items-center">
 					<div class="mr-4">
 						<label for="filtro-ciudad" class="block mb-1">Ciudad:</label> <input
@@ -61,41 +61,64 @@
 						<select id="filtro-categoria" name="filtro-categoria"
 							class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
 							<option value="">Seleccione una categor&iacute;a</option>
-							<option value="Deportivo">Deportivo</option>
-							<option value="Musical">Musical</option>
-							<option value="Bailable">Bailable</option>
-							<option value="Teatro">Teatro</option>
-							<option value="Recital">Recital</option>
-							<option value="Cine">Cine</option>
+							<option value="deportivo">Deportivo</option>
+							<option value="musical">Musical</option>
+							<option value="bailable">Bailable</option>
+							<option value="teatral">Teatral</option>
+							<option value="recital">Recital</option>
+							<option value="cine">Cine</option>
+							<option value="cultural">Cultural</option>
+							<option value="gastronomico">Gastronomico</option>
+							<option value="feria">Feria</option>
+							<option value="marcha">Marcha</option>
 
 						</select>
 					</div>
 					<div>
-						<button type="submit" class="px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Filtrar</button>
+						<button type="submit"
+							class="px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Filtrar</button>
+						<c:if test="${not empty error}">
+							<h4>
+								<span>${error}</span>
+							</h4>
+							<br>
+						</c:if>
+						${mensaje}
+
 					</div>
 				</div>
 			</form>
 		</div>
+		<div class="flex justify-evenly px-6 pt-4 pb-2">
+		<a
+			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+			href="editar-mis-preferencias">Editar Mis Preferencias</a>
+		</div>
 	</div>
 
 	<!-- Cards -->
-	<div class="max-w-6xl mx-auto mt-8">
-		<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-			<c:forEach items="${eventos}" var="evento">
-				<div class="bg-white shadow-md rounded p-6">
-					<img class="w-full" src="../img/${evento.URLImagen}" alt="Evento">
-					<div class="mt-4">
-						<h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
-						<p class="text-gray-700">Fecha: ${evento.fecha}</p>
-						<p class="text-gray-700">Localidad: ${evento.localidad}</p>
+	<div class="flex flex-wrap justify-center">
+		<div class="max-w-6xl mx-auto mt-8">
+			<div
+				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+				<c:forEach items="${eventos}" var="evento">
+					<div class="bg-white shadow-md rounded p-6">
+						<img class="w-full" src="../img/${evento.URLImagen}" alt="Evento">
+						<div class="mt-4">
+							<h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
+							<p class="text-gray-700">Fecha: ${evento.fecha}</p>
+							<p class="text-gray-700">Localidad: ${evento.localidad}</p>
+							<!-- Agrega más detalles del evento si es necesario -->
+						</div>
+						<div class="flex justify-center mt-6">
+							<button
+								class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar
+								entradas</button>
+						</div>
 					</div>
-					<div class="flex justify-center mt-6">
-						<a href="/comprar-entrada" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</a>
-					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
+			</div>
 		</div>
-	</div>
 
 	</div>
 	<div class="flex justify-evenly px-6 pt-4 pb-2">
@@ -108,6 +131,7 @@
 			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
 			href="registrar-evento">Registra un evento</a>
 	</div>
+	
 	<!-- Google Maps -->
 	<div class="flex justify-center">
 		<iframe
@@ -115,6 +139,7 @@
 			width="600" height="450" style="border: 0;" allowfullscreen=""
 			loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 	</div>
+	
 
 	<!-- Footer  -->
 

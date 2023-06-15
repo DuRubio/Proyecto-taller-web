@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.domain;
 
+import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 
 import javax.persistence.Entity;
@@ -13,20 +14,24 @@ import java.util.Objects;
 @Entity
 public class Evento {
 
-    @Id
+	@Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long Id;
     private String nombre;
-    private LocalDate fecha;
-    private String lugar;
+    private Date fecha;
     private String localidad;
     private String URLImagen;
-	private TipoDeEvento tipo;
-    private Boolean musica;
-    private Boolean deporte;
+    private String lugar;
+    private Boolean musical;
+    private Boolean deportivo;
+    private Boolean bailable;
+    private Boolean teatral;
+    private Boolean recital;
+    private Boolean cine;
     private Boolean cultural;
     private Boolean gastronomico;
     private Boolean feria;
+    private Boolean marcha;
     private Boolean infantil;
     private Boolean juvenil;
     private Boolean adultos;
@@ -39,16 +44,47 @@ public class Evento {
     private Boolean matutino;
     private Boolean vespertino;
     private Boolean nocturno;
+    
     private Boolean eventoActivo;
 
     public Evento (){
     }
     
-    public Evento(String nombre, LocalDate fecha, String lugar, String localidad) {
+    public Evento(String nombre, Date fecha, String lugar, String localidad) {
     	setNombre(nombre);
     	setFecha(fecha);
     	setLugar(lugar);
     	setLocalidad(localidad);
+    	setEventoActivo(true);
+    }
+    
+    public Evento(DatosEvento datosEvento) {
+    	setNombre(datosEvento.getNombre());
+    	//setFecha(datosEvento.getFecha());
+    	setLugar(datosEvento.getLugar());
+    	setLocalidad(datosEvento.getLocalidad());
+    	setMusical(datosEvento.getMusical());
+        setDeportivo(datosEvento.getDeportivo());
+        setBailable(datosEvento.getBailable());
+        setTeatral(datosEvento.getTeatral());
+        setRecital(datosEvento.getRecital());
+        setCine(datosEvento.getCine());
+        setCultural(datosEvento.getCultural());
+        setGastronomico(datosEvento.getGastronomico());
+        setFeria(datosEvento.getFeria());
+        setMarcha(datosEvento.getMarcha());
+        setInfantil(datosEvento.getInfantil());
+        setJuvenil(datosEvento.getJuvenil());
+        setAdultos(datosEvento.getAdultos());
+        setJubilados(datosEvento.getJubilados());
+        setTodasLasEdades(datosEvento.getTodasLasEdades());
+        setAireLibre(datosEvento.getAireLibre());
+        setTeatro(datosEvento.getTeatro());
+        setEstadio(datosEvento.getEstadio());
+        setCentroCultural(datosEvento.getCentroCultural());
+        setMatutino(datosEvento.getMatutino());
+        setVespertino(datosEvento.getVespertino());
+        setNocturno(datosEvento.getNocturno());
     	setEventoActivo(true);
     }
 
@@ -68,20 +104,12 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public LocalDate getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }
-
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
     }
 
     public String getLocalidad() {
@@ -99,21 +127,69 @@ public class Evento {
     public void setURLImagen(String URLImagen) {
         this.URLImagen = URLImagen;
     }
-
-	public Boolean getMusica() {
-		return musica;
+	
+    public String getLugar() {
+		return lugar;
 	}
 
-	public void setMusica(Boolean musica) {
-		this.musica = musica;
+	public void setLugar(String lugar) {
+		this.lugar = lugar;
 	}
 
-	public Boolean getDeporte() {
-		return deporte;
+	public Boolean getMusical() {
+		return musical;
 	}
 
-	public void setDeporte(Boolean deporte) {
-		this.deporte = deporte;
+	public void setMusical(Boolean musical) {
+		this.musical = musical;
+	}
+
+	public Boolean getDeportivo() {
+		return deportivo;
+	}
+
+	public void setDeportivo(Boolean deportivo) {
+		this.deportivo = deportivo;
+	}
+
+	public Boolean getBailable() {
+		return bailable;
+	}
+
+	public void setBailable(Boolean bailable) {
+		this.bailable = bailable;
+	}
+
+	public Boolean getTeatral() {
+		return teatral;
+	}
+
+	public void setTeatral(Boolean teatral) {
+		this.teatral = teatral;
+	}
+
+	public Boolean getRecital() {
+		return recital;
+	}
+
+	public void setRecital(Boolean recital) {
+		this.recital = recital;
+	}
+
+	public Boolean getCine() {
+		return cine;
+	}
+
+	public void setCine(Boolean cine) {
+		this.cine = cine;
+	}
+
+	public Boolean getMarcha() {
+		return marcha;
+	}
+
+	public void setMarcha(Boolean marcha) {
+		this.marcha = marcha;
 	}
 
 	public Boolean getCultural() {
@@ -243,42 +319,12 @@ public class Evento {
 	public void setEventoActivo(Boolean eventoActivo) {
 		this.eventoActivo = eventoActivo;
 	}
-	public TipoDeEvento getTipo() {
-		return tipo;
-	}
 
-	public void setTipo(TipoDeEvento tipo) {
-		this.tipo = tipo;
-	}
+	
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(adultos, aireLibre, centroCultural, cultural, deporte, estadio, fecha, feria, gastronomico,
-				infantil, jubilados, juvenil, localidad, lugar, matutino, musica, nocturno, nombre, teatro,
-				todasLasEdades, vespertino);
-	}
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Evento other = (Evento) obj;
-		return Objects.equals(adultos, other.adultos) && Objects.equals(aireLibre, other.aireLibre)
-				&& Objects.equals(centroCultural, other.centroCultural) && Objects.equals(cultural, other.cultural)
-				&& Objects.equals(deporte, other.deporte) && Objects.equals(estadio, other.estadio)
-				&& Objects.equals(fecha, other.fecha) && Objects.equals(feria, other.feria)
-				&& Objects.equals(gastronomico, other.gastronomico) && Objects.equals(infantil, other.infantil)
-				&& Objects.equals(jubilados, other.jubilados) && Objects.equals(juvenil, other.juvenil)
-				&& Objects.equals(localidad, other.localidad) && Objects.equals(lugar, other.lugar)
-				&& Objects.equals(matutino, other.matutino) && Objects.equals(musica, other.musica)
-				&& Objects.equals(nocturno, other.nocturno) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(teatro, other.teatro) && Objects.equals(todasLasEdades, other.todasLasEdades)
-				&& Objects.equals(vespertino, other.vespertino);
-	}
+	
 
     
     

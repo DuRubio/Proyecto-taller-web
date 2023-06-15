@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 
+import ar.edu.unlam.tallerweb1.delivery.DatosPreferencias;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 
 
@@ -23,6 +24,8 @@ public interface UsuarioService {
     Usuario obtenerUsuarioPorID(Long id);
 
     void guardarUsuario(DatosRegistracion datosRegistracion);
+
+	void guardarPreferencias(DatosPreferencias usuario);
 
     Long getId(String correo);
 }

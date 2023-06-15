@@ -95,6 +95,19 @@ public class UsuarioController {
                 return new ModelAndView("login", model);
             }
         }
+        
+        @RequestMapping(path="editar-mis-preferencias", method = RequestMethod.GET)
+		public ModelAndView editarMisPreferencias() {
+        	ModelAndView modelAndView = new ModelAndView("editar-mis-preferencias");
+            modelAndView.addObject("datosPreferencias", new DatosPreferencias());
+            return modelAndView;
+		}
+        
+        @RequestMapping(path = "/guardar-preferencias-usuario", method = RequestMethod.POST)
+        public ModelAndView guardarPreferenciasUsuario(@ModelAttribute("datosPreferencias") DatosPreferencias datosPreferencias) {
+            usuarioService.guardarPreferencias(datosPreferencias);
+            return new ModelAndView("home");
+        }
 
 
     }

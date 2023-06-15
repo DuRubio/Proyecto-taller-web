@@ -92,6 +92,12 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
                 .setMaxResults(4)
                 .getResultList();
     }
+    
+    @Override
+	public List<Evento> findEventosPorMisPreferencias() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
