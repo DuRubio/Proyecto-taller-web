@@ -62,29 +62,29 @@
     <table class="w-full mb-4">
         <thead>
         <tr>
-            <th class="py-2">Evento</th>
-            <th class="py-2">Fecha</th>
-            <th class="py-2">Localidad</th>
+            <th class="py-2 text-left">Evento</th>
+            <th class="py-2 text-left">Fecha</th>
+            <th class="py-2 text-left">Localidad</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td class="py-2">Evento 1</td>
-            <td class="py-2">Fecha 1</td>
-            <td class="py-2">Localidad 1</td>
+            <td class="py-2">Coldplay</td>
+            <td class="py-2">10-10-2023</td>
+            <td class="py-2">Nuñez</td>
         </tr>
         <tr>
-            <td class="py-2">Evento 2</td>
-            <td class="py-2">Fecha 2</td>
-            <td class="py-2">Localidad 2</td>
+            <td class="py-2">Tan Bióncia</td>
+            <td class="py-2">04-11-2023</td>
+            <td class="py-2">La Plata</td>
         </tr>
         </tbody>
     </table>
 
     <div class="flex items-center mb-4">
         <label for="clave" class="mr-2">Quiero crear mis propios eventos:</label>
-        <input type="text" id="clave" placeholder="Ingresá tu token" class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
-        <button type="submit" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Enviar</button>
+        <input type="text" id="clave" placeholder="Ingresá tu token" class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" onkeyup="validarClave()">
+        <button type="submit" id="setAdmin" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50">Enviar</button>
     </div>
 
     <a href="#" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar preferencias</a>
@@ -111,6 +111,30 @@
         usuario.clave = claveNueva;
 
         ocultarPopUp();
+    }
+        function validarClave() {
+        var claveInput = document.getElementById("clave");
+        var botonEnviar = document.getElementById("setAdmin");
+
+        if (claveInput.value === "eventos1234") {
+        botonEnviar.disabled = false;
+    } else {
+        botonEnviar.disabled = true;
+    }
+    }
+
+    var username = "${usuario.nombre}";
+    localStorage.setItem("username", username);
+
+    function validarClave() {
+        var claveInput = document.getElementById("clave");
+        var botonEnviar = document.getElementById("setAdmin");
+
+        if (claveInput.value === "eventos1234") {
+            botonEnviar.disabled = false;
+        } else {
+            botonEnviar.disabled = true;
+        }
     }
 </script>
 

@@ -23,15 +23,16 @@
 				class="font-semibold text-xl tracking-tight">Mi App de
 				Eventos</span>
 		</div>
-		<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-			<div class="text-sm lg:flex-grow">
-				<input
-					class="bg-violet-800 appearance-none border-2 border-violet-800 rounded py-2 px-4 text-violet-300 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-					type="text" placeholder="Buscar...">
-			</div>
-			<div>
-				<a href="#" class="mx-2 text-white hover:text-violet-300"> <i
-					class="fa-solid fa-bell"></i>
+		<div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-end flex">
+<%--			<div class="text-sm lg:flex-grow">--%>
+<%--				<input--%>
+<%--					class="bg-violet-800 appearance-none border-2 border-violet-800 rounded py-2 px-4 text-violet-300 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"--%>
+<%--					type="text" placeholder="Buscar...">--%>
+<%--			</div>--%>
+			<div class="flex items-center">
+                <p class="mx-2 font-semibold text-white text-xl tracking-tight">¡Hola <span id="username"></span>!</p>
+<%--				<a href="#" class="mx-2 text-white hover:text-violet-300"> <i--%>
+<%--					class="fa-solid fa-bell"></i>--%>
 				</a> <a href="/my-profile" class="mx-2 text-white hover:text-violet-300"> <i
 					class="fa-solid fa-user"></i>
 				</a>
@@ -98,7 +99,7 @@
 	</div>
 
 	</div>
-	<div class="flex justify-evenly px-6 pt-4 pb-2">
+	<div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
 		<a
 			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
 			href="mostrar-eventos">Ver todos los eventos</a> <a
@@ -150,6 +151,12 @@
 			</div>
 		</div>
 	</c:if>
+
+    <script>
+        var username = localStorage.getItem("username");
+        var usernameElement = document.getElementById("username");
+        usernameElement.textContent = !username ? "" : username;
+    </script>
 
 </body>
 
