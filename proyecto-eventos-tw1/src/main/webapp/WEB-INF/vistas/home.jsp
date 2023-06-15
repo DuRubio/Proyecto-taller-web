@@ -59,16 +59,16 @@
 						<select id="filtro-categoria" name="filtro-categoria"
 							class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
 							<option value="">Seleccione una categor&iacute;a</option>
-							<option value="Deportivo">Deportivo</option>
-							<option value="Musical">Musical</option>
-							<option value="Bailable">Bailable</option>
-							<option value="Teatral">Teatral</option>
-							<option value="Recital">Recital</option>
-							<option value="Cine">Cine</option>
-							<option value="Cultural">Cultural</option>
-							<option value="Gastronomico">Gastronomico</option>
-							<option value="Feria">Feria</option>
-							<option value="Marcha">Marcha</option>
+							<option value="deportivo">Deportivo</option>
+							<option value="musical">Musical</option>
+							<option value="bailable">Bailable</option>
+							<option value="teatral">Teatral</option>
+							<option value="recital">Recital</option>
+							<option value="cine">Cine</option>
+							<option value="cultural">Cultural</option>
+							<option value="gastronomico">Gastronomico</option>
+							<option value="feria">Feria</option>
+							<option value="marcha">Marcha</option>
 
 						</select>
 					</div>

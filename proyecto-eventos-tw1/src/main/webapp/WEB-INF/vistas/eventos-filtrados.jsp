@@ -44,7 +44,7 @@
                     <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
                     <p class="text-gray-700">Fecha: ${evento.fecha}</p>
                     <p class="text-gray-700">Localidad: ${evento.localidad}</p>
-                    <p class="text-gray-700">Categoria: ${evento.tipo}</p>
+                    <p class="text-gray-700">Ubicación: ${evento.lugar}</p>
                     <!-- Agrega más detalles del evento si es necesario -->
                 </div>
                 <div class="flex justify-center mt-6">
