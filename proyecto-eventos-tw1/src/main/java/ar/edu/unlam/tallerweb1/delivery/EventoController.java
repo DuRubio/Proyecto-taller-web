@@ -37,16 +37,24 @@ public class EventoController {
 
 
 	@RequestMapping(path = "/registrar-evento", method = RequestMethod.GET)
-    public ModelAndView getVistaRegistro() {
-        return new ModelAndView("registro-evento");
+    public ModelAndView getVistaRegistro2() {
+		ModelMap model = new ModelMap();
+		model.put("datosEvento", new DatosEvento());
+        return new ModelAndView("registro-evento",model);
 
     }
 
     @RequestMapping(path = "/registrar-evento", method = RequestMethod.POST)
-    public ModelAndView registrarEvento(@ModelAttribute DatosEvento eventoEjemplo) {
+    public ModelAndView registrarEvento(@ModelAttribute DatosEvento datosEvento) {
         ModelMap model = new ModelMap();
         String viewName = "";
 
+        model.put("mensaje","Evento registrado");
+        model.put("datosEvento", datosEvento);
+        servicioEvento.save(datosEvento);
+        viewName = "home";
+        
+        /*
           if(this.servicioEvento.validarNombre(eventoEjemplo.getNombre()) && this.servicioEvento.validarLocalidad(eventoEjemplo.getLocalidad())){
                 model.put("mensaje","Evento registrado");
                 model.put("datosEvento", eventoEjemplo);
@@ -55,8 +63,10 @@ public class EventoController {
                 model.put("mensaje", "Registro fallido");
                 viewName = "registro-evento";
           }
+          */
             return new ModelAndView(viewName, model);
         }
+        
 
 
     @RequestMapping(path = "/home", method = RequestMethod.GET)

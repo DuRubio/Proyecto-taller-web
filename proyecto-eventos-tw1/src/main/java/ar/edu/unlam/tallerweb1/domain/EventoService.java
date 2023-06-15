@@ -3,11 +3,13 @@ package ar.edu.unlam.tallerweb1.domain;
 import java.time.LocalDate;
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
+
 public interface EventoService {
     boolean validarNombre(String nombre);
 
     boolean validarLocalidad(String localidad);
-    void save(Evento evento);
+    void save(DatosEvento datosEvento);
 
     Evento buscarPorId(Long id);
 
