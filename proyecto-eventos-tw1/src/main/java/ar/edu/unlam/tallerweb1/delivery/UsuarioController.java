@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.Usuario;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
+import org.aspectj.asm.IModelFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 
 @Controller
@@ -19,6 +22,8 @@ public class UsuarioController {
 
     private UsuarioService usuarioService;
     private Long id;
+    Usuario usuario;
+    boolean isLogeado=false;
 
     @Autowired //esto solo inyecta instancias, por eso el atributo debe ser una instancia de ese servicio
     public UsuarioController(UsuarioService servicioRegistracion) {
@@ -62,31 +67,52 @@ public class UsuarioController {
             return new ModelAndView("login", model);
         }
 
-        @RequestMapping(path = "/login", method = RequestMethod.POST) //compara mail y clave con el ya registrado para validar inicio sesion
-        public ModelAndView logearUsuario(@RequestParam(value = "usuario", required = true) String correo,
-                                          @RequestParam(value = "clave", required = true) String clave){
-            ModelMap model = new ModelMap();
-            DatosLogin usuarioValido = new DatosLogin(correo, clave);
-            model.put("datosLogin", new DatosLogin());
-            String viewName = "";
-            if (this.usuarioService.compararMail(usuarioValido.getCorreo()) && this.usuarioService.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())) {
-                this.id = usuarioService.getId(correo);
-                viewName="redirect:/home";
-                //usuarioValido.isLogeado(true);
-            } else {
-                this.id = null;
-                model.put("mensaje", "mail o clave incorrecta");
-                viewName="login";
-            }
-            return new ModelAndView(viewName, model);
+    @RequestMapping(path = "/login", method = RequestMethod.POST)
+    public ModelAndView logearUsuario(HttpServletRequest request,
+                                      @RequestParam(value = "usuario", required = true) String correo,
+                                      @RequestParam(value = "clave", required = true) String clave) {
+        ModelMap model = new ModelMap();
+        DatosLogin usuarioValido = new DatosLogin(correo, clave);
+        model.put("datosLogin", new DatosLogin());
+        String viewName = "";
+
+        if (this.usuarioService.compararMail(usuarioValido.getCorreo()) && this.usuarioService.compararClave(usuarioValido.getCorreo(), usuarioValido.getClave())) {
+            this.id = usuarioService.getId(correo);
+            usuario = usuarioService.obtenerUsuarioPorID(this.id);
+            HttpSession session = request.getSession(true);
+            session.setAttribute("usuario", usuario);
+            viewName = "redirect:/home";
+        } else {
+            this.id = null;
+            model.put("mensaje", "mail o clave incorrecta");
+            viewName = "login";
         }
+
+        return new ModelAndView(viewName, model);
+    }
+
+
+
+
+         @RequestMapping(path = "/logout", method = RequestMethod.GET)
+         public ModelAndView logOut(HttpServletRequest request) {
+            request.getSession().invalidate();
+             String viewName = "redirect:/home";
+             return new ModelAndView(viewName);
+
+         }
+
+    @RequestMapping(path = "/asistir", method = RequestMethod.GET)
+    public ModelAndView asistir () {
+        return new ModelAndView("asistir");
+    }
+
+
 
         @RequestMapping(path = "/my-profile", method = RequestMethod.GET)
         public ModelAndView getVistaMiPerfil() {
             ModelMap model = new ModelMap();
-
             Usuario usuario = usuarioService.obtenerUsuarioPorID(this.id);
-
             if (usuario != null) {
                 model.put("usuario", usuario);
                 return new ModelAndView("my-profile", model);

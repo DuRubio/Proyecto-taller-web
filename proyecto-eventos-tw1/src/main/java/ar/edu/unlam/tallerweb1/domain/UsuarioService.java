@@ -25,4 +25,6 @@ public interface UsuarioService {
     void guardarUsuario(DatosRegistracion datosRegistracion);
 
     Long getId(String correo);
+
+    void logear(Usuario usuario, boolean b);
 }

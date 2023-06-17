@@ -30,13 +30,24 @@
 <%--					type="text" placeholder="Buscar...">--%>
 <%--			</div>--%>
 			<div class="flex items-center">
-                <p class="mx-2 font-semibold text-white text-xl tracking-tight">¡Hola <span id="username"></span>!</p>
+				<c:if test="${not empty sessionScope.usuario}">
+                <p class="mx-2 font-semibold text-white text-xl tracking-tight">¡Hola ${sessionScope.usuario.nombre}!</p>
+				</c:if>
 <%--				<a href="#" class="mx-2 text-white hover:text-violet-300"> <i--%>
 <%--					class="fa-solid fa-bell"></i>--%>
-				</a> <a href="/my-profile" class="mx-2 text-white hover:text-violet-300"> <i
-					class="fa-solid fa-user"></i>
-				</a>
+
 			</div>
+
+	<c:if test="${not empty sessionScope.usuario}">
+		<a href="/my-profile" class="mx-2 text-white hover:text-violet-300"> <i
+				class="fa-solid fa-user"></i>
+		</a>
+		<a href="logout" class="mx-2 text-white">Cerrar sesión</a>
+	</c:if>
+	<c:if test="${empty sessionScope.usuario}">
+		<a href="login" class="mx-2 text-white">Iniciar sesión</a>
+	</c:if>
+
 		</div>
 	</nav>
 
@@ -62,12 +73,12 @@
 						<select id="filtro-categoria" name="filtro-categoria"
 							class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
 							<option value="">Seleccione una categor&iacute;a</option>
-							<option value="Deportivo">Deportivo</option>
-							<option value="Musical">Musical</option>
-							<option value="Bailable">Bailable</option>
-							<option value="Teatro">Teatro</option>
-							<option value="Recital">Recital</option>
-							<option value="Cine">Cine</option>
+							<option value="DEPORTIVO">Deportivo</option>
+							<option value="MUSICAL">Musical</option>
+							<option value="BAILABLE">Bailable</option>
+							<option value="TEATRO">Teatro</option>
+							<option value="RECITAL">Recital</option>
+							<option value="CINE">Cine</option>
 
 						</select>
 					</div>
@@ -91,7 +102,7 @@
 						<p class="text-gray-700">Localidad: ${evento.localidad}</p>
 					</div>
 					<div class="flex justify-center mt-6">
-						<a href="/comprar-entrada" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Comprar entradas</a>
+						<a href="/asistir" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Asistir</a>
 					</div>
 				</div>
 			</c:forEach>

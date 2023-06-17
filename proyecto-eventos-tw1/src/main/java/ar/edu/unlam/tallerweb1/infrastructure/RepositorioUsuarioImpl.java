@@ -35,6 +35,11 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
 				.add(Restrictions.eq("correo", correo))
 				.uniqueResult();
     }
+
+    @Override
+    public void logear(Usuario usuario) {
+        sessionFactory.getCurrentSession().saveOrUpdate(usuario);
+    }
 }
 
 
