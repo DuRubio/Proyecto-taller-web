@@ -103,8 +103,18 @@ public class UsuarioController {
          }
 
     @RequestMapping(path = "/asistir", method = RequestMethod.GET)
-    public ModelAndView asistir () {
-        return new ModelAndView("asistir");
+    public ModelAndView asistir(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        String viewName = "";
+        ModelMap model = new ModelMap();
+        if (session != null && session.getAttribute("usuario") != null) {
+            viewName = "asistir";
+        } else {
+            model.put("mensaje", "Debe estar logeado para poder asistir a un evento");
+            viewName= "login";
+        }
+
+        return new ModelAndView(viewName, model);
     }
 
 

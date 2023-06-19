@@ -21,8 +21,8 @@ public class Usuario {
     @Column(nullable = false)
     private String clave;
 
-
-    private boolean isLogeado;
+    @Column(nullable=true)
+    private boolean isAdmin;
 
 
     public Usuario() {
@@ -95,12 +95,12 @@ public class Usuario {
         this.localidad = localidad;
     }
 
-    public void logear(boolean b) {
-        isLogeado = b;
+    public void isAdmin() {
+        isAdmin=true;
     }
 
-    public boolean getLogeado (){
-        return isLogeado;
+    public boolean getIsAdmin (){
+        return isAdmin;
     }
 }
 
