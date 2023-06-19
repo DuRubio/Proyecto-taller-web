@@ -111,6 +111,27 @@ public class Usuario {
     public Boolean getIsAdmin (){
         return isAdmin;
     }
+    
+    
+
+
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+
+	public List<Categoria> getCategoriasPreferidas() {
+		return categoriasPreferidas;
+	}
+
+
+	public void setCategoriasPreferidas(List<Categoria> categoriasPreferidas) {
+		this.categoriasPreferidas = categoriasPreferidas;
+	}
+
+	
+	
+	
 
 }
 

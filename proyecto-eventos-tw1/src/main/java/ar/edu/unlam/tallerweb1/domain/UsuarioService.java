@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.domain;
 
 
 
+import ar.edu.unlam.tallerweb1.delivery.DatosPreferencias;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 
 
@@ -30,4 +31,7 @@ public interface UsuarioService {
 
 
     void setAdmin(Usuario usuario, Boolean decision);
+
+
+	void guardarPreferencias(Long id, DatosPreferencias datosPreferencias);
 }
