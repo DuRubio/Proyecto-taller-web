@@ -22,7 +22,7 @@ public class Usuario {
     private String clave;
 
     @Column(nullable=true)
-    private boolean isAdmin;
+    private Boolean isAdmin=false;
 
 
     public Usuario() {
@@ -36,7 +36,6 @@ public class Usuario {
         setLocalidad(localidad);
         setCorreo(correo);
         setClave(clave);
-
 
     }
 
@@ -95,13 +94,14 @@ public class Usuario {
         this.localidad = localidad;
     }
 
-    public void isAdmin() {
-        isAdmin=true;
+    public void isAdmin(Boolean b) {
+        isAdmin=b;
     }
 
-    public boolean getIsAdmin (){
+    public Boolean getIsAdmin (){
         return isAdmin;
     }
+
 }
 
 

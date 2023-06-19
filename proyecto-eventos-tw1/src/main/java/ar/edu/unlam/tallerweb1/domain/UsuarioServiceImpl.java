@@ -32,11 +32,11 @@ public class UsuarioServiceImpl implements  UsuarioService{
         return usuario.getId();
     }
 
-    @Override
-    public void logear(Usuario usuario, boolean b) {
-        usuario.logear(b);
-        repoUsuario.logear(usuario);
 
+    @Override
+    public void setAdmin(Usuario usuario, Boolean decision) {
+        usuario.isAdmin(decision);
+        repoUsuario.hacerAdminEnBdd(usuario);
     }
 
 

@@ -3,7 +3,6 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.Usuario;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
-import org.aspectj.asm.IModelFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.security.Principal;
 
 @Controller
 public class UsuarioController {
@@ -123,14 +121,29 @@ public class UsuarioController {
         public ModelAndView getVistaMiPerfil() {
             ModelMap model = new ModelMap();
             Usuario usuario = usuarioService.obtenerUsuarioPorID(this.id);
-            if (usuario != null) {
-                model.put("usuario", usuario);
-                return new ModelAndView("my-profile", model);
-            } else {
-                model.put("mensaje", "El usuario no existe");
-                return new ModelAndView("login", model);
-            }
+            model.put("usuario", usuario);
+            return new ModelAndView("my-profile", model);
+
         }
+
+    @RequestMapping(path = "/my-profile/admin", method = RequestMethod.GET)
+    public ModelAndView userIsAdmin() {
+        usuario = usuarioService.obtenerUsuarioPorID(this.id);
+        usuarioService.setAdmin(usuario, true);
+        ModelMap model = new ModelMap();
+        model.put("mostrarPopup", true);
+        return new ModelAndView("my-profile", model);
+    }
+
+
+    @RequestMapping(path = "/my-profile/notadmin", method = RequestMethod.GET)
+    public ModelAndView notAdmin() {
+        usuario = usuarioService.obtenerUsuarioPorID(this.id);
+        usuarioService.setAdmin(usuario, false);
+        String viewName="redirect:/my-profile";
+        return new ModelAndView(viewName);
+
+    }
 
 
     }

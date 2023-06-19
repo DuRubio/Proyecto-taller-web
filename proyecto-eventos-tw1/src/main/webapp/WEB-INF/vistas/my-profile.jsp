@@ -76,20 +76,39 @@
         <tr>
             <td class="py-2">Tan Bióncia</td>
             <td class="py-2">04-11-2023</td>
-            <td class="py-2">La Plata</td>
+              <td class="py-2">La Plata</td>
         </tr>
         </tbody>
     </table>
+    <c:if test="${!usuario.isAdmin}">
+        <div class="flex items-center mb-4">
+            <label for="clave" class="mr-2">Quiero crear mis propios eventos:</label>
+            <input type="text" id="clave" placeholder="Ingresá tu token" class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" onkeyup="validarClave()">
+            <a class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50" href="/my-profile/admin">Enviar</a>
+        </div>
 
-    <div class="flex items-center mb-4">
-        <label for="clave" class="mr-2">Quiero crear mis propios eventos:</label>
-        <input type="text" id="clave" placeholder="Ingresá tu token" class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" onkeyup="validarClave()">
-        <button type="submit" id="setAdmin" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50">Enviar</button>
-    </div>
+    </c:if>
+    <c:if test="${usuario.isAdmin}">
+        <h2 class="text-center text-lg font-bold mb-2">¡${usuario.nombre} ya sos Admininstrador!</h2>
+        <a href="/my-profile/notadmin" class="flex justify-center mx-2 text-purple-500 underline cursor-pointer rounded-lg">Dejar de ser admin</a>
+    </c:if>
+
 
     <a href="#" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar preferencias</a>
 </div>
 <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a></div>
+
+
+<c:if test="${mostrarPopup}">
+    <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+        <div class="bg-white rounded-md shadow-lg p-4">
+            <p class="text-lg text-gray-800 text-center">A partir de ahora sos Administrador</p>
+            <br>
+            <a href="/home" class=" flex justify-center mt-4 px-4 py-2 bg-violet-500 text-white rounded-md hover:bg-violet-600">Aceptar</a>
+        </div>
+    </div>
+</c:if>
+
 </body>
 <script>
     function mostrarPopUp() {

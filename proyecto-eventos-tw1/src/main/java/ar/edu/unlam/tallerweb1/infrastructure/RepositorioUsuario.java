@@ -13,5 +13,6 @@ public interface RepositorioUsuario {
 
     Usuario buscarPorCorreo(String correo);
 
-    void logear(Usuario usuario);
+
+    void hacerAdminEnBdd(Usuario usuario);
 }

@@ -37,7 +37,7 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
     }
 
     @Override
-    public void logear(Usuario usuario) {
+    public void hacerAdminEnBdd(Usuario usuario) {
         sessionFactory.getCurrentSession().saveOrUpdate(usuario);
     }
 }

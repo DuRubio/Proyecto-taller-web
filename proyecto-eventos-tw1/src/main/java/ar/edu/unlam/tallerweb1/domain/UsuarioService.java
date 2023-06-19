@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 
+
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 
 
@@ -26,5 +27,7 @@ public interface UsuarioService {
 
     Long getId(String correo);
 
-    void logear(Usuario usuario, boolean b);
+
+
+    void setAdmin(Usuario usuario, Boolean decision);
 }
