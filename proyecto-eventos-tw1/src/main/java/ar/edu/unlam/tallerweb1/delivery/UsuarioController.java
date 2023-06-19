@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
 
+import ar.edu.unlam.tallerweb1.domain.Evento;
+import ar.edu.unlam.tallerweb1.domain.EventoService;
 import ar.edu.unlam.tallerweb1.domain.Usuario;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +16,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class UsuarioController {
 
     private UsuarioService usuarioService;
+    private EventoService eventoService;
     private Long id;
     Usuario usuario;
     boolean isLogeado=false;
 
     @Autowired //esto solo inyecta instancias, por eso el atributo debe ser una instancia de ese servicio
-    public UsuarioController(UsuarioService servicioRegistracion) {
+    public UsuarioController(UsuarioService servicioRegistracion, EventoService eventoService) {
         this.usuarioService = servicioRegistracion; //va a recibir un servicio o su implementacion, depende lo que yo mockie en el inicializador en la clase de test
+        this.eventoService = eventoService;
     }
 
 
@@ -95,6 +100,7 @@ public class UsuarioController {
          @RequestMapping(path = "/logout", method = RequestMethod.GET)
          public ModelAndView logOut(HttpServletRequest request) {
             request.getSession().invalidate();
+            this.id=null;
              String viewName = "redirect:/home";
              return new ModelAndView(viewName);
 
@@ -144,6 +150,20 @@ public class UsuarioController {
         return new ModelAndView(viewName);
 
     }
+
+    @RequestMapping(path = "/home", method = RequestMethod.GET)
+    public ModelAndView getVistaHome() {
+        ModelMap model = new ModelMap();
+        List<Evento> eventos = this.eventoService.getPrimeros4Eventos();
+        model.put("eventos", eventos);
+        if(this.id!=null) {
+            usuario = usuarioService.obtenerUsuarioPorID(this.id);
+            model.put("usuario", usuario);
+        }
+        ModelAndView mav = new ModelAndView("home", model);
+        return mav;
+    }
+
 
 
     }

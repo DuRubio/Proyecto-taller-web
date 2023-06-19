@@ -51,15 +51,7 @@ public class EventoController {
         }
 
 
-    @RequestMapping(path = "/home", method = RequestMethod.GET)
-    public ModelAndView getVistaHome() {
-    	ModelMap model = new ModelMap();
-    	List<Evento> eventos = this.servicioEvento.getPrimeros4Eventos();
-    	//List<Evento> eventos = servicioEvento.getEventos();
-    	model.put("eventos", eventos);
-    	ModelAndView mav = new ModelAndView("home", model);
-        return mav;
-    }
+
 
 
     @RequestMapping(path = "/comprar-entrada", method = RequestMethod.GET)
