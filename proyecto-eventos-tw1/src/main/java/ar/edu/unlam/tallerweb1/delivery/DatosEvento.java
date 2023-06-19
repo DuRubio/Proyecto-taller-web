@@ -10,8 +10,15 @@ public class DatosEvento {
     private String localidad;
     private TipoDeEvento tipo;
 
+    private String categoria;
 
     public DatosEvento() {
+    }
+    
+    public DatosEvento(String nombre, String categoria, String localidad) {
+    	setNombre(nombre);
+    	setCategoria(categoria);
+    	setLocalidad(localidad);
     }
     
     public DatosEvento(String nombre, TipoDeEvento tipo, String localidad) {
@@ -67,4 +74,15 @@ public class DatosEvento {
     public void setTipo(TipoDeEvento tipo) {
         this.tipo = tipo;
     }
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+    
+    
+    
 }

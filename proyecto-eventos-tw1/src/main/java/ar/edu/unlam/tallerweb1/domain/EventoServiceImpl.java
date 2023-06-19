@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.domain;
 
 import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,12 @@ public class EventoServiceImpl implements EventoService  {
     
     private RepositorioEvento repoEvento;
     
+    private RepositorioCategoria repoCategoria;
+    
     @Autowired
-    public EventoServiceImpl(RepositorioEvento repositorioEvento) {
+    public EventoServiceImpl(RepositorioEvento repositorioEvento, RepositorioCategoria repositorioCategoria) {
 		this.repoEvento = repositorioEvento;
+		this.repoCategoria = repositorioCategoria;
 	}
 
 	@Override
@@ -32,7 +36,8 @@ public class EventoServiceImpl implements EventoService  {
 
     @Override
     public void save(DatosEvento datosEvento) {
-    	Evento evento = new Evento(datosEvento);
+    	Categoria categoria = repoCategoria.buscarPorNombre(datosEvento.getCategoria());
+    	Evento evento = new Evento(datosEvento,categoria);
     	repoEvento.save(evento);
     }
 

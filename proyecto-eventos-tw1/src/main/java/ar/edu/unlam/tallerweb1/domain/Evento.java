@@ -3,10 +3,14 @@ package ar.edu.unlam.tallerweb1.domain;
 import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
@@ -16,6 +20,7 @@ public class Evento {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "id_evento")
     private Long Id;
     private String nombre;
     private LocalDate fecha;
@@ -25,8 +30,19 @@ public class Evento {
 	private TipoDeEvento tipo;
     
     private Boolean eventoActivo;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_categoria")
+    private Categoria categoria;
 
     public Evento (){
+    }
+    
+    public Evento(DatosEvento datosEvento, Categoria categoria) {
+    	setNombre(datosEvento.getNombre());
+    	setLocalidad(datosEvento.getLocalidad());
+    	setCategoria(categoria);
+    	setEventoActivo(true);
     }
     
     public Evento(DatosEvento datosEvento) {
@@ -107,6 +123,14 @@ public class Evento {
 
 	public void setTipo(TipoDeEvento tipo) {
 		this.tipo = tipo;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	
