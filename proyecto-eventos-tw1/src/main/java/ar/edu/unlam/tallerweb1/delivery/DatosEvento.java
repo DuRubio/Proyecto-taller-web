@@ -13,6 +13,12 @@ public class DatosEvento {
 
     public DatosEvento() {
     }
+    
+    public DatosEvento(String nombre, TipoDeEvento tipo, String localidad) {
+    	setNombre(nombre);
+    	setTipo(tipo);
+    	setLocalidad(localidad);
+    }
 
     public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidad, TipoDeEvento tipo) {
         this.nombre = nombre;

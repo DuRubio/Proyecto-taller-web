@@ -63,11 +63,14 @@
 							class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
 							placeholder="Ingrese la ciudad">
 					</div>
+					<!-- 
 					<div class="mr-4">
 						<label for="filtro-fecha" class="block mb-1">Fecha:</label> <input
 							type="date" id="filtro-fecha" name="filtro-fecha"
 							class="px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
 					</div>
+					 -->
+					
 					<div class="mr-4">
 						<label for="filtro-categoria" class="block mb-1">Categor&iacute;a:</label>
 						<select id="filtro-categoria" name="filtro-categoria"
@@ -79,6 +82,9 @@
 							<option value="TEATRO">Teatro</option>
 							<option value="RECITAL">Recital</option>
 							<option value="CINE">Cine</option>
+							<option value="CULTURAL">Cultural</option>
+							<option value="GASTRONOMICO">Gastronómico</option>
+							<option value="MARCHA">Marcha</option>
 
 						</select>
 					</div>

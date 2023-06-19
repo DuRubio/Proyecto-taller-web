@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.domain;
 
+import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 
 import java.time.LocalDate;
@@ -9,7 +10,8 @@ public interface EventoService {
     boolean validarNombre(String nombre);
 
     boolean validarLocalidad(String localidad);
-    void save(Evento evento);
+    
+    void save(DatosEvento datosEvento);
 
     Evento buscarPorId(Long id);
 

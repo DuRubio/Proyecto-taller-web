@@ -5,7 +5,10 @@
   Time: 21:18
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="ar.edu.unlam.tallerweb1.domain.Evento" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +20,7 @@
 <body class="flex items-center justify-center h-screen bg-gray-100">
 <div class="w-96 p-6 bg-white rounded shadow-md">
     <h1 class="text-2xl font-semibold text-center">Crear evento</h1>
-    <form method="post" action="/registro-evento" class="mt-4">
+    <form method="post" action="registrar-evento" class="mt-4">
         <div>
             <label for="nombre" class="block mb-1">Nombre:</label>
             <input type="text" id="nombre" name="nombre"
@@ -28,19 +31,31 @@
             <label for="tipo" class="block mb-1">Tipo de evento:</label>
             <select id="tipo" name="tipo"
                     class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
-                <option value="Deportivo">Deportivo</option>
-                <option value="Musical">Musical</option>
-                <option value="Bailable">Bailable</option>
-                <option value="Teatro">Teatro</option>
-                <option value="Recital">Recital</option>
-                <option value="Cine">Cine</option>
+                <option value="DEPORTIVO">Deportivo</option>
+                <option value="MUSICAL">Musical</option>
+                <option value="BAILABLE">Bailable</option>
+                <option value="TEATRO">Teatro</option>
+                <option value="RECITAL">Recital</option>
+                <option value="CINE">Cine</option>
+                <option value="CULTURAL">Cultural</option>
+				<option value="GASTRONOMICO">Gastronómico</option>
+				<option value="MARCHA">Marcha</option>
             </select>
         </div>
+        <div class="mt-4">
+            <label for="localidad" class="block mb-1">Localidad:</label>
+            <input id="localidad" type="text" name="localidad"
+                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
+                   placeholder="Ingresa la localidad">
+        </div>
+        <!-- 
         <div class="mt-4">
             <label for="fecha" class="block mb-1">Fecha:</label>
             <input type="date" id="fecha" name="fecha"
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
         </div>
+         -->
+        
         <br>
         <label for="imagen" class="block mb-1">Subir una Imagen:</label>
         <div class="relative flex items-start">

@@ -8,7 +8,9 @@ public enum TipoDeEvento {
     TEATRO(4),
     RECITAL(5),
     CINE(6),
-    MARCHA(7);
+    GASTRONOMICO(7),
+    CULTURAL(8),
+    MARCHA(9);
 
     private int valor;
     TipoDeEvento(int valor) {
