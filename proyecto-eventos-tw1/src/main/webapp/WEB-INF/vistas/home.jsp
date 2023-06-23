@@ -127,9 +127,16 @@
 			href="mostrar-eventos">Ver todos los eventos</a> <a
 			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
 			href="mostrar-eventos-preferencias">Buscar Eventos Por Mis
-			Preferencias</a> <a
-			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
-			href="registrar-evento">Registra un evento</a>
+			Preferencias</a>
+		<c:if test="${usuario.isAdmin}">
+			<a
+					class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+					href="registrar-evento">Registra un evento</a>
+		</c:if>
+
+
+
+
 	</div>
 	<!-- Google Maps -->
 	<div class="flex justify-center">
