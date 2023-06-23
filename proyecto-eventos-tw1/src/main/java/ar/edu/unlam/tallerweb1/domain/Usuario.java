@@ -2,13 +2,15 @@ package ar.edu.unlam.tallerweb1.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
     private Long id;
     //@Column(nullable = false)
     private String nombre;
@@ -23,6 +25,14 @@ public class Usuario {
 
     @Column(nullable=true)
     private Boolean isAdmin=false;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "id_categoria",
+        joinColumns = @JoinColumn(name = "id_usuario"),
+        inverseJoinColumns = @JoinColumn(name = "id_categoria")
+    )
+    private List<Categoria> categoriasPreferidas = new ArrayList<>();
 
 
     public Usuario() {
@@ -101,6 +111,27 @@ public class Usuario {
     public Boolean getIsAdmin (){
         return isAdmin;
     }
+    
+    
+
+
+	public void setIsAdmin(Boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
+
+	public List<Categoria> getCategoriasPreferidas() {
+		return categoriasPreferidas;
+	}
+
+
+	public void setCategoriasPreferidas(List<Categoria> categoriasPreferidas) {
+		this.categoriasPreferidas = categoriasPreferidas;
+	}
+
+	
+	
+	
 
 }
 

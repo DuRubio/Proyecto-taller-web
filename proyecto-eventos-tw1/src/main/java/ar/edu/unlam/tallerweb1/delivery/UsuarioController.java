@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
-
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
 import ar.edu.unlam.tallerweb1.domain.Usuario;
@@ -165,5 +164,20 @@ public class UsuarioController {
     }
 
 
+	@RequestMapping(path = "editar-mis-preferencias", method = RequestMethod.GET)
+	public ModelAndView editarMisPreferencias() {
+		ModelAndView modelAndView = new ModelAndView("editar-mis-preferencias");
+		modelAndView.addObject("datosPreferencias", new DatosPreferencias());
+		return modelAndView;
+	}
 
-    }
+	@RequestMapping(path = "/guardar-preferencias-usuario", method = RequestMethod.POST)
+	public ModelAndView guardarPreferenciasUsuario(
+			@ModelAttribute("datosPreferencias") DatosPreferencias datosPreferencias) {
+		Long id = this.id;
+		usuarioService.guardarPreferencias(id, datosPreferencias);
+		return new ModelAndView("home");
+	}
+
+}
+

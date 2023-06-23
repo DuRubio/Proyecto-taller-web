@@ -35,13 +35,14 @@ public class EventoController {
     }
 
     @RequestMapping(path = "/registrar-evento", method = RequestMethod.POST)
-    public ModelAndView registrarEvento(@ModelAttribute DatosEvento eventoEjemplo) {
+    public ModelAndView registrarEvento(@ModelAttribute DatosEvento datosEvento) {
         ModelMap model = new ModelMap();
         String viewName = "";
 
-          if(this.servicioEvento.validarNombre(eventoEjemplo.getNombre()) && this.servicioEvento.validarLocalidad(eventoEjemplo.getLocalidad())){
+          if(this.servicioEvento.validarNombre(datosEvento.getNombre()) && this.servicioEvento.validarLocalidad(datosEvento.getLocalidad())){
                 model.put("mensaje","Evento registrado");
-                model.put("datosEvento", eventoEjemplo);
+                model.put("datosEvento", datosEvento);
+                servicioEvento.save(datosEvento);
                 viewName = "home";
           } else {
                 model.put("mensaje", "Registro fallido");

@@ -83,14 +83,9 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 
     @Override
     public List<Evento> findFirst4Events() {
-        Session session = sessionFactory.getCurrentSession();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<Evento> criteriaQuery = criteriaBuilder.createQuery(Evento.class);
-        Root<Evento> root = criteriaQuery.from(Evento.class);
-        criteriaQuery.select(root);
-        return session.createQuery(criteriaQuery)
-                .setMaxResults(4)
-                .getResultList();
+    	String hql = "FROM Evento WHERE eventoActivo = true ORDER BY id";
+		return (List<Evento>)sessionFactory.getCurrentSession()
+				.createQuery(hql, Evento.class).setMaxResults(4).list();
     }
 
 

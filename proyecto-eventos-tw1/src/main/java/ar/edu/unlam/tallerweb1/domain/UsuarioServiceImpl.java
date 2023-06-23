@@ -1,19 +1,29 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 
+import ar.edu.unlam.tallerweb1.delivery.DatosPreferencias;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioServiceImpl implements  UsuarioService{
 
-    @Autowired
-    RepositorioUsuario repoUsuario;
+    
+    private RepositorioUsuario repoUsuario;
+    
+    private RepositorioCategoria repoCategoria;
 
-    public UsuarioServiceImpl(RepositorioUsuario repoUsuario){
+    @Autowired
+    public UsuarioServiceImpl(RepositorioUsuario repoUsuario, RepositorioCategoria repoCategoria){
         this.repoUsuario=repoUsuario;
+        this.repoCategoria = repoCategoria;
     }
 
     public UsuarioServiceImpl(){
@@ -87,6 +97,62 @@ public class UsuarioServiceImpl implements  UsuarioService{
         return esValido;
 
     }
+
+    @Override
+	public void guardarPreferencias(Long id, DatosPreferencias datosPreferencias) {
+		Usuario usuario = new Usuario();
+		usuario = this.repoUsuario.buscarPorId(id);
+		List<Categoria> categoriasPreferidas = new ArrayList<>();
+		List<Categoria> categorias = this.repoCategoria.findAll();
+		Categoria categoria = new Categoria();
+		
+		if(datosPreferencias.getDeportivo() == Boolean.TRUE) {
+			categoria = categorias.get(0);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getMusical() == Boolean.TRUE) {
+			categoria = categorias.get(1);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getBailable() == Boolean.TRUE) {
+			categoria = categorias.get(2);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getTeatral() == Boolean.TRUE) {
+			categoria = categorias.get(3);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getRecital() == Boolean.TRUE) {
+			categoria = categorias.get(4);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getCine() == Boolean.TRUE) {
+			categoria = categorias.get(5);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getCultural() == Boolean.TRUE) {
+			categoria = categorias.get(6);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getGastronomico() == Boolean.TRUE) {
+			categoria = categorias.get(7);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getFeria() == Boolean.TRUE) {
+			categoria = categorias.get(8);
+			categoriasPreferidas.add(categoria);
+		}
+		if(datosPreferencias.getMarcha() == Boolean.TRUE) {
+			categoria = categorias.get(9);
+			categoriasPreferidas.add(categoria);
+		}
+		usuario.setCategoriasPreferidas(categoriasPreferidas);
+		
+        if(categoriasPreferidas.size() > 0) {
+        	repoUsuario.update(usuario);
+        }
+		
+	}
 
 
 }
