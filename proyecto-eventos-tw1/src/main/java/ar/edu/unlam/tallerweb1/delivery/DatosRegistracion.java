@@ -12,6 +12,7 @@ public class DatosRegistracion {
 
 
 
+
     public DatosRegistracion(String correo, String clave) {
         this.correo = correo;
         this.clave = clave;

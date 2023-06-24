@@ -36,7 +36,7 @@
         <div id="debitCardFields" class="hidden mt-4">
             <h2 class="text-lg font-semibold">Información de Tarjeta de Débito</h2>
             <label for="debitCardNumber" class="block mb-1">Número de Tarjeta:</label>
-            <input type="text" id="debitCardNumber" maxlength="12" required
+            <input type="text" id="debitCardNumber" maxlength="16" required name=""
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-violet-500"><br>
 
             <label for="debitCardExpiration" class="block mb-1">Fecha de Vencimiento:</label>
