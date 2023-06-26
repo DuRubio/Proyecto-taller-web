@@ -22,7 +22,8 @@
 
     <!-- Imagen de perfil -->
     <div class="flex justify-center items-center mb-4">
-        <img src="../img/avatar.jpg" alt="Imagen de perfil" class="w-16 h-16 rounded-full">
+
+        <img src="../img/perfil.jpg" alt="Imagen de perfil" class="w-16 h-16 rounded-full">
     </div>
 
     <!-- Nombre y Apellido -->
@@ -82,9 +83,13 @@
     </table>
     <c:if test="${!usuario.isAdmin}">
         <div class="flex items-center mb-4">
-            <label for="clave" class="mr-2">Quiero crear mis propios eventos:</label>
-            <input type="text" id="clave" placeholder="Ingresá tu token" class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500" onkeyup="validarClave()">
-            <a class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50" href="/my-profile/admin">Enviar</a>
+            <form action="/my-profile/admin" method="POST">
+                <div class="flex items-center mb-4">
+                    <label for="claveAdmin" class="mr-2">Quiero crear mis propios eventos:</label>
+                    <input type="text" id="claveAdmin" name="claveAdmin" placeholder="Ingresá tu token" class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    <button type="submit" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50">Enviar</button>
+                </div>
+            </form>
         </div>
 
     </c:if>
@@ -94,7 +99,7 @@
     </c:if>
 
 
-    <a href="#" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar preferencias</a>
+    <a href="editar-mis-preferencias" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar preferencias</a>
 </div>
 <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a></div>
 
@@ -109,8 +114,32 @@
     </div>
 </c:if>
 
+<c:if test="${mostrarPopup2}">
+    <div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+        <div class="bg-white rounded-md shadow-lg p-4">
+            <p class="text-lg text-gray-800 text-center">La clave es incorrecta, no eres admin</p>
+            <br>
+            <a href="/my-profile" class=" flex justify-center mt-4 px-4 py-2 bg-violet-500 text-white rounded-md hover:bg-violet-600">Aceptar</a>
+        </div>
+    </div>
+</c:if>
+
 </body>
 <script>
+    const inputElement = document.getElementById("clave");
+    const linkElement = document.getElementById("link");
+
+    function validarClave() {
+        if (inputElement.value === "eventos1234") {
+            linkElement.classList.remove("disabled:opacity-50");
+            linkElement.removeAttribute("disabled");
+        } else {
+            linkElement.classList.add("disabled:opacity-50");
+            linkElement.setAttribute("disabled", "disabled");
+        }
+    }
+
+
     function mostrarPopUp() {
         var popUp = document.getElementById("pop-up");
         popUp.classList.remove("hidden");
@@ -131,7 +160,7 @@
 
         ocultarPopUp();
     }
-        function validarClave() {
+      /*  function validarClave() {
         var claveInput = document.getElementById("clave");
         var botonEnviar = document.getElementById("setAdmin");
 
@@ -154,7 +183,7 @@
         } else {
             botonEnviar.disabled = true;
         }
-    }
+    }*/
 </script>
 
 </html>

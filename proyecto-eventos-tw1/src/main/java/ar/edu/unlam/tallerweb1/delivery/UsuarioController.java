@@ -131,12 +131,17 @@ public class UsuarioController {
 
         }
 
-    @RequestMapping(path = "/my-profile/admin", method = RequestMethod.GET)
-    public ModelAndView userIsAdmin() {
+    @RequestMapping(path = "/my-profile/admin", method = RequestMethod.POST)
+    public ModelAndView userIsAdmin(@RequestParam(value="claveAdmin", required= true) String claveAdmin) {
         usuario = usuarioService.obtenerUsuarioPorID(this.id);
-        usuarioService.setAdmin(usuario, true);
         ModelMap model = new ModelMap();
-        model.put("mostrarPopup", true);
+        if(claveAdmin.equals("eventos1234")) {
+            usuarioService.setAdmin(usuario, true);
+            model.put("mostrarPopup", true);
+        } else {
+            model.put("mostrarPopup2", true);
+        }
+
         return new ModelAndView("my-profile", model);
     }
 

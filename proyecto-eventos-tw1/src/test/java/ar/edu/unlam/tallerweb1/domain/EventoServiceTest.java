@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.domain;
 import static org.junit.Assert.*;
 import static org.assertj.core.api.Assertions.*;
 
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioCategoria;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,12 +21,13 @@ public class EventoServiceTest {
 	
 	private EventoService servicioEvento;
 	private RepositorioEvento repositorioEvento = mock(RepositorioEvento.class);
+	private RepositorioCategoria repoCategoria = mock(RepositorioCategoria.class);
 	public static final int CANTIDAD_EVENTOS = 4;
 	
 	
 	@Before
 	public void init() {
-		this.servicioEvento = new EventoServiceImpl(this.repositorioEvento);
+		this.servicioEvento = new EventoServiceImpl(this.repositorioEvento, this.repoCategoria);
 	}
 	
 	@Test

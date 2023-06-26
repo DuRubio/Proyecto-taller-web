@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.domain;
 import ar.edu.unlam.tallerweb1.delivery.DatosLogin;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 import ar.edu.unlam.tallerweb1.delivery.UsuarioController;
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 import org.junit.Assert;
 import org.junit.Before;
@@ -18,6 +19,7 @@ public class UsuarioServiceTest {
     public static final String CLAVE_VALIDO="Dada123";
     public static final String CLAVE_INVALIDO="dadada";
     private RepositorioUsuario repositorioUsuario;
+    private RepositorioCategoria repoCategoria;
     private DatosRegistracion datosRegistracion;
     private DatosRegistracion datosRegistracion2;
     private DatosRegistracion datosRegistracion3;
@@ -32,7 +34,8 @@ public class UsuarioServiceTest {
         this.datosRegistracion3 = new DatosRegistracion(CORREO_VALIDO, CLAVE_INVALIDO);
         this.usuarioValido = new Usuario(CORREO_VALIDO, CLAVE_VALIDO);
         this.repositorioUsuario = mock(RepositorioUsuario.class);
-        this.servicioRegistracion = new UsuarioServiceImpl(repositorioUsuario);
+        this.repoCategoria = mock(RepositorioCategoria.class);
+        this.servicioRegistracion = new UsuarioServiceImpl(repositorioUsuario, repoCategoria);
     }
     @Test
     public void queGuardeUsuario(){

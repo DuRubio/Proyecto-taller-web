@@ -11,9 +11,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d581376c-73dc-4c9d-8a45-c90ccc51197f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/resources/hibernateContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/resources/hibernateContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/my-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/my-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/domain/EventoServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/domain/EventoServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/domain/UsuarioServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/domain/UsuarioServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,21 +285,15 @@
       <workItem from="1687134964148" duration="10482000" />
       <workItem from="1687147386900" duration="57000" />
       <workItem from="1687207440049" duration="3572000" />
+      <workItem from="1687640601392" duration="542000" />
+      <workItem from="1687714867647" duration="1005000" />
+      <workItem from="1687782118125" duration="451000" />
+      <workItem from="1687813219799" duration="728000" />
+      <workItem from="1687813990223" duration="3367000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoServiceImpl.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
