@@ -25,6 +25,10 @@ public class Usuario {
 
     @Column(nullable=true)
     private Boolean isAdmin=false;
+
+    @Column(nullable=true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "entrada") //analizar por qué no se guarda en la tabla de usuario_entrada y sí en entrada
+   private List<Entrada> entradas = new ArrayList<>();
     
     @ManyToMany
     @JoinTable(
@@ -129,10 +133,19 @@ public class Usuario {
 		this.categoriasPreferidas = categoriasPreferidas;
 	}
 
-	
-	
-	
 
+    public void asignarEntrada(Entrada entrada) {
+        entradas.add(entrada);
+    }
+
+
+    public List<Entrada> getEntradas() {
+        return entradas;
+    }
+
+    public void setEntradas(List<Entrada> entradas) {
+        this.entradas = entradas;
+    }
 }
 
 

@@ -45,10 +45,10 @@
                     <p class="text-gray-700">Fecha: ${evento.fecha}</p>
                     <p class="text-gray-700">Localidad: ${evento.localidad}</p>
                     <p class="text-gray-700">Categoria: ${evento.tipo}</p>
-                    <!-- Agrega más detalles del evento si es necesario -->
+                    <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>
                 </div>
                 <div class="flex justify-center mt-6">
-                    <a href="/asistir" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Asistir</a>                </div>
+                    <a href="/asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Asistir</a>                </div>
             </div>
         </c:forEach>
     </div>

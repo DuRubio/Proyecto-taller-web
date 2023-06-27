@@ -43,7 +43,7 @@ public class EventoServiceImpl implements EventoService  {
 
     @Override
     public Evento buscarPorId(Long id) {
-        return null;
+        return repoEvento.buscarPorId(id);
     }
 
     @Override

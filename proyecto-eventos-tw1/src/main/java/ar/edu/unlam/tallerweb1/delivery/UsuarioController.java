@@ -1,9 +1,6 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
-import ar.edu.unlam.tallerweb1.domain.Evento;
-import ar.edu.unlam.tallerweb1.domain.EventoService;
-import ar.edu.unlam.tallerweb1.domain.Usuario;
-import ar.edu.unlam.tallerweb1.domain.UsuarioService;
+import ar.edu.unlam.tallerweb1.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Controller
@@ -22,14 +20,17 @@ public class UsuarioController {
 
     private UsuarioService usuarioService;
     private EventoService eventoService;
+    private EntradaService servicioEntrada;
     private Long id;
     Usuario usuario;
+
     boolean isLogeado=false;
 
     @Autowired //esto solo inyecta instancias, por eso el atributo debe ser una instancia de ese servicio
-    public UsuarioController(UsuarioService servicioRegistracion, EventoService eventoService) {
+    public UsuarioController(UsuarioService servicioRegistracion, EventoService eventoService, EntradaService servicioEntrada) {
         this.usuarioService = servicioRegistracion; //va a recibir un servicio o su implementacion, depende lo que yo mockie en el inicializador en la clase de test
         this.eventoService = eventoService;
+        this.servicioEntrada=servicioEntrada;
     }
 
 
@@ -104,13 +105,21 @@ public class UsuarioController {
              return new ModelAndView(viewName);
 
          }
-
+    @Transactional
     @RequestMapping(path = "/asistir", method = RequestMethod.GET)
-    public ModelAndView asistir(HttpServletRequest request) {
+    public ModelAndView asistir(HttpServletRequest request , @RequestParam("eventoId") Long eventoId) {
+        Entrada entrada = new Entrada();
+        List<Entrada> entradas;
         HttpSession session = request.getSession(false);
         String viewName = "";
         ModelMap model = new ModelMap();
         if (session != null && session.getAttribute("usuario") != null) {
+            Evento evento;
+            evento = eventoService.buscarPorId(eventoId);
+            entrada.asignarUsuarioYEvento(usuario,evento);
+            servicioEntrada.save(entrada);
+            entradas = this.usuario.getEntradas();
+            model.put("entradas",entradas);
             viewName = "asistir";
         } else {
             model.put("mensaje", "Debe estar logeado para poder asistir a un evento");

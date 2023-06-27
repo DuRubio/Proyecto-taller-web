@@ -3,16 +3,12 @@ package ar.edu.unlam.tallerweb1.domain;
 import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -28,12 +24,16 @@ public class Evento {
     private String localidad;
     private String URLImagen;
 	private TipoDeEvento tipo;
-    
     private Boolean eventoActivo;
+
+    private Integer disponibilidad;
     
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
+
+    @OneToMany(mappedBy = "evento")
+    private List<Entrada> entradas = new ArrayList<>();
 
     public Evento (){
     }
@@ -43,6 +43,7 @@ public class Evento {
     	setLocalidad(datosEvento.getLocalidad());
     	setCategoria(categoria);
     	setEventoActivo(true);
+        setDisponibilidad(50);
     }
     
     public Evento(DatosEvento datosEvento) {
@@ -50,6 +51,7 @@ public class Evento {
     	setLocalidad(datosEvento.getLocalidad());
     	setTipo(datosEvento.getTipo());
     	setEventoActivo(true);
+        setDisponibilidad(50);
     }
     
     public Evento(String nombre, LocalDate fecha, String lugar, String localidad) {
@@ -58,6 +60,7 @@ public class Evento {
     	setLugar(lugar);
     	setLocalidad(localidad);
     	setEventoActivo(true);
+        setDisponibilidad(50);
     }
 
     public Long getId() {
@@ -133,7 +136,21 @@ public class Evento {
 		this.categoria = categoria;
 	}
 
-	
-    
-    
+    public Integer getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(Integer disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
+    public boolean asignarEntrada(Entrada entrada){
+        boolean pudo=false;
+        if(this.disponibilidad>0){
+            entradas.add(entrada);
+            disponibilidad--;
+            pudo=true;
+        }
+        return pudo;
+    }
 }

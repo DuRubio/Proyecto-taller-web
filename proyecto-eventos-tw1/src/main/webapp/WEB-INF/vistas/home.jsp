@@ -111,9 +111,15 @@
 						<h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
 						<p class="text-gray-700">Fecha: ${evento.fecha}</p>
 						<p class="text-gray-700">Localidad: ${evento.localidad}</p>
+						<p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>
 					</div>
 					<div class="flex justify-center mt-6">
-						<a href="asistir" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Asistir</a>
+						<c:if test="${evento.disponibilidad>0}">
+						<a href="/asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Asistir</a>
+						</c:if>
+						<c:if test="${evento.disponibilidad==0}">
+							<a href="#}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Cupo lleno</a>
+						</c:if>
 					</div>
 				</div>
 			</c:forEach>

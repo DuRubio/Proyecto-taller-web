@@ -5,6 +5,7 @@
   Time: 20:39
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page import="ar.edu.unlam.tallerweb1.domain.Entrada" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -58,8 +59,8 @@
     <!-- Localidad -->
     <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
 
-    <!-- Próximos eventos -->
-    <h2 class="text-xl font-bold mb-2">Próximos eventos:</h2>
+
+    <h2 class="text-xl font-bold mb-2">Mis eventos:</h2>
     <table class="w-full mb-4">
         <thead>
         <tr>
@@ -69,18 +70,16 @@
         </tr>
         </thead>
         <tbody>
+    <c:forEach items="${entradas}" var="entrada">
         <tr>
-            <td class="py-2">Coldplay</td>
-            <td class="py-2">10-10-2023</td>
-            <td class="py-2">Nuñez</td>
+            <td class="py-2">${entrada.evento.nombre}</td>
+            <td class="py-2">${entrada.evento.fecha}</td>
+            <td class="py-2">${entrada.evento.localidad}</td>
         </tr>
-        <tr>
-            <td class="py-2">Tan Bióncia</td>
-            <td class="py-2">04-11-2023</td>
-              <td class="py-2">La Plata</td>
-        </tr>
+        </c:forEach>
         </tbody>
     </table>
+
     <c:if test="${!usuario.isAdmin}">
         <div class="flex items-center mb-4">
             <form action="/my-profile/admin" method="POST">
@@ -126,19 +125,6 @@
 
 </body>
 <script>
-    const inputElement = document.getElementById("clave");
-    const linkElement = document.getElementById("link");
-
-    function validarClave() {
-        if (inputElement.value === "eventos1234") {
-            linkElement.classList.remove("disabled:opacity-50");
-            linkElement.removeAttribute("disabled");
-        } else {
-            linkElement.classList.add("disabled:opacity-50");
-            linkElement.setAttribute("disabled", "disabled");
-        }
-    }
-
 
     function mostrarPopUp() {
         var popUp = document.getElementById("pop-up");
