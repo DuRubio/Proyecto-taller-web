@@ -27,7 +27,7 @@ public class Usuario {
     private Boolean isAdmin=false;
 
     @Column(nullable=true)
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "entrada") //analizar por qué no se guarda en la tabla de usuario_entrada y sí en entrada
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario") //analizar por qué no se guarda en la tabla de usuario_entrada y sí en entrada
    private List<Entrada> entradas = new ArrayList<>();
     
     @ManyToMany

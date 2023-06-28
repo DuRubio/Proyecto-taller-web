@@ -52,8 +52,9 @@ public class EventoServiceImpl implements EventoService  {
     }
 
     @Override
-    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
-        return repoEvento.buscarPorTipoDeEvento(tipoDeEvento);
+    public List<Evento> buscarPorTipoDeEvento(Integer categoria) {
+    	Long idCategoria = new Long(categoria);
+        return repoEvento.buscarPorTipoDeEvento(idCategoria);
     }
 
     @Override

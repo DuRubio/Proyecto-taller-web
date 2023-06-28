@@ -131,7 +131,7 @@ public class UsuarioController {
 
 
 
-        @RequestMapping(path = "/my-profile", method = RequestMethod.GET)
+        @RequestMapping(path = "my-profile", method = RequestMethod.GET)
         public ModelAndView getVistaMiPerfil() {
             ModelMap model = new ModelMap();
             Usuario usuario = usuarioService.obtenerUsuarioPorID(this.id);
@@ -190,7 +190,8 @@ public class UsuarioController {
 			@ModelAttribute("datosPreferencias") DatosPreferencias datosPreferencias) {
 		Long id = this.id;
 		usuarioService.guardarPreferencias(id, datosPreferencias);
-		return new ModelAndView("home");
+		String viewName = "redirect:/home";
+        return new ModelAndView(viewName);
 	}
 
 }

@@ -18,7 +18,7 @@
     ¡Adquiriste tu entrada! Algún día te llegará por correo electrónico.
   </p>
   <div class="mt-6">
-    <a href="/home" class="block w-full text-center px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Volver</a>
+    <a href="home" class="block w-full text-center px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Volver</a>
   </div>
 </div>
 </body>

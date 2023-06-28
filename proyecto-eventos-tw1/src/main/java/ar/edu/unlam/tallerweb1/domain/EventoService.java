@@ -17,7 +17,7 @@ public interface EventoService {
 
     Evento buscarPorNombre(String nombre);
 
-    List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
+    List<Evento> buscarPorTipoDeEvento(Integer categoria);
 
     List<Evento> buscarPorFecha(LocalDate fechaEvento);
 

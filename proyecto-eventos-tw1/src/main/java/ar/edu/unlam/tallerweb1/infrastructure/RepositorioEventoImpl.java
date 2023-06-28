@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.domain.Evento;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -58,27 +60,29 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
     }
 
     @Override
-    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
-        List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
-                .add(Restrictions.eq("tipo", tipoDeEvento))
-                .list();
+    public List<Evento> buscarPorTipoDeEvento(Long categoria) {
+    	Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+        criteria.createAlias("categoria", "c");
+        criteria.add(Restrictions.eq("c.id", categoria));
+        List<Evento> eventos = criteria.list();
         return eventos;
     }
 
     @Override
     public List<Evento> buscarPorFechaDeEvento(LocalDate fecha) {
-        List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
-                .add(Restrictions.eq("fecha", fecha))
-                .list();
+    	Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+        criteria.add(Restrictions.eq("fecha", fecha));
+        List<Evento> eventos = criteria.list();
         return eventos;
     }
        @Override
     public List<Evento> buscarPorLocalidadDeEvento(String localidad) {
-        String hql = "FROM Evento e WHERE e.localidad = :localidad";
-        return sessionFactory.getCurrentSession()
-                .createQuery(hql, Evento.class)
-                .setParameter("localidad", localidad)
-                .list();
+    	   List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
+                   .add(Restrictions.eq("localidad", localidad))
+                   .list();
+           return eventos;
     }
 
     @Override

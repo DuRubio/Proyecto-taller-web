@@ -14,7 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -71,33 +73,36 @@ public class EventoController {
         return mav;
     }
 
-    @RequestMapping(path = "/filtrar", method = RequestMethod.POST)
+    @RequestMapping(path="filtrar", method = RequestMethod.POST)
     public ModelAndView filtrarEventos(
-            @RequestParam(value = "filtro-fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
-            @RequestParam(value = "filtro-categoria", required = false) TipoDeEvento categoria,
-            @RequestParam(value = "localidad", required = false) String localidad){
-        String viewName="";
+            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
+            @RequestParam(value = "categoria", required = false) Integer categoria,
+            @RequestParam(value = "localidad", required = false) String localidad) {
+        String viewName = "";
         ModelMap model = new ModelMap();
-        List<Evento> eventosFiltrados=new ArrayList<>();
-        List<Evento> eventosFiltradosFecha = servicioEvento.buscarPorFecha(fecha);
-        List<Evento> eventosFiltradosLocalidad = servicioEvento.buscarPorCiudad(localidad);
-        List<Evento> eventosFiltradosCategoria = servicioEvento.buscarPorTipoDeEvento(categoria);
+        
+        Set<Evento> eventosFiltrados = new HashSet<>();
 
-        //eventosFiltrados= servicioEvento.buscarPorTipoDeEvento(categoria);
-
-        if(eventosFiltradosFecha!=null) eventosFiltrados.addAll(eventosFiltradosFecha);
-        if(eventosFiltradosLocalidad!=null) eventosFiltrados.addAll(eventosFiltradosLocalidad);
-        if(eventosFiltradosCategoria!=null) eventosFiltrados.addAll(eventosFiltradosCategoria);
-
-        if(eventosFiltradosFecha.isEmpty() && eventosFiltradosLocalidad.isEmpty() && eventosFiltradosCategoria.isEmpty()){
-           // model.put("mensaje","No se encontraron eventos");
-            model.addAttribute("mostrarPopup", true);
-            viewName= "home";
-
-        } else {
-            model.addAttribute("eventos", eventosFiltrados);
-            viewName="eventos-filtrados";
+        if (fecha != null) {
+            eventosFiltrados.addAll(servicioEvento.buscarPorFecha(fecha));
         }
+
+        if (categoria != null) {
+            eventosFiltrados.addAll(servicioEvento.buscarPorTipoDeEvento(categoria));
+        }
+
+        if (localidad != null) {
+            eventosFiltrados.addAll(servicioEvento.buscarPorCiudad(localidad));
+        }
+
+        if (eventosFiltrados.isEmpty()) {
+            model.addAttribute("mostrarPopup", true);
+            viewName = "home";
+        } else {
+            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
+            viewName = "eventos-filtrados";
+        }
+
         return new ModelAndView(viewName, model);
     }
 
