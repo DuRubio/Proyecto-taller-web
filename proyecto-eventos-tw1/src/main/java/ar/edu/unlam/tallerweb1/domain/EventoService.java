@@ -4,6 +4,7 @@ import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
 
 public interface EventoService {
@@ -17,7 +18,7 @@ public interface EventoService {
 
     Evento buscarPorNombre(String nombre);
 
-    List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
+    List<Evento> buscarPorTipoDeEvento(Integer categoria);
 
     List<Evento> buscarPorFecha(LocalDate fechaEvento);
 
@@ -26,4 +27,6 @@ public interface EventoService {
     List<Evento> getEventos();
 
 	List<Evento> getPrimeros4Eventos();
+
+	List<Evento> buscarEventosPorPreferencias(Usuario usuario);
 }

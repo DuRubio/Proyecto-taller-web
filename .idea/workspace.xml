@@ -12,8 +12,28 @@
     <list default="true" id="d581376c-73dc-4c9d-8a45-c90ccc51197f" name="Changes" comment="Creado repositorio y servicio para entrada. Falta asociar correctamente la entrada, se guarda en una tabla distinta.">
       <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Entrada.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Entrada.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/DatosEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/DatosEvento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Categoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Categoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Evento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioCategoria.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioCategoria.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioCategoriaImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioCategoriaImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEvento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/asistir.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/asistir.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/editar-mis-preferencias.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/editar-mis-preferencias.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/my-profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/my-profile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/preferencias.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/preferencias.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/EventoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/EventoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/UsuarioControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/UsuarioControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,8 +107,8 @@
       <recent name="ar.edu.unlam.tallerweb1.domain" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.proyecto-eventos">
-    <configuration name="EventoControllerTest.queAlFiltrarNoEncuentreNadaDevuelvaPopup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RepositorioUsuarioTest">
+    <configuration name="EventoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-limpio-spring" />
       <extension name="coverage">
         <pattern>
@@ -98,13 +118,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.delivery" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.delivery.EventoControllerTest" />
-      <option name="METHOD_NAME" value="queAlFiltrarNoEncuentreNadaDevuelvaPopup" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RepositorioEventoTest.buscarEventoPorNombre" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RepositorioEventoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-limpio-spring" />
       <extension name="coverage">
         <pattern>
@@ -114,13 +133,12 @@
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.infrastructure" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.infrastructure.RepositorioEventoTest" />
-      <option name="METHOD_NAME" value="buscarEventoPorNombre" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RepositorioEventoTest.buscarEventosPorTipo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RepositorioUsuarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-limpio-spring" />
       <extension name="coverage">
         <pattern>
@@ -129,25 +147,39 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.infrastructure.RepositorioEventoTest" />
-      <option name="METHOD_NAME" value="buscarEventosPorTipo" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuarioTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto-limpio-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unlam.tallerweb1.delivery.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.delivery" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.delivery.UsuarioControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsuarioControllerTest.queSePuedaLogearConDatosCorrectosYLoLleveAHome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="proyecto-limpio-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ar.edu.unlam.tallerweb1.delivery.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.delivery" />
+      <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.delivery.UsuarioControllerTest" />
+      <option name="METHOD_NAME" value="queSePuedaLogearConDatosCorrectosYLoLleveAHome" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="java in proyecto-limpio-spring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto-limpio-spring" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="test in proyecto-limpio-spring" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="proyecto-limpio-spring" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/proyecto-eventos-tw1/src/test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -240,20 +272,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.java in proyecto-limpio-spring" />
-      <item itemvalue="JUnit.EventoControllerTest.queAlFiltrarNoEncuentreNadaDevuelvaPopup" />
-      <item itemvalue="JUnit.test in proyecto-limpio-spring" />
-      <item itemvalue="JUnit.RepositorioEventoTest.buscarEventoPorNombre" />
-      <item itemvalue="JUnit.RepositorioEventoTest.buscarEventosPorTipo" />
+      <item itemvalue="JUnit.EventoControllerTest" />
+      <item itemvalue="JUnit.RepositorioEventoTest" />
+      <item itemvalue="JUnit.RepositorioUsuarioTest" />
+      <item itemvalue="JUnit.UsuarioControllerTest" />
+      <item itemvalue="JUnit.UsuarioControllerTest.queSePuedaLogearConDatosCorrectosYLoLleveAHome" />
       <item itemvalue="Tomcat Server.proyecto-eventos" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.java in proyecto-limpio-spring" />
-        <item itemvalue="JUnit.EventoControllerTest.queAlFiltrarNoEncuentreNadaDevuelvaPopup" />
-        <item itemvalue="JUnit.test in proyecto-limpio-spring" />
-        <item itemvalue="JUnit.RepositorioEventoTest.buscarEventosPorTipo" />
-        <item itemvalue="JUnit.RepositorioEventoTest.buscarEventoPorNombre" />
+        <item itemvalue="JUnit.RepositorioUsuarioTest" />
+        <item itemvalue="JUnit.RepositorioEventoTest" />
+        <item itemvalue="JUnit.UsuarioControllerTest" />
+        <item itemvalue="JUnit.UsuarioControllerTest.queSePuedaLogearConDatosCorrectosYLoLleveAHome" />
+        <item itemvalue="JUnit.EventoControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -290,6 +322,7 @@
       <workItem from="1687813990223" duration="13626000" />
       <workItem from="1687827770407" duration="22000" />
       <workItem from="1687827817032" duration="1390000" />
+      <workItem from="1688062479021" duration="7831000" />
     </task>
     <task id="LOCAL-00001" summary="Creado repositorio y servicio para entrada. Falta asociar correctamente la entrada, se guarda en una tabla distinta.">
       <created>1687827964276</created>
@@ -313,7 +346,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Usuario.java</url>
-          <line>137</line>
+          <line>139</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

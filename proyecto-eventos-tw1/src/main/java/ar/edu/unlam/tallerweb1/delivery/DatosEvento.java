@@ -27,12 +27,12 @@ public class DatosEvento {
     	setLocalidad(localidad);
     }
 
-    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidad, TipoDeEvento tipo) {
+    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidado) {
         this.nombre = nombre;
         this.fecha = fecha;
         this.lugar = lugar;
         this.localidad = localidad;
-        this.tipo = tipo;
+
     }
 
     public String getNombre() {

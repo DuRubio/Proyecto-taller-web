@@ -44,7 +44,7 @@ public class RepositorioEventoTest extends SpringTest {
         entoncesLoPuedoEncontrar(eventoBuscado);
     }
 
-    @Test
+   /* @Test
     @Transactional @Rollback
     public void buscarEventosPorTipo(){
         dadoQuExistenEventos();
@@ -58,7 +58,7 @@ public class RepositorioEventoTest extends SpringTest {
         dadoQuExistenEventos();
         List<Evento> eventos = cuandoLosBuscoPorTipo(TipoDeEvento.MUSICAL);
         entoncesLosPuedoEncontrarMusicales(eventos);
-    }
+    }*/
 
     @Test
     @Transactional @Rollback
@@ -101,9 +101,9 @@ public class RepositorioEventoTest extends SpringTest {
         assertThat(eventos).hasSize(4);
     }
 
-    private List<Evento> cuandoLosBuscoPorTipo(TipoDeEvento tipoDeEvento) {
+    /*private List<Evento> cuandoLosBuscoPorTipo(TipoDeEvento tipoDeEvento) {
         return repositorio.buscarPorTipoDeEvento(tipoDeEvento);
-    }
+    }*/
 
     private List<Evento> dadoQuExistenEventos() {
         return generarEventos();
@@ -161,7 +161,7 @@ public class RepositorioEventoTest extends SpringTest {
         Evento evento = new Evento();
         evento.setNombre("Partido Copa Libertadores");
         evento.setFecha(fecha1);
-        evento.setTipo(TipoDeEvento.DEPORTIVO);
+       // evento.setTipo(TipoDeEvento.DEPORTIVO);
         evento.setLocalidad(localidad1);
         repositorio.save(evento);
         return evento;
@@ -171,7 +171,7 @@ public class RepositorioEventoTest extends SpringTest {
         Evento evento = new Evento();
         evento.setNombre("Recital");
         evento.setFecha(fecha2);
-        evento.setTipo(TipoDeEvento.MUSICAL);
+        //evento.setTipo(TipoDeEvento.MUSICAL);
         evento.setLocalidad(localidad2);
         repositorio.save(evento);
         return evento;

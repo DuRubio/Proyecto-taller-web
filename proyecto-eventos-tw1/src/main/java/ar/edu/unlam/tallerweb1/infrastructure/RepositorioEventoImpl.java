@@ -1,10 +1,16 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
+import ar.edu.unlam.tallerweb1.domain.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Evento;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -58,27 +64,29 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
     }
 
     @Override
-    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
-        List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
-                .add(Restrictions.eq("tipo", tipoDeEvento))
-                .list();
+    public List<Evento> buscarPorTipoDeEvento(Long categoria) {
+    	Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+        criteria.createAlias("categoria", "c");
+        criteria.add(Restrictions.eq("c.id", categoria));
+        List<Evento> eventos = criteria.list();
         return eventos;
     }
 
     @Override
     public List<Evento> buscarPorFechaDeEvento(LocalDate fecha) {
-        List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
-                .add(Restrictions.eq("fecha", fecha))
-                .list();
+    	Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+        criteria.add(Restrictions.eq("fecha", fecha));
+        List<Evento> eventos = criteria.list();
         return eventos;
     }
        @Override
     public List<Evento> buscarPorLocalidadDeEvento(String localidad) {
-        String hql = "FROM Evento e WHERE e.localidad = :localidad";
-        return sessionFactory.getCurrentSession()
-                .createQuery(hql, Evento.class)
-                .setParameter("localidad", localidad)
-                .list();
+    	   List<Evento> eventos = this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
+                   .add(Restrictions.eq("localidad", localidad))
+                   .list();
+           return eventos;
     }
 
     @Override
@@ -87,6 +95,44 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 		return (List<Evento>)sessionFactory.getCurrentSession()
 				.createQuery(hql, Evento.class).setMaxResults(4).list();
     }
+
+    
+    @Override
+    public List<Evento> buscarEventosPorPreferencias(Long idUsuario) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+
+        // Crea una subcriteria para obtener los IDs de categorías que coinciden con el ID de usuario
+        Criteria subCriteria = criteria.createCriteria("categoria", "c");
+        subCriteria.createAlias("usuariosPreferencia", "u");
+        subCriteria.add(Restrictions.eq("u.id", idUsuario));
+
+        // Obtén la lista de eventos
+        List<Evento> eventos = criteria.list();
+
+        return eventos;
+    }
+
+
+    
+    /*
+    @Override
+    public List<Evento> buscarEventosPorPreferencias(List<Long> idsCategorias) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+        
+        // Crea un alias para la asociación de Evento con Categoria
+        criteria.createAlias("categoria", "c");
+        
+        // Agrega una restricción para que el ID de la categoría esté en el listado de idsCategorias
+        criteria.add(Restrictions.in("c.id", idsCategorias));
+        
+        // Obtén la lista de eventos
+        List<Evento> eventos = criteria.list();
+        
+        return eventos;
+    }
+    */
 
 
 }

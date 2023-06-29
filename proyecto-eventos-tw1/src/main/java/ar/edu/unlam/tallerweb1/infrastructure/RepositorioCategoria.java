@@ -14,4 +14,6 @@ public interface RepositorioCategoria {
 
 	List<Categoria> findById(List<Long> categoriasSeleccionadas);
 
+	List<Long> findPreferenciasById(Long id);
+
 }

@@ -23,7 +23,6 @@ public class Evento {
     private String lugar;
     private String localidad;
     private String URLImagen;
-	private TipoDeEvento tipo;
     private Boolean eventoActivo;
 
     private Integer disponibilidad;
@@ -49,7 +48,6 @@ public class Evento {
     public Evento(DatosEvento datosEvento) {
     	setNombre(datosEvento.getNombre());
     	setLocalidad(datosEvento.getLocalidad());
-    	setTipo(datosEvento.getTipo());
     	setEventoActivo(true);
         setDisponibilidad(50);
     }
@@ -120,13 +118,6 @@ public class Evento {
 	public void setEventoActivo(Boolean eventoActivo) {
 		this.eventoActivo = eventoActivo;
 	}
-	public TipoDeEvento getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoDeEvento tipo) {
-		this.tipo = tipo;
-	}
 
 	public Categoria getCategoria() {
 		return categoria;
@@ -153,4 +144,31 @@ public class Evento {
         }
         return pudo;
     }
+
+	@Override
+	public String toString() {
+		return "Evento [categoria=" + categoria + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Id, categoria, disponibilidad, eventoActivo, fecha, localidad, lugar, nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Evento other = (Evento) obj;
+		return Objects.equals(Id, other.Id) && Objects.equals(categoria, other.categoria)
+				&& Objects.equals(disponibilidad, other.disponibilidad)
+				&& Objects.equals(eventoActivo, other.eventoActivo) && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(localidad, other.localidad) && Objects.equals(lugar, other.lugar)
+				&& Objects.equals(nombre, other.nombre);
+	}
+
 }

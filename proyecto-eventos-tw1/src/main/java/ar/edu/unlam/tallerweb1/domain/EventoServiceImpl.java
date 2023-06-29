@@ -52,8 +52,9 @@ public class EventoServiceImpl implements EventoService  {
     }
 
     @Override
-    public List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento) {
-        return repoEvento.buscarPorTipoDeEvento(tipoDeEvento);
+    public List<Evento> buscarPorTipoDeEvento(Integer categoria) {
+    	Long idCategoria = new Long(categoria);
+        return repoEvento.buscarPorTipoDeEvento(idCategoria);
     }
 
     @Override
@@ -79,6 +80,14 @@ public class EventoServiceImpl implements EventoService  {
 	@Override
 	public List<Evento> getPrimeros4Eventos() {
 		return repoEvento.findFirst4Events();
+	}
+
+	@Override
+	public List<Evento> buscarEventosPorPreferencias(Usuario usuario) {
+		Long id = usuario.getId();
+		List<Categoria> categorias = repoCategoria.findAll();
+		List<Long> idCategoriasPreferencias = repoCategoria.findPreferenciasById(id);
+		return repoEvento.buscarEventosPorPreferencias(id);
 	}
 
 }

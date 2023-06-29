@@ -15,7 +15,7 @@ public interface RepositorioEvento {
 
     Evento buscarPorNombre(String nombre);
 
-    List<Evento> buscarPorTipoDeEvento(TipoDeEvento tipoDeEvento);
+    List<Evento> buscarPorTipoDeEvento(Long categoria);
 
     List<Evento> buscarPorFechaDeEvento(LocalDate fecha);
 
@@ -26,5 +26,7 @@ public interface RepositorioEvento {
     List<Evento> buscarEventosConFiltros(LocalDate fecha, String ciudad, TipoDeEvento tipo);
 
 	public List<Evento> findFirst4Events();
+
+	public List<Evento> buscarEventosPorPreferencias(Long id);
 }
 

@@ -26,7 +26,7 @@
                 <input class="form-check-input" type="checkbox" name="musical" id="musical" value="true"/>
                 <label class="form-check-label" for="musical">Musical</label>
             </div>
-            
+
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="bailable" id="bailable" value="true"/>
                 <label class="form-check-label" for="bailable">Bailable</label>
@@ -59,8 +59,8 @@
                 <input class="form-check-input" type="checkbox" name="marcha" id="marcha" value="true"/>
                 <label class="form-check-label" for="marcha">Marcha</label>
             </div>
-            
-            <!-- Agrega los demás checkboxes aquí -->
+
+            <!-- Agrega los demï¿½s checkboxes aquï¿½ -->
 
             <br>
             <br>

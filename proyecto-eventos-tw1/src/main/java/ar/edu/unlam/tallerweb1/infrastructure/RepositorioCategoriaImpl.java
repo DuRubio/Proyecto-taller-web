@@ -7,8 +7,10 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -50,13 +52,58 @@ public class RepositorioCategoriaImpl implements RepositorioCategoria{
 
 	@Override
 	public List<Categoria> findById(List<Long> ids) {
-		Session session = sessionFactory.getCurrentSession();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<Categoria> query = criteriaBuilder.createQuery(Categoria.class);
-        Root<Categoria> root = query.from(Categoria.class);
-        query.select(root).where(root.get("id").in(ids));
-        
-        return session.createQuery(query).getResultList();
+	    Session session = sessionFactory.getCurrentSession();
+	    CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+	    CriteriaQuery<Categoria> query = criteriaBuilder.createQuery(Categoria.class);
+	    Root<Categoria> root = query.from(Categoria.class);
+	    query.select(root).where(root.get("id").in(ids));
+
+	    return session.createQuery(query).getResultList();
 	}
+
+	@Override
+	public List<Long> findPreferenciasById(Long id) {
+	    Session session = sessionFactory.getCurrentSession();
+	    Criteria criteria = session.createCriteria(Categoria.class);
+
+	    // Crea una subcriteria para obtener los IDs de categorías que coinciden con el ID de usuario
+	    Criteria subCriteria = criteria.createCriteria("usuariosPreferencia");
+	    subCriteria.add(Restrictions.eq("id", id));
+	    subCriteria.setProjection(Projections.property("id"));
+
+	    // Obtén la lista de IDs de categorías
+	    List<Long> idCategorias = subCriteria.list();
+
+	    return idCategorias;
+	}
+	
+	/*
+	@Override
+	public List<Categoria> findById(List<Long> ids) {
+	    Session session = sessionFactory.getCurrentSession();
+	    CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+	    CriteriaQuery<Categoria> query = criteriaBuilder.createQuery(Categoria.class);
+	    Root<Categoria> root = query.from(Categoria.class);
+	    query.select(root).where(root.get("id").in(ids));
+	    
+	    return session.createQuery(query).getResultList();
+	}
+
+	@Override
+	public List<Long> findPreferenciasById(Long id) {
+	    Session session = sessionFactory.getCurrentSession();
+	    Criteria criteria = session.createCriteria(Categoria.class);
+	    
+	    // Crea una subcriteria para obtener los IDs de categorías que coinciden con el ID de usuario
+	    Criteria subCriteria = criteria.createCriteria("usuariosPreferencia");
+	    subCriteria.add(Restrictions.eq("id", id));
+	    subCriteria.setProjection(Projections.property("id"));
+	    
+	    // Obtén la lista de IDs de categorías
+	    List<Long> idCategorias = subCriteria.list();
+	    
+	    return idCategorias;
+	}
+	*/
 
 }
