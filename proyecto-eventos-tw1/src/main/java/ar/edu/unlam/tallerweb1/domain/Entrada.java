@@ -54,6 +54,6 @@ public class Entrada {
         evento.asignarEntrada(this);
         usuario.asignarEntrada(this);
 
-        return false;
+        return true;
     }
 }

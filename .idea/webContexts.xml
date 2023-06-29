@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" value="file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas" />
         <entry key="file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/login.jsp" value="file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas" />
+        <entry key="file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" value="file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas" />
       </map>
     </option>
   </component>
