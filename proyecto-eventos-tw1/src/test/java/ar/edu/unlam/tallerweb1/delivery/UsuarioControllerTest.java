@@ -168,6 +168,21 @@ public class UsuarioControllerTest {
     private ModelAndView cuandoQuiereRegistrarse() {
         return usuarioController.getVistaRegistro();
     }
+    
+    @Test
+    public void cuandoVoyAVerMisEntradasMeLlevaALaVistaMisEntradas() {
+    	dadoQueExisteUnUsuarioRegistrado(usuarioValido);
+        ModelAndView mav = cuandoVoyAMisEntradas();
+        entoncesLoLlevaAMisEntradas(mav);
+    }
+
+	private void entoncesLoLlevaAMisEntradas(ModelAndView mav) {
+		assertThat(mav.getViewName()).isEqualTo("mis-entradas");
+	}
+
+	private ModelAndView cuandoVoyAMisEntradas() {
+		return usuarioController.misEntradas();
+	}
 
 
 

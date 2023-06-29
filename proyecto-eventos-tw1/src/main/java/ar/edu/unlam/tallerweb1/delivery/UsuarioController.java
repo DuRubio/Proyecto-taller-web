@@ -194,5 +194,16 @@ public class UsuarioController {
         return new ModelAndView(viewName);
 	}
 
+
+	@RequestMapping(path = "mis-entradas", method = RequestMethod.GET)
+	public ModelAndView misEntradas() {
+		ModelMap model = new ModelMap();
+        List<Entrada> entradas = servicioEntrada.getEntradasByIdUsuario(this.id);
+        model.put("entradas", entradas);
+        ModelAndView mav = new ModelAndView("mis-entradas", model);
+
+        return mav;
+	}
+
 }
 
