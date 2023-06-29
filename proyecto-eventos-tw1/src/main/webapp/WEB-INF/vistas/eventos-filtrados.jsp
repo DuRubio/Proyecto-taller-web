@@ -62,11 +62,11 @@
         </c:forEach>
     </div>
 </div>
-<div class="fixed bottom-0 left-0 w-full flex justify-center p-4">
+<div class=" w-full flex justify-center p-4">
     <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a>
 </div>
 
-<footer class="bg-violet-500 mt-4 py-8">
+<footer class="fixed bottom-0 w-full bg-violet-500 mt-4 py-8 ">
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap justify-between">
             <div class="w-full lg:w-6/12 px-4">

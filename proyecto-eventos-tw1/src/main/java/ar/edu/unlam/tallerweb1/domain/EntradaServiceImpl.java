@@ -20,11 +20,22 @@ public class EntradaServiceImpl implements  EntradaService{
     @Override
     public void save(Entrada entrada) {
         repoEntrada.save(entrada);
-
     }
 
     @Override
     public Entrada buscarPorId(Long id) {
        return repoEntrada.buscarPorId(id);
     }
+
+    @Override
+    public boolean asignarEntrada(Usuario usuario, Evento evento) {
+        if(evento.getDisponibilidad()>0){
+            Entrada entrada = new Entrada(usuario, evento);
+            evento.agregarEntrada(entrada);
+            save(entrada);
+            return true;
+        }
+        return false;
+    }
+
 }

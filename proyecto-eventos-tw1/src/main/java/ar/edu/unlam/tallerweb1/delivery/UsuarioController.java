@@ -114,10 +114,8 @@ public class UsuarioController {
         String viewName = "";
         ModelMap model = new ModelMap();
         if (session != null && session.getAttribute("usuario") != null) {
-            Evento evento;
-            evento = eventoService.buscarPorId(eventoId);
-            entrada.asignarUsuarioYEvento(usuario,evento);
-            servicioEntrada.save(entrada);
+            Evento evento = eventoService.buscarPorId(eventoId);
+            servicioEntrada.asignarEntrada(usuario, evento);
             entradas = this.usuario.getEntradas();
             model.put("entradas",entradas);
             viewName = "asistir";

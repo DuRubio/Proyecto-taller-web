@@ -135,14 +135,17 @@ public class Evento {
         this.disponibilidad = disponibilidad;
     }
 
-    public boolean asignarEntrada(Entrada entrada){
-        boolean pudo=false;
-        if(this.disponibilidad>0){
-            entradas.add(entrada);
-            disponibilidad--;
-            pudo=true;
-        }
-        return pudo;
+    public List<Entrada> getEntradas() {
+        return entradas;
+    }
+
+    public void setEntradas(List<Entrada> entradas) {
+        this.entradas = entradas;
+    }
+
+    public void agregarEntrada(Entrada entrada){
+        entradas.add(entrada);
+        disponibilidad--;
     }
 
 	@Override

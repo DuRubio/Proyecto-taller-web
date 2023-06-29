@@ -23,6 +23,11 @@ public class Entrada {
         this.Id = id;
     };
 
+    public Entrada (Usuario usuario, Evento evento){
+        this.usuario = usuario;
+        this.evento = evento;
+    }
+
     public Long getId() {
         return Id;
     }
@@ -47,13 +52,5 @@ public class Entrada {
         this.usuario = usuario;
     }
 
-    public boolean asignarUsuarioYEvento(Usuario usuario, Evento evento) {
-        //Entrada entrada = new Entrada();
-        this.usuario=usuario;
-        this.evento=evento;
-        evento.asignarEntrada(this);
-        usuario.asignarEntrada(this);
 
-        return true;
-    }
 }
