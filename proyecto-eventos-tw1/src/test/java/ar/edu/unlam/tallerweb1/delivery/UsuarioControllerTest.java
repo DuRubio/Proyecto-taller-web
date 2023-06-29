@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery;
-/*
 
+
+import ar.edu.unlam.tallerweb1.domain.EntradaService;
+import ar.edu.unlam.tallerweb1.domain.EventoService;
 import ar.edu.unlam.tallerweb1.domain.Usuario;
 import ar.edu.unlam.tallerweb1.domain.UsuarioService;
 import ar.edu.unlam.tallerweb1.domain.UsuarioServiceImpl;
@@ -22,6 +24,8 @@ public class UsuarioControllerTest {
     private DatosRegistracion datosRegistracion2;
     private DatosRegistracion datosRegistracion3;
     private UsuarioService servicioRegistracion ;
+    private EventoService eventoService;
+    private EntradaService servicioEntrada;
     private DatosLogin usuarioValido;
 
 
@@ -32,8 +36,10 @@ public class UsuarioControllerTest {
         this.datosRegistracion3 = new DatosRegistracion(CORREO_VALIDO, CLAVE_INVALIDO);
         this.usuarioValido = new DatosLogin(CORREO_VALIDO, CLAVE_VALIDO);
         this.servicioRegistracion = mock(UsuarioServiceImpl.class);
-        this.usuarioController = new UsuarioController(servicioRegistracion);
+        this.usuarioController = new UsuarioController(servicioRegistracion, eventoService, servicioEntrada);
     }
+    
+    /*
 
     @Test
     public void queAlTocarRegistrarAparezcaLaPantallaRegistro(){
@@ -158,6 +164,6 @@ public class UsuarioControllerTest {
         return usuarioController.getVistaRegistro();
     }
 
+*/
 
-
-}*/
+}
