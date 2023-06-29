@@ -82,4 +82,12 @@ public class EventoServiceImpl implements EventoService  {
 		return repoEvento.findFirst4Events();
 	}
 
+	@Override
+	public List<Evento> buscarEventosPorPreferencias(Usuario usuario) {
+		Long id = usuario.getId();
+		List<Categoria> categorias = repoCategoria.findAll();
+		List<Long> idCategoriasPreferencias = repoCategoria.findPreferenciasById(id);
+		return repoEvento.buscarEventosPorPreferencias(id);
+	}
+
 }

@@ -140,10 +140,17 @@
 	<div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
 		<a
 			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
-			href="mostrar-eventos">Ver todos los eventos</a> <a
-			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
-			href="mostrar-eventos-preferencias">Buscar Eventos Por Mis
-			Preferencias</a>
+			href="mostrar-eventos">Ver todos los eventos</a>
+			
+			<c:if test="${not empty sessionScope.usuario}">
+				<a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+   href="filtrar-preferencias?idUsuario=${sessionScope.usuario.id}">
+   Buscar Eventos Por Mis Preferencias
+</a>
+			</c:if>
+			 
+			
+
 		<c:if test="${usuario.isAdmin}">
 			<a
 				class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"

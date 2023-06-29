@@ -1,12 +1,16 @@
 package ar.edu.unlam.tallerweb1.infrastructure;
 
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
+import ar.edu.unlam.tallerweb1.domain.Categoria;
 import ar.edu.unlam.tallerweb1.domain.Evento;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -91,6 +95,44 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 		return (List<Evento>)sessionFactory.getCurrentSession()
 				.createQuery(hql, Evento.class).setMaxResults(4).list();
     }
+
+    
+    @Override
+    public List<Evento> buscarEventosPorPreferencias(Long idUsuario) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+
+        // Crea una subcriteria para obtener los IDs de categorías que coinciden con el ID de usuario
+        Criteria subCriteria = criteria.createCriteria("categoria", "c");
+        subCriteria.createAlias("usuariosPreferencia", "u");
+        subCriteria.add(Restrictions.eq("u.id", idUsuario));
+
+        // Obtén la lista de eventos
+        List<Evento> eventos = criteria.list();
+
+        return eventos;
+    }
+
+
+    
+    /*
+    @Override
+    public List<Evento> buscarEventosPorPreferencias(List<Long> idsCategorias) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+        
+        // Crea un alias para la asociación de Evento con Categoria
+        criteria.createAlias("categoria", "c");
+        
+        // Agrega una restricción para que el ID de la categoría esté en el listado de idsCategorias
+        criteria.add(Restrictions.in("c.id", idsCategorias));
+        
+        // Obtén la lista de eventos
+        List<Evento> eventos = criteria.list();
+        
+        return eventos;
+    }
+    */
 
 
 }

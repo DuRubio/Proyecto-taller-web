@@ -2,6 +2,9 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.Evento;
 import ar.edu.unlam.tallerweb1.domain.EventoService;
+import ar.edu.unlam.tallerweb1.domain.Usuario;
+import ar.edu.unlam.tallerweb1.domain.UsuarioService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -21,12 +24,16 @@ import java.util.Set;
 
 @Controller
 public class EventoController {
+	
+	private Long id;
 
     private EventoService servicioEvento;
+    private UsuarioService servicioUsuario;
+    
     @Autowired
-
-    public EventoController(EventoService servicioRegEvento) {
+    public EventoController(EventoService servicioRegEvento, UsuarioService servicioUsuario) {
         this.servicioEvento=servicioRegEvento;
+        this.servicioUsuario = servicioUsuario;
     }
 
 
@@ -94,6 +101,27 @@ public class EventoController {
         if (localidad != null) {
             eventosFiltrados.addAll(servicioEvento.buscarPorCiudad(localidad));
         }
+
+        if (eventosFiltrados.isEmpty()) {
+            model.addAttribute("mostrarPopup", true);
+            viewName = "home";
+        } else {
+            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
+            viewName = "eventos-filtrados";
+        }
+
+        return new ModelAndView(viewName, model);
+    }
+    
+    @RequestMapping(path = "filtrar-preferencias", method = RequestMethod.GET)
+    public ModelAndView filtrarEventosMisPreferencias(@RequestParam(value = "idUsuario", required = true) Long id) {
+        String viewName = "";
+        ModelMap model = new ModelMap();
+
+        Set<Evento> eventosFiltrados = new HashSet<>();
+        // Hacer filtrar preferencias
+        Usuario usuario = servicioUsuario.obtenerUsuarioPorID(id);
+        eventosFiltrados.addAll(servicioEvento.buscarEventosPorPreferencias(usuario));
 
         if (eventosFiltrados.isEmpty()) {
             model.addAttribute("mostrarPopup", true);

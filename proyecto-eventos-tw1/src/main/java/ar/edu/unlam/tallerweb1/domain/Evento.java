@@ -170,8 +170,5 @@ public class Evento {
 				&& Objects.equals(localidad, other.localidad) && Objects.equals(lugar, other.lugar)
 				&& Objects.equals(nombre, other.nombre);
 	}
-	
-	
-    
-    
+	  
 }
