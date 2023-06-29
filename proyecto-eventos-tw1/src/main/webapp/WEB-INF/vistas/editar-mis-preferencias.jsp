@@ -1,73 +1,73 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap theme -->
-<link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Mis Preferencias</title>
 </head>
-<body>
 
-<div class="container">
-    <div id="loginbox" style="margin-top: 50px;"
-         class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <form:form action="guardar-preferencias-usuario" method="POST" modelAttribute="datosPreferencias">
-            <h3 class="form-signin-heading">Mis Preferencias</h3>
-            <hr class="colorgraph">
+<body class="bg-gray-100">
+<div class="container m-auto mt-10">
+    <div id="loginbox" class="m-auto w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4">
+        <form action="guardar-preferencias-usuario" method="POST" class="bg-white shadow-md rounded px-8 py-6">
+            <h3 class="text-2xl font-bold mb-4">Mis Preferencias</h3>
+            <hr class="border-t-2 border-gray-300 mb-4">
             <br>
+            <div class="flex flex-wrap items-center gap-4">
+                <label for="deportivo" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="deportivo" type="checkbox" class="hidden" name="deportivo" value="true">
+                    Deportivo
+                </label>
 
-			<div class="form-check">
-                <input class="form-check-input" type="checkbox" name="deportivo" id="deportivo" value="true"/>
-                <label class="form-check-label" for="deportivo">Deportivo</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="musical" id="musical" value="true"/>
-                <label class="form-check-label" for="musical">Musical</label>
-            </div>
+                <label for="musical" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="musical" type="checkbox" class="hidden" name="musical" value="true">
+                    Musical
+                </label>
 
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="bailable" id="bailable" value="true"/>
-                <label class="form-check-label" for="bailable">Bailable</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="teatral" id="teatral" value="true"/>
-                <label class="form-check-label" for="teatral">Teatral</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="recital" id="recital" value="true"/>
-                <label class="form-check-label" for="recital">Recital</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="cine" id="cine" value="true"/>
-                <label class="form-check-label" for="cine">Cine</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="cultural" id="cultural" value="true"/>
-                <label class="form-check-label" for="cultural">Cultural</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="gastronomico" id="gastronomico" value="true"/>
-                <label class="form-check-label" for="gastronomico">Gastronomico</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="feria" id="feria" value="true"/>
-                <label class="form-check-label" for="feria">Feria</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="marcha" id="marcha" value="true"/>
-                <label class="form-check-label" for="marcha">Marcha</label>
-            </div>
+                <label for="bailable" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="bailable" type="checkbox" class="hidden" name="bailable" value="true">
+                    Bailable
+                </label>
 
-            <!-- Agrega los dem�s checkboxes aqu� -->
+                <label for="teatral" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="teatral" type="checkbox" class="hidden" name="teatral" value="true">
+                    Teatral
+                </label>
 
+                <label for="recital" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="recital" type="checkbox" class="hidden" name="recital" value="true">
+                    Recital
+                </label>
+
+                <label for="cine" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="cine" type="checkbox" class="hidden" name="cine" value="true">
+                    Cine
+                </label>
+
+                <label for="cultural" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="cultural" type="checkbox" class="hidden" name="cultural" value="true">
+                    Cultural
+                </label>
+
+                <label for="gastronomico" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="gastronomico" type="checkbox" class="hidden" name="gastronomico" value="true">
+                    Gastronomico
+                </label>
+
+                <label for="feria" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="feria" type="checkbox" class="hidden" name="feria" value="true">
+                    Feria
+                </label>
+            </div>
             <br>
             <br>
             <br>
-
-            <button id="btn-registrarme" class="btn btn-lg btn-primary btn-block" type="submit">Guardar</button>
-        </form:form>
+            <button id="btn-registrarme" class="w-full bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded" type="submit">Guardar</button>
+        </form>
 
         <c:if test="${not empty mensaje}">
             <h4>
@@ -78,14 +78,28 @@
     </div>
 </div>
 
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
-	</script>
-	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+</script>
+<script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const label = this.parentElement;
+            if (this.checked) {
+                label.classList.add('bg-violet-600');
+                label.classList.remove('bg-violet-300');
+            } else {
+                label.classList.add('bg-violet-300');
+                label.classList.remove('bg-violet-600');
+            }
+        });
+    });
+</script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>
+
 </html>
