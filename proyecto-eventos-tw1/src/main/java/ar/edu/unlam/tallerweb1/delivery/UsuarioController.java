@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
 import ar.edu.unlam.tallerweb1.domain.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -190,6 +191,16 @@ public class UsuarioController {
 		usuarioService.guardarPreferencias(id, datosPreferencias);
 		String viewName = "redirect:/home";
         return new ModelAndView(viewName);
+	}
+
+
+	@RequestMapping(path = "mis-entradas", method = RequestMethod.GET )
+	public ModelAndView misEntradas(Long usuarioId) {
+		ModelMap model = new ModelMap();
+		List<Entrada> entradas = this.servicioEntrada.listarMisEntradas(usuarioId);
+		model.put("entradas", entradas);
+		ModelAndView mav = new ModelAndView("mis-entradas", model);
+		return mav;
 	}
 
 }

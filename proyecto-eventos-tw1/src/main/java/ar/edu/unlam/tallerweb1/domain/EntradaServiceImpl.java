@@ -4,6 +4,9 @@ import ar.edu.unlam.tallerweb1.infrastructure.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEntrada;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEntradaImpl;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +40,9 @@ public class EntradaServiceImpl implements  EntradaService{
         }
         return false;
     }
+	@Override
+	public List<Entrada> listarMisEntradas(Long usuarioId) {
+		return repoEntrada.buscarMisEntradas(usuarioId);
+	}
 
 }

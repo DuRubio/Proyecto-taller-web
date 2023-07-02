@@ -1,6 +1,6 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-
+import java.util.List;
 
 public interface EntradaService {
 
@@ -9,4 +9,6 @@ public interface EntradaService {
     Entrada buscarPorId(Long id);
 
     boolean asignarEntrada(Usuario usuario, Evento evento);
+
+	List<Entrada> listarMisEntradas(Long usuarioId);
 }
