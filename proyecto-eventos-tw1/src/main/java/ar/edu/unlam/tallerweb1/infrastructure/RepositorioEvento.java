@@ -28,5 +28,8 @@ public interface RepositorioEvento {
 	public List<Evento> findFirst4Events();
 
 	public List<Evento> buscarEventosPorPreferencias(Long id);
+
+
+    void setInactivo(Evento evento);
 }
 

@@ -72,7 +72,7 @@
         <tbody>
     <c:forEach items="${entradas}" var="entrada">
         <tr>
-            <td class="py-2">${entrada.evento.nombre}</td>
+            <td class="py-2">${entrada.id}</td>
             <td class="py-2">${entrada.evento.fecha}</td>
             <td class="py-2">${entrada.evento.localidad}</td>
         </tr>

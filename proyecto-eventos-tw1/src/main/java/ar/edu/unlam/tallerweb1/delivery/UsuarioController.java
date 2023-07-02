@@ -127,6 +127,23 @@ public class UsuarioController {
         return new ModelAndView(viewName, model);
     }
 
+    @Transactional
+    @RequestMapping(path = "/eliminar", method = RequestMethod.GET)
+    public ModelAndView eliminarEvento(HttpServletRequest request , @RequestParam("eventoId") Long eventoId) {
+        HttpSession session = request.getSession(false);
+        String viewName = "";
+        ModelMap model = new ModelMap();
+        if (session != null && session.getAttribute("usuario")!= null && usuario.getIsAdmin()) {
+            eventoService.setInactivo(eventoId);
+            viewName= "home";
+        } else {
+            model.put("mensaje", "Debe ser admin para eliminar un evento");
+            viewName= "my-profile";
+        }
+
+        return new ModelAndView(viewName, model);
+    }
+
 
 
         @RequestMapping(path = "my-profile", method = RequestMethod.GET)

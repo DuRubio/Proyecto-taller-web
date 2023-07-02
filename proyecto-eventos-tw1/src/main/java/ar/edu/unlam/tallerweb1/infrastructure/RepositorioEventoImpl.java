@@ -39,11 +39,17 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 
     @Override
     public List<Evento> findAll() {
-        Session session = sessionFactory.getCurrentSession();
+        /*Session session = sessionFactory.getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Evento> criteriaQuery = criteriaBuilder.createQuery(Evento.class);
         criteriaQuery.from(Evento.class);
         return session.createQuery(criteriaQuery).getResultList();
+        return this.sessionFactory.getCurrentSession().createCriteria(Evento.class)
+                .add(Restrictions.eq("eventoActivo" , 1)).list();
+*/
+        String hql = "FROM Evento WHERE eventoActivo = true ORDER BY id";
+        return (List<Evento>)sessionFactory.getCurrentSession()
+                .createQuery(hql, Evento.class).list();
     }
 
     @Override
@@ -102,16 +108,24 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Evento.class);
 
-        // Crea una subcriteria para obtener los IDs de categorías que coinciden con el ID de usuario
+        // Crea una subcriteria para obtener los IDs de categorï¿½as que coinciden con el ID de usuario
         Criteria subCriteria = criteria.createCriteria("categoria", "c");
         subCriteria.createAlias("usuariosPreferencia", "u");
         subCriteria.add(Restrictions.eq("u.id", idUsuario));
 
-        // Obtén la lista de eventos
+        // Obtï¿½n la lista de eventos
         List<Evento> eventos = criteria.list();
 
         return eventos;
     }
+
+    @Override
+    public void setInactivo(Evento evento) {
+        Session session = sessionFactory.getCurrentSession();
+        evento.setEventoActivo(false);
+        session.update(evento);
+    }
+
 
 
     
@@ -121,13 +135,13 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Evento.class);
         
-        // Crea un alias para la asociación de Evento con Categoria
+        // Crea un alias para la asociaciï¿½n de Evento con Categoria
         criteria.createAlias("categoria", "c");
         
-        // Agrega una restricción para que el ID de la categoría esté en el listado de idsCategorias
+        // Agrega una restricciï¿½n para que el ID de la categorï¿½a estï¿½ en el listado de idsCategorias
         criteria.add(Restrictions.in("c.id", idsCategorias));
         
-        // Obtén la lista de eventos
+        // Obtï¿½n la lista de eventos
         List<Evento> eventos = criteria.list();
         
         return eventos;

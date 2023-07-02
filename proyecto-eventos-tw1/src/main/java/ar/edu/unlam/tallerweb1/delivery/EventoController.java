@@ -63,12 +63,12 @@ public class EventoController {
 
 
 
-
+/*
     @RequestMapping(path = "/comprar-entrada", method = RequestMethod.GET)
     public ModelAndView getVistaComprar() {
         return new ModelAndView("comprar-entrada");
     }
-
+*/
 
     @RequestMapping(path="mostrar-eventos", method = RequestMethod.GET)
     public ModelAndView mostrarEventos() {

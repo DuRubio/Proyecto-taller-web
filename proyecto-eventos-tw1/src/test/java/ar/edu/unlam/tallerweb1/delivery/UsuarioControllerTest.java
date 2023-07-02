@@ -5,9 +5,12 @@ import ar.edu.unlam.tallerweb1.domain.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpSession;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -28,6 +31,7 @@ public class UsuarioControllerTest {
     private EntradaService servicioEntrada;
     private DatosLogin usuarioValido;
     private HttpServletRequest request;
+    private HttpSession session;
 
 
     @Before
@@ -39,8 +43,10 @@ public class UsuarioControllerTest {
         this.servicioRegistracion = mock(UsuarioServiceImpl.class);
         this.eventoService=mock(EventoServiceImpl.class);
         this.servicioEntrada=mock(EntradaServiceImpl.class);
-        //this.request=mock(HttpServletRequest.class);
-        this.request = new MockHttpServletRequest();
+        this.request=mock(HttpServletRequest.class);
+       // this.request = new MockHttpServletRequest();
+        //this.session = mock(HttpSession.class);
+        //this.session = new MockHttpSession();
         this.usuarioController = new UsuarioController(servicioRegistracion,eventoService,servicioEntrada);
     }
 
@@ -87,14 +93,14 @@ public class UsuarioControllerTest {
         entoncesAccedoAlLogin(mav);
     }
 
-   /* @Test
+    @Test
     public void queSePuedaLogearConDatosCorrectosYLoLleveAHome(){
         dadoQueExisteUnUsuario(request, usuarioValido, true);
         ModelAndView mav = cuandoSeLogea(usuarioValido);
         entoncesLoLlevaAHome(mav);
 
     }
-*/
+
 
 
 
@@ -105,10 +111,12 @@ public class UsuarioControllerTest {
     }
 
     private void dadoQueExisteUnUsuario(HttpServletRequest request, DatosLogin usuarioValido, boolean retornoDeseado) {
+        MockHttpSession session = new MockHttpSession();
         when(servicioRegistracion.compararMail(usuarioValido.getCorreo())).thenReturn(retornoDeseado);
         when(servicioRegistracion.compararClave(usuarioValido.getCorreo(),usuarioValido.getClave())).thenReturn(retornoDeseado);
-        when(request.getParameter("usuario")).thenReturn(usuarioValido.getCorreo());
-        when(request.getParameter("clave")).thenReturn(usuarioValido.getClave());
+        when(request.getSession(any())).thenReturn(session);
+
+
     }
 
     private void dadoQueExisteUnUsuarioRegistrado(DatosLogin usuarioValido) {

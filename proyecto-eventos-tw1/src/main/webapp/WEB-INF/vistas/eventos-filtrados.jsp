@@ -53,8 +53,8 @@
                            class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Asistir</a>
                     </c:if>
                     <c:if test="${evento.disponibilidad==0}">
-                        <a href="#}"
-                           class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Cupo
+                        <a href="#"
+                           class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full">Cupo
                             lleno</a>
                     </c:if>
                 </div>
