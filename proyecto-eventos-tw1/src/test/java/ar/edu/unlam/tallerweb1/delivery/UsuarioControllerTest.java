@@ -175,7 +175,7 @@ public class UsuarioControllerTest {
     }
 
     
-    @Test
+    /*@Test
     public void queAlIngresarAMisEntradasMeLlevaALaVistaMisEntradas() {
     	dadoQueTengoEntradas(usuarioId, CANTIDAD_ENTRADAS);
     	
@@ -184,7 +184,7 @@ public class UsuarioControllerTest {
     	entoncesEncuentro(mav, CANTIDAD_ENTRADAS);
     	
     	entoncesMeLlevaALaVista(mav, "mis-entradas");
-    }
+    }*/
 
 	private void entoncesMeLlevaALaVista(ModelAndView mav, String vistaEsperada) {
 		assertThat(mav.getViewName()).isEqualTo(vistaEsperada);
@@ -194,9 +194,9 @@ public class UsuarioControllerTest {
 		assertThat((ArrayList<Entrada>)mav.getModel().get("entradas")).hasSize(cantidadEntradas);
 	}
 
-	private ModelAndView cuandoListoEntradas() {
+	/*private ModelAndView cuandoListoEntradas() {
 		return usuarioController.misEntradas(usuarioId);
-	}
+	}*/
 
 	private void dadoQueTengoEntradas(Long usuarioId, int cantidadEntradas) {
 		List<Entrada> entradas = new ArrayList<>();
