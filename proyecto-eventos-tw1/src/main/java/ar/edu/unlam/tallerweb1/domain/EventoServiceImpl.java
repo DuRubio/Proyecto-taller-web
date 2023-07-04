@@ -90,4 +90,11 @@ public class EventoServiceImpl implements EventoService  {
 		return repoEvento.buscarEventosPorPreferencias(id);
 	}
 
+    @Override
+    public void setInactivo(Long eventoId) {
+        Evento evento = this.buscarPorId(eventoId);
+        repoEvento.setInactivo(evento);
+    }
+
+
 }

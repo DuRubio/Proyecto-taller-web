@@ -10,7 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d581376c-73dc-4c9d-8a45-c90ccc51197f" name="Changes" comment="Creado repositorio y servicio para entrada. Falta asociar correctamente la entrada, se guarda en una tabla distinta.">
-      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/resources/hibernateContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/resources/hibernateContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/EventoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEvento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/infrastructure/RepositorioEventoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/eventos-filtrados.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/mostrar-eventos.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +308,7 @@
       <workItem from="1687827770407" duration="22000" />
       <workItem from="1687827817032" duration="1390000" />
       <workItem from="1688062479021" duration="7831000" />
-      <workItem from="1688501703085" duration="334000" />
+      <workItem from="1688501703085" duration="2704000" />
     </task>
     <task id="LOCAL-00001" summary="Creado repositorio y servicio para entrada. Falta asociar correctamente la entrada, se guarda en una tabla distinta.">
       <created>1687827964276</created>
@@ -326,11 +334,6 @@
           <url>file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/domain/Usuario.java</url>
           <line>140</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/UsuarioController.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
