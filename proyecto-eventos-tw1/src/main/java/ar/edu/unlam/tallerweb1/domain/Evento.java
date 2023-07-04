@@ -31,7 +31,7 @@ public class Evento {
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    @OneToMany(mappedBy = "evento")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "evento")
     private List<Entrada> entradas = new ArrayList<>();
 
     public Evento (){

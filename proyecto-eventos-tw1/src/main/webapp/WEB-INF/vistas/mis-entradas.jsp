@@ -31,26 +31,21 @@
     </div>
 </nav>
 <body class="bg-gray-100">
-<h1 class="text-4xl text-center font-bold mt-8">Listado de Eventos</h1>
+<h1 class="text-4xl text-center font-bold mt-8">Mis Entradas</h1>
 
 <div class="max-w-6xl mx-auto mt-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <c:forEach items="${eventos}" var="evento">
+        <c:forEach items="${entradas}" var="entrada">
             <div class="bg-white shadow-md rounded p-6">
-                <img class="w-full" src="../img/${evento.URLImagen}" alt="Evento">
                 <div class="mt-4">
-                    <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
-                    <p class="text-gray-700">Fecha: ${evento.fecha}</p>
+                    <h2 class="text-xl font-semibold mb-2">Identificador entrada: ${entrada.id}</h2>
+                    <p class="text-gray-700">Evento: ${entrada.evento.nombre}</p>
+                    <p class="text-gray-700">Localidad: ${entrada.evento.localidad}</p>
+                    <p class="text-gray-700">Lugar: ${entrada.evento.lugar}</p>
+                    <p class="text-gray-700">Fecha: ${entrada.evento.fecha}</p>
+                    <!-- <p class="text-gray-700">Fecha: ${evento.fecha}</p>
                     <p class="text-gray-700">Localidad: ${evento.localidad}</p>
-                    <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>
-                </div>
-                <div class="flex justify-center mt-6">
-                    <c:if test="${evento.disponibilidad>0}">
-                        <a href="asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Asistir</a>
-                    </c:if>
-                    <c:if test="${evento.disponibilidad==0}">
-                        <a href="#}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-full">Cupo lleno</a>
-                    </c:if>
+                    <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>  -->
                 </div>
             </div>
         </c:forEach>

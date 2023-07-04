@@ -5,6 +5,7 @@ import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEntrada;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEntradaImpl;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

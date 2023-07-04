@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Usuario {
@@ -27,8 +28,8 @@ public class Usuario {
     private Boolean isAdmin=false;
 
     @Column(nullable=true)
-    @OneToMany(fetch = FetchType.EAGER) //analizar por qué no se guarda en la tabla de usuario_entrada y sí en entrada
-   private List<Entrada> entradas = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+    private List<Entrada> entradas = new ArrayList<>();
     
     @ManyToMany
     @JoinTable(
@@ -146,6 +147,29 @@ public class Usuario {
     public void setEntradas(List<Entrada> entradas) {
         this.entradas = entradas;
     }
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		return Objects.equals(id, other.id);
+	}
+    
+    
+    
+    
 }
 
 
