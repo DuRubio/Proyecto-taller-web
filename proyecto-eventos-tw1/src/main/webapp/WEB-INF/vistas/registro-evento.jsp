@@ -48,6 +48,8 @@
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
                    placeholder="Ingresa la localidad">
         </div>
+
+
         <!-- 
         <div class="mt-4">
             <label for="fecha" class="block mb-1">Fecha:</label>
@@ -55,6 +57,14 @@
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
         </div>
          -->
+
+        <div class="mt-4">
+            <label for="disponibilidad" class="block mb-1">Disponibilidad:</label>
+            <input id="disponibilidad" type="number" name="disponibilidad"
+                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
+                   placeholder="Ingrese la disponibilidad">
+            <p class="text-violet-500 text-italic text-sm">*Por defecto se cargará en 50*</p>
+        </div>
         
         <br>
         <label for="imagen" class="block mb-1">Subir una Imagen:</label>

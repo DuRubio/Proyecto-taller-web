@@ -205,9 +205,7 @@ public class UsuarioController {
 	}
 
 
-    
-
-    @Transactional
+    @Transactional //que aparezca un popup seguro queres eliminar? aceptar | cancelar
     @RequestMapping(path = "/eliminar", method = RequestMethod.GET)
     public ModelAndView eliminarEvento(HttpServletRequest request , @RequestParam("eventoId") Long eventoId) {
         HttpSession session = request.getSession(false);
@@ -215,7 +213,7 @@ public class UsuarioController {
         ModelMap model = new ModelMap();
         if (session != null && session.getAttribute("usuario")!= null && usuario.getIsAdmin()) {
             eventoService.setInactivo(eventoId);
-            viewName= "home";
+            viewName= "home";  //que aparezca un popup con eevento eliminado con exito
         } else {
             model.put("mensaje", "Debe ser admin para eliminar un evento");
             viewName= "my-profile";

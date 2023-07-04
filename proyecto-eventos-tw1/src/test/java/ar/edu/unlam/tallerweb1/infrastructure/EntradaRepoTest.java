@@ -65,7 +65,7 @@ public class EntradaRepoTest extends SpringTest{
 		Integer j = 0;
 		for(int i = 1; i <= cantidadEntradas; i++) {
 			j = i;
-			entrada.setEvento(new Evento(j.toString(), fechaEvento, "CABA", j.toString()));
+			entrada.setEvento(new Evento(j.toString(), fechaEvento, "CABA", j.toString(), 50));
 			entrada.setUsuario(new Usuario());
 			entradas.add(entrada);
 			repositorioEntrada.save(entrada);

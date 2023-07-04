@@ -28,15 +28,15 @@ public class EventoControllerTest {
 
     @Before
     public void inicializacion(){
-        eventoEjemplo = new DatosEvento("superclasico", fechaEvento , "monumental" , "nuñez");
+        eventoEjemplo = new DatosEvento("superclasico", fechaEvento , "monumental" , "nuñez", 50);
 
        /* eventoEjemplo1=new Evento();
         eventoEjemplo1.setTipo(TipoDeEvento.MUSICAL.getValor());
         eventoEjemplo2=new Evento();
         eventoEjemplo2.setTipo(TipoDeEvento.MUSICAL);
 */
-        eventoEjemploErroneo1 = new DatosEvento("", fechaEvento , "monumental" , "nuñez");
-        eventoEjemploErroneo2 = new DatosEvento("superclasico", fechaEvento , "monumental" , "");
+        eventoEjemploErroneo1 = new DatosEvento("", fechaEvento , "monumental" , "nuñez", 50);
+        eventoEjemploErroneo2 = new DatosEvento("superclasico", fechaEvento , "monumental" , "", 50);
 
         this.servicioRegEvento = mock(EventoServiceImpl.class);
         this.servicioUsuario = mock(UsuarioServiceImpl.class);
