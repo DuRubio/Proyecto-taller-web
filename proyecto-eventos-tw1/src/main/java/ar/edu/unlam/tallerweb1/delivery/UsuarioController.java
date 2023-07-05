@@ -6,14 +6,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.zxing.WriterException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -203,6 +210,35 @@ public class UsuarioController {
 		ModelAndView mav = new ModelAndView("mis-entradas", model);
 		return mav;
 	}
+	
+	@RequestMapping(path = "/entrada", method = RequestMethod.GET)
+    public ModelAndView generarQR(@RequestParam("entradaId") Long id) {
+        // Aquí debes incluir el código para obtener el objeto Entrada según su ID
+        ModelMap model = new ModelMap();
+        
+        Entrada entrada = obtenerEntradaPorId(id);
+        
+        // Generar el código QR para la entrada
+        String qrCodeText = "https://localhost:8080/proyecto-limpio-spring/entrada/" + entrada.getId();
+        int qrCodeSize = 200;
+        try {
+            BufferedImage qrCodeImage = QRCodeGenerator.generateQRCodeImage(qrCodeText, qrCodeSize);
+            byte[] qrCodeBytes = QRCodeGenerator.convertImageToByteArray(qrCodeImage, "png");
+            String qrCodeBase64 = Base64.getEncoder().encodeToString(qrCodeBytes);
+
+            model.put("qrCodeBase64", qrCodeBase64);
+        } catch (WriterException | IOException e) {
+            // Manejar la excepción en caso de error
+            e.printStackTrace();
+        }
+        
+        return new ModelAndView("entrada", model);
+    }
+
+    // Método para obtener la entrada por su ID (debes implementarlo según tu lógica)
+    private Entrada obtenerEntradaPorId(Long id) {
+        return servicioEntrada.buscarPorId(id);
+    }
 
 }
 
