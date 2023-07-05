@@ -48,13 +48,7 @@
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
                    placeholder="Ingresa la localidad">
         </div>
-        <!--
-        <div class="mt-4">
-            <label for="fecha" class="block mb-1">Fecha:</label>
-            <input type="date" id="fecha" name="fecha"
-                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
-        </div>
-         -->
+
 
         <div class="mt-4">
             <label for="disponibilidad" class="block mb-1">Disponibilidad:</label>
@@ -63,6 +57,15 @@
                    placeholder="Ingrese la disponibilidad">
             <p class="text-violet-500 text-italic text-sm">*Por defecto se cargará en 50</p>
         </div>
+
+
+
+       <div class="mt-4">
+           <label for="fecha" class="block mb-1">Fecha:</label>
+           <input type="text" id="fecha" name="fecha" placeholder="AAAA-MM-DD"
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
+       </div>
+
 
         <br>
         <label for="imagen" class="block mb-1">Subir una Imagen:</label>

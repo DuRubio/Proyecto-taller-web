@@ -11,7 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d581376c-73dc-4c9d-8a45-c90ccc51197f" name="Changes" comment="Creado repositorio y servicio para entrada. Falta asociar correctamente la entrada, se guarda en una tabla distinta.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/DatosEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/DatosEvento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/java/ar/edu/unlam/tallerweb1/delivery/EventoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-evento.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/main/webapp/WEB-INF/vistas/registro-evento.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/EventoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/proyecto-eventos-tw1/src/test/java/ar/edu/unlam/tallerweb1/delivery/EventoControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +69,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Duilio/Desktop/Taller Web Proyecto&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -86,7 +90,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.proyecto-eventos">
-    <configuration name="EventoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EventoControllerTest.crearEventoConFechaString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-limpio-spring" />
       <extension name="coverage">
         <pattern>
@@ -96,7 +100,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="ar.edu.unlam.tallerweb1.delivery" />
       <option name="MAIN_CLASS_NAME" value="ar.edu.unlam.tallerweb1.delivery.EventoControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="crearEventoConFechaString" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -250,7 +255,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.EventoControllerTest" />
+      <item itemvalue="JUnit.EventoControllerTest.crearEventoConFechaString" />
       <item itemvalue="JUnit.RepositorioEventoTest" />
       <item itemvalue="JUnit.RepositorioUsuarioTest" />
       <item itemvalue="JUnit.UsuarioControllerTest" />
@@ -259,11 +264,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EventoControllerTest.crearEventoConFechaString" />
         <item itemvalue="JUnit.RepositorioUsuarioTest" />
         <item itemvalue="JUnit.RepositorioEventoTest" />
         <item itemvalue="JUnit.UsuarioControllerTest" />
         <item itemvalue="JUnit.UsuarioControllerTest.queSePuedaLogearConDatosCorrectosYLoLleveAHome" />
-        <item itemvalue="JUnit.EventoControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -302,6 +307,10 @@
       <workItem from="1687827817032" duration="1390000" />
       <workItem from="1688062479021" duration="7831000" />
       <workItem from="1688501703085" duration="7662000" />
+      <workItem from="1688586718199" duration="594000" />
+      <workItem from="1688587533710" duration="162000" />
+      <workItem from="1688588186463" duration="2003000" />
+      <workItem from="1688590976394" duration="497000" />
     </task>
     <task id="LOCAL-00001" summary="Creado repositorio y servicio para entrada. Falta asociar correctamente la entrada, se guarda en una tabla distinta.">
       <created>1687827964276</created>

@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DatosEvento {
@@ -16,7 +18,7 @@ public class DatosEvento {
 
     public DatosEvento() {
     }
-
+/*
     public DatosEvento(String nombre, TipoDeEvento tipo, String localidad, Integer disponibilidad) {
         setNombre(nombre);
         setTipo(tipo);
@@ -37,6 +39,14 @@ public class DatosEvento {
         this.localidad = localidad;
         setDisponibilidad(disponibilidad);
 
+    }*/
+
+    public DatosEvento(String nombre, String categoria, String localidad, Integer disponibilidad, String fecha) {
+        setNombre(nombre);
+        setCategoria(categoria);
+        setLocalidad(localidad);
+        setDisponibilidad(disponibilidad);
+        setFecha(fecha);
     }
 
     public String getNombre() {
@@ -51,8 +61,13 @@ public class DatosEvento {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setFecha(String fechaB) {
+        // Definir el formato de fecha esperado
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Parsear la cadena de fecha en un objeto LocalDate
+        this.fecha = LocalDate.parse(fechaB, formatter);
+
     }
 
     public String getLugar() {

@@ -50,8 +50,11 @@ public class EventoController {
 
           if(this.servicioEvento.validarNombre(datosEvento.getNombre()) && this.servicioEvento.validarLocalidad(datosEvento.getLocalidad())){
                 model.put("mensaje","Evento registrado");
-                model.put("datosEvento", datosEvento);
+                //model.put("datosEvento", datosEvento);
                 servicioEvento.save(datosEvento);
+
+              List<Evento> eventos = servicioEvento.getEventos();
+              model.put("datosEvento", eventos);
                 viewName = "home";
           } else {
                 model.put("mensaje", "Registro fallido");
