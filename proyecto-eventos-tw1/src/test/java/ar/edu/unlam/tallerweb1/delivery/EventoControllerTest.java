@@ -2,11 +2,13 @@ package ar.edu.unlam.tallerweb1.delivery;
 
 
 import ar.edu.unlam.tallerweb1.domain.*;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,17 +31,17 @@ public class EventoControllerTest {
     LocalDate fechaEvento = LocalDate.of(2023, 5, 7);
 
     @Before
-    public void inicializacion(){
-        eventoEjemplo = new DatosEvento("superclasico", fechaEvento , "monumental" , "nuñez");
+    public void inicializacion() {
+        //eventoEjemplo = new DatosEvento("superclasico", "Deportivo", "monumental", 25, "23/05/2020");
 
        /* eventoEjemplo1=new Evento();
         eventoEjemplo1.setTipo(TipoDeEvento.MUSICAL.getValor());
         eventoEjemplo2=new Evento();
         eventoEjemplo2.setTipo(TipoDeEvento.MUSICAL);
-*/
-        eventoEjemploErroneo1 = new DatosEvento("", fechaEvento , "monumental" , "nuñez");
-        eventoEjemploErroneo2 = new DatosEvento("superclasico", fechaEvento , "monumental" , "");
 
+        eventoEjemploErroneo1 = new DatosEvento("", fechaEvento , "monumental" , "nuñez", 50);
+        eventoEjemploErroneo2 = new DatosEvento("superclasico", fechaEvento , "monumental" , "", 50);
+*/
         this.servicioRegEvento = mock(EventoServiceImpl.class);
         this.servicioUsuario = mock(UsuarioServiceImpl.class);
         this.weatherService = mock(WeatherService.class);
@@ -47,51 +49,59 @@ public class EventoControllerTest {
     }
 
     @Test
-    public void queAlTocarRegistrarEventoAparezcaLaPantallaRegistro(){
+    public void queAlTocarRegistrarEventoAparezcaLaPantallaRegistro() {
         ModelAndView mav = cuandoQuiereRegistrarEvento();
         aparezcaVistaRegistro(mav);
     }
 
     @Test
-    public void queSePuedaRegistrarUnEvento(){
+    public void queSePuedaRegistrarUnEvento() {
         // eventoEjemplo = dadoQueExisteUnEvento();
         ModelAndView mav = cuandoSeRegistra(eventoEjemplo, true);
         entoncesElRegistroEsExitoso(mav);
     }
 
     @Test
-    public void queNoSePuedaRegistrarUnEventoConNombreNulo(){
+    public void queNoSePuedaRegistrarUnEventoConNombreNulo() {
         ModelAndView mav = cuandoSeRegistra(eventoEjemploErroneo1, false);
         entoncesElRegistroFalla(mav);
     }
 
     @Test
-    public void queNoSePuedaRegistrarUnEventoConLocalidadNula(){
+    public void queNoSePuedaRegistrarUnEventoConLocalidadNula() {
         ModelAndView mav = cuandoSeRegistra(eventoEjemploErroneo2, false);
         entoncesElRegistroFalla(mav);
     }
 
     //Test para verificar filtrado
-    /*@Test
+    @Test
     public void queSePuedaFiltrarPorCategoria() {
         Integer tipoEvento = TipoDeEvento.MUSICAL.getValor();
-        String localidad=null;
+        String localidad = null;
         LocalDate fecha = null;
         dadoQueNoExistenEventos(tipoEvento);
         ModelAndView mav = cuandoLosFiltro(fecha, localidad, tipoEvento);
         entoncesObtengoFiltrados(mav);
-    }*/
+    }
 
     @Test
-    public void queAlFiltrarNoEncuentreNadaDevuelvaPopup(){
+    public void queAlFiltrarNoEncuentreNadaDevuelvaPopup() {
         Integer tipoEvento = null;
-        String localidad=null;
+        String localidad = null;
         LocalDate fecha = null;
         dadoQueFiltroPorValoresNulos();
         ModelAndView mav = cuandoLosFiltro(fecha, localidad, tipoEvento);
         entoncesObtengoMavYMensaje(mav);
     }
 
+
+
+    @Test
+    public void crearEventoConFechaString(){
+        DatosEvento eventoEjemplo1 = new DatosEvento("superclasico", "Deportivo", "monumental", 25, "2020-05-23");
+        LocalDate fechaEsperada = LocalDate.of(2020, 5, 23);
+        Assert.assertEquals(fechaEsperada , eventoEjemplo1.getFecha());
+    }
     private void entoncesObtengoMavYMensaje(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("home");
         assertThat(mav.getModel().get("mostrarPopup"));
@@ -99,11 +109,11 @@ public class EventoControllerTest {
     }
 
     private ModelAndView cuandoLosFiltro(LocalDate fecha, String localidad, Integer tipoEvento) {
-        return controladorEvento.filtrarEventos(fecha,tipoEvento,localidad);
+        return controladorEvento.filtrarEventos(fecha, tipoEvento, localidad);
     }
 
     private void dadoQueFiltroPorValoresNulos() {
-        List<Evento> listaVacia =new ArrayList<>();
+        List<Evento> listaVacia = new ArrayList<>();
         when(servicioRegEvento.buscarPorTipoDeEvento(null)).thenReturn(listaVacia);
         when(servicioRegEvento.buscarPorCiudad(null)).thenReturn(listaVacia);
         when(servicioRegEvento.buscarPorFecha(null)).thenReturn(listaVacia);
@@ -111,7 +121,7 @@ public class EventoControllerTest {
 
 
     private void entoncesObtengoFiltrados(ModelAndView mav) {
-        List<Evento> eventosFiltrados =new ArrayList<>();
+        List<Evento> eventosFiltrados = new ArrayList<>();
         eventosFiltrados = (List<Evento>) mav.getModel().get("eventos");
         assertThat(eventosFiltrados).isNotNull();
         assertThat(eventosFiltrados).hasSize(2);
@@ -119,7 +129,7 @@ public class EventoControllerTest {
     }
 
     private void dadoQueNoExistenEventos(Integer tipoEvento) {
-        List<Evento> eventosInventados=new ArrayList<>();
+        List<Evento> eventosInventados = new ArrayList<>();
         eventosInventados.add(eventoEjemplo1);
         eventosInventados.add(eventoEjemplo2);
         when(servicioRegEvento.buscarPorTipoDeEvento(tipoEvento)).thenReturn(eventosInventados);
@@ -157,4 +167,5 @@ public class EventoControllerTest {
     private ModelAndView cuandoQuiereRegistrarEvento() {
         return controladorEvento.getVistaRegistro();
     }
+
 }

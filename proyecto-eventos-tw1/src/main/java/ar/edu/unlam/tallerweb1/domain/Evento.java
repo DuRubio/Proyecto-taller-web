@@ -27,15 +27,13 @@ public class Evento {
 
     private Integer disponibilidad;
 
-
-
     private Integer cityId;
     
     @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria categoria;
 
-    @OneToMany(mappedBy = "evento")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "evento")
     private List<Entrada> entradas = new ArrayList<>();
 
     public Evento (){
@@ -46,16 +44,18 @@ public class Evento {
     	setLocalidad(datosEvento.getLocalidad());
     	setCategoria(categoria);
     	setEventoActivo(true);
-        setDisponibilidad(50);
-        setCityId(3433955);
+      setCityId(3433955);
+      setDisponibilidad(datosEvento.getDisponibilidad());
+      setFecha(datosEvento.getFecha());
     }
     
     public Evento(DatosEvento datosEvento) {
     	setNombre(datosEvento.getNombre());
     	setLocalidad(datosEvento.getLocalidad());
     	setEventoActivo(true);
-        setDisponibilidad(50);
-        setCityId(3433955);
+      setDisponibilidad(datosEvento.getDisponibilidad());
+      setFecha(datosEvento.getFecha());
+      setCityId(3433955);
     }
     
     public Evento(String nombre, LocalDate fecha, String lugar, String localidad) {
@@ -64,11 +64,22 @@ public class Evento {
     	setLugar(lugar);
     	setLocalidad(localidad);
     	setEventoActivo(true);
-        setDisponibilidad(50);
-        setCityId(3433955);
+      setDisponibilidad(50);
+      setCityId(3433955);
     }
+    
+
+    public Evento(String nombre, LocalDate fecha, String lugar, String localidad, Integer disponibilidad) {
+        setNombre(nombre);
+        setFecha(fecha);
+        setLugar(lugar);
+        setLocalidad(localidad);
+        setEventoActivo(true);
+        setDisponibilidad(disponibilidad);
+    }
+  
     public Integer getCityId() {
-        return cityId;
+        return cityId;    
     }
 
     public void setCityId(Integer cityId) {
@@ -145,7 +156,11 @@ public class Evento {
     }
 
     public void setDisponibilidad(Integer disponibilidad) {
-        this.disponibilidad = disponibilidad;
+        if (disponibilidad != null) {
+            this.disponibilidad = disponibilidad;
+        } else {
+            this.disponibilidad = 50;
+        }
     }
 
     public List<Entrada> getEntradas() {

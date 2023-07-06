@@ -59,26 +59,13 @@
     <!-- Localidad -->
     <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
 
-
-    <h2 class="text-xl font-bold mb-2">Mis eventos:</h2>
-    <table class="w-full mb-4">
-        <thead>
-        <tr>
-            <th class="py-2 text-left">Evento</th>
-            <th class="py-2 text-left">Fecha</th>
-            <th class="py-2 text-left">Localidad</th>
-        </tr>
-        </thead>
-        <tbody>
-    <c:forEach items="${entradas}" var="entrada">
-        <tr>
-            <td class="py-2">${entrada.evento.nombre}</td>
-            <td class="py-2">${entrada.evento.fecha}</td>
-            <td class="py-2">${entrada.evento.localidad}</td>
-        </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+    </div>
+    
+	<div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
+		<a
+			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+			href="mis-entradas">Ver Mis Entradas</a>
+	</div>
 
     <c:if test="${!usuario.isAdmin}">
         <div class="flex items-center mb-4">
