@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class UsuarioControllerTest {
 
 
@@ -28,6 +31,8 @@ public class UsuarioControllerTest {
     private EntradaService servicioEntrada;
     private DatosLogin usuarioValido;
     private HttpServletRequest request;
+    private Long usuarioId = 1L;
+    public static final int CANTIDAD_ENTRADAS = 3;
 
 
     @Before
@@ -169,6 +174,37 @@ public class UsuarioControllerTest {
         return usuarioController.getVistaRegistro();
     }
 
+    
+    @Test
+    public void queAlIngresarAMisEntradasMeLlevaALaVistaMisEntradas() {
+    	dadoQueTengoEntradas(usuarioId, CANTIDAD_ENTRADAS);
+    	
+    	ModelAndView mav = cuandoListoEntradas();
+    	
+    	entoncesEncuentro(mav, CANTIDAD_ENTRADAS);
+    	
+    	entoncesMeLlevaALaVista(mav, "mis-entradas");
+    }
+
+	private void entoncesMeLlevaALaVista(ModelAndView mav, String vistaEsperada) {
+		assertThat(mav.getViewName()).isEqualTo(vistaEsperada);
+	}
+
+	private void entoncesEncuentro(ModelAndView mav, int cantidadEntradas) {
+		assertThat((ArrayList<Entrada>)mav.getModel().get("entradas")).hasSize(cantidadEntradas);
+	}
+
+	private ModelAndView cuandoListoEntradas() {
+		return usuarioController.misEntradas();
+	}
+
+	private void dadoQueTengoEntradas(Long usuarioId, int cantidadEntradas) {
+		List<Entrada> entradas = new ArrayList<>();
+		for(int i=0; i<cantidadEntradas; i++) 
+			entradas.add(new Entrada());
+		when(this.servicioEntrada.listarMisEntradas(usuarioId)).thenReturn(entradas);
+		
+	}
 
 
 }
