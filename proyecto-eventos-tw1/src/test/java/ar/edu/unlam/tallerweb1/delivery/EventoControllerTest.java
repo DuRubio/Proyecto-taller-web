@@ -26,6 +26,8 @@ public class EventoControllerTest {
     EventoService servicioRegEvento;
     UsuarioService servicioUsuario;
 
+    WeatherService weatherService;
+
     LocalDate fechaEvento = LocalDate.of(2023, 5, 7);
 
     @Before
@@ -42,7 +44,8 @@ public class EventoControllerTest {
 */
         this.servicioRegEvento = mock(EventoServiceImpl.class);
         this.servicioUsuario = mock(UsuarioServiceImpl.class);
-        this.controladorEvento = new EventoController(servicioRegEvento, servicioUsuario);
+        this.weatherService = mock(WeatherService.class);
+        this.controladorEvento = new EventoController(servicioRegEvento, servicioUsuario, weatherService);
     }
 
     @Test

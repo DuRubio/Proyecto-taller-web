@@ -26,6 +26,8 @@ public class Evento {
     private Boolean eventoActivo;
 
     private Integer disponibilidad;
+
+    private Integer cityId;
     
     @ManyToOne
     @JoinColumn(name = "id_categoria")
@@ -42,17 +44,30 @@ public class Evento {
     	setLocalidad(datosEvento.getLocalidad());
     	setCategoria(categoria);
     	setEventoActivo(true);
-        setDisponibilidad(datosEvento.getDisponibilidad());
-        setFecha(datosEvento.getFecha());
+      setCityId(3433955);
+      setDisponibilidad(datosEvento.getDisponibilidad());
+      setFecha(datosEvento.getFecha());
     }
     
     public Evento(DatosEvento datosEvento) {
     	setNombre(datosEvento.getNombre());
     	setLocalidad(datosEvento.getLocalidad());
     	setEventoActivo(true);
-        setDisponibilidad(datosEvento.getDisponibilidad());
-        setFecha(datosEvento.getFecha());
+      setDisponibilidad(datosEvento.getDisponibilidad());
+      setFecha(datosEvento.getFecha());
+      setCityId(3433955);
     }
+    
+    public Evento(String nombre, LocalDate fecha, String lugar, String localidad) {
+    	setNombre(nombre);
+    	setFecha(fecha);
+    	setLugar(lugar);
+    	setLocalidad(localidad);
+    	setEventoActivo(true);
+      setDisponibilidad(50);
+      setCityId(3433955);
+    }
+    
 
     public Evento(String nombre, LocalDate fecha, String lugar, String localidad, Integer disponibilidad) {
         setNombre(nombre);
@@ -61,9 +76,15 @@ public class Evento {
         setLocalidad(localidad);
         setEventoActivo(true);
         setDisponibilidad(disponibilidad);
-
+    }
+  
+    public Integer getCityId() {
+        return cityId;    
     }
 
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
+    }
     public Long getId() {
         return Id;
     }

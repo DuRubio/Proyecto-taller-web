@@ -182,6 +182,16 @@
 			<version>4.0.1</version> <!-- Utiliza la versión adecuada de acuerdo a tu proyecto -->
 			<scope>provided</scope>
 		</dependency>
+    <dependency>
+       <groupId>org.ifinalframework.annotation</groupId>
+       <artifactId>final-annotation-web</artifactId>
+       <version>1.4.0</version>
+    </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.4</version>
+		</dependency>
 		<dependency>
 			<groupId>com.google.zxing</groupId>
 			<artifactId>core</artifactId>

@@ -37,13 +37,19 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <c:forEach items="${eventos}" var="evento">
             <div class="bg-white shadow-md rounded p-6">
-                <img class="w-full" src="../img/${evento.URLImagen}" alt="Evento">
-                <div class="mt-4">
-                    <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
-                    <p class="text-gray-700">Fecha: ${evento.fecha}</p>
-                    <p class="text-gray-700">Localidad: ${evento.localidad}</p>
-                    <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>
-                </div>
+                <form action="/weather/">
+                    <input type="hidden" name="cityId" value="${evento.cityId}">
+                    <input type="hidden" name="eventoId" value="${evento.id}">
+                    <button type="submit">
+                        <img class="w-full" src="../img/${evento.URLImagen}" alt="Evento">
+                        <div class="mt-4">
+                            <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
+                            <p class="text-gray-700">Fecha: ${evento.fecha}</p>
+                            <p class="text-gray-700">Localidad: ${evento.localidad}</p>
+                            <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>
+                        </div>
+                    </button>
+                </form>
                 <div class="flex justify-center mt-6">
                     <c:if test="${evento.disponibilidad>0}">
                         <a href="/asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
