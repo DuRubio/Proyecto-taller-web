@@ -182,5 +182,10 @@
 			<version>4.0.1</version> <!-- Utiliza la versión adecuada de acuerdo a tu proyecto -->
 			<scope>provided</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.ifinalframework.annotation</groupId>
+            <artifactId>final-annotation-web</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+    </dependencies>
 </project>

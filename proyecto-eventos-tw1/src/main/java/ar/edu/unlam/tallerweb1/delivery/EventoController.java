@@ -1,18 +1,12 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
-import ar.edu.unlam.tallerweb1.domain.Evento;
-import ar.edu.unlam.tallerweb1.domain.EventoService;
-import ar.edu.unlam.tallerweb1.domain.Usuario;
-import ar.edu.unlam.tallerweb1.domain.UsuarioService;
+import ar.edu.unlam.tallerweb1.domain.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -29,11 +23,14 @@ public class EventoController {
 
     private EventoService servicioEvento;
     private UsuarioService servicioUsuario;
+
+    private WeatherService weatherService;
     
     @Autowired
-    public EventoController(EventoService servicioRegEvento, UsuarioService servicioUsuario) {
+    public EventoController(EventoService servicioRegEvento, UsuarioService servicioUsuario, WeatherService weatherService) {
         this.servicioEvento=servicioRegEvento;
         this.servicioUsuario = servicioUsuario;
+        this.weatherService = weatherService;
     }
 
 
@@ -140,5 +137,6 @@ public class EventoController {
         return new ModelAndView("redirect:/login");
 
     }
+
 
 }
