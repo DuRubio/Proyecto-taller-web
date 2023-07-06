@@ -1,9 +1,11 @@
 package ar.edu.unlam.tallerweb1.domain;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 
 @Service
 public class WeatherService {
@@ -14,17 +16,14 @@ public class WeatherService {
         System.out.println("API URL: " + apiUrl);
 
         RestTemplate restTemplate = new RestTemplate();
-        WeatherData weatherData = restTemplate.getForObject(apiUrl, WeatherData.class);
+        ResponseEntity<WeatherData> response = restTemplate.getForEntity(apiUrl, WeatherData.class);
 
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            String responseJson = objectMapper.writeValueAsString(weatherData);
-            System.out.println("API Response: " + responseJson);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+        ObjectMapper objectMapper = new ObjectMapper();
+//            String responseJson = objectMapper.writeValueAsString(weatherData);
+//            System.out.println("API Response: " + responseJson);
+        System.out.println("City Name " + response.getBody().getName());
 
-        return weatherData;
+        return response.getBody();
     }
 
 }

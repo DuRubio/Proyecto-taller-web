@@ -187,5 +187,10 @@
             <artifactId>final-annotation-web</artifactId>
             <version>1.4.0</version>
         </dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.7.4</version>
+		</dependency>
     </dependencies>
 </project>
