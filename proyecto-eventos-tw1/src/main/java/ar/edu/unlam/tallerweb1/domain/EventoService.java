@@ -29,4 +29,6 @@ public interface EventoService {
 	List<Evento> getPrimeros4Eventos();
 
 	List<Evento> buscarEventosPorPreferencias(Usuario usuario);
+
+    void setInactivo(Long eventoId);
 }

@@ -20,7 +20,7 @@
 <body class="flex items-center justify-center h-screen bg-gray-100">
 <div class="w-96 p-6 bg-white rounded shadow-md">
     <h1 class="text-2xl font-semibold text-center">Crear evento</h1>
-    <form method="post" action="registrar-evento" class="mt-4">
+    <form method="post" action="registrar-evento" class="mt-4" modelAttribute="datosEvento">
         <div>
             <label for="nombre" class="block mb-1">Nombre:</label>
             <input type="text" id="nombre" name="nombre"
@@ -38,8 +38,8 @@
                 <option value="RECITAL">Recital</option>
                 <option value="CINE">Cine</option>
                 <option value="CULTURAL">Cultural</option>
-				<option value="GASTRONOMICO">Gastronómico</option>
-				<option value="MARCHA">Marcha</option>
+                <option value="GASTRONOMICO">Gastronómico</option>
+                <option value="MARCHA">Marcha</option>
             </select>
         </div>
         <div class="mt-4">
@@ -48,21 +48,29 @@
                    class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
                    placeholder="Ingresa la localidad">
         </div>
-        <!-- 
+
+
         <div class="mt-4">
-            <label for="fecha" class="block mb-1">Fecha:</label>
-            <input type="date" id="fecha" name="fecha"
-                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
+            <label for="disponibilidad" class="block mb-1">Disponibilidad:</label>
+            <input id="disponibilidad" type="number" name="disponibilidad"
+                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
+                   placeholder="Ingrese la disponibilidad">
+            <p class="text-violet-500 text-italic text-sm">*Por defecto se cargará en 50</p>
         </div>
-         -->
-        
+
+
+
+       <div class="mt-4">
+           <label for="fecha" class="block mb-1">Fecha:</label>
+           <input type="text" id="fecha" name="fecha" placeholder="AAAA-MM-DD"
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
+       </div>
+
+
         <br>
         <label for="imagen" class="block mb-1">Subir una Imagen:</label>
         <div class="relative flex items-start">
-            <input type="file" id="imagen" name="imagen" class="hidden">
-            <label for="imagen" class="px-4 py-2 bg-violet-500 text-white rounded-md cursor-pointer hover:bg-violet-600">
-                Seleccionar Archivo
-            </label>
+            <input type="file" id="imagen" name="imagen" class="px-4 py-2 bg-violet-500 text-white rounded-md cursor-pointer hover:bg-violet-600" >
         </div>
         <br><br>
         <button type="submit"

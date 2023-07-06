@@ -42,23 +42,26 @@ public class Evento {
     	setLocalidad(datosEvento.getLocalidad());
     	setCategoria(categoria);
     	setEventoActivo(true);
-        setDisponibilidad(50);
+        setDisponibilidad(datosEvento.getDisponibilidad());
+        setFecha(datosEvento.getFecha());
     }
     
     public Evento(DatosEvento datosEvento) {
     	setNombre(datosEvento.getNombre());
     	setLocalidad(datosEvento.getLocalidad());
     	setEventoActivo(true);
-        setDisponibilidad(50);
+        setDisponibilidad(datosEvento.getDisponibilidad());
+        setFecha(datosEvento.getFecha());
     }
-    
-    public Evento(String nombre, LocalDate fecha, String lugar, String localidad) {
-    	setNombre(nombre);
-    	setFecha(fecha);
-    	setLugar(lugar);
-    	setLocalidad(localidad);
-    	setEventoActivo(true);
-        setDisponibilidad(50);
+
+    public Evento(String nombre, LocalDate fecha, String lugar, String localidad, Integer disponibilidad) {
+        setNombre(nombre);
+        setFecha(fecha);
+        setLugar(lugar);
+        setLocalidad(localidad);
+        setEventoActivo(true);
+        setDisponibilidad(disponibilidad);
+
     }
 
     public Long getId() {
@@ -132,7 +135,11 @@ public class Evento {
     }
 
     public void setDisponibilidad(Integer disponibilidad) {
-        this.disponibilidad = disponibilidad;
+        if (disponibilidad != null) {
+            this.disponibilidad = disponibilidad;
+        } else {
+            this.disponibilidad = 50;
+        }
     }
 
     public List<Entrada> getEntradas() {

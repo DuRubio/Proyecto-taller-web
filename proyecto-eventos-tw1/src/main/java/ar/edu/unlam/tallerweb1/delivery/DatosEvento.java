@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class DatosEvento {
@@ -11,28 +13,40 @@ public class DatosEvento {
     private TipoDeEvento tipo;
 
     private String categoria;
+    private Integer disponibilidad;
+
 
     public DatosEvento() {
     }
-    
-    public DatosEvento(String nombre, String categoria, String localidad) {
-    	setNombre(nombre);
-    	setCategoria(categoria);
-    	setLocalidad(localidad);
+/*
+    public DatosEvento(String nombre, TipoDeEvento tipo, String localidad, Integer disponibilidad) {
+        setNombre(nombre);
+        setTipo(tipo);
+        setLocalidad(localidad);
+        setDisponibilidad(disponibilidad);
     }
-    
+
     public DatosEvento(String nombre, TipoDeEvento tipo, String localidad) {
     	setNombre(nombre);
     	setTipo(tipo);
     	setLocalidad(localidad);
     }
 
-    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidado) {
+    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidad, Integer disponibilidad) {
         this.nombre = nombre;
-        this.fecha = fecha;
+        setFecha(fecha);
         this.lugar = lugar;
         this.localidad = localidad;
+        setDisponibilidad(disponibilidad);
 
+    }*/
+
+    public DatosEvento(String nombre, String categoria, String localidad, Integer disponibilidad, String fecha) {
+        setNombre(nombre);
+        setCategoria(categoria);
+        setLocalidad(localidad);
+        setDisponibilidad(disponibilidad);
+        setFecha(fecha);
     }
 
     public String getNombre() {
@@ -47,8 +61,13 @@ public class DatosEvento {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
-        this.fecha = fecha;
+    public void setFecha(String fechaB) {
+        // Definir el formato de fecha esperado
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Parsear la cadena de fecha en un objeto LocalDate
+        this.fecha = LocalDate.parse(fechaB, formatter);
+
     }
 
     public String getLugar() {
@@ -82,7 +101,13 @@ public class DatosEvento {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-    
-    
+
+    public Integer getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(Integer disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
     
 }
