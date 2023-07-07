@@ -58,14 +58,11 @@
 
     <!-- Localidad -->
     <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
-
+    <div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
+        <a
+                class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+                href="mis-entradas">Ver Mis Entradas</a>
     </div>
-    
-	<div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
-		<a
-			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
-			href="mis-entradas">Ver Mis Entradas</a>
-	</div>
 
     <c:if test="${!usuario.isAdmin}">
         <div class="flex items-center mb-4">
@@ -87,6 +84,9 @@
 
     <a href="editar-mis-preferencias" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar preferencias</a>
 </div>
+    </div>
+    
+
 <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a>
 </div>
 
