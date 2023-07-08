@@ -1,10 +1,9 @@
 package ar.edu.unlam.tallerweb1.domain;
 
 import ar.edu.unlam.tallerweb1.delivery.DatosEvento;
-import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 public interface EventoService {
@@ -31,4 +30,8 @@ public interface EventoService {
 	List<Evento> buscarEventosPorPreferencias(Usuario usuario);
 
     void setInactivo(Long eventoId);
+
+    void asociarImagenConEvento(Evento evento, MultipartFile imagen);
+
+    Evento getUltimoGuardado();
 }

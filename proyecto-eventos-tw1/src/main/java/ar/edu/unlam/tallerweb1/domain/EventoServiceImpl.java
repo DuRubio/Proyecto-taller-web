@@ -6,18 +6,26 @@ import ar.edu.unlam.tallerweb1.infrastructure.RepositorioCategoria;
 import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class EventoServiceImpl implements EventoService  {
 
-    
+    private static final String CARPETA_IMAGENES = "C:/Users/Duilio/Desktop/Taller Web Proyecto/proyecto-eventos-tw1/src/main/webapp/img/";
     private RepositorioEvento repoEvento;
     
     private RepositorioCategoria repoCategoria;
-    
+    private Evento evento;
+
     @Autowired
     public EventoServiceImpl(RepositorioEvento repositorioEvento, RepositorioCategoria repositorioCategoria) {
 		this.repoEvento = repositorioEvento;
@@ -37,7 +45,8 @@ public class EventoServiceImpl implements EventoService  {
     @Override
     public void save(DatosEvento datosEvento) {
     	Categoria categoria = repoCategoria.buscarPorNombre(datosEvento.getCategoria());
-    	Evento evento = new Evento(datosEvento,categoria);
+    	//Evento evento = new Evento(datosEvento,categoria);
+        evento = new Evento(datosEvento,categoria);
     	repoEvento.save(evento);
     }
 
@@ -94,6 +103,24 @@ public class EventoServiceImpl implements EventoService  {
     public void setInactivo(Long eventoId) {
         Evento evento = this.buscarPorId(eventoId);
         repoEvento.setInactivo(evento);
+    }
+
+    @Override
+    public void asociarImagenConEvento(Evento evento, MultipartFile imagen) {
+        String nombreImagen = UUID.randomUUID().toString() + "-" + imagen.getOriginalFilename();
+        try {
+            Path rutaImagen = Path.of(CARPETA_IMAGENES + nombreImagen);
+            Files.copy(imagen.getInputStream(), rutaImagen, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        repoEvento.guardarImagen(evento, nombreImagen);
+    }
+
+    @Override
+    public Evento getUltimoGuardado() {
+        return repoEvento.getUltimoGuardado();
     }
 
 

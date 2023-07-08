@@ -36,11 +36,11 @@
     <!-- Contraseña -->
     <div class="flex items-center mb-4">
         <input type="password" value="${usuario.clave}" readonly class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
-<%--        <button type="button" class="ml-2 p-2 bg-gray-200 rounded" onclick="mostrarPopUp()">--%>
-<%--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">--%>
-<%--                <path d="M15.586 4.414c.78.78.78 2.048 0 2.828l-1.414 1.414c-.78.78-2.048.78-2.828 0l-1.172-1.172c-.42-.42-.586-1.008-.42-1.562l.828-3.906c.105-.5.523-.92 1.047-1.047l3.906-.828c.555-.166 1.14 0 1.562.42l1.172 1.172zm-3.414 6.172l-5.5 5.5c-1.172-1.172-1.172-3.07 0-4.242l3.172-3.172c1.172-1.172 3.07-1.172 4.242 0l1.414 1.414c1.172 1.172 1.172 3.07 0 4.242l-5.5 5.5-2.828-2.828zm6.242-1.242l-1.414-1.414 2.828-2.828 1.414 1.414-2.828 2.828z" />--%>
-<%--            </svg>--%>
-<%--        </button>--%>
+        <%--        <button type="button" class="ml-2 p-2 bg-gray-200 rounded" onclick="mostrarPopUp()">--%>
+        <%--            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">--%>
+        <%--                <path d="M15.586 4.414c.78.78.78 2.048 0 2.828l-1.414 1.414c-.78.78-2.048.78-2.828 0l-1.172-1.172c-.42-.42-.586-1.008-.42-1.562l.828-3.906c.105-.5.523-.92 1.047-1.047l3.906-.828c.555-.166 1.14 0 1.562.42l1.172 1.172zm-3.414 6.172l-5.5 5.5c-1.172-1.172-1.172-3.07 0-4.242l3.172-3.172c1.172-1.172 3.07-1.172 4.242 0l1.414 1.414c1.172 1.172 1.172 3.07 0 4.242l-5.5 5.5-2.828-2.828zm6.242-1.242l-1.414-1.414 2.828-2.828 1.414 1.414-2.828 2.828z" />--%>
+        <%--            </svg>--%>
+        <%--        </button>--%>
     </div>
 
     <div id="pop-up" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
@@ -58,14 +58,11 @@
 
     <!-- Localidad -->
     <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
-
+    <div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
+        <a
+                class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+                href="mis-entradas">Ver Mis Entradas</a>
     </div>
-    
-	<div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
-		<a
-			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
-			href="mis-entradas">Ver Mis Entradas</a>
-	</div>
 
     <c:if test="${!usuario.isAdmin}">
         <div class="flex items-center mb-4">
@@ -87,6 +84,9 @@
 
     <a href="editar-mis-preferencias" class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar preferencias</a>
 </div>
+</div>
+
+
 <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a>
 </div>
 
@@ -134,18 +134,18 @@
 
         ocultarPopUp();
     }
-      /*  function validarClave() {
-        var claveInput = document.getElementById("clave");
-        var botonEnviar = document.getElementById("setAdmin");
+    /*  function validarClave() {
+      var claveInput = document.getElementById("clave");
+      var botonEnviar = document.getElementById("setAdmin");
 
-        if (claveInput.value === "eventos1234") {
-        botonEnviar.disabled = false;
-    } else {
-        botonEnviar.disabled = true;
-    }
-    }
+      if (claveInput.value === "eventos1234") {
+      botonEnviar.disabled = false;
+  } else {
+      botonEnviar.disabled = true;
+  }
+  }
 
-    var username = "${usuario.nombre}";
+  var username = "${usuario.nombre}";
     localStorage.setItem("username", username);
 
     function validarClave() {
