@@ -49,6 +49,7 @@
 							${entrada.evento.localidad}</p>
 						<p class="text-gray-700">Lugar: ${entrada.evento.lugar}</p>
 						<p class="text-gray-700">Fecha: ${entrada.evento.fecha}</p>
+						<p class="text-gray-700">Tipo de Evento: ${entrada.evento.categoria.nombre}</p>
 						<!-- <p class="text-gray-700">Fecha: ${evento.fecha}</p>
                     <p class="text-gray-700">Localidad: ${evento.localidad}</p>
                     <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>  -->
