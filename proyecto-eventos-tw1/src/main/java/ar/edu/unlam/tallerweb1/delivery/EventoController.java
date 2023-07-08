@@ -23,7 +23,6 @@ public class EventoController {
 
     private EventoService servicioEvento;
     private UsuarioService servicioUsuario;
-
     private WeatherService weatherService;
     
     @Autowired

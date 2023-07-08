@@ -8,6 +8,9 @@ import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,22 +22,28 @@ public class UsuarioServiceImpl implements  UsuarioService{
     private RepositorioUsuario repoUsuario;
     
     private RepositorioCategoria repoCategoria;
+    
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioServiceImpl(RepositorioUsuario repoUsuario, RepositorioCategoria repoCategoria){
-        this.repoUsuario=repoUsuario;
+    public UsuarioServiceImpl(RepositorioUsuario repoUsuario, RepositorioCategoria repoCategoria, BCryptPasswordEncoder passwordEncoder) {
+        this.repoUsuario = repoUsuario;
         this.repoCategoria = repoCategoria;
-    }
-
-    public UsuarioServiceImpl(){
-
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void guardarUsuario(DatosRegistracion datosRegistracion) {
         Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
+        hashearPassword(usuario);
         repoUsuario.save(usuario);
-        }
+    }
+    
+    public void hashearPassword(Usuario usuario) {
+    	String p = usuario.getClave();
+    	String passwordHash = passwordEncoder.encode(p);
+    	usuario.setClave(passwordHash);
+    }
 
     @Override
     public Long getId(String correo) {
@@ -48,15 +57,21 @@ public class UsuarioServiceImpl implements  UsuarioService{
         usuario.isAdmin(decision);
         repoUsuario.hacerAdminEnBdd(usuario);
     }
-
-
+    //Regex validador de mail
     @Override
     public Boolean validarMail(String correo) {
-        return correo.contains("@") && correo.endsWith(".com");
+    	String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+		Pattern pattern = Pattern.compile(regexEmail);
+		Matcher matcher= pattern.matcher(correo);
+		return matcher.matches();
     }
+    //Mínimo 8 caracteres, incluyendo al menos 1 símbolo, mayúscila, minúscula y número
     @Override
     public Boolean validarClave(String clave) {
-        return clave.length() >= 6 && clave.matches(".*[A-Z].*") && clave.matches(".*\\d.*");
+    	String regexPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+		Pattern pattern = Pattern.compile(regexPassword);
+		Matcher matcher= pattern.matcher(clave);
+		return matcher.matches();
     }
 
     @Override
@@ -72,30 +87,14 @@ public class UsuarioServiceImpl implements  UsuarioService{
 
     @Override
     public Boolean compararMail(String correo) {
-        Usuario usuario;
-        usuario = obtenerUsuarioPorCorreo(correo);
-        Boolean esValido=false;
-        if(usuario!= null) {
-            if (usuario.getCorreo().equals(correo)) {
-                esValido = true;
-            }
-        }
-        return esValido;
-
+    	Usuario usuario = obtenerUsuarioPorCorreo(correo);
+        return usuario != null && usuario.getCorreo().equals(correo);
     }
 
     @Override
     public Boolean compararClave(String correo, String clave) {
-        Usuario usuario;
-        usuario = obtenerUsuarioPorCorreo(correo);
-        Boolean esValido=false;
-        if(usuario!= null) {
-            if (usuario.getClave().equals(clave)) {
-                esValido = true;
-            }
-        }
-        return esValido;
-
+    	Usuario usuario = obtenerUsuarioPorCorreo(correo);
+        return usuario != null && passwordEncoder.matches(clave, usuario.getClave());
     }
 
     @Override
