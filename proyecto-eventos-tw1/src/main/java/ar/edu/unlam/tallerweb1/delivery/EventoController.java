@@ -7,8 +7,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,7 +26,8 @@ public class EventoController {
     private EventoService servicioEvento;
     private UsuarioService servicioUsuario;
     private WeatherService weatherService;
-    
+    private DatosEvento datosEvento;
+
     @Autowired
     public EventoController(EventoService servicioRegEvento, UsuarioService servicioUsuario, WeatherService weatherService) {
         this.servicioEvento=servicioRegEvento;
@@ -36,7 +39,6 @@ public class EventoController {
     @RequestMapping(path = "/registrar-evento", method = RequestMethod.GET)
     public ModelAndView getVistaRegistro() {
         return new ModelAndView("registro-evento");
-
     }
 
     @RequestMapping(path = "/registrar-evento", method = RequestMethod.POST)
@@ -45,19 +47,36 @@ public class EventoController {
         String viewName = "";
 
           if(this.servicioEvento.validarNombre(datosEvento.getNombre()) && this.servicioEvento.validarLocalidad(datosEvento.getLocalidad())){
+               this.datosEvento = datosEvento;
                 model.put("mensaje","Evento registrado");
-                //model.put("datosEvento", datosEvento);
+                model.put("datosEvento", datosEvento);
                 servicioEvento.save(datosEvento);
 
-              List<Evento> eventos = servicioEvento.getEventos();
+              List<Evento> eventos = servicioEvento.getEventos(); //esto no esta al pedo?
               model.put("datosEvento", eventos);
-                viewName = "home";
+                viewName = "subir-foto";
           } else {
                 model.put("mensaje", "Registro fallido");
                 viewName = "registro-evento";
           }
             return new ModelAndView(viewName, model);
+    }
+
+    @RequestMapping(path = "/subir-foto", method = RequestMethod.GET)
+    public ModelAndView getCargarFoto() {
+        return new ModelAndView("subir-foto");
+    }
+    @RequestMapping(path = "/subir-foto", method = RequestMethod.POST)
+    public ModelAndView cargarFoto(@RequestParam("imagen") MultipartFile imagen) {
+       // if (!imagen.isEmpty()) {
+           // byte[] imagenBytes = imagen.getBytes();
+            Evento evento=servicioEvento.getUltimoGuardado();
+            servicioEvento.asociarImagenConEvento(evento,imagen);
+            return new ModelAndView("redirect:/home");
         }
+
+      //  return new ModelAndView("subir-foto"); hacer que si imagen es vacía se borre el evento cargado
+    //}
 
 
 

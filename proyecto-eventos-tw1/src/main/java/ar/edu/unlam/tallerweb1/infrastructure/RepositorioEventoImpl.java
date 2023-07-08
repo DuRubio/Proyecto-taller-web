@@ -126,6 +126,23 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
         session.update(evento);
     }
 
+    @Override
+    public void guardarImagen(Evento evento, String nombreImagen) {
+        Session session = sessionFactory.getCurrentSession();
+        evento.setRutaImagen(nombreImagen);
+        session.update(evento);
+    }
+
+    @Override
+    public Evento getUltimoGuardado() {
+        String hql = "FROM Evento WHERE eventoActivo = true ORDER BY id DESC";
+        List<Evento> resultados = sessionFactory.getCurrentSession()
+                .createQuery(hql, Evento.class)
+                .setMaxResults(1)
+                .list();
+        return resultados.isEmpty() ? null : resultados.get(0);
+    }
+
     
     /*
     @Override

@@ -24,10 +24,9 @@ public class Evento {
     private String localidad;
     private String URLImagen;
     private Boolean eventoActivo;
-
     private Integer disponibilidad;
-
     private Integer cityId;
+
     
     @ManyToOne
     @JoinColumn(name = "id_categoria")
@@ -202,4 +201,7 @@ public class Evento {
 				&& Objects.equals(nombre, other.nombre);
 	}
 
+    public void setRutaImagen(String rutaImagen) {
+        URLImagen=rutaImagen;
+    }
 }

@@ -1,5 +1,11 @@
 package ar.edu.unlam.tallerweb1.delivery;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +20,8 @@ public class DatosEvento {
 
     private String categoria;
     private Integer disponibilidad;
+
+    private String imagen;
 
 
     public DatosEvento() {
@@ -31,23 +39,33 @@ public class DatosEvento {
     	setTipo(tipo);
     	setLocalidad(localidad);
     }
+*/
 
-    public DatosEvento(String nombre, LocalDate fecha, String lugar, String localidad, Integer disponibilidad) {
-        this.nombre = nombre;
-        setFecha(fecha);
-        this.lugar = lugar;
-        this.localidad = localidad;
-        setDisponibilidad(disponibilidad);
-
-    }*/
-
-    public DatosEvento(String nombre, String categoria, String localidad, Integer disponibilidad, String fecha) {
+public DatosEvento(String nombre, String categoria, String localidad, Integer disponibilidad, String fecha) {
         setNombre(nombre);
         setCategoria(categoria);
         setLocalidad(localidad);
         setDisponibilidad(disponibilidad);
         setFecha(fecha);
     }
+
+
+    public void setImagen(MultipartFile imagen) {
+        Path directorioImagen = Paths.get("src/main/webapp/img");
+        String rutaAbsoluta = directorioImagen.toFile().getAbsolutePath();
+        try {
+            byte[] bytesImg = imagen.getBytes();
+            Path rutaCompleta = Paths.get(rutaAbsoluta+ "//" + imagen.getOriginalFilename() );
+            Files.write(rutaCompleta,bytesImg);
+            this.imagen = imagen.getOriginalFilename();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public String getImagen() {
+        return imagen;
+    }
+
 
     public String getNombre() {
         return nombre;
@@ -94,13 +112,13 @@ public class DatosEvento {
         this.tipo = tipo;
     }
 
-	public String getCategoria() {
-		return categoria;
-	}
+    public String getCategoria() {
+        return categoria;
+    }
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
 
     public Integer getDisponibilidad() {
         return disponibilidad;

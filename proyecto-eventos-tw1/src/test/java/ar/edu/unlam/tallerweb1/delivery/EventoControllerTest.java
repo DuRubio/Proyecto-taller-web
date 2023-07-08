@@ -32,7 +32,7 @@ public class EventoControllerTest {
 
     @Before
     public void inicializacion() {
-        //eventoEjemplo = new DatosEvento("superclasico", "Deportivo", "monumental", 25, "23/05/2020");
+        //eventoEjemplo = new DatosEvento("superclasico", "Deportivo", "monumental", 25, "2023-05-05");
 
        /* eventoEjemplo1=new Evento();
         eventoEjemplo1.setTipo(TipoDeEvento.MUSICAL.getValor());
@@ -95,13 +95,18 @@ public class EventoControllerTest {
     }
 
 
-
     @Test
-    public void crearEventoConFechaString(){
+    public void crearEventoConFechaString() {
         DatosEvento eventoEjemplo1 = new DatosEvento("superclasico", "Deportivo", "monumental", 25, "2020-05-23");
         LocalDate fechaEsperada = LocalDate.of(2020, 5, 23);
-        Assert.assertEquals(fechaEsperada , eventoEjemplo1.getFecha());
+        Assert.assertEquals(fechaEsperada, eventoEjemplo1.getFecha());
     }
+
+
+
+
+
+
     private void entoncesObtengoMavYMensaje(ModelAndView mav) {
         assertThat(mav.getViewName()).isEqualTo("home");
         assertThat(mav.getModel().get("mostrarPopup"));

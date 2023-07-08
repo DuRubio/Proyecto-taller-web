@@ -30,5 +30,9 @@ public interface RepositorioEvento {
 	public List<Evento> buscarEventosPorPreferencias(Long id);
 
     void setInactivo(Evento evento);
+
+    void guardarImagen(Evento evento, String nombreImagen);
+
+    Evento getUltimoGuardado();
 }
 
