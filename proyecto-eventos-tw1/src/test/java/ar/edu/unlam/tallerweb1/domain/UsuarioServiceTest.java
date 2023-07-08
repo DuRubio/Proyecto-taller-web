@@ -8,6 +8,7 @@ import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -26,6 +27,8 @@ public class UsuarioServiceTest {
     private UsuarioService servicioRegistracion ;
     private Usuario usuarioValido;
 
+    private BCryptPasswordEncoder passwordEncoder;
+
 
     @Before
     public void inicializacion(){
@@ -33,9 +36,10 @@ public class UsuarioServiceTest {
         this.datosRegistracion2 = new DatosRegistracion(CORREO_INVALIDO, CLAVE_VALIDO);
         this.datosRegistracion3 = new DatosRegistracion(CORREO_VALIDO, CLAVE_INVALIDO);
         this.usuarioValido = new Usuario(CORREO_VALIDO, CLAVE_VALIDO);
+        this.passwordEncoder = mock(BCryptPasswordEncoder.class);
         this.repositorioUsuario = mock(RepositorioUsuario.class);
         this.repoCategoria = mock(RepositorioCategoria.class);
-        this.servicioRegistracion = new UsuarioServiceImpl(repositorioUsuario, repoCategoria);
+        this.servicioRegistracion = new UsuarioServiceImpl(repositorioUsuario, repoCategoria,passwordEncoder);
     }
     @Test
     public void queGuardeUsuario(){
