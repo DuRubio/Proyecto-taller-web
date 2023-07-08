@@ -7,14 +7,10 @@ import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 
 
 public interface UsuarioService {
+	
     Boolean validarMail(String correo);
 
-
     Boolean validarClave(String clave);
-
-
-    //boolean buscarUsuarioPorCorreo(String correo);
-
 
     Boolean compararMail(String correo);
 
@@ -28,10 +24,7 @@ public interface UsuarioService {
 
     Long getId(String correo);
 
-
-
     void setAdmin(Usuario usuario, Boolean decision);
-
 
 	void guardarPreferencias(Long id, DatosPreferencias datosPreferencias);
 }
