@@ -21,12 +21,15 @@
             <input class="bg-violet-800 appearance-none border-2 border-violet-800 rounded py-2 px-4 text-violet-300 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" type="text" placeholder="Buscar...">
         </div>
         <div>
-            <a href="#" class="mx-2 text-white hover:text-violet-300">
-                <i class="fa-solid fa-bell"></i>
-            </a>
-            <a href="#" class="mx-2 text-white hover:text-violet-300">
-                <i class="fa-solid fa-user"></i>
-            </a>
+            <c:if test="${not empty sessionScope.usuario}">
+                <a href="my-profile" class="mx-2 text-white hover:text-violet-300">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+                <a href="logout" class="mx-2 text-white">Cerrar sesión</a>
+            </c:if>
+            <c:if test="${empty sessionScope.usuario}">
+                <a href="login" class="mx-2 text-white">Iniciar sesión</a>
+            </c:if>
         </div>
     </div>
 </nav>

@@ -55,7 +55,7 @@
                         <a href="#" class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</a>
                     </c:if>
                     <c:if test="${usuario.isAdmin}">
-                        <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${evento.id}">Eliminar</a>
+                        <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="/eliminar?eventoId=${evento.id}">Eliminar</a>
                     </c:if>
 
                 </div>

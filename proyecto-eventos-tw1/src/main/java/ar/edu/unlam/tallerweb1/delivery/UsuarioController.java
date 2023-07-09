@@ -213,12 +213,12 @@ public class UsuarioController {
 	
 	@RequestMapping(path = "/entrada", method = RequestMethod.GET)
     public ModelAndView generarQR(@RequestParam("entradaId") Long id) {
-        // Aquí debes incluir el código para obtener el objeto Entrada según su ID
+        // Aquï¿½ debes incluir el cï¿½digo para obtener el objeto Entrada segï¿½n su ID
         ModelMap model = new ModelMap();
         
         Entrada entrada = obtenerEntradaPorId(id);
         
-        // Generar el código QR para la entrada
+        // Generar el cï¿½digo QR para la entrada
         String qrCodeText = "https://localhost:8080/proyecto-limpio-spring/entrada/" + entrada.getId();
         int qrCodeSize = 200;
         try {
@@ -228,14 +228,14 @@ public class UsuarioController {
 
             model.put("qrCodeBase64", qrCodeBase64);
         } catch (WriterException | IOException e) {
-            // Manejar la excepción en caso de error
+            // Manejar la excepciï¿½n en caso de error
             e.printStackTrace();
         }
         
         return new ModelAndView("entrada", model);
     }
 
-    // Método para obtener la entrada por su ID (debes implementarlo según tu lógica)
+    // Mï¿½todo para obtener la entrada por su ID (debes implementarlo segï¿½n tu lï¿½gica)
     private Entrada obtenerEntradaPorId(Long id) {
         return servicioEntrada.buscarPorId(id);
     }
@@ -249,10 +249,10 @@ public class UsuarioController {
         ModelMap model = new ModelMap();
         if (session != null && session.getAttribute("usuario")!= null && usuario.getIsAdmin()) {
             eventoService.setInactivo(eventoId);
-            viewName= "home";  //que aparezca un popup con eevento eliminado con exito
+            viewName= "redirect:/home";  //que aparezca un popup con eevento eliminado con exito
         } else {
             model.put("mensaje", "Debe ser admin para eliminar un evento");
-            viewName= "my-profile";
+            viewName= "redirect:/my-profile";
         }
 
         return new ModelAndView(viewName, model);

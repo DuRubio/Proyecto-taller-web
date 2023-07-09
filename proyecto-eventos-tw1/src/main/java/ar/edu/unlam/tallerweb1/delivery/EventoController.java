@@ -52,10 +52,10 @@ public class EventoController {
 
               List<Evento> eventos = servicioEvento.getEventos();
               model.put("datosEvento", eventos);
-                viewName = "home";
+                viewName = "redirect:/home";
           } else {
                 model.put("mensaje", "Registro fallido");
-                viewName = "registro-evento";
+                viewName = "redirect:/registro-evento";
           }
             return new ModelAndView(viewName, model);
         }
