@@ -4,6 +4,7 @@ package ar.edu.unlam.tallerweb1.infrastructure;
 import ar.edu.unlam.tallerweb1.SpringTest;
 import ar.edu.unlam.tallerweb1.delivery.TipoDeEvento;
 import ar.edu.unlam.tallerweb1.domain.Evento;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
@@ -74,6 +75,19 @@ public class RepositorioEventoTest extends SpringTest {
         dadoQuExistenEventos();
         List<Evento> eventos = cuandoLosBuscoPorLocalidad(localidad1);
         entoncesLosEncuentroPorLocalidad(eventos);
+    }
+
+    @Test
+    @Transactional @Rollback
+    public void obtenerUltimoCargado(){
+        Evento evento = new Evento("Fulbito" , fecha1, "Estadio","Moron", 25);
+        Evento evento2 = new Evento("Fulbeto" , fecha1, "Canchita","Haedo", 25);
+        Evento evento3 = new Evento("Fulboto" , fecha1, "Campo","Mercedes", 25);
+        repositorio.save(evento3);
+        repositorio.save(evento2);
+        repositorio.save(evento);
+        Evento eventoGuardado = repositorio.getUltimoGuardado();
+        Assert.assertEquals(evento, eventoGuardado);
     }
 
     private void entoncesLosEncuentroPorLocalidad(List<Evento> eventos) {
