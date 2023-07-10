@@ -9,36 +9,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 <title>Home</title>
 </head>
 
 <body>
-	<!-- Barra de navegación -->
 	<nav
 		class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
 		<div class="flex items-center flex-shrink-0 text-white mr-6">
 			<img src="../img/logo.png" alt="" class="w-8 m-1 rounded"> <span
-				class="font-semibold text-xl tracking-tight">Mi App de
-				Eventos</span>
+				class="font-semibold text-xl tracking-tight">Eventix</span>
 		</div>
 		<div
 			class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-end flex">
-			<%--			<div class="text-sm lg:flex-grow">--%>
-			<%--				<input--%>
-			<%--					class="bg-violet-800 appearance-none border-2 border-violet-800 rounded py-2 px-4 text-violet-300 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"--%>
-			<%--					type="text" placeholder="Buscar...">--%>
-			<%--			</div>--%>
 			<div class="flex items-center">
 				<c:if test="${not empty sessionScope.usuario}">
 					<p class="mx-2 font-semibold text-white text-xl tracking-tight">¡Hola
 						${sessionScope.usuario.nombre}!</p>
 				</c:if>
-				<%--				<a href="#" class="mx-2 text-white hover:text-violet-300"> <i--%>
-				<%--					class="fa-solid fa-bell"></i>--%>
-
 			</div>
 
 			<c:if test="${not empty sessionScope.usuario}">
@@ -54,7 +43,6 @@
 		</div>
 	</nav>
 
-	<!-- Filtros -->
 	<div class="flex justify-center items-center my-4">
 		<div class="border rounded-md p-4 bg-white">
 			<h2 class="text-lg font-semibold mb-2">Filtrar Eventos</h2>
@@ -99,11 +87,6 @@
 				</div>
 			</form>
 		</div>
-		<!--<div class="flex justify-evenly px-6 pt-4 pb-2">
-		<a
-			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
-			href="editar-mis-preferencias">Editar Mis Preferencias</a>
-		</div>-->
 	</div>
 
 	<!-- Cards -->
@@ -112,6 +95,10 @@
 			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 			<c:forEach items="${eventos}" var="evento">
 				<div class="bg-white shadow-md rounded p-6">
+					<form action="/weather/">
+						<input type="hidden" name="cityId" value="${evento.cityId}">
+						<input type="hidden" name="eventoId" value="${evento.id}">
+						<button type="submit">
 					<img class="w-full" src="../img/${evento.URLImagen}" alt="Evento">
 					<div class="mt-4">
 						<h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
@@ -120,6 +107,8 @@
 						<p class="text-gray-700">Disponibilidad:
 							${evento.disponibilidad}</p>
 					</div>
+						</button>
+					</form>
 					<div class="flex justify-center mt-6">
 						<c:if test="${evento.disponibilidad>0}">
 							<a href="asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
@@ -162,22 +151,24 @@
 
 
 	</div>
-	<!-- Google Maps -->
-	<div class="flex justify-center">
-		<iframe
-			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26283.162649244754!2d-58.458951284375!3d-34.5688622!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5a28c37ff9b%3A0x289b0f07f03e748b!2sHip%C3%B3dromo%20de%20Palermo!5e0!3m2!1ses!2sar!4v1683763795538!5m2!1ses!2sar"
-			width="600" height="450" style="border: 0;" allowfullscreen=""
-			loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+	<div class="w-full mx-auto mt-2">
+		<div id="carousel" class="owl-carousel owl-theme">
+			<div class="item"><img src="../img/1.png" alt="Imagen 1"></div>
+			<div class="item"><img src="../img/2.png" alt="Imagen 1"></div>
+			<div class="item"><img src="../img/3.png" alt="Imagen 1"></div>
+			<div class="item"><img src="../img/4.png" alt="Imagen 1"></div>
+		</div>
 	</div>
+
 
 	<!-- Footer  -->
 
-	<footer class="bg-violet-500 mt-4 py-8">
+	<footer class="bg-violet-500 py-8">
 		<div class="container mx-auto px-4">
 			<div class="flex flex-wrap justify-between">
-				<div class="w-full lg:w-6/12 px-4">
-					<h2 class="text-2xl font-semibold text-white">Nuestras redes
-						sociales:</h2>
+				<div class="w-full lg:w-6/12 pr-4">
+					<p class="text-white italic">Somos una plataforma especializada en la venta de entradas de espectáculos de alta demanda y ofrecemos servicios para la gestión de ingresos a eventos de distinta índole.</p>
 				</div>
 				<div class="w-full lg:w-6/12 px-4">
 					<ul class="flex flex-wrap list-none justify-end">
@@ -207,7 +198,22 @@
 			</div>
 		</div>
 	</c:if>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
+	<script>
+		$(document).ready(function() {
+			$("#carousel").owlCarousel({
+				items: 1,
+				loop: true,
+				dots: false,
+				autoplay: true,
+				autoplayTimeout: 3000,
+				autoplayHoverPause: true
+			});
+		});
+	</script>
 	<script>
 		var username = localStorage.getItem("username");
 		var usernameElement = document.getElementById("username");

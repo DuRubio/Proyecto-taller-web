@@ -95,7 +95,7 @@ public class UsuarioController {
             viewName = "redirect:/home";
         } else {
             this.id = null;
-            model.put("mensaje", "mail o clave incorrecta");
+            model.put("mensaje", "Mail o clave incorrecta");
             viewName = "login";
         }
 
