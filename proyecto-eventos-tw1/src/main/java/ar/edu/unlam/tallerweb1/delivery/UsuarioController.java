@@ -109,7 +109,7 @@ public class UsuarioController {
          public ModelAndView logOut(HttpServletRequest request) {
             request.getSession().invalidate();
             this.id=null;
-             String viewName = "redirect:/home";
+             String viewName = "redirect:/login";
              return new ModelAndView(viewName);
 
          }
@@ -213,12 +213,12 @@ public class UsuarioController {
 	
 	@RequestMapping(path = "/entrada", method = RequestMethod.GET)
     public ModelAndView generarQR(@RequestParam("entradaId") Long id) {
-        // Aquí debes incluir el código para obtener el objeto Entrada según su ID
+        // Aquï¿½ debes incluir el cï¿½digo para obtener el objeto Entrada segï¿½n su ID
         ModelMap model = new ModelMap();
         
         Entrada entrada = obtenerEntradaPorId(id);
         
-        // Generar el código QR para la entrada
+        // Generar el cï¿½digo QR para la entrada
         String qrCodeText = "https://localhost:8080/proyecto-limpio-spring/entrada/" + entrada.getId();
         int qrCodeSize = 200;
         try {
@@ -228,14 +228,13 @@ public class UsuarioController {
 
             model.put("qrCodeBase64", qrCodeBase64);
         } catch (WriterException | IOException e) {
-            // Manejar la excepción en caso de error
+            // Manejar la excepciï¿½n en caso de error
             e.printStackTrace();
         }
         
         return new ModelAndView("entrada", model);
     }
 
-    // Método para obtener la entrada por su ID (debes implementarlo según tu lógica)
     private Entrada obtenerEntradaPorId(Long id) {
         return servicioEntrada.buscarPorId(id);
     }
@@ -257,6 +256,60 @@ public class UsuarioController {
 
         return new ModelAndView(viewName, model);
     }
+
+    @RequestMapping(path="mostrar-eventos", method = RequestMethod.GET)
+    public ModelAndView mostrarEventos() {
+        ModelMap model = new ModelMap();
+        List<Evento> eventos = eventoService.getEventos();
+        model.put("eventos", eventos);
+        if(this.id!=null) {
+            usuario = usuarioService.obtenerUsuarioPorID(this.id);
+            model.put("usuario", usuario);
+        }
+        ModelAndView mav = new ModelAndView("mostrar-eventos", model);
+
+        return mav;
+    }
+
+
+
+    @RequestMapping(path = "/my-profile/cambiar-clave", method = RequestMethod.GET)
+    public ModelAndView cambiarClave(@RequestParam("usuarioId") Long usuarioId) {
+        usuario = usuarioService.obtenerUsuarioPorID(usuarioId);
+        ModelMap model = new ModelMap();
+        model.put("usuario",usuario);
+        String viewName="cambiar-clave";
+        return new ModelAndView(viewName,model);
+
+    }
+
+    @RequestMapping(path = "/my-profile/cambiarclave", method = RequestMethod.POST)
+    public ModelAndView cambiarClave(
+                                     @RequestParam("claveVieja") String claveVieja,
+                                     @RequestParam("claveNueva1") String claveNueva1,
+                                     @RequestParam("claveNueva") String claveNueva) {
+        //usuario = usuarioService.obtenerUsuarioPorID(usuarioId);
+        ModelMap model = new ModelMap();
+        String viewName;
+        viewName = "cambiar-clave";
+
+        if(!usuarioService.compararClave(usuario.getCorreo(), claveVieja)){
+            model.put("errorClave1", "La clave es incorrecta");
+        }
+        if(!claveNueva1.equals(claveNueva)){
+            model.put("errorClave2", "Las claves no son iguales");
+        }
+        if(!usuarioService.validarClave(claveNueva)){
+            model.put("errorClave2", "La clave es invÃ¡lida");
+        }
+        if(usuarioService.compararClave(usuario.getCorreo(), claveVieja) && claveNueva1.equals(claveNueva) && usuarioService.validarClave(claveNueva)){
+            usuarioService.cambiarClave(usuario, claveNueva);
+            viewName = "redirect:/logout";
+                    }
+        return new ModelAndView(viewName,model);
+
+    }
+
 
 }
 

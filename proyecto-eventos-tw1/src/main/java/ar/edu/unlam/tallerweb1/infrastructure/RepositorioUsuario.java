@@ -17,4 +17,6 @@ public interface RepositorioUsuario {
     void hacerAdminEnBdd(Usuario usuario);
 
 	void update(Usuario usuario);
+
+
 }
