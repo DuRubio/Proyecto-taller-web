@@ -109,7 +109,7 @@ public class UsuarioController {
          public ModelAndView logOut(HttpServletRequest request) {
             request.getSession().invalidate();
             this.id=null;
-             String viewName = "redirect:/home";
+             String viewName = "redirect:/login";
              return new ModelAndView(viewName);
 
          }
@@ -235,7 +235,6 @@ public class UsuarioController {
         return new ModelAndView("entrada", model);
     }
 
-    // M�todo para obtener la entrada por su ID (debes implementarlo seg�n tu l�gica)
     private Entrada obtenerEntradaPorId(Long id) {
         return servicioEntrada.buscarPorId(id);
     }
@@ -257,6 +256,60 @@ public class UsuarioController {
 
         return new ModelAndView(viewName, model);
     }
+
+    @RequestMapping(path="mostrar-eventos", method = RequestMethod.GET)
+    public ModelAndView mostrarEventos() {
+        ModelMap model = new ModelMap();
+        List<Evento> eventos = eventoService.getEventos();
+        model.put("eventos", eventos);
+        if(this.id!=null) {
+            usuario = usuarioService.obtenerUsuarioPorID(this.id);
+            model.put("usuario", usuario);
+        }
+        ModelAndView mav = new ModelAndView("mostrar-eventos", model);
+
+        return mav;
+    }
+
+
+
+    @RequestMapping(path = "/my-profile/cambiar-clave", method = RequestMethod.GET)
+    public ModelAndView cambiarClave(@RequestParam("usuarioId") Long usuarioId) {
+        usuario = usuarioService.obtenerUsuarioPorID(usuarioId);
+        ModelMap model = new ModelMap();
+        model.put("usuario",usuario);
+        String viewName="cambiar-clave";
+        return new ModelAndView(viewName,model);
+
+    }
+
+    @RequestMapping(path = "/my-profile/cambiarclave", method = RequestMethod.POST)
+    public ModelAndView cambiarClave(
+                                     @RequestParam("claveVieja") String claveVieja,
+                                     @RequestParam("claveNueva1") String claveNueva1,
+                                     @RequestParam("claveNueva") String claveNueva) {
+        //usuario = usuarioService.obtenerUsuarioPorID(usuarioId);
+        ModelMap model = new ModelMap();
+        String viewName;
+        viewName = "cambiar-clave";
+
+        if(!usuarioService.compararClave(usuario.getCorreo(), claveVieja)){
+            model.put("errorClave1", "La clave es incorrecta");
+        }
+        if(!claveNueva1.equals(claveNueva)){
+            model.put("errorClave2", "Las claves no son iguales");
+        }
+        if(!usuarioService.validarClave(claveNueva)){
+            model.put("errorClave2", "La clave es inválida");
+        }
+        if(usuarioService.compararClave(usuario.getCorreo(), claveVieja) && claveNueva1.equals(claveNueva) && usuarioService.validarClave(claveNueva)){
+            usuarioService.cambiarClave(usuario, claveNueva);
+            viewName = "redirect:/logout";
+                    }
+        return new ModelAndView(viewName,model);
+
+    }
+
 
 }
 

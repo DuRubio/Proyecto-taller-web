@@ -28,36 +28,9 @@
                         <!-- Email -->
                         <p class="text-gray-700 mb-4"><strong>Email:</strong> ${usuario.correo}</p>
 
-                        <!-- Contraseña -->
-                        <div class="flex items-center mb-4">
-                            <input type="password" value="${usuario.clave}" readonly
-                                class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                            <%-- <button type="button" class="ml-2 p-2 bg-gray-200 rounded"
-                                onclick="mostrarPopUp()">--%>
-                                <%-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
-                                    class="w-5 h-5">--%>
-                                    <%-- <path
-                                        d="M15.586 4.414c.78.78.78 2.048 0 2.828l-1.414 1.414c-.78.78-2.048.78-2.828 0l-1.172-1.172c-.42-.42-.586-1.008-.42-1.562l.828-3.906c.105-.5.523-.92 1.047-1.047l3.906-.828c.555-.166 1.14 0 1.562.42l1.172 1.172zm-3.414 6.172l-5.5 5.5c-1.172-1.172-1.172-3.07 0-4.242l3.172-3.172c1.172-1.172 3.07-1.172 4.242 0l1.414 1.414c1.172 1.172 1.172 3.07 0 4.242l-5.5 5.5-2.828-2.828zm6.242-1.242l-1.414-1.414 2.828-2.828 1.414 1.414-2.828 2.828z" />--%>
-                                    <%-- </svg>--%>
-                                        <%-- </button>--%>
-                        </div>
+    <!-- Contraseña -->
 
-                        <div id="pop-up"
-                            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
-                            <div class="bg-white p-4 rounded shadow-md">
-                                <h2 class="text-lg font-bold mb-2">Cambiar contraseña</h2>
-                                <form onsubmit="actualizarContraseña(event)">
-                                    <div class="mb-4">
-                                        <label for="claveNueva" class="block font-semibold mb-1">Nueva
-                                            contraseña</label>
-                                        <input type="text" id="claveNueva" name="claveNueva"
-                                            class="w-full bg-gray-100 border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                                    </div>
-                                    <button type="submit"
-                                        class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded">Actualizar</button>
-                                </form>
-                            </div>
-                        </div>
+    <a  class="block text-violet-500 text-italic text-sm mb-4 underline" href="/my-profile/cambiar-clave?usuarioId=${usuario.id}">Cambiar contraseña</a>
 
                         <!-- Localidad -->
                         <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>

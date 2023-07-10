@@ -32,18 +32,20 @@ public class UsuarioServiceImpl implements  UsuarioService{
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    public void guardarUsuario(DatosRegistracion datosRegistracion) {
-        Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
-        hashearPassword(usuario);
-        repoUsuario.save(usuario);
-    }
-    
-    public void hashearPassword(Usuario usuario) {
-    	String p = usuario.getClave();
-    	String passwordHash = passwordEncoder.encode(p);
-    	usuario.setClave(passwordHash);
-    }
+
+	@Override
+	public void guardarUsuario(DatosRegistracion datosRegistracion) {
+		Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
+		hashearPassword(usuario);
+		repoUsuario.save(usuario);
+	}
+
+	public void hashearPassword(Usuario usuario) {
+		String p = usuario.getClave();
+		String passwordHash = passwordEncoder.encode(p);
+		usuario.setClave(passwordHash);
+	}
+
 
     @Override
     public Long getId(String correo) {
@@ -65,10 +67,10 @@ public class UsuarioServiceImpl implements  UsuarioService{
 		Matcher matcher= pattern.matcher(correo);
 		return matcher.matches();
     }
-    //Mínimo 8 caracteres, incluyendo al menos 1 símbolo, mayúscila, minúscula y número
+    //Mï¿½nimo 8 caracteres, incluyendo al menos 1 sï¿½mbolo, mayï¿½scila, minï¿½scula y nï¿½mero
     @Override
     public Boolean validarClave(String clave) {
-    	String regexPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$";
+    	String regexPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()ï¿½[{}]:;',?/*~$^+=<>]).{8,20}$";
 		Pattern pattern = Pattern.compile(regexPassword);
 		Matcher matcher= pattern.matcher(clave);
 		return matcher.matches();
@@ -151,6 +153,13 @@ public class UsuarioServiceImpl implements  UsuarioService{
         	repoUsuario.update(usuario);
         }
 		
+	}
+
+	@Override
+	public void cambiarClave(Usuario usuario, String claveNueva) {
+		usuario.setClave(claveNueva);
+		this.hashearPassword(usuario);
+		repoUsuario.update(usuario);
 	}
 
 

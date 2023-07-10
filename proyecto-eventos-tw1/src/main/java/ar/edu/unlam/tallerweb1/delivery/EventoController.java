@@ -50,8 +50,6 @@ public class EventoController {
                this.datosEvento = datosEvento;
                 model.put("mensaje","Evento registrado");
                 model.put("datosEvento", datosEvento);
-                servicioEvento.save(datosEvento);
-
               List<Evento> eventos = servicioEvento.getEventos(); //esto no esta al pedo?
               model.put("datosEvento", eventos);
                 viewName = "subir-foto";
@@ -68,15 +66,15 @@ public class EventoController {
     }
     @RequestMapping(path = "/subir-foto", method = RequestMethod.POST)
     public ModelAndView cargarFoto(@RequestParam("imagen") MultipartFile imagen) {
-       // if (!imagen.isEmpty()) {
-           // byte[] imagenBytes = imagen.getBytes();
+        if (!imagen.isEmpty()) {
+            servicioEvento.save(datosEvento);
             Evento evento=servicioEvento.getUltimoGuardado();
             servicioEvento.asociarImagenConEvento(evento,imagen);
             return new ModelAndView("redirect:/home");
         }
 
-      //  return new ModelAndView("subir-foto"); hacer que si imagen es vacía se borre el evento cargado
-    //}
+        return new ModelAndView("subir-foto");
+    }
 
 
 
@@ -87,7 +85,7 @@ public class EventoController {
         return new ModelAndView("comprar-entrada");
     }
 
-
+/*
     @RequestMapping(path="mostrar-eventos", method = RequestMethod.GET)
     public ModelAndView mostrarEventos() {
     	ModelMap model = new ModelMap();
@@ -97,7 +95,7 @@ public class EventoController {
 
         return mav;
     }
-
+*/
     @RequestMapping(path="filtrar", method = RequestMethod.POST)
     public ModelAndView filtrarEventos(
             @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,

@@ -52,7 +52,9 @@ public class RepositorioUsuarioImpl implements RepositorioUsuario  {
     	Session session = sessionFactory.getCurrentSession();
         session.update(usuario);
 	}
-    
+
+
+
 }
 
 
