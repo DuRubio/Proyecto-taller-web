@@ -114,8 +114,28 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
         subCriteria.createAlias("usuariosPreferencia", "u");
         subCriteria.add(Restrictions.eq("u.id", idUsuario));
 
+
         // Obt�n la lista de eventos
         List<Evento> eventos = criteria.list();
+
+
+        return eventos;
+    }
+
+    @Override
+    public List<Evento> buscarEventosPorPreferenciasHome(Long idUsuario) {
+        Session session = sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Evento.class);
+
+        // Crea una subcriteria para obtener los IDs de categor�as que coinciden con el ID de usuario
+        Criteria subCriteria = criteria.createCriteria("categoria", "c");
+        subCriteria.createAlias("usuariosPreferencia", "u");
+        subCriteria.add(Restrictions.eq("u.id", idUsuario));
+
+
+        // Obt�n la lista de eventos
+        List<Evento> eventos = criteria.setMaxResults(4).list();
+
 
         return eventos;
     }
@@ -141,6 +161,12 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
                 .setMaxResults(1)
                 .list();
         return resultados.isEmpty() ? null : resultados.get(0);
+    }
+
+    @Override
+    public void updateEvento(Evento evento) {
+        Session session = sessionFactory.getCurrentSession();
+        session.update(evento);
     }
 
     

@@ -174,7 +174,9 @@ public class UsuarioController {
     public ModelAndView getVistaHome() {
         ModelMap model = new ModelMap();
         List<Evento> eventos = this.eventoService.getPrimeros4Eventos();
+        List<Evento> eventosSegunPreferencias = this.eventoService.buscarEventosPorPreferenciasHome(usuario);
         model.put("eventos", eventos);
+        model.put("eventosSegunPreferencias", eventosSegunPreferencias);
         if(this.id!=null) {
             usuario = usuarioService.obtenerUsuarioPorID(this.id);
             model.put("usuario", usuario);

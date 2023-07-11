@@ -126,6 +126,44 @@
 		</div>
 	</div>
 
+	<!-- Cards -->
+	<div class="max-w-6xl mx-auto mt-8">
+		<h1 class="text-2xl font-bold mb-4">Esto podría interesarte...</h1>
+		<div
+				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+			<c:forEach items="${eventosSegunPreferencias}" var="eventosSegunPreferencias">
+				<div class="bg-white shadow-md rounded p-6">
+					<form action="/weather/">
+						<input type="hidden" name="cityId" value="${eventosSegunPreferencias.cityId}">
+						<input type="hidden" name="eventoId" value="${eventosSegunPreferencias.id}">
+						<button type="submit">
+							<img class="w-full" src="../img/${eventosSegunPreferencias.URLImagen}" alt="Evento">
+							<div class="mt-4">
+								<h2 class="text-xl font-semibold mb-2">${eventosSegunPreferencias.nombre}</h2>
+								<p class="text-gray-700">Fecha: ${eventosSegunPreferencias.fecha}</p>
+								<p class="text-gray-700">Localidad: ${eventosSegunPreferencias.localidad}</p>
+								<p class="text-gray-700">Disponibilidad:
+										${eventosSegunPreferencias.disponibilidad}</p>
+							</div>
+						</button>
+					</form>
+					<div class="flex justify-center mt-6">
+						<c:if test="${eventosSegunPreferencias.disponibilidad>0}">
+							<a href="asistir?eventoId=${eventosSegunPreferencias.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
+						</c:if>
+						<c:if test="${eventosSegunPreferencias.disponibilidad==0}">
+							<a href="#" class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</a>
+						</c:if>
+						<c:if test="${usuario.isAdmin}">
+							<a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${eventosSegunPreferencias.id}">Eliminar</a>
+						</c:if>
+
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+	</div>
+
 	</div>
 	<div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
 		<a
@@ -136,7 +174,7 @@
 			<a
 				class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
 				href="filtrar-preferencias?idUsuario=${sessionScope.usuario.id}">
-				Buscar Eventos Por Mis Preferencias </a>
+				Ver eventos recomendados para mi </a>
 		</c:if>
 
 

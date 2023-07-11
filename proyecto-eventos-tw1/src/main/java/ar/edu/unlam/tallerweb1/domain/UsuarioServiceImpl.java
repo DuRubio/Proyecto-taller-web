@@ -36,6 +36,11 @@ public class UsuarioServiceImpl implements  UsuarioService{
 	@Override
 	public void guardarUsuario(DatosRegistracion datosRegistracion) {
 		Usuario usuario = new Usuario(datosRegistracion.getNombre(), datosRegistracion.getApellido(), datosRegistracion.getLocalidad(), datosRegistracion.getCorreo(), datosRegistracion.getClave());
+		List<Categoria> categoriasPreferidas = new ArrayList<>();
+		List<Categoria> categorias = this.repoCategoria.findAll();
+		for (Categoria c: categorias
+			 ) { categoriasPreferidas.add(c);}
+		usuario.setCategoriasPreferidas(categoriasPreferidas);
 		hashearPassword(usuario);
 		repoUsuario.save(usuario);
 	}
@@ -62,7 +67,7 @@ public class UsuarioServiceImpl implements  UsuarioService{
     //Regex validador de mail
     @Override
     public Boolean validarMail(String correo) {
-    	String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+		String regexEmail = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 		Pattern pattern = Pattern.compile(regexEmail);
 		Matcher matcher= pattern.matcher(correo);
 		return matcher.matches();
@@ -70,7 +75,7 @@ public class UsuarioServiceImpl implements  UsuarioService{
     //M�nimo 8 caracteres, incluyendo al menos 1 s�mbolo, may�scila, min�scula y n�mero
     @Override
     public Boolean validarClave(String clave) {
-    	String regexPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()�[{}]:;',?/*~$^+=<>]).{8,20}$";
+		String regexPassword = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()�[{}]:;',?/*~$^+=<>]).{8,20}$";
 		Pattern pattern = Pattern.compile(regexPassword);
 		Matcher matcher= pattern.matcher(clave);
 		return matcher.matches();
@@ -89,13 +94,13 @@ public class UsuarioServiceImpl implements  UsuarioService{
 
     @Override
     public Boolean compararMail(String correo) {
-    	Usuario usuario = obtenerUsuarioPorCorreo(correo);
+		Usuario usuario = obtenerUsuarioPorCorreo(correo);
         return usuario != null && usuario.getCorreo().equals(correo);
     }
 
     @Override
     public Boolean compararClave(String correo, String clave) {
-    	Usuario usuario = obtenerUsuarioPorCorreo(correo);
+		Usuario usuario = obtenerUsuarioPorCorreo(correo);
         return usuario != null && passwordEncoder.matches(clave, usuario.getClave());
     }
 
@@ -106,7 +111,7 @@ public class UsuarioServiceImpl implements  UsuarioService{
 		List<Categoria> categoriasPreferidas = new ArrayList<>();
 		List<Categoria> categorias = this.repoCategoria.findAll();
 		Categoria categoria = new Categoria();
-		
+
 		if(datosPreferencias.getDeportivo() == Boolean.TRUE) {
 			categoria = categorias.get(0);
 			categoriasPreferidas.add(categoria);
@@ -148,11 +153,11 @@ public class UsuarioServiceImpl implements  UsuarioService{
 			categoriasPreferidas.add(categoria);
 		}
 		usuario.setCategoriasPreferidas(categoriasPreferidas);
-		
-        if(categoriasPreferidas.size() > 0) {
-        	repoUsuario.update(usuario);
+
+		if(categoriasPreferidas.size() > 0) {
+			repoUsuario.update(usuario);
         }
-		
+
 	}
 
 	@Override

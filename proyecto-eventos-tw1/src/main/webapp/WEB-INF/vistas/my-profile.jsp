@@ -13,60 +13,93 @@
                     <title>Mi perfil</title>
                 </head>
 
+                <nav
+                        class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
+                    <div class="flex items-center flex-shrink-0 text-white mr-6">
+                        <img src="../img/logo.png" alt="" class="w-8 m-1 rounded"> <span
+                            class="font-semibold text-xl tracking-tight">Eventix</span>
+                    </div>
+                    <div
+                            class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-end flex">
+                        <div class="flex items-center">
+                            <c:if test="${not empty sessionScope.usuario}">
+                                <p class="mx-2 font-semibold text-white text-xl tracking-tight">¡Hola
+                                        ${sessionScope.usuario.nombre}!</p>
+                            </c:if>
+                        </div>
+
+                        <c:if test="${not empty sessionScope.usuario}">
+                            <a href="/my-profile" class="mx-2 text-white hover:text-violet-300">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                            <a href="logout" class="mx-2 text-white">Cerrar sesión</a>
+                        </c:if>
+                        <c:if test="${empty sessionScope.usuario}">
+                            <a href="login" class="mx-2 text-white">Iniciar sesión</a>
+                        </c:if>
+
+                    </div>
+                </nav>
+
                 <body class="bg-gray-100">
-                    <div class="max-w-xl mx-auto px-4 py-8">
+                <div class="flex items-center justify-center mb-16 mt-20">
+                    <div class="flex items-center justify-center w-full max-w-5xl">
+                        <img src="./img/coachella.jpeg" alt="Image" class="w-1/2 h-auto object-cover">
+                        <div class="w-1/2 px-6 py-8 bg-white">
 
-                        <!-- Imagen de perfil -->
-                        <div class="flex justify-center items-center mb-4">
+                            <!-- Imagen de perfil -->
+                            <div class="flex justify-center items-center mb-4">
 
-                            <img src="../img/perfil.jpg" alt="Imagen de perfil" class="w-16 h-16 rounded-full">
-                        </div>
-
-                        <!-- Nombre y Apellido -->
-                        <h1 class="text-2xl font-bold text-center mb-4">${usuario.nombre} ${usuario.apellido}</h1>
-
-                        <!-- Email -->
-                        <p class="text-gray-700 mb-4"><strong>Email:</strong> ${usuario.correo}</p>
-
-    <!-- Contraseña -->
-
-    <a  class="block text-violet-500 text-italic text-sm mb-4 underline" href="/my-profile/cambiar-clave?usuarioId=${usuario.id}">Cambiar contraseña</a>
-
-                        <!-- Localidad -->
-                        <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
-                        <div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
-                            <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
-                                href="mis-entradas">Ver Mis Entradas</a>
-                        </div>
-
-                        <c:if test="${!usuario.isAdmin}">
-                            <div class="flex items-center mb-4">
-                                <form action="/my-profile/admin" method="POST">
-                                    <div class="flex items-center mb-4">
-                                        <label for="claveAdmin" class="mr-2">Quiero crear mis propios eventos:</label>
-                                        <input type="text" id="claveAdmin" name="claveAdmin"
-                                            placeholder="Ingresá tu token"
-                                            class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                                        <button type="submit"
-                                            class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50">Enviar</button>
-                                    </div>
-                                </form>
+                                <img src="../img/perfil.png" alt="Imagen de perfil" class="w-16 h-16 rounded-full">
                             </div>
 
-                        </c:if>
-                        <c:if test="${usuario.isAdmin}">
-                            <h2 class="text-center text-lg font-bold mb-2">¡${usuario.nombre} ya sos Admininstrador!
-                            </h2>
-                            <a href="/my-profile/notadmin"
-                                class="flex justify-center mx-2 text-purple-500 underline cursor-pointer rounded-lg">Dejar
-                                de ser admin</a>
-                        </c:if>
+                            <!-- Nombre y Apellido -->
+                            <h1 class="text-2xl font-bold text-center mb-4">${usuario.nombre} ${usuario.apellido}</h1>
+
+                            <!-- Email -->
+                            <p class="text-gray-700 mb-4"><strong>Email:</strong> ${usuario.correo}</p>
+
+                            <!-- Contraseña -->
+
+                            <a class="block text-violet-500 text-italic text-sm mb-4 underline"
+                               href="/my-profile/cambiar-clave?usuarioId=${usuario.id}">Cambiar contraseña</a>
+
+                            <!-- Localidad -->
+                            <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
+                            <div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
+                                <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+                                   href="mis-entradas">Ver Mis Entradas</a>
+                            </div>
+
+                            <c:if test="${!usuario.isAdmin}">
+                                <div class="flex items-center mb-4">
+                                    <form action="/my-profile/admin" method="POST">
+                                        <div class="flex items-center mb-4">
+                                            <label for="claveAdmin" class="mr-2">Quiero crear mis propios eventos:</label>
+                                            <input type="text" id="claveAdmin" name="claveAdmin" placeholder="Ingresá tu token"
+                                                   class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                            <button type="submit"
+                                                    class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50">Enviar</button>
+                                        </div>
+                                    </form>
+                                </div>
+
+                            </c:if>
+                            <c:if test="${usuario.isAdmin}">
+                                <h2 class="text-center text-lg font-bold mb-2">¡${usuario.nombre} ya sos Admininstrador!
+                                </h2>
+                                <a href="/my-profile/notadmin"
+                                   class="flex justify-center mx-2 text-purple-500 underline cursor-pointer rounded-lg mb-4">Dejar
+                                    de ser admin</a>
+                            </c:if>
 
 
-                        <a href="editar-mis-preferencias"
-                            class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar
-                            preferencias</a>
+                            <a href="editar-mis-preferencias"
+                               class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar
+                                preferencias</a>
+                        </div>
                     </div>
+                </div>
             
 
 
@@ -99,6 +132,28 @@
                     </c:if>
 
                 </body>
+                <footer class="bg-violet-500 py-8 bottom-0 mt-20">
+                    <div class="container mx-auto px-4">
+                        <div class="flex flex-wrap justify-between">
+                            <div class="w-full lg:w-6/12 pr-4">
+                                <p class="text-white italic">Somos una plataforma especializada en la venta de entradas de espectáculos de alta demanda y ofrecemos servicios para la gestión de ingresos a eventos de distinta índole.</p>
+                            </div>
+                            <div class="w-full lg:w-6/12 px-4">
+                                <ul class="flex flex-wrap list-none justify-end">
+                                    <li><a href="#" class="text-white hover:text-violet-300 mr-4">
+                                        <i class="fab fa-facebook"></i>
+                                    </a></li>
+                                    <li><a href="#" class="text-white hover:text-violet-300 mr-4">
+                                        <i class="fab fa-twitter"></i>
+                                    </a></li>
+                                    <li><a href="#" class="text-white hover:text-violet-300">
+                                        <i class="fab fa-instagram"></i>
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
                 <script>
 
                     function mostrarPopUp() {

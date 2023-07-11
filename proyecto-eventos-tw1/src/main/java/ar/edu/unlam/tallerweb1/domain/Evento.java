@@ -172,7 +172,6 @@ public class Evento {
 
     public void agregarEntrada(Entrada entrada){
         entradas.add(entrada);
-        disponibilidad--;
     }
 
 	@Override

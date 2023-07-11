@@ -39,7 +39,7 @@
     </div>
 
     <c:if test="${not empty sessionScope.usuario}">
-      <a href="my-profile" class="mx-2 text-white hover:text-violet-300">
+      <a href="/my-profile" class="mx-2 text-white hover:text-violet-300">
         <i class="fa-solid fa-user"></i>
       </a>
       <a href="logout" class="mx-2 text-white">Cerrar sesión</a>

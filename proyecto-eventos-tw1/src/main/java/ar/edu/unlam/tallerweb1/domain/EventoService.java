@@ -28,10 +28,12 @@ public interface EventoService {
 	List<Evento> getPrimeros4Eventos();
 
 	List<Evento> buscarEventosPorPreferencias(Usuario usuario);
+    List<Evento> buscarEventosPorPreferenciasHome(Usuario usuario);
 
     void setInactivo(Long eventoId);
 
     void asociarImagenConEvento(Evento evento, MultipartFile imagen);
 
     Evento getUltimoGuardado();
+
 }
