@@ -28,6 +28,7 @@
 </head>
 
 <body class="flex items-center justify-center h-screen bg-gray-100">
+
     <div class="w-96 p-6 bg-white rounded shadow-md">
         <h1 class="text-2xl font-semibold text-center">Nuevo Usuario</h1>
         <hr class="my-4">

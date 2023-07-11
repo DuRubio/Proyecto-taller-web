@@ -27,4 +27,8 @@ public interface UsuarioService {
     void setAdmin(Usuario usuario, Boolean decision);
 
 	void guardarPreferencias(Long id, DatosPreferencias datosPreferencias);
+
+    void cambiarClave(Usuario usuario, String claveNueva);
+
+
 }

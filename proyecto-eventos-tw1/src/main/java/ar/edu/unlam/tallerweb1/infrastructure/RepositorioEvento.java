@@ -28,11 +28,14 @@ public interface RepositorioEvento {
 	public List<Evento> findFirst4Events();
 
 	public List<Evento> buscarEventosPorPreferencias(Long id);
+    public List<Evento> buscarEventosPorPreferenciasHome(Long id);
 
     void setInactivo(Evento evento);
 
     void guardarImagen(Evento evento, String nombreImagen);
 
     Evento getUltimoGuardado();
+
+    void updateEvento(Evento evento);
 }
 

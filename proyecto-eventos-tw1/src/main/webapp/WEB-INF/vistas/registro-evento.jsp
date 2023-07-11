@@ -88,7 +88,7 @@
             <h4><span>${error}</span></h4>
             <br>
         </c:if>
-        ${mensaje}
+        <p class="text-red-500 mx-2">${mensaje}</p>
     </form>
     <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a></div>
 

@@ -20,7 +20,7 @@ import java.util.UUID;
 @Service
 public class EventoServiceImpl implements EventoService  {
 
-    private static final String CARPETA_IMAGENES = "C:/Users/Duilio/Desktop/Taller Web Proyecto/proyecto-eventos-tw1/src/main/webapp/img/";
+    private static final String CARPETA_IMAGENES = "src/main/webapp/img/";
     private RepositorioEvento repoEvento;
     
     private RepositorioCategoria repoCategoria;
@@ -98,6 +98,14 @@ public class EventoServiceImpl implements EventoService  {
 		List<Long> idCategoriasPreferencias = repoCategoria.findPreferenciasById(id);
 		return repoEvento.buscarEventosPorPreferencias(id);
 	}
+
+    @Override
+    public List<Evento> buscarEventosPorPreferenciasHome(Usuario usuario) {
+        Long id = usuario.getId();
+        List<Categoria> categorias = repoCategoria.findAll();
+        List<Long> idCategoriasPreferencias = repoCategoria.findPreferenciasById(id);
+        return repoEvento.buscarEventosPorPreferenciasHome(id);
+    }
 
     @Override
     public void setInactivo(Long eventoId) {

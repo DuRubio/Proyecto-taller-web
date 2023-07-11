@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -9,14 +10,40 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Mis Preferencias</title>
 </head>
+<nav
+        class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <img src="../img/logo.png" alt="" class="w-8 m-1 rounded"> <span
+            class="font-semibold text-xl tracking-tight">Eventix</span>
+    </div>
+    <div
+            class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-end flex">
+        <div class="flex items-center">
+            <c:if test="${not empty sessionScope.usuario}">
+                <p class="mx-2 font-semibold text-white text-xl tracking-tight">¡Hola
+                        ${sessionScope.usuario.nombre}!</p>
+            </c:if>
+        </div>
 
+        <c:if test="${not empty sessionScope.usuario}">
+            <a href="/my-profile" class="mx-2 text-white hover:text-violet-300">
+                <i class="fa-solid fa-user"></i>
+            </a>
+            <a href="logout" class="mx-2 text-white">Cerrar sesión</a>
+        </c:if>
+        <c:if test="${empty sessionScope.usuario}">
+            <a href="login" class="mx-2 text-white">Iniciar sesión</a>
+        </c:if>
+
+    </div>
+</nav>
 <body class="bg-gray-100">
-<div class="container m-auto mt-10">
-    <div id="loginbox" class="m-auto w-2/3 md:w-1/2 lg:w-1/3 xl:w-1/4">
-        <form action="guardar-preferencias-usuario" method="POST" class="bg-white shadow-md rounded px-8 py-6">
-            <h3 class="text-2xl font-bold mb-4">Mis Preferencias</h3>
-            <hr class="border-t-2 border-gray-300 mb-4">
-            <br>
+<div class="flex items-center justify-center mb-16 mt-20">
+    <div class="flex items-center justify-center w-full max-w-5xl">
+        <img src="./img/evento-cultural.jpg" alt="Image" class="w-1/2 h-auto object-cover">
+        <div class="w-1/2 h-96 px-6 py-8 bg-white">
+            <h1 class="text-3xl font-semibold mb-6">Seleccioná tus preferencias</h1>
+        <form action="guardar-preferencias-usuario" method="POST" >
             <div class="flex flex-wrap items-center gap-4">
                 <label for="deportivo" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
                     <input id="deportivo" type="checkbox" class="hidden" name="deportivo" value="true">
@@ -75,6 +102,7 @@
             </h4>
             <br>
         </c:if>
+        </div>
     </div>
 </div>
 
@@ -101,5 +129,26 @@
 </script>
 <script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>
-
+<footer class="bg-violet-500 py-8 mt-40">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between">
+            <div class="w-full lg:w-6/12 pr-4">
+                <p class="text-white italic">Somos una plataforma especializada en la venta de entradas de espectáculos de alta demanda y ofrecemos servicios para la gestión de ingresos a eventos de distinta índole.</p>
+            </div>
+            <div class="w-full lg:w-6/12 px-4">
+                <ul class="flex flex-wrap list-none justify-end">
+                    <li><a href="#" class="text-white hover:text-violet-300 mr-4">
+                        <i class="fab fa-facebook"></i>
+                    </a></li>
+                    <li><a href="#" class="text-white hover:text-violet-300 mr-4">
+                        <i class="fab fa-twitter"></i>
+                    </a></li>
+                    <li><a href="#" class="text-white hover:text-violet-300">
+                        <i class="fab fa-instagram"></i>
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>

@@ -18,6 +18,7 @@
 
 <body class="flex items-center justify-center h-screen bg-gray-100">
 <div class="w-96 p-6 bg-white rounded shadow-md">
+    <img src="../img/logo.png" class="w-20 mx-auto m-4">
     <h1 class="text-2xl font-semibold text-center">¡Bienvenido!</h1>
     <form action="login" method="POST" class="mt-4"  modelAttribute="datosLogin" >
         <div>
@@ -36,17 +37,17 @@
             <button type="submit"
                     class="w-full px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Ingresar</button>
             <c:if test="${not empty error}">
-                <h4><span>${error}</span></h4>
+                <h4 class="text-red-500"><span>${error}</span></h4>
                 <br>
             </c:if>
-            ${mensaje}
+            <p class="text-red-500">${mensaje}</p>
 
         </div>
 
 
     </form>
     <br>
-    <p>   No estás registrado?  <a href="registrarme">hacé click acá</a></p>
+    <p>   No estás registrado?  <a href="registrarme" class="text-violet-500">Hacé click acá</a></p>
 
 </div>
 </body>

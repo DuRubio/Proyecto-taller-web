@@ -23,17 +23,47 @@
     }
   </style>
 </head>
+<nav
+        class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <img src="../img/logo.png" alt="" class="w-8 m-1 rounded"> <span
+          class="font-semibold text-xl tracking-tight">Eventix</span>
+  </div>
+  <div
+          class="w-full block flex-grow lg:flex lg:items-center lg:w-auto justify-end flex">
+    <div class="flex items-center">
+      <c:if test="${not empty sessionScope.usuario}">
+        <p class="mx-2 font-semibold text-white text-xl tracking-tight">¡Hola
+            ${sessionScope.usuario.nombre}!</p>
+      </c:if>
+    </div>
+
+    <c:if test="${not empty sessionScope.usuario}">
+      <a href="/my-profile" class="mx-2 text-white hover:text-violet-300">
+        <i class="fa-solid fa-user"></i>
+      </a>
+      <a href="logout" class="mx-2 text-white">Cerrar sesión</a>
+    </c:if>
+    <c:if test="${empty sessionScope.usuario}">
+      <a href="login" class="mx-2 text-white">Iniciar sesión</a>
+    </c:if>
+
+  </div>
+</nav>
 <body class="bg-gray-100">
-<div class="bgcolor shadow-md rounded p-6 m-auto max-w-5xl mt-8">
+<div class="bgcolor shadow-md rounded p-6 m-auto max-w-5xl mt-16">
   <div class="grid grid-cols-2 gap-8">
     <div class="col-span-1">
       <h1 class="text-2xl font-bold mb-4">${evento.nombre}</h1>
       <img src="../img/${evento.URLImagen}" alt="Imagen del evento" class="w-full max-w-lg mb-4">
       <p class="text-gray-500 mb-2">${evento.localidad}</p>
-      <p class="text-gray-500 mb-2">${evento.fecha}</p>
+      <p class="text-gray-500 mb-2"><i class="far fa-calendar"></i> ${evento.fecha}</p>
       <div class="mt-4">
         <c:if test="${evento.disponibilidad>0}">
           <a href="/asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white  font-bold py-2 px-4 rounded-full">Asistir</a>
+        </c:if>
+        <c:if test="${evento.disponibilidad<=0}">
+          <p class="text-gray-500 mb-2">Las entradas para este evento se encuentran agotadas.</p>
         </c:if>
       </div>
     </div>
@@ -71,6 +101,35 @@
   </div>
 <div class="flex justify-center px-6 pt-4 pb-2 mt-4"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="/home">Volver a home</a></div>
 
+
 </body>
+<footer class="bg-violet-500 mt-16 py-8 bottom-0">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-wrap justify-between">
+      <div class="w-full lg:w-6/12 pr-4">
+        <p class="text-white italic">Somos una plataforma especializada en la venta de entradas de espectáculos de alta demanda y ofrecemos servicios para la gestión de ingresos a eventos de distinta índole.</p>
+      </div>
+      <div class="w-full lg:w-6/12 px-4">
+        <ul class="flex flex-wrap list-none justify-end">
+          <li>
+            <a href="#" class="text-white hover:text-violet-300 mr-4">
+              <i class="fab fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="text-white hover:text-violet-300 mr-4">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="text-white hover:text-violet-300">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
 </html>
 

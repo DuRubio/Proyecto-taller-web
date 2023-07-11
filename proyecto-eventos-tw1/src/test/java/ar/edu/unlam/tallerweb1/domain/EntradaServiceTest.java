@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.infrastructure.RepositorioEvento;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,6 +20,7 @@ import ar.edu.unlam.tallerweb1.infrastructure.RepositorioUsuario;
 public class EntradaServiceTest {
 	
 	private RepositorioEntrada repositorioEntrada;
+	private RepositorioEvento repoEvento;
 	private EntradaService servicioEntrada;
 	private Long usuarioId = 1L;
     public static final int CANTIDAD_ENTRADAS = 3;
@@ -26,7 +28,8 @@ public class EntradaServiceTest {
     @Before
     public void inicializacion(){
         this.repositorioEntrada = mock(RepositorioEntrada.class);
-        this.servicioEntrada = new EntradaServiceImpl(repositorioEntrada);
+		this.repoEvento = mock(RepositorioEvento.class);
+        this.servicioEntrada = new EntradaServiceImpl(repositorioEntrada, repoEvento);
     }
 	
 	@Test
