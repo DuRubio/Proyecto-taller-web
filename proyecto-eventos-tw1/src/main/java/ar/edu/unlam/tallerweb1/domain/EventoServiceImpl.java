@@ -131,5 +131,15 @@ public class EventoServiceImpl implements EventoService  {
         return repoEvento.getUltimoGuardado();
     }
 
+    @Override
+    public List<Evento> getEventosPorFecha() {
+        return repoEvento.getEventosPorFecha();
+    }
+
+    @Override
+    public List<Evento> getEventosOrdenadosPorDisponibilidad() {
+        return repoEvento.getEventosOrdenadosPorDisponibilidad();
+    }
+
 
 }

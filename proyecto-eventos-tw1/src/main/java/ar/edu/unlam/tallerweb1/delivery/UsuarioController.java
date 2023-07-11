@@ -312,6 +312,36 @@ public class UsuarioController {
 
     }
 
+    @RequestMapping(path="fecha", method = RequestMethod.GET)
+    public ModelAndView mostrarOrdenadosPorFecha() {
+        ModelMap model = new ModelMap();
+        List<Evento> eventos = eventoService.getEventosPorFecha();
+        model.put("eventos", eventos);
+        model.put("texto", "ordenados por fecha");
+        if(this.id!=null) {
+            usuario = usuarioService.obtenerUsuarioPorID(this.id);
+            model.put("usuario", usuario);
+        }
+        ModelAndView mav = new ModelAndView("mostrar-eventos", model);
+
+        return mav;
+    }
+
+    @RequestMapping(path="disponibilidad", method = RequestMethod.GET)
+    public ModelAndView ordenarPorDisponibilidad() {
+        ModelMap model = new ModelMap();
+        List<Evento> eventos = eventoService.getEventosOrdenadosPorDisponibilidad();
+        model.put("eventos", eventos);
+        model.put("texto", "ordenados por disponibilidad");
+        if(this.id!=null) {
+            usuario = usuarioService.obtenerUsuarioPorID(this.id);
+            model.put("usuario", usuario);
+        }
+        ModelAndView mav = new ModelAndView("mostrar-eventos", model);
+
+        return mav;
+    }
+
 
 }
 

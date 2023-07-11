@@ -11,6 +11,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -167,6 +168,22 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
     public void updateEvento(Evento evento) {
         Session session = sessionFactory.getCurrentSession();
         session.update(evento);
+    }
+
+    @Override
+    public List<Evento> getEventosPorFecha() {
+        String hql = "FROM Evento WHERE eventoActivo = true ORDER BY fecha ASC";
+        Query<Evento> query = sessionFactory.getCurrentSession().createQuery(hql, Evento.class);
+        List<Evento> resultados = query.getResultList();
+        return resultados;
+    }
+
+    @Override
+    public List<Evento> getEventosOrdenadosPorDisponibilidad() {
+        String hql = "FROM Evento WHERE eventoActivo = true ORDER BY disponibilidad ASC";
+        Query<Evento> query = sessionFactory.getCurrentSession().createQuery(hql, Evento.class);
+        List<Evento> resultados = query.getResultList();
+        return resultados;
     }
 
     

@@ -37,5 +37,9 @@ public interface RepositorioEvento {
     Evento getUltimoGuardado();
 
     void updateEvento(Evento evento);
+
+    List<Evento> getEventosPorFecha();
+
+    List<Evento> getEventosOrdenadosPorDisponibilidad();
 }
 
