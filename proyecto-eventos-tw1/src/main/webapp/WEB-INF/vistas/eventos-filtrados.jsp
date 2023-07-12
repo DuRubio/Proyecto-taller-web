@@ -9,9 +9,14 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Listado de Eventos</title>
+    <title>EventiX</title>
+    <link rel="shortcut icon" href="../img/logo.png">
 </head>
-
+<style>
+    .footer{
+        margin-top: 180px;
+    }
+</style>
 <nav
         class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
@@ -60,10 +65,10 @@
                         <a href="/asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
                     </c:if>
                     <c:if test="${evento.disponibilidad==0}">
-                        <a href="#" class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</a>
+                        <p class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</p>
                     </c:if>
                     <c:if test="${usuario.isAdmin}">
-                        <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="/eliminar?eventoId=${evento.id}">Eliminar</a>
+                        <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="/eliminar?eventoId=${evento.id}">Eliminar</a>
                     </c:if>
 
                 </div>
@@ -71,11 +76,12 @@
         </c:forEach>
     </div>
 </div>
-<div class=" w-full flex justify-center p-4">
-    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a>
+<div class=" w-full flex justify-center p-4 mt-4">
+    <a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded" href="home">Volver a home</a>
 </div>
+</body>
 
-<footer class="bg-violet-500 py-8">
+<footer class="bg-violet-500 py-8 footer">
     <div class="container mx-auto px-4">
         <div class="flex flex-wrap justify-between">
             <div class="w-full lg:w-6/12 pr-4">
@@ -97,7 +103,5 @@
         </div>
     </div>
 </footer>
-
-</body>
 
 </html>

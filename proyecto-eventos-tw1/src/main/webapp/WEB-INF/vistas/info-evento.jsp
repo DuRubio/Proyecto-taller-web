@@ -15,6 +15,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Información del evento</title>
+  <link rel="shortcut icon" href="../img/logo.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -99,7 +100,7 @@
       </div>
     </div>
   </div>
-<div class="flex justify-center px-6 pt-4 pb-2 mt-4"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="/home">Volver a home</a></div>
+<div class="flex justify-center px-6 pt-4 pb-2 mt-4"><a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded" href="/home">Volver a home</a></div>
 
 
 </body>

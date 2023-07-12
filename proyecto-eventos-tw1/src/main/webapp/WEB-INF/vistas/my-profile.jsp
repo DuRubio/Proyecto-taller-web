@@ -61,11 +61,11 @@
 
                             <!-- Contraseña -->
 
-                            <a class="block text-violet-500 text-italic text-sm mb-4 underline"
+                            <a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white py-2 px-4 border border-violet-500 hover:border-transparent rounded my-4"
                                href="/my-profile/cambiar-clave?usuarioId=${usuario.id}">Cambiar contraseña</a>
 
                             <!-- Localidad -->
-                            <p class="text-gray-700 mb-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
+                            <p class="text-gray-700 my-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
                             <div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
                                 <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
                                    href="mis-entradas">Ver Mis Entradas</a>
@@ -86,16 +86,16 @@
 
                             </c:if>
                             <c:if test="${usuario.isAdmin}">
-                                <h2 class="text-center text-lg font-bold mb-2">¡${usuario.nombre} ya sos Admininstrador!
+                                <h2 class="text-center text-lg font-bold mb-8">¡${usuario.nombre} ya sos admininstrador!
                                 </h2>
                                 <a href="/my-profile/notadmin"
-                                   class="flex justify-center mx-2 text-purple-500 underline cursor-pointer rounded-lg mb-4">Dejar
-                                    de ser admin</a>
+                                   class="block text-center bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white py-2 px-4 border border-violet-500 hover:border-transparent rounded mt-8 mb-4">Dejar
+                                    de ser administrador</a>
                             </c:if>
 
 
                             <a href="editar-mis-preferencias"
-                               class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded">Actualizar
+                               class="text-center block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mt-4">Actualizar
                                 preferencias</a>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
 
 
                     <div class="flex justify-center px-6 pt-4 pb-2"><a
-                            class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+                            class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded"
                             href="home">Volver a home</a>
                     </div>
 

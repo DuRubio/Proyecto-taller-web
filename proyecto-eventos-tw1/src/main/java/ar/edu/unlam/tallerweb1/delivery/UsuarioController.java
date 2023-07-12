@@ -215,12 +215,11 @@ public class UsuarioController {
 	
 	@RequestMapping(path = "/entrada", method = RequestMethod.GET)
     public ModelAndView generarQR(@RequestParam("entradaId") Long id) {
-        // Aqu� debes incluir el c�digo para obtener el objeto Entrada seg�n su ID
         ModelMap model = new ModelMap();
         
         Entrada entrada = obtenerEntradaPorId(id);
-        
-        // Generar el c�digo QR para la entrada
+        model.put("datosEntrada", entrada);
+
         String qrCodeText = "https://localhost:8080/proyecto-limpio-spring/entrada/" + entrada.getId();
         int qrCodeSize = 200;
         try {
@@ -230,7 +229,6 @@ public class UsuarioController {
 
             model.put("qrCodeBase64", qrCodeBase64);
         } catch (WriterException | IOException e) {
-            // Manejar la excepci�n en caso de error
             e.printStackTrace();
         }
         

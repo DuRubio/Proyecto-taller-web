@@ -77,7 +77,7 @@
     </div>
 </div>
 
-<div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a></div>
+<div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded" href="home">Volver a home</a></div>
 
 <footer class="bg-violet-500 mt-4 py-8">
     <div class="container mx-auto px-4">

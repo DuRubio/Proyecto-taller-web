@@ -29,7 +29,7 @@
                 class="w-full px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Crear Evento</button>
 
     </form>
-    <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a>
+    <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded" href="home">Volver a home</a>
     </div>
 
 </div>

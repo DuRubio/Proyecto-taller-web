@@ -10,7 +10,7 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
-<title>Listado de Eventos</title>
+<title>Mis entradas</title>
 </head>
 <nav
 		class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
@@ -82,7 +82,7 @@
 
 	<div class="flex justify-center px-6 pt-4 pb-2 mt-8">
 		<a
-			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+				class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded"
 			href="home">Volver a home</a>
 	</div>
 

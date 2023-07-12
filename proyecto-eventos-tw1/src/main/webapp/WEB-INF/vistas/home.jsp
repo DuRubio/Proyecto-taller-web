@@ -11,9 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<title>Home</title>
+<title>EventiX</title>
+	<link rel="shortcut icon" href="../img/logo.png">
 </head>
-
+<style>
+	.pop-up{
+		z-index: 9999;
+	}
+</style>
 <body>
 	<nav
 		class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
@@ -114,10 +119,10 @@
 							<a href="asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
 						</c:if>
 						<c:if test="${evento.disponibilidad==0}">
-							<a href="#" class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</a>
+							<p class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</p>
 						</c:if>
 						<c:if test="${usuario.isAdmin}">
-							<a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${evento.id}">Eliminar</a>
+							<a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${evento.id}">Eliminar</a>
 						</c:if>
 
 					</div>
@@ -152,10 +157,10 @@
 							<a href="asistir?eventoId=${eventosSegunPreferencias.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
 						</c:if>
 						<c:if test="${eventosSegunPreferencias.disponibilidad==0}">
-							<a href="#" class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</a>
+							<p class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</p>
 						</c:if>
 						<c:if test="${usuario.isAdmin}">
-							<a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${eventosSegunPreferencias.id}">Eliminar</a>
+							<a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${eventosSegunPreferencias.id}">Eliminar</a>
 						</c:if>
 
 					</div>
@@ -227,7 +232,7 @@
 
 	<c:if test="${mostrarPopup}">
 		<div
-			class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+			class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 pop-up">
 			<div class="bg-white rounded-md shadow-lg p-4">
 				<p class="text-lg text-gray-800">Para tu exquisitez no hay
 					resultados, amplia la busqueda</p>
