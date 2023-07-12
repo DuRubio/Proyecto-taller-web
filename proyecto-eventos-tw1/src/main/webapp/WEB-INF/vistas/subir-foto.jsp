@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Registra un evento</title>
+    <link rel="shortcut icon" href="../img/logo.png">
 </head>
 <body class="flex items-center justify-center h-screen bg-gray-100">
 <div class="w-96 p-6 bg-white rounded shadow-md">

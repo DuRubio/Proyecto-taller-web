@@ -51,14 +51,17 @@
 <div class="max-w-6xl mx-auto mt-8">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <c:forEach items="${eventos}" var="evento">
-            <div class="bg-white shadow-md rounded p-6">
+            <div class="bg-white shadow-md rounded p-6 relative">
                 <img class="w-full" src="../img/${evento.URLImagen}" alt="${evento.nombre}">
                 <div class="mt-4">
                     <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
                     <p class="text-gray-700">Fecha: ${evento.fecha}</p>
                     <p class="text-gray-700">Localidad: ${evento.localidad}</p>
-                    <p class="text-gray-700">Categoría: ${evento.categoria.nombre}</p>
+                    <p class="inline-block bg-gray-200 rounded-lg px-2 py-1 text-gray-600 text-xs uppercase">${evento.categoria.nombre}</p>
                     <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>
+                    <c:if test="${evento.disponibilidad < 5 && evento.disponibilidad > 0}">
+                        <div class="absolute top-0 right-0 mt-2 mr-2 bg-yellow-500 text-white font-bold py-1 px-2 rounded-full text-xs">Últimas entradas</div>
+                    </c:if>
                 </div>
                 <div class="flex justify-center mt-6">
                     <c:if test="${evento.disponibilidad>0}">

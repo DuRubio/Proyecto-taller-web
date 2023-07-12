@@ -20,7 +20,7 @@ import java.util.UUID;
 @Service
 public class EventoServiceImpl implements EventoService  {
 
-    private static final String CARPETA_IMAGENES = "src/main/webapp/img/";
+    private String CARPETA_IMAGENES = "C:/Users/ailuv/OneDrive/Escritorio/proyecto-taller-web/proyecto-eventos-tw1/src/main/webapp/img/";
     private RepositorioEvento repoEvento;
     
     private RepositorioCategoria repoCategoria;
@@ -129,6 +129,12 @@ public class EventoServiceImpl implements EventoService  {
     @Override
     public Evento getUltimoGuardado() {
         return repoEvento.getUltimoGuardado();
+    }
+
+    public String getCarpetaLocal(){
+        Path directorioImagenes = Paths.get("src/main/webapp/img/");
+        String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+        return rutaAbsoluta;
     }
 
 

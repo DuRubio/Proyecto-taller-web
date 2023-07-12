@@ -22,6 +22,7 @@ public class DatosEvento {
     private Integer disponibilidad;
 
     private String imagen;
+    //private Integer cityId;
 
 
     public DatosEvento() {
@@ -49,7 +50,14 @@ public DatosEvento(String nombre, String categoria, String localidad, Integer di
         setFecha(fecha);
     }
 
-
+    public DatosEvento(String nombre, String categoria, String localidad, String lugar ,Integer disponibilidad, String fecha) {
+        setNombre(nombre);
+        setCategoria(categoria);
+        setLocalidad(localidad);
+        setLugar(lugar);
+        setDisponibilidad(disponibilidad);
+        setFecha(fecha);
+    }
     public void setImagen(MultipartFile imagen) {
         Path directorioImagen = Paths.get("src/main/webapp/img");
         String rutaAbsoluta = directorioImagen.toFile().getAbsolutePath();
@@ -127,5 +135,5 @@ public DatosEvento(String nombre, String categoria, String localidad, Integer di
     public void setDisponibilidad(Integer disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
-    
+
 }

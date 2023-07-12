@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Mis Preferencias</title>
+    <link rel="shortcut icon" href="../img/logo.png">
 </head>
 <nav
         class="flex items-center justify-between flex-wrap bg-violet-500 p-6">

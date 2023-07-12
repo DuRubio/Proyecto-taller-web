@@ -39,30 +39,31 @@ public class Evento {
     }
     
     public Evento(DatosEvento datosEvento, Categoria categoria) {
-    	setNombre(datosEvento.getNombre());
-    	setLocalidad(datosEvento.getLocalidad());
-    	setCategoria(categoria);
-    	setEventoActivo(true);
+        setNombre(datosEvento.getNombre());
+        setLocalidad(datosEvento.getLocalidad());
+        setCategoria(categoria);
+        setLugar(datosEvento.getLugar());
+        setEventoActivo(true);
       setCityId(3433955);
       setDisponibilidad(datosEvento.getDisponibilidad());
       setFecha(datosEvento.getFecha());
     }
     
     public Evento(DatosEvento datosEvento) {
-    	setNombre(datosEvento.getNombre());
-    	setLocalidad(datosEvento.getLocalidad());
-    	setEventoActivo(true);
+        setNombre(datosEvento.getNombre());
+        setLocalidad(datosEvento.getLocalidad());
+        setEventoActivo(true);
       setDisponibilidad(datosEvento.getDisponibilidad());
       setFecha(datosEvento.getFecha());
       setCityId(3433955);
     }
     
     public Evento(String nombre, LocalDate fecha, String lugar, String localidad) {
-    	setNombre(nombre);
-    	setFecha(fecha);
-    	setLugar(lugar);
-    	setLocalidad(localidad);
-    	setEventoActivo(true);
+        setNombre(nombre);
+        setFecha(fecha);
+        setLugar(lugar);
+        setLocalidad(localidad);
+        setEventoActivo(true);
       setDisponibilidad(50);
       setCityId(3433955);
     }
@@ -132,23 +133,22 @@ public class Evento {
         this.URLImagen = URLImagen;
     }
 
-	
 
-	public Boolean getEventoActivo() {
-		return eventoActivo;
-	}
+    public Boolean getEventoActivo() {
+        return eventoActivo;
+    }
 
-	public void setEventoActivo(Boolean eventoActivo) {
-		this.eventoActivo = eventoActivo;
-	}
+    public void setEventoActivo(Boolean eventoActivo) {
+        this.eventoActivo = eventoActivo;
+    }
 
-	public Categoria getCategoria() {
-		return categoria;
-	}
+    public Categoria getCategoria() {
+        return categoria;
+    }
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Integer getDisponibilidad() {
         return disponibilidad;
@@ -174,31 +174,31 @@ public class Evento {
         entradas.add(entrada);
     }
 
-	@Override
-	public String toString() {
-		return "Evento [categoria=" + categoria + "]";
-	}
+    @Override
+    public String toString() {
+        return "Evento [categoria=" + categoria + "]";
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(Id, categoria, disponibilidad, eventoActivo, fecha, localidad, lugar, nombre);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(Id, categoria, disponibilidad, eventoActivo, fecha, localidad, lugar, nombre);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Evento other = (Evento) obj;
-		return Objects.equals(Id, other.Id) && Objects.equals(categoria, other.categoria)
-				&& Objects.equals(disponibilidad, other.disponibilidad)
-				&& Objects.equals(eventoActivo, other.eventoActivo) && Objects.equals(fecha, other.fecha)
-				&& Objects.equals(localidad, other.localidad) && Objects.equals(lugar, other.lugar)
-				&& Objects.equals(nombre, other.nombre);
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Evento other = (Evento) obj;
+        return Objects.equals(Id, other.Id) && Objects.equals(categoria, other.categoria)
+                && Objects.equals(disponibilidad, other.disponibilidad)
+                && Objects.equals(eventoActivo, other.eventoActivo) && Objects.equals(fecha, other.fecha)
+                && Objects.equals(localidad, other.localidad) && Objects.equals(lugar, other.lugar)
+                && Objects.equals(nombre, other.nombre);
+    }
 
     public void setRutaImagen(String rutaImagen) {
         URLImagen=rutaImagen;

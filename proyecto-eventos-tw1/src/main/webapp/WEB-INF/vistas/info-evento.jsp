@@ -57,7 +57,8 @@
     <div class="col-span-1">
       <h1 class="text-2xl font-bold mb-4">${evento.nombre}</h1>
       <img src="../img/${evento.URLImagen}" alt="Imagen del evento" class="w-full max-w-lg mb-4">
-      <p class="text-gray-500 mb-2">${evento.localidad}</p>
+      <p class="text-gray-500 mb-2">${evento.localidad} - ${evento.lugar}</p>
+      <input type="hidden" id="lugarEvento" value="${evento.lugar}">
       <p class="text-gray-500 mb-2"><i class="far fa-calendar"></i> ${evento.fecha}</p>
       <div class="mt-4">
         <c:if test="${evento.disponibilidad>0}">
@@ -73,7 +74,7 @@
         <div>
           <h2 class="text-xl font-bold mb-4">Mapa del evento</h2>
           <div id="mapa" class="w-full h-64 mb-4">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105073.45340215511!2d-58.51569866452951!3d-34.61565477017335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca3b4ef90cbd%3A0xa0b3812e88e88e87!2sBuenos%20Aires%2C%20CABA!5e0!3m2!1ses!2sar!4v1688678711928!5m2!1ses!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
           </div>
         </div>
         <br>
@@ -102,7 +103,7 @@
   </div>
 <div class="flex justify-center px-6 pt-4 pb-2 mt-4"><a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded" href="/home">Volver a home</a></div>
 
-
+<script src="../js/maps.js"></script>
 </body>
 <footer class="bg-violet-500 mt-16 py-8 bottom-0">
   <div class="container mx-auto px-4">

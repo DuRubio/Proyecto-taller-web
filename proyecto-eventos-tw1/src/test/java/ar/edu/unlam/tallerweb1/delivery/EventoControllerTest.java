@@ -28,6 +28,8 @@ public class EventoControllerTest {
 
     WeatherService weatherService;
 
+    Integer cityId = 120;
+
     LocalDate fechaEvento = LocalDate.of(2023, 5, 7);
 
     @Before

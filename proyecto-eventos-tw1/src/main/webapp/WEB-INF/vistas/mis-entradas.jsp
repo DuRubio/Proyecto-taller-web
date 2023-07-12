@@ -11,6 +11,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
 <title>Mis entradas</title>
+	<link rel="shortcut icon" href="../img/logo.png">
 </head>
 <nav
 		class="flex items-center justify-between flex-wrap bg-violet-500 p-6">

@@ -99,7 +99,7 @@
 		<div
 			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 			<c:forEach items="${eventos}" var="evento">
-				<div class="bg-white shadow-md rounded p-6">
+				<div class="bg-white shadow-md rounded p-6 relative">
 					<form action="/weather/">
 						<input type="hidden" name="cityId" value="${evento.cityId}">
 						<input type="hidden" name="eventoId" value="${evento.id}">
@@ -111,6 +111,9 @@
 						<p class="text-gray-700">Localidad: ${evento.localidad}</p>
 						<p class="text-gray-700">Disponibilidad:
 							${evento.disponibilidad}</p>
+						<c:if test="${evento.disponibilidad < 5 && evento.disponibilidad > 0}">
+							<div class="absolute top-0 right-0 mt-2 mr-2 bg-yellow-500 text-white font-bold py-1 px-2 rounded-full text-xs">Últimas entradas</div>
+						</c:if>
 					</div>
 						</button>
 					</form>
@@ -124,7 +127,6 @@
 						<c:if test="${usuario.isAdmin}">
 							<a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${evento.id}">Eliminar</a>
 						</c:if>
-
 					</div>
 				</div>
 			</c:forEach>
@@ -137,7 +139,7 @@
 		<div
 				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 			<c:forEach items="${eventosSegunPreferencias}" var="eventosSegunPreferencias">
-				<div class="bg-white shadow-md rounded p-6">
+				<div class="bg-white shadow-md rounded p-6 relative">
 					<form action="/weather/">
 						<input type="hidden" name="cityId" value="${eventosSegunPreferencias.cityId}">
 						<input type="hidden" name="eventoId" value="${eventosSegunPreferencias.id}">
@@ -149,6 +151,9 @@
 								<p class="text-gray-700">Localidad: ${eventosSegunPreferencias.localidad}</p>
 								<p class="text-gray-700">Disponibilidad:
 										${eventosSegunPreferencias.disponibilidad}</p>
+								<c:if test="${eventosSegunPreferencias.disponibilidad < 5 && eventosSegunPreferencias.disponibilidad > 0}">
+									<div class="absolute top-0 right-0 mt-2 mr-2 bg-yellow-500 text-white font-bold py-1 px-2 rounded-full text-xs">Últimas entradas</div>
+								</c:if>
 							</div>
 						</button>
 					</form>
