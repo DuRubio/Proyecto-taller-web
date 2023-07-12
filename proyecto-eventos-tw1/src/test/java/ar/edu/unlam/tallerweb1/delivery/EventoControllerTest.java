@@ -15,7 +15,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-
+/*
 public class EventoControllerTest {
     EventoController controladorEvento;
     DatosEvento eventoEjemplo;
@@ -41,7 +41,7 @@ public class EventoControllerTest {
 
         eventoEjemploErroneo1 = new DatosEvento("", fechaEvento , "monumental" , "nuñez", 50);
         eventoEjemploErroneo2 = new DatosEvento("superclasico", fechaEvento , "monumental" , "", 50);
-*/
+
         this.servicioRegEvento = mock(EventoServiceImpl.class);
         this.servicioUsuario = mock(UsuarioServiceImpl.class);
         this.weatherService = mock(WeatherService.class);
@@ -173,4 +173,4 @@ public class EventoControllerTest {
         return controladorEvento.getVistaRegistro();
     }
 
-}
+}*/

@@ -96,14 +96,14 @@ public class EventoController {
         return mav;
     }
 */
-    @RequestMapping(path="filtrar", method = RequestMethod.POST)
+  /*  @RequestMapping(path="filtrar", method = RequestMethod.POST)
     public ModelAndView filtrarEventos(
             @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
             @RequestParam(value = "categoria", required = false) Integer categoria,
             @RequestParam(value = "localidad", required = false) String localidad) {
         String viewName = "";
         ModelMap model = new ModelMap();
-        
+        servicioEvento.inactivarLosPasados();
         Set<Evento> eventosFiltrados = new HashSet<>();
 
         if (fecha != null) {
@@ -133,7 +133,7 @@ public class EventoController {
     public ModelAndView filtrarEventosMisPreferencias(@RequestParam(value = "idUsuario", required = true) Long id) {
         String viewName = "";
         ModelMap model = new ModelMap();
-
+        servicioEvento.inactivarLosPasados();
         Set<Evento> eventosFiltrados = new HashSet<>();
         // Hacer filtrar preferencias
         Usuario usuario = servicioUsuario.obtenerUsuarioPorID(id);
@@ -148,7 +148,7 @@ public class EventoController {
         }
 
         return new ModelAndView(viewName, model);
-    }
+    }*/
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public ModelAndView inicio() {

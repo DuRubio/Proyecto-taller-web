@@ -39,4 +39,6 @@ public interface EventoService {
     List<Evento> getEventosPorFecha();
 
     List<Evento> getEventosOrdenadosPorDisponibilidad();
+
+    void inactivarLosPasados();
 }

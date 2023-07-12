@@ -43,7 +43,7 @@
 <body class="bg-gray-100">
 <div class=" w-full flex justify-start p-4">
     <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-4" href="fecha">Ordenar por fecha ascendente</a>
-    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-4" href="disponibilidad">Ordenar por disponibilidad</a>
+    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-4" href="disponibilidad">Ordenar por menor cupo</a>
 
 </div>
 
@@ -62,7 +62,7 @@
                     <input type="hidden" name="cityId" value="${evento.cityId}">
                     <input type="hidden" name="eventoId" value="${evento.id}">
                     <button type="submit">
-                        <img class="w-full" src="../img/${evento.URLImagen}" alt="Evento">
+                        <img class="w-full" src="http://localhost:8080/img/${evento.URLImagen}" alt="Evento">
                         <div class="mt-4">
                             <h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
                             <p class="text-gray-700">Fecha: ${evento.fecha}</p>

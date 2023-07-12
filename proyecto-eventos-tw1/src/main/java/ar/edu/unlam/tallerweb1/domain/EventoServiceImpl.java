@@ -20,7 +20,7 @@ import java.util.UUID;
 @Service
 public class EventoServiceImpl implements EventoService  {
 
-    private static final String CARPETA_IMAGENES = "src/main/webapp/img/";
+    private static final String CARPETA_IMAGENES = "C:/Users/Duilio/Desktop/Taller Web Proyecto/proyecto-eventos-tw1/src/main/webapp/img/";
     private RepositorioEvento repoEvento;
     
     private RepositorioCategoria repoCategoria;
@@ -31,6 +31,17 @@ public class EventoServiceImpl implements EventoService  {
 		this.repoEvento = repositorioEvento;
 		this.repoCategoria = repositorioCategoria;
 	}
+    @Autowired
+    public void inactivarLosPasados(){
+        LocalDate fechaActual = LocalDate.now();
+        List<Evento> eventos =repoEvento.findAll();
+        for (Evento evento : eventos) {
+            LocalDate fechaEvento = evento.getFecha();
+            if (fechaEvento.isBefore(fechaActual)) {
+                repoEvento.setInactivo(evento);
+            }
+        }
+    }
 
 	@Override
     public boolean validarNombre(String nombre) {

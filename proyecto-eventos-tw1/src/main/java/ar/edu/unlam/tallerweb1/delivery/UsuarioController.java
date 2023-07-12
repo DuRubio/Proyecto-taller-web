@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.delivery;
 import ar.edu.unlam.tallerweb1.domain.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,8 +21,8 @@ import javax.transaction.Transactional;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Base64;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 @Controller
 public class UsuarioController {
@@ -40,6 +41,66 @@ public class UsuarioController {
         this.eventoService = eventoService;
         this.servicioEntrada=servicioEntrada;
     }
+
+    @RequestMapping(path="filtrar", method = RequestMethod.POST)
+    public ModelAndView filtrarEventos(
+            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
+            @RequestParam(value = "categoria", required = false) Integer categoria,
+            @RequestParam(value = "localidad", required = false) String localidad) {
+        String viewName = "";
+        ModelMap model = new ModelMap();
+        eventoService.inactivarLosPasados();
+        Set<Evento> eventosFiltrados = new HashSet<>();
+        if(this.id!=null) {
+            usuario = usuarioService.obtenerUsuarioPorID(this.id);
+            model.put("usuario", usuario);
+        }
+
+        if (fecha != null) {
+            eventosFiltrados.addAll(eventoService.buscarPorFecha(fecha));
+        }
+
+        if (categoria != null) {
+            eventosFiltrados.addAll(eventoService.buscarPorTipoDeEvento(categoria));
+        }
+
+        if (localidad != null) {
+            eventosFiltrados.addAll(eventoService.buscarPorCiudad(localidad));
+        }
+
+        if (eventosFiltrados.isEmpty()) {
+            model.addAttribute("mostrarPopup", true);
+            viewName = "home";
+        } else {
+            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
+            viewName = "eventos-filtrados";
+        }
+
+        return new ModelAndView(viewName, model);
+    }
+
+
+    @RequestMapping(path = "filtrar-preferencias", method = RequestMethod.GET)
+    public ModelAndView filtrarEventosMisPreferencias(@RequestParam(value = "idUsuario", required = true) Long id) {
+        String viewName = "";
+        ModelMap model = new ModelMap();
+        eventoService.inactivarLosPasados();
+        Set<Evento> eventosFiltrados = new HashSet<>();
+        // Hacer filtrar preferencias
+        Usuario usuario = usuarioService.obtenerUsuarioPorID(id);
+        eventosFiltrados.addAll(eventoService.buscarEventosPorPreferencias(usuario));
+        model.put("usuario", usuario);
+        if (eventosFiltrados.isEmpty()) {
+            model.addAttribute("mostrarPopup", true);
+            viewName = "home";
+        } else {
+            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
+            viewName = "eventos-filtrados";
+        }
+
+        return new ModelAndView(viewName, model);
+    }
+
 
 
     @RequestMapping(path = "/registrarme", method = RequestMethod.GET) //muestra la vista registro-usuario
@@ -173,6 +234,7 @@ public class UsuarioController {
     @RequestMapping(path = "/home", method = RequestMethod.GET)
     public ModelAndView getVistaHome() {
         ModelMap model = new ModelMap();
+        eventoService.inactivarLosPasados();
         List<Evento> eventos = this.eventoService.getPrimeros4Eventos();
         List<Evento> eventosSegunPreferencias = this.eventoService.buscarEventosPorPreferenciasHome(usuario);
         model.put("eventos", eventos);
@@ -262,6 +324,7 @@ public class UsuarioController {
     @RequestMapping(path="mostrar-eventos", method = RequestMethod.GET)
     public ModelAndView mostrarEventos() {
         ModelMap model = new ModelMap();
+        eventoService.inactivarLosPasados();
         List<Evento> eventos = eventoService.getEventos();
         model.put("eventos", eventos);
         if(this.id!=null) {
@@ -315,6 +378,7 @@ public class UsuarioController {
     @RequestMapping(path="fecha", method = RequestMethod.GET)
     public ModelAndView mostrarOrdenadosPorFecha() {
         ModelMap model = new ModelMap();
+        eventoService.inactivarLosPasados();
         List<Evento> eventos = eventoService.getEventosPorFecha();
         model.put("eventos", eventos);
         model.put("texto", "ordenados por fecha");
@@ -330,6 +394,7 @@ public class UsuarioController {
     @RequestMapping(path="disponibilidad", method = RequestMethod.GET)
     public ModelAndView ordenarPorDisponibilidad() {
         ModelMap model = new ModelMap();
+        eventoService.inactivarLosPasados();
         List<Evento> eventos = eventoService.getEventosOrdenadosPorDisponibilidad();
         model.put("eventos", eventos);
         model.put("texto", "ordenados por disponibilidad");
