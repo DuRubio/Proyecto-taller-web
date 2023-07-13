@@ -11,6 +11,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -109,13 +110,13 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Evento.class);
 
-        // Crea una subcriteria para obtener los IDs de categor�as que coinciden con el ID de usuario
+
         Criteria subCriteria = criteria.createCriteria("categoria", "c");
         subCriteria.createAlias("usuariosPreferencia", "u");
         subCriteria.add(Restrictions.eq("u.id", idUsuario));
 
 
-        // Obt�n la lista de eventos
+
         List<Evento> eventos = criteria.list();
 
 
@@ -127,13 +128,12 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
         Session session = sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Evento.class);
 
-        // Crea una subcriteria para obtener los IDs de categor�as que coinciden con el ID de usuario
+
         Criteria subCriteria = criteria.createCriteria("categoria", "c");
         subCriteria.createAlias("usuariosPreferencia", "u");
         subCriteria.add(Restrictions.eq("u.id", idUsuario));
 
 
-        // Obt�n la lista de eventos
         List<Evento> eventos = criteria.setMaxResults(4).list();
 
 
@@ -169,25 +169,21 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
         session.update(evento);
     }
 
-    
-    /*
     @Override
-    public List<Evento> buscarEventosPorPreferencias(List<Long> idsCategorias) {
-        Session session = sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Evento.class);
-        
-        // Crea un alias para la asociaci�n de Evento con Categoria
-        criteria.createAlias("categoria", "c");
-        
-        // Agrega una restricci�n para que el ID de la categor�a est� en el listado de idsCategorias
-        criteria.add(Restrictions.in("c.id", idsCategorias));
-        
-        // Obt�n la lista de eventos
-        List<Evento> eventos = criteria.list();
-        
-        return eventos;
+    public List<Evento> getEventosPorFecha() {
+        String hql = "FROM Evento WHERE eventoActivo = true ORDER BY fecha ASC";
+        Query<Evento> query = sessionFactory.getCurrentSession().createQuery(hql, Evento.class);
+        List<Evento> resultados = query.getResultList();
+        return resultados;
     }
-    */
+
+    @Override
+    public List<Evento> getEventosOrdenadosPorDisponibilidad() {
+        String hql = "FROM Evento WHERE eventoActivo = true ORDER BY disponibilidad ASC";
+        Query<Evento> query = sessionFactory.getCurrentSession().createQuery(hql, Evento.class);
+        List<Evento> resultados = query.getResultList();
+        return resultados;
+    }
 
 
 }

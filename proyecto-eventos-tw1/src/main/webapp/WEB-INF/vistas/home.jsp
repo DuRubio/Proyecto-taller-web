@@ -124,9 +124,7 @@
 						<c:if test="${evento.disponibilidad==0}">
 							<p class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</p>
 						</c:if>
-						<c:if test="${usuario.isAdmin}">
-							<a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${evento.id}">Eliminar</a>
-						</c:if>
+
 					</div>
 				</div>
 			</c:forEach>
@@ -164,9 +162,7 @@
 						<c:if test="${eventosSegunPreferencias.disponibilidad==0}">
 							<p class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</p>
 						</c:if>
-						<c:if test="${usuario.isAdmin}">
-							<a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${eventosSegunPreferencias.id}">Eliminar</a>
-						</c:if>
+
 
 					</div>
 				</div>

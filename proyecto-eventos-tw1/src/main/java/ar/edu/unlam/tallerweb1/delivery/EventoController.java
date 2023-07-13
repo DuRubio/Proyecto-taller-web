@@ -96,59 +96,59 @@ public class EventoController {
         return mav;
     }
 */
-    @RequestMapping(path="filtrar", method = RequestMethod.POST)
-    public ModelAndView filtrarEventos(
-            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
-            @RequestParam(value = "categoria", required = false) Integer categoria,
-            @RequestParam(value = "localidad", required = false) String localidad) {
-        String viewName = "";
-        ModelMap model = new ModelMap();
-        
-        Set<Evento> eventosFiltrados = new HashSet<>();
-
-        if (fecha != null) {
-            eventosFiltrados.addAll(servicioEvento.buscarPorFecha(fecha));
-        }
-
-        if (categoria != null) {
-            eventosFiltrados.addAll(servicioEvento.buscarPorTipoDeEvento(categoria));
-        }
-
-        if (localidad != null) {
-            eventosFiltrados.addAll(servicioEvento.buscarPorCiudad(localidad));
-        }
-
-        if (eventosFiltrados.isEmpty()) {
-            model.addAttribute("mostrarPopup", true);
-            viewName = "home";
-        } else {
-            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
-            viewName = "eventos-filtrados";
-        }
-
-        return new ModelAndView(viewName, model);
-    }
+//    @RequestMapping(path="filtrar", method = RequestMethod.POST)
+//    public ModelAndView filtrarEventos(
+//            @RequestParam(value = "fecha", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fecha,
+//            @RequestParam(value = "categoria", required = false) Integer categoria,
+//            @RequestParam(value = "localidad", required = false) String localidad) {
+//        String viewName = "";
+//        ModelMap model = new ModelMap();
+//
+//        Set<Evento> eventosFiltrados = new HashSet<>();
+//
+//        if (fecha != null) {
+//            eventosFiltrados.addAll(servicioEvento.buscarPorFecha(fecha));
+//        }
+//
+//        if (categoria != null) {
+//            eventosFiltrados.addAll(servicioEvento.buscarPorTipoDeEvento(categoria));
+//        }
+//
+//        if (localidad != null) {
+//            eventosFiltrados.addAll(servicioEvento.buscarPorCiudad(localidad));
+//        }
+//
+//        if (eventosFiltrados.isEmpty()) {
+//            model.addAttribute("mostrarPopup", true);
+//            viewName = "home";
+//        } else {
+//            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
+//            viewName = "eventos-filtrados";
+//        }
+//
+//        return new ModelAndView(viewName, model);
+//    }
     
-    @RequestMapping(path = "filtrar-preferencias", method = RequestMethod.GET)
-    public ModelAndView filtrarEventosMisPreferencias(@RequestParam(value = "idUsuario", required = true) Long id) {
-        String viewName = "";
-        ModelMap model = new ModelMap();
-
-        Set<Evento> eventosFiltrados = new HashSet<>();
-        // Hacer filtrar preferencias
-        Usuario usuario = servicioUsuario.obtenerUsuarioPorID(id);
-        eventosFiltrados.addAll(servicioEvento.buscarEventosPorPreferencias(usuario));
-
-        if (eventosFiltrados.isEmpty()) {
-            model.addAttribute("mostrarPopup", true);
-            viewName = "home";
-        } else {
-            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
-            viewName = "eventos-filtrados";
-        }
-
-        return new ModelAndView(viewName, model);
-    }
+//    @RequestMapping(path = "filtrar-preferencias", method = RequestMethod.GET)
+//    public ModelAndView filtrarEventosMisPreferencias(@RequestParam(value = "idUsuario", required = true) Long id) {
+//        String viewName = "";
+//        ModelMap model = new ModelMap();
+//
+//        Set<Evento> eventosFiltrados = new HashSet<>();
+//        // Hacer filtrar preferencias
+//        Usuario usuario = servicioUsuario.obtenerUsuarioPorID(id);
+//        eventosFiltrados.addAll(servicioEvento.buscarEventosPorPreferencias(usuario));
+//
+//        if (eventosFiltrados.isEmpty()) {
+//            model.addAttribute("mostrarPopup", true);
+//            viewName = "home";
+//        } else {
+//            model.addAttribute("eventos", new ArrayList<>(eventosFiltrados));
+//            viewName = "eventos-filtrados";
+//        }
+//
+//        return new ModelAndView(viewName, model);
+//    }
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public ModelAndView inicio() {

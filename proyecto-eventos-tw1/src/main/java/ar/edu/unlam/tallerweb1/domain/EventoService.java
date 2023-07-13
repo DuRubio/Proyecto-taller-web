@@ -36,4 +36,9 @@ public interface EventoService {
 
     Evento getUltimoGuardado();
 
+    List<Evento> getEventosPorFecha();
+
+    List<Evento> getEventosOrdenadosPorDisponibilidad();
+
+    void inactivarLosPasados();
 }

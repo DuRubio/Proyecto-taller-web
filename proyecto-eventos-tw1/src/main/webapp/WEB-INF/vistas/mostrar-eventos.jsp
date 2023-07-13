@@ -42,6 +42,10 @@
     </div>
 </nav>
 <body class="bg-gray-100">
+<div class=" w-full flex justify-start p-4">
+    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-4" href="fecha">Ordenar por fecha</a>
+    <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-4" href="disponibilidad">Ordenar por disponibilidad</a>
+</div>
 <h1 class="text-4xl text-center font-bold mt-8">Eventos que podrían interesarte</h1>
 
 <div class="max-w-6xl mx-auto mt-8">

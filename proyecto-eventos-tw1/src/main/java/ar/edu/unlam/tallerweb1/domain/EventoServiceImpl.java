@@ -137,5 +137,26 @@ public class EventoServiceImpl implements EventoService  {
         return rutaAbsoluta;
     }
 
+    @Override
+    public List<Evento> getEventosPorFecha() {
+        return repoEvento.getEventosPorFecha();
+    }
+
+    @Override
+    public List<Evento> getEventosOrdenadosPorDisponibilidad() {
+        return repoEvento.getEventosOrdenadosPorDisponibilidad();
+    }
+
+    @Override
+    public void inactivarLosPasados(){
+        LocalDate fechaActual = LocalDate.now();
+        List<Evento> eventos =repoEvento.findAll();
+        for (Evento evento : eventos) {
+            LocalDate fechaEvento = evento.getFecha();
+            if (fechaEvento.isBefore(fechaActual)) {
+                repoEvento.setInactivo(evento);
+            }
+        }
+    }
 
 }
