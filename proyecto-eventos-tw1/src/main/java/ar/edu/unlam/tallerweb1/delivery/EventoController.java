@@ -64,6 +64,7 @@ public class EventoController {
     public ModelAndView getCargarFoto() {
         return new ModelAndView("subir-foto");
     }
+
     @RequestMapping(path = "/subir-foto", method = RequestMethod.POST)
     public ModelAndView cargarFoto(@RequestParam("imagen") MultipartFile imagen) {
         if (!imagen.isEmpty()) {

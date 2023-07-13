@@ -49,22 +49,17 @@ public DatosEvento(String nombre, String categoria, String localidad, Integer di
         setFecha(fecha);
     }
 
+    public DatosEvento(String nombre, String categoria, String localidad, String lugar ,Integer disponibilidad, String fecha) {
+        setNombre(nombre);
+        setCategoria(categoria);
+        setLocalidad(localidad);
+        setLugar(lugar);
+        setDisponibilidad(disponibilidad);
+        setFecha(fecha);
 
-    public void setImagen(MultipartFile imagen) {
-        Path directorioImagen = Paths.get("src/main/webapp/img");
-        String rutaAbsoluta = directorioImagen.toFile().getAbsolutePath();
-        try {
-            byte[] bytesImg = imagen.getBytes();
-            Path rutaCompleta = Paths.get(rutaAbsoluta+ "//" + imagen.getOriginalFilename() );
-            Files.write(rutaCompleta,bytesImg);
-            this.imagen = imagen.getOriginalFilename();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
-    public String getImagen() {
-        return imagen;
-    }
+
+
 
 
     public String getNombre() {
@@ -80,10 +75,8 @@ public DatosEvento(String nombre, String categoria, String localidad, Integer di
     }
 
     public void setFecha(String fechaB) {
-        // Definir el formato de fecha esperado
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-        // Parsear la cadena de fecha en un objeto LocalDate
         this.fecha = LocalDate.parse(fechaB, formatter);
 
     }

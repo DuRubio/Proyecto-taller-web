@@ -31,7 +31,7 @@ public class EventoServiceImpl implements EventoService  {
 		this.repoEvento = repositorioEvento;
 		this.repoCategoria = repositorioCategoria;
 	}
-    @Autowired
+    @Override
     public void inactivarLosPasados(){
         LocalDate fechaActual = LocalDate.now();
         List<Evento> eventos =repoEvento.findAll();

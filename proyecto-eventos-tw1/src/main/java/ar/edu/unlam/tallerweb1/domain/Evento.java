@@ -43,6 +43,7 @@ public class Evento {
     	setLocalidad(datosEvento.getLocalidad());
     	setCategoria(categoria);
     	setEventoActivo(true);
+        setLugar(datosEvento.getLugar());
       setCityId(3433955);
       setDisponibilidad(datosEvento.getDisponibilidad());
       setFecha(datosEvento.getFecha());

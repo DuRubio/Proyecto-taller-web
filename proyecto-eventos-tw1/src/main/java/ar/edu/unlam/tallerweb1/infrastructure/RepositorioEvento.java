@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RepositorioEvento {
 
-    public void save(Evento evento);
+    void save(Evento evento);
 
     Evento buscarPorId(Long id);
 

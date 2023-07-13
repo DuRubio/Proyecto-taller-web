@@ -35,7 +35,9 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
 
     @Override
     public void save(Evento evento) {
+        Session session = sessionFactory.getCurrentSession();
         this.sessionFactory.getCurrentSession().save(evento);
+       // session.update(evento);
     }
 
     @Override
@@ -150,6 +152,7 @@ public class RepositorioEventoImpl  implements RepositorioEvento{
     @Override
     public void guardarImagen(Evento evento, String nombreImagen) {
         Session session = sessionFactory.getCurrentSession();
+        //this.sessionFactory.getCurrentSession().save(nombreImagen);
         evento.setRutaImagen(nombreImagen);
         session.update(evento);
     }
