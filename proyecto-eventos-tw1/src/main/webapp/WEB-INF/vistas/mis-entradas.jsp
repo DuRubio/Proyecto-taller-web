@@ -52,15 +52,12 @@
 					<div class="mt-4">
 						<h2 class="text-xl font-semibold mb-2">E-ticket: #1245281-
 							${entrada.id}</h2>
-						<p class="text-gray-700">Evento: ${entrada.evento.nombre}</p>
+						<p class="text-black uppercase font-semibold">${entrada.evento.nombre}</p>
 						<p class="text-gray-700">Localidad:
 							${entrada.evento.localidad}</p>
 						<p class="text-gray-700">Lugar: ${entrada.evento.lugar}</p>
 						<p class="text-gray-700">Fecha: ${entrada.evento.fecha}</p>
-						<p class="text-gray-700">Tipo de Evento: ${entrada.evento.categoria.nombre}</p>
-						<!-- <p class="text-gray-700">Fecha: ${evento.fecha}</p>
-                    <p class="text-gray-700">Localidad: ${evento.localidad}</p>
-                    <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>  -->
+						<p class="inline-block bg-gray-200 rounded-lg px-2 py-1 text-gray-600 text-xs uppercase">${entrada.evento.categoria.nombre}</p>
 						<div class="flex justify-center mt-6">
 							<a href="entrada?entradaId=${entrada.id}"
 								class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Ver QR</a>

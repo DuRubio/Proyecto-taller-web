@@ -46,7 +46,7 @@
     </p>
     <div class="mt-6">
         <a href="home"
-           class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded">Volver</a>
+           class="block text-center bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded">Volver</a>
     </div>
 </div>
 </body>
