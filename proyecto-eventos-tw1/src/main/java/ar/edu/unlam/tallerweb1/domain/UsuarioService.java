@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.domain;
 
 
 
+import java.util.List;
+
 import ar.edu.unlam.tallerweb1.delivery.DatosPreferencias;
 import ar.edu.unlam.tallerweb1.delivery.DatosRegistracion;
 
@@ -29,6 +31,8 @@ public interface UsuarioService {
 	void guardarPreferencias(Long id, DatosPreferencias datosPreferencias);
 
     void cambiarClave(Usuario usuario, String claveNueva);
+
+	List<Categoria> obtenerMisCategoriasPreferidas(Long id);
 
 
 }

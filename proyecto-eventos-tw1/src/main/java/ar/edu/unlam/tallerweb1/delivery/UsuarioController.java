@@ -143,6 +143,8 @@ public class UsuarioController {
             ModelMap model = new ModelMap();
             Usuario usuario = usuarioService.obtenerUsuarioPorID(this.id);
             model.put("usuario", usuario);
+            List<Categoria> categoriasPreferidas = usuarioService.obtenerMisCategoriasPreferidas(this.id);
+            model.put("categorias", categoriasPreferidas);
             return new ModelAndView("my-profile", model);
 
         }

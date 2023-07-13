@@ -1,5 +1,6 @@
 <%-- Created by IntelliJ IDEA. User: ailuv Date: 13/6/2023 Time: 20:39 To change this template use File | Settings |
     File Templates. --%>
+
     <%@ page import="ar.edu.unlam.tallerweb1.domain.Entrada" %>
         <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
             <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -64,6 +65,18 @@
                             <a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white py-2 px-4 border border-violet-500 hover:border-transparent rounded my-4"
                                href="/my-profile/cambiar-clave?usuarioId=${usuario.id}">Cambiar contraseña</a>
 
+                          
+                          <h3 class="flex items-center text-2xl font-semibold">Mis Preferencias</h3>
+
+				                  <div class="flex flex-wrap items-center gap-4">
+					                  <c:forEach items="${categorias}" var="categoria">
+						                  <div class="bg-white shadow-md rounded p-6">
+							                  <a href=# class="bg-transparent text-violet-500 font-semibold py-2 px-4 border border-violet-300 rounded my-4">${categoria.nombre}</a>
+						                  </div>
+					                  </c:forEach>
+				                  </div>
+                          
+                          
                             <!-- Localidad -->
                             <p class="text-gray-700 my-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
                             <div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
@@ -203,3 +216,4 @@
                 </script>
 
                 </html>
+
