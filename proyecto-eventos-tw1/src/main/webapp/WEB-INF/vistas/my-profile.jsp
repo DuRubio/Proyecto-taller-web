@@ -59,6 +59,7 @@
 
                             <!-- Email -->
                             <p class="text-gray-700 mb-4"><strong>Email:</strong> ${usuario.correo}</p>
+                            <p class="text-gray-700 my-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
 
                             <!-- Contraseña -->
 
@@ -66,19 +67,19 @@
                                href="/my-profile/cambiar-clave?usuarioId=${usuario.id}">Cambiar contraseña</a>
 
                           
-                          <h3 class="flex items-center text-2xl font-semibold">Mis Preferencias</h3>
+                          <h3 class="mt-4 flex items-center text-2xl font-semibold">Mis Preferencias</h3>
 
-				                  <div class="flex flex-wrap items-center gap-4">
+				                  <div class="flex flex-wrap items-center ">
 					                  <c:forEach items="${categorias}" var="categoria">
-						                  <div class="bg-white shadow-md rounded p-6">
-							                  <a href=# class="bg-transparent text-violet-500 font-semibold py-2 px-4 border border-violet-300 rounded my-4">${categoria.nombre}</a>
+						                  <div class="bg-white rounded p-1">
+							                  <p href=# class="bg-transparent text-violet-500 font-semibold py-1 px-2 border border-violet-300 rounded my-2 text-xs hover-blocked">${categoria.nombre}</p>
 						                  </div>
 					                  </c:forEach>
 				                  </div>
                           
                           
                             <!-- Localidad -->
-                            <p class="text-gray-700 my-4"><strong>Localidad:</strong> ${usuario.localidad}</p>
+
                             <div class="flex justify-evenly px-6 pt-4 pb-2 my-4">
                                 <a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
                                    href="mis-entradas">Ver Mis Entradas</a>
@@ -90,7 +91,7 @@
                                         <div class="flex items-center mb-4">
                                             <label for="claveAdmin" class="mr-2">Quiero crear mis propios eventos:</label>
                                             <input type="text" id="claveAdmin" name="claveAdmin" placeholder="Ingresá tu token"
-                                                   class="w-full bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                                   class="w-60 bg-white border border-gray-300 rounded py-2 px-4 focus:outline-none focus:ring-2 focus:ring-purple-500">
                                             <button type="submit"
                                                     class="block bg-violet-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded mx-2 disabled:opacity-50">Enviar</button>
                                         </div>

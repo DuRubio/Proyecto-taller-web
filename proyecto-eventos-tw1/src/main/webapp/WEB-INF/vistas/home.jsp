@@ -109,6 +109,8 @@
 						<h2 class="text-xl font-semibold mb-2">${evento.nombre}</h2>
 						<p class="text-gray-700">Fecha: ${evento.fecha}</p>
 						<p class="text-gray-700">Localidad: ${evento.localidad}</p>
+						<p class="text-gray-700">Lugar: ${evento.lugar}</p>
+						<p class="inline-block bg-gray-200 rounded-lg px-2 py-1 text-gray-600 text-xs uppercase">${evento.categoria.nombre}</p>
 						<p class="text-gray-700">Disponibilidad:
 							${evento.disponibilidad}</p>
 						<c:if test="${evento.disponibilidad < 5 && evento.disponibilidad > 0}">
@@ -147,6 +149,8 @@
 								<h2 class="text-xl font-semibold mb-2">${eventosSegunPreferencias.nombre}</h2>
 								<p class="text-gray-700">Fecha: ${eventosSegunPreferencias.fecha}</p>
 								<p class="text-gray-700">Localidad: ${eventosSegunPreferencias.localidad}</p>
+								<p class="text-gray-700">Lugar: ${eventosSegunPreferencias.lugar}</p>
+								<p class="inline-block bg-gray-200 rounded-lg px-2 py-1 text-gray-600 text-xs uppercase">${eventosSegunPreferencias.categoria.nombre}</p>
 								<p class="text-gray-700">Disponibilidad:
 										${eventosSegunPreferencias.disponibilidad}</p>
 								<c:if test="${eventosSegunPreferencias.disponibilidad < 5 && eventosSegunPreferencias.disponibilidad > 0}">

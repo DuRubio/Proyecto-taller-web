@@ -32,9 +32,6 @@
             </a>
             <a href="logout" class="mx-2 text-white">Cerrar sesión</a>
         </c:if>
-        <c:if test="${empty sessionScope.usuario}">
-            <a href="login" class="mx-2 text-white">Iniciar sesión</a>
-        </c:if>
 
     </div>
 </nav>
