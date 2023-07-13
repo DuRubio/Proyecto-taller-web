@@ -115,7 +115,7 @@ public class EventoServiceImpl implements EventoService  {
 
     @Override
     public void asociarImagenConEvento(Evento evento, MultipartFile imagen) {
-        String nombreImagen = UUID.randomUUID().toString() + "-" + imagen.getOriginalFilename();
+        String nombreImagen = imagen.getOriginalFilename();
         try {
             Path rutaImagen = Path.of(CARPETA_IMAGENES + nombreImagen);
             Files.copy(imagen.getInputStream(), rutaImagen, StandardCopyOption.REPLACE_EXISTING);

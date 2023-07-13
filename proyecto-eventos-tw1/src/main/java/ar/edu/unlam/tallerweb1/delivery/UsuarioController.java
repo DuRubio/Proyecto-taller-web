@@ -250,7 +250,7 @@ public class UsuarioController {
         ModelMap model = new ModelMap();
         if (session != null && session.getAttribute("usuario")!= null && usuario.getIsAdmin()) {
             eventoService.setInactivo(eventoId);
-            viewName= "";  //que aparezca un popup con eevento eliminado con exito
+            viewName= "redirect:/home";  //que aparezca un popup con eevento eliminado con exito
         } else {
             model.put("mensaje", "Debe ser admin para eliminar un evento");
             viewName= "redirect:/my-profile";
