@@ -23,6 +23,9 @@ public class DatosEvento {
 
     private String imagen;
     //private Integer cityId;
+    
+    private Boolean isGratuito;
+    private Double precio;
 
 
     public DatosEvento() {
@@ -70,6 +73,18 @@ public DatosEvento(String nombre, String categoria, String localidad, Integer di
             throw new RuntimeException(e);
         }
     }
+    
+    public DatosEvento(String nombre, String categoria, String localidad, String lugar ,Integer disponibilidad, String fecha, Boolean isGratuito, Double precio) {
+        setNombre(nombre);
+        setCategoria(categoria);
+        setLocalidad(localidad);
+        setLugar(lugar);
+        setDisponibilidad(disponibilidad);
+        setFecha(fecha);
+        setIsGratuito(isGratuito);
+        setPrecio(precio);
+    }
+    
     public String getImagen() {
         return imagen;
     }
@@ -135,5 +150,21 @@ public DatosEvento(String nombre, String categoria, String localidad, Integer di
     public void setDisponibilidad(Integer disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
+    
+    public Boolean getIsGratuito() {
+		return isGratuito;
+	}
+
+	public void setIsGratuito(Boolean isGratuito) {
+		this.isGratuito = isGratuito;
+	}
+
+	public Double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
 
 }

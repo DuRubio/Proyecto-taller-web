@@ -26,6 +26,8 @@ public class Evento {
     private Boolean eventoActivo;
     private Integer disponibilidad;
     private Integer cityId;
+    private Boolean isGratuito;
+    private Double precio;
 
     
     @ManyToOne
@@ -47,6 +49,9 @@ public class Evento {
       setCityId(3433955);
       setDisponibilidad(datosEvento.getDisponibilidad());
       setFecha(datosEvento.getFecha());
+      setIsGratuito(datosEvento.getIsGratuito());
+      setPrecio(datosEvento.getPrecio());
+      
     }
     
     public Evento(DatosEvento datosEvento) {
@@ -56,6 +61,9 @@ public class Evento {
       setDisponibilidad(datosEvento.getDisponibilidad());
       setFecha(datosEvento.getFecha());
       setCityId(3433955);
+      setIsGratuito(datosEvento.getIsGratuito());
+      setPrecio(datosEvento.getPrecio());
+      
     }
     
     public Evento(String nombre, LocalDate fecha, String lugar, String localidad) {
@@ -174,7 +182,23 @@ public class Evento {
         entradas.add(entrada);
     }
 
-    @Override
+    public Boolean getIsGratuito() {
+		return isGratuito;
+	}
+
+	public void setIsGratuito(Boolean isGratuito) {
+		this.isGratuito = isGratuito;
+	}
+
+	public Double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+
+	@Override
     public String toString() {
         return "Evento [categoria=" + categoria + "]";
     }

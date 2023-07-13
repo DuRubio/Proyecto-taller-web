@@ -20,7 +20,7 @@ import java.util.UUID;
 @Service
 public class EventoServiceImpl implements EventoService  {
 
-    private String CARPETA_IMAGENES = "C:/Users/ailuv/OneDrive/Escritorio/proyecto-taller-web/proyecto-eventos-tw1/src/main/webapp/img/";
+    private String CARPETA_IMAGENES = "C:\\Users\\skorp\\git\\proyecto-taller-web\\proyecto-eventos-tw1\\src\\main\\webapp\\img\\";
     private RepositorioEvento repoEvento;
     
     private RepositorioCategoria repoCategoria;
@@ -46,6 +46,14 @@ public class EventoServiceImpl implements EventoService  {
     public void save(DatosEvento datosEvento) {
     	Categoria categoria = repoCategoria.buscarPorNombre(datosEvento.getCategoria());
     	//Evento evento = new Evento(datosEvento,categoria);
+    	Boolean gratuito = datosEvento.getIsGratuito();
+    	Double precio = datosEvento.getPrecio();
+    	if(precio == null) {
+    		datosEvento.setPrecio(0.0);
+    	}
+    	if(gratuito == null) {
+    		datosEvento.setIsGratuito(true);
+    	}
         evento = new Evento(datosEvento,categoria);
     	repoEvento.save(evento);
     }

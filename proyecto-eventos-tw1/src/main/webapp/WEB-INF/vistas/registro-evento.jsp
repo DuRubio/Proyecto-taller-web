@@ -22,8 +22,8 @@
     <style>
         .error {
             color: red;
-            font-size: 0.675rem;
-            margin-top: 0.15rem;
+            font-size: 0.6rem;
+            margin-top: 0.1rem;
         }
     </style>
 </head>
@@ -59,11 +59,13 @@
             <select id="localidad" name="localidad" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
                 <option value="">Selecciona una localidad</option>
                 <option value="Buenos Aires">Buenos Aires</option>
-<%--                <option value="Buenos Aires" data-cityId="3433955">Buenos Aires (AR)</option>--%>
-<%--                <option value="Córdoba" data-cityId="3860259">Córdoba (AR)</option>--%>
-<%--                <option value="Madrid" data-cityId="1704129">Madrid (ES)</option>--%>
-<%--                <option value="Barcelona" data-cityId="3128760">Barcelona (ES)</option>--%>
-<%--                <option value="Paris" data-cityId="2968815">Paris</option>--%>
+                <!--
+                <option value="Buenos Aires" data-cityId="3433955">Buenos Aires (AR)</option>
+                <option value="Córdoba" data-cityId="3860259">Córdoba (AR)</option>
+                <option value="Madrid" data-cityId="1704129">Madrid (ES)</option>
+                <option value="Barcelona" data-cityId="3128760">Barcelona (ES)</option>
+                <option value="Paris" data-cityId="2968815">Paris</option>
+                -->
             </select>
             <div id="localidadError" class="error"></div>
         </div>
@@ -81,16 +83,22 @@
             <p class="text-violet-500 text-italic text-sm">*Por defecto se cargará en 50</p>
         	<div id="disponibilidadError" class="error"></div>
         </div>
-
-
-
-       <div class="mt-4">
+        <div class="mt-4">
+            <label for="isGratuito" class="block mb-1">Gratuito:</label>
+            <input id="isGratuito" type="checkbox" name="isGratuito" onclick="togglePrecioInput()">
+        </div>
+        <div class="mt-4">
+            <label for="precio" class="block mb-1">Precio:</label>
+            <input id="precio" type="number" name="precio" disabled
+                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
+                   placeholder="Ingrese el precio">
+        </div>
+        <div class="mt-4">
            <label for="fecha" class="block mb-1">Fecha:</label>
            <input type="text" id="fecha" name="fecha" placeholder="AAAA-MM-DD"
                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500" required>
        	   <div id="fechaError" class="error"></div>
        </div>
-
 
         <button type="submit"
                 class="w-full px-4 py-2 text-white bg-violet-500 rounded-md hover:bg-violet-600">Siguiente</button>
@@ -106,6 +114,8 @@
 <script>
     const localidadSelect = document.getElementById('localidad');
     const lugarSelect = document.getElementById('lugar');
+    const isGratuitoCheckbox = document.getElementById('isGratuito');
+    const precioInput = document.getElementById('precio');
 
     const opcionesLugar = {
         'Buenos Aires': ['Vorterix', 'Movistar Arena', 'Teatro Gran Rex', 'Hipodromo de San Isidro', 'Hipodromo de Palermo', 'Teatro Opera', 'Luna Park', 'Estadio Mas Monumental', 'Estadio Alberto J. Armando', 'Estadio Ciudad de La Plata', 'Centro Cultural Kirchner'],
@@ -116,20 +126,12 @@
     };
 
     function generarOpcionesLugar() {
-
         console.log("generando lugares")
-
         const localidadSeleccionada = localidadSelect.value;
-
-
         lugarSelect.innerHTML = '';
 
-
         if (localidadSeleccionada && opcionesLugar.hasOwnProperty(localidadSeleccionada)) {
-
             const opciones = opcionesLugar[localidadSeleccionada];
-
-
             opciones.forEach(opcion => {
                 const option = document.createElement('option');
                 option.value = opcion;
@@ -140,6 +142,14 @@
         }
     }
 
+    function togglePrecioInput() {
+        if (isGratuitoCheckbox.checked) {
+            precioInput.disabled = true;
+            precioInput.value = '';
+        } else {
+            precioInput.disabled = false;
+        }
+    }
 
     localidadSelect.addEventListener('change', generarOpcionesLugar);
 </script>
