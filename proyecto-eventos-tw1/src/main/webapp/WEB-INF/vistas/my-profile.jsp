@@ -71,14 +71,15 @@
 					href="/my-profile/cambiar-clave?usuarioId=${usuario.id}">Cambiar
 					contraseña</a>
 
-				<h2 class="text-2xl font-semibold">Mis Preferencias</h2>
+				<h3 class="flex items-center text-2xl font-semibold">Mis Preferencias</h3>
 
-				<c:forEach items="${categorias}" var="categoria">
-					<div class="bg-white shadow-md rounded p-6">
-						<p class="text-gray-700">${categoria.nombre}</p>
-					</div>
-				</c:forEach>
-
+				<div class="flex flex-wrap items-center gap-4">
+					<c:forEach items="${categorias}" var="categoria">
+						<div class="bg-white shadow-md rounded p-6">
+							<a href=# class="bg-transparent text-violet-500 font-semibold py-2 px-4 border border-violet-300 rounded my-4">${categoria.nombre}</a>
+						</div>
+					</c:forEach>
+				</div>
 
 				<!-- Localidad -->
 				<p class="text-gray-700 mb-4">
