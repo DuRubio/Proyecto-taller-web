@@ -168,4 +168,10 @@ public class UsuarioServiceImpl implements  UsuarioService{
 	}
 
 
+	@Override
+	public List<Categoria> obtenerMisCategoriasPreferidas(Long id) {
+		return repoUsuario.obtenerMisCategoriasPreferidas(id);
+	}
+
+
 }
