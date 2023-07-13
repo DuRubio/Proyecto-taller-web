@@ -20,7 +20,7 @@ import java.util.UUID;
 @Service
 public class EventoServiceImpl implements EventoService  {
 
-    private static final String CARPETA_IMAGENES = "src/main/webapp/img/";
+    private String CARPETA_IMAGENES = "C:/Users/ailuv/OneDrive/Escritorio/proyecto-taller-web/proyecto-eventos-tw1/src/main/webapp/img/";
     private RepositorioEvento repoEvento;
     
     private RepositorioCategoria repoCategoria;
@@ -115,7 +115,7 @@ public class EventoServiceImpl implements EventoService  {
 
     @Override
     public void asociarImagenConEvento(Evento evento, MultipartFile imagen) {
-        String nombreImagen = UUID.randomUUID().toString() + "-" + imagen.getOriginalFilename();
+        String nombreImagen = imagen.getOriginalFilename();
         try {
             Path rutaImagen = Path.of(CARPETA_IMAGENES + nombreImagen);
             Files.copy(imagen.getInputStream(), rutaImagen, StandardCopyOption.REPLACE_EXISTING);
@@ -131,5 +131,32 @@ public class EventoServiceImpl implements EventoService  {
         return repoEvento.getUltimoGuardado();
     }
 
+    public String getCarpetaLocal(){
+        Path directorioImagenes = Paths.get("src/main/webapp/img/");
+        String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+        return rutaAbsoluta;
+    }
+
+    @Override
+    public List<Evento> getEventosPorFecha() {
+        return repoEvento.getEventosPorFecha();
+    }
+
+    @Override
+    public List<Evento> getEventosOrdenadosPorDisponibilidad() {
+        return repoEvento.getEventosOrdenadosPorDisponibilidad();
+    }
+
+    @Override
+    public void inactivarLosPasados(){
+        LocalDate fechaActual = LocalDate.now();
+        List<Evento> eventos =repoEvento.findAll();
+        for (Evento evento : eventos) {
+            LocalDate fechaEvento = evento.getFecha();
+            if (fechaEvento.isBefore(fechaActual)) {
+                repoEvento.setInactivo(evento);
+            }
+        }
+    }
 
 }

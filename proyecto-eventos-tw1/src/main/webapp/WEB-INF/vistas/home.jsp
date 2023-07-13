@@ -11,9 +11,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<title>Home</title>
+<title>EventiX</title>
+	<link rel="shortcut icon" href="../img/logo.png">
 </head>
-
+<style>
+	.pop-up{
+		z-index: 9999;
+	}
+</style>
 <body>
 	<nav
 		class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
@@ -94,7 +99,7 @@
 		<div
 			class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 			<c:forEach items="${eventos}" var="evento">
-				<div class="bg-white shadow-md rounded p-6">
+				<div class="bg-white shadow-md rounded p-6 relative">
 					<form action="/weather/">
 						<input type="hidden" name="cityId" value="${evento.cityId}">
 						<input type="hidden" name="eventoId" value="${evento.id}">
@@ -106,6 +111,9 @@
 						<p class="text-gray-700">Localidad: ${evento.localidad}</p>
 						<p class="text-gray-700">Disponibilidad:
 							${evento.disponibilidad}</p>
+						<c:if test="${evento.disponibilidad < 5 && evento.disponibilidad > 0}">
+							<div class="absolute top-0 right-0 mt-2 mr-2 bg-yellow-500 text-white font-bold py-1 px-2 rounded-full text-xs">Últimas entradas</div>
+						</c:if>
 					</div>
 						</button>
 					</form>
@@ -114,10 +122,7 @@
 							<a href="asistir?eventoId=${evento.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
 						</c:if>
 						<c:if test="${evento.disponibilidad==0}">
-							<a href="#" class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</a>
-						</c:if>
-						<c:if test="${usuario.isAdmin}">
-							<a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${evento.id}">Eliminar</a>
+							<p class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</p>
 						</c:if>
 
 					</div>
@@ -132,7 +137,7 @@
 		<div
 				class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 			<c:forEach items="${eventosSegunPreferencias}" var="eventosSegunPreferencias">
-				<div class="bg-white shadow-md rounded p-6">
+				<div class="bg-white shadow-md rounded p-6 relative">
 					<form action="/weather/">
 						<input type="hidden" name="cityId" value="${eventosSegunPreferencias.cityId}">
 						<input type="hidden" name="eventoId" value="${eventosSegunPreferencias.id}">
@@ -144,6 +149,9 @@
 								<p class="text-gray-700">Localidad: ${eventosSegunPreferencias.localidad}</p>
 								<p class="text-gray-700">Disponibilidad:
 										${eventosSegunPreferencias.disponibilidad}</p>
+								<c:if test="${eventosSegunPreferencias.disponibilidad < 5 && eventosSegunPreferencias.disponibilidad > 0}">
+									<div class="absolute top-0 right-0 mt-2 mr-2 bg-yellow-500 text-white font-bold py-1 px-2 rounded-full text-xs">Últimas entradas</div>
+								</c:if>
 							</div>
 						</button>
 					</form>
@@ -152,11 +160,9 @@
 							<a href="asistir?eventoId=${eventosSegunPreferencias.id}" class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full mr-2">Asistir</a>
 						</c:if>
 						<c:if test="${eventosSegunPreferencias.disponibilidad==0}">
-							<a href="#" class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</a>
+							<p class="bg-gray-500 cursor-not-allowed text-white font-bold py-2 px-4 rounded-full mr-2">Cupo lleno</p>
 						</c:if>
-						<c:if test="${usuario.isAdmin}">
-							<a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full ml-2" href="eliminar?eventoId=${eventosSegunPreferencias.id}">Eliminar</a>
-						</c:if>
+
 
 					</div>
 				</div>
@@ -227,7 +233,7 @@
 
 	<c:if test="${mostrarPopup}">
 		<div
-			class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+			class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 pop-up">
 			<div class="bg-white rounded-md shadow-lg p-4">
 				<p class="text-lg text-gray-800">Para tu exquisitez no hay
 					resultados, amplia la busqueda</p>

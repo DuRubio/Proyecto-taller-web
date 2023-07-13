@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Mis Preferencias</title>
+    <link rel="shortcut icon" href="../img/logo.png">
 </head>
 <nav
         class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
@@ -41,7 +42,7 @@
 <div class="flex items-center justify-center mb-16 mt-20">
     <div class="flex items-center justify-center w-full max-w-5xl">
         <img src="./img/evento-cultural.jpg" alt="Image" class="w-1/2 h-auto object-cover">
-        <div class="w-1/2 h-96 px-6 py-8 bg-white">
+        <div class="w-1/2 h-auto px-6 py-8 bg-white">
             <h1 class="text-3xl font-semibold mb-6">Seleccioná tus preferencias</h1>
         <form action="guardar-preferencias-usuario" method="POST" >
             <div class="flex flex-wrap items-center gap-4">
@@ -89,11 +90,18 @@
                     <input id="feria" type="checkbox" class="hidden" name="feria" value="true">
                     Feria
                 </label>
+
+                <label for="marcha" class="px-4 py-2 text-white bg-violet-300 rounded-md hover:bg-violet-600 cursor-pointer checkbox-label">
+                    <input id="marcha" type="checkbox" class="hidden" name="marcha" value="true">
+                    Marcha
+                </label>
             </div>
             <br>
             <br>
             <br>
             <button id="btn-registrarme" class="w-full bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded" type="submit">Guardar</button>
+                <a href="/home"
+                   class="block m-auto text-center bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded mt-6">Volver a home</a>
         </form>
 
         <c:if test="${not empty mensaje}">

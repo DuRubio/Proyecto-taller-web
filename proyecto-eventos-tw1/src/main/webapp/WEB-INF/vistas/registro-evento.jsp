@@ -16,8 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <title>Registra un evento</title>
+    <title>EventiX</title>
+    <link rel="shortcut icon" href="../img/logo.png">
     
     <style>
         .error {
@@ -56,13 +56,23 @@
         </div>
         <div class="mt-4">
             <label for="localidad" class="block mb-1">Localidad:</label>
-            <input id="localidad" type="text" name="localidad"
-                   class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500"
-                   placeholder="Ingresa la localidad">
+            <select id="localidad" name="localidad" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
+                <option value="">Selecciona una localidad</option>
+                <option value="Buenos Aires">Buenos Aires</option>
+<%--                <option value="Buenos Aires" data-cityId="3433955">Buenos Aires (AR)</option>--%>
+<%--                <option value="Córdoba" data-cityId="3860259">Córdoba (AR)</option>--%>
+<%--                <option value="Madrid" data-cityId="1704129">Madrid (ES)</option>--%>
+<%--                <option value="Barcelona" data-cityId="3128760">Barcelona (ES)</option>--%>
+<%--                <option value="Paris" data-cityId="2968815">Paris</option>--%>
+            </select>
             <div id="localidadError" class="error"></div>
         </div>
-
-
+        <div class="mt-4">
+            <label for="lugar" class="block mb-1">Sede:</label>
+            <select id="lugar" name="lugar" class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-blue-500">
+            </select>
+            <div id="lugarError" class="error"></div>
+        </div>
         <div class="mt-4">
             <label for="disponibilidad" class="block mb-1">Disponibilidad:</label>
             <input id="disponibilidad" type="number" name="disponibilidad"
@@ -90,10 +100,49 @@
         </c:if>
         <p class="text-red-500 mx-2">${mensaje}</p>
     </form>
-    <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full" href="home">Volver a home</a></div>
+    <div class="flex justify-center px-6 pt-4 pb-2"><a class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded" href="home">Volver a home</a></div>
 
 </div>
+<script>
+    const localidadSelect = document.getElementById('localidad');
+    const lugarSelect = document.getElementById('lugar');
 
+    const opcionesLugar = {
+        'Buenos Aires': ['Vorterix', 'Movistar Arena', 'Teatro Gran Rex', 'Hipodromo de San Isidro', 'Hipodromo de Palermo', 'Teatro Opera', 'Luna Park', 'Estadio Mas Monumental', 'Estadio Alberto J. Armando', 'Estadio Ciudad de La Plata', 'Centro Cultural Kirchner'],
+        'Córdoba': ['Estadio Mario Alberto Kempes', 'Club Paraguay'],
+        'Madrid': ['Nuevo Espacio Mad Cool', 'Estadio Santiago Bernabéu'],
+        'Barcelona': ['Estadio Camp Nou'],
+        'Paris': ['Le Parc des Princes']
+    };
+
+    function generarOpcionesLugar() {
+
+        console.log("generando lugares")
+
+        const localidadSeleccionada = localidadSelect.value;
+
+
+        lugarSelect.innerHTML = '';
+
+
+        if (localidadSeleccionada && opcionesLugar.hasOwnProperty(localidadSeleccionada)) {
+
+            const opciones = opcionesLugar[localidadSeleccionada];
+
+
+            opciones.forEach(opcion => {
+                const option = document.createElement('option');
+                option.value = opcion;
+                console.log(option.value)
+                option.textContent = opcion;
+                lugarSelect.appendChild(option);
+            });
+        }
+    }
+
+
+    localidadSelect.addEventListener('change', generarOpcionesLugar);
+</script>
 <script>
   function validateForm() {
     const nombre = $('#nombre').val();
@@ -154,10 +203,11 @@
 
   $(document).ready(function () {
     $('input, select').blur(function () {
-      validateForm();
+      validateForm()
+      console.log(lugar);
     });
   });
 </script>
-
+<script src="../js/opcionesSede.js"></script>
 </body>
 </html>

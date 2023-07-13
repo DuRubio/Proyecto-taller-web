@@ -17,7 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <title>Registrarse</title>
-    
+    <link rel="shortcut icon" href="../img/logo.png">
     <style>
         .error {
             color: red;

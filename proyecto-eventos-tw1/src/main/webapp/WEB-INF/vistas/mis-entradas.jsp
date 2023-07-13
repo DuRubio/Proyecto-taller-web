@@ -10,7 +10,8 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://cdn.tailwindcss.com"></script>
-<title>Listado de Eventos</title>
+<title>Mis entradas</title>
+	<link rel="shortcut icon" href="../img/logo.png">
 </head>
 <nav
 		class="flex items-center justify-between flex-wrap bg-violet-500 p-6">
@@ -51,15 +52,12 @@
 					<div class="mt-4">
 						<h2 class="text-xl font-semibold mb-2">E-ticket: #1245281-
 							${entrada.id}</h2>
-						<p class="text-gray-700">Evento: ${entrada.evento.nombre}</p>
+						<p class="text-black uppercase font-semibold">${entrada.evento.nombre}</p>
 						<p class="text-gray-700">Localidad:
 							${entrada.evento.localidad}</p>
 						<p class="text-gray-700">Lugar: ${entrada.evento.lugar}</p>
 						<p class="text-gray-700">Fecha: ${entrada.evento.fecha}</p>
-						<p class="text-gray-700">Tipo de Evento: ${entrada.evento.categoria.nombre}</p>
-						<!-- <p class="text-gray-700">Fecha: ${evento.fecha}</p>
-                    <p class="text-gray-700">Localidad: ${evento.localidad}</p>
-                    <p class="text-gray-700">Disponibilidad: ${evento.disponibilidad}</p>  -->
+						<p class="inline-block bg-gray-200 rounded-lg px-2 py-1 text-gray-600 text-xs uppercase">${entrada.evento.categoria.nombre}</p>
 						<div class="flex justify-center mt-6">
 							<a href="entrada?entradaId=${entrada.id}"
 								class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full">Ver QR</a>
@@ -82,7 +80,7 @@
 
 	<div class="flex justify-center px-6 pt-4 pb-2 mt-8">
 		<a
-			class="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-full"
+				class="bg-transparent hover:bg-violet-500 text-violet-700 font-semibold hover:text-white border border-violet-500 hover:border-transparent rounded py-2 px-4 rounded"
 			href="home">Volver a home</a>
 	</div>
 

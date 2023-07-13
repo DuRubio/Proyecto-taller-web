@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Login</title>
+    <link rel="shortcut icon" href="../img/logo.png">
 </head>
 
 <body class="flex items-center justify-center h-screen bg-gray-100">
